@@ -1,0 +1,13 @@
+<plugin name='fitnesse' version='0.4' grailsVersion='1.3.2 &gt; *'>
+  <author>Erik Pragt</author>
+  <authorEmail>erik.pragt@jworks.nl</authorEmail>
+  <title>Fitnesse Grails Plugin</title>
+  <description>The Fitnesse Grails plugin provides a bridge between Fitnesse and Grails.</description>
+  <documentation>http://bodiam.github.com/grails-fitnesse-plugin/docs/manual/</documentation>
+  <resources>
+    <resource>Config</resource>
+    <resource>nl.jworks.fitnesse.demo.fixture.EchoFixture</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

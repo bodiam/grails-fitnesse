@@ -1,0 +1,20 @@
+You can install the plugin by typing
+{code}
+$ grails install-plugin fitnesse
+{code}
+
+Now, whenever you start up your Grails application (using run-app for example), a Fitnesse server will also start internally, allowing the Fitnesse Wiki to connect to the Grails application.
+
+{note}
+Note that currently you'll need to start up and close your Grails application yourself; the plugin doesn't do this for you. This might change in the future, but for now, it's a manual step.
+{note}
+
+The internal Fitnesse server allows connections made by the Fitnesse Wiki to be interpreted by Fixtures, which run against your application.
+
+
+
+
+
+
+
+

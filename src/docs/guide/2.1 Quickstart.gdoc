@@ -1,0 +1,47 @@
+For the impatient, this is the quickstart to get Fitnesse to work with Grails.
+
+h3. Step 1: Install the Fitnesse Plugin
+{code}
+grails install-plugin fitnesse
+{code}
+
+h3. Step 2: Download Fitnesse
+Go to the [Fitnesse|http://www.fitnesse.org] website, to download Fitnesse.
+
+h3. Step 3: Start the Grails application
+{code}
+grails run-app
+{code}
+
+h3. Step 4: Start Fitnesse
+{code}
+java -jar fitnesse.jar -p 9090
+{code}
+
+h3. Step 5: Configure Fitnesse (for Linux/MacOS)
+
+Paste the following in the Fitnesse wiki:
+{code}
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {echo}
+{code}
+
+h3. Step 6: Add the Test
+Paste the following also in the Fitnesse wiki:
+{code}
+|import|
+|nl.jworks.fitnesse.demo.fixture|
+
+|echo|
+|input|output?|
+|hello|hello|
+|world|world|
+{code}
+
+*Save* the page.
+
+h3. Step 7: Verify it works
+
+Click on *Properties*, select *Test* for '@Page type@', click on *Save properties* to save the page.
+
+Now press *Test*. Everything should be Green now!

@@ -1,0 +1,67 @@
+* TODO *
+
+0.1 & 0.2
+- Support groovy untyped stuff                                      DONE
+- Support cool methods? "register user"                             DONE
+- Support default values for methods ?                              DONE*     * Note that numbers behave "strange"
+- Make methods ending with ? work automatically                     DONE
+- Automatic reloading of fixutes                                    DONE
+
+0.3
+- Do with correct usage of startports                               DONE
+- Create documentation                                              DONE
+- Create demo application                                           DONE
+- Cleanup code
+    - Delete unused classes                                         DONE
+    - Create logging (fitnesse server started on port 8090-8099...) DONE
+- Verified function as property also works for booleans             DONE
+- BUG: On application restart, make sure fitnesse can still accept connections DONE
+- Cleanup code
+    - Get rid of Fitnesse exceptions                                DONE
+
+0.4
+- Merge features of Marcin                                          DONE
+- Document features of Marcin                                      IN PROGRESS
+- 
+
+
+TODO:
+
+
+
+
+- Fix 'stoptest' exception
+- Put in GitHub
+
+- Create screencast
+- Start Grails application
+- Stop Grails application
+- Think of something for easy loading / deleting of data
+
+- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain) 
+
+
+
+
+  560  git add docs/
+  561  git st
+  562  git commit
+  563  git add
+  564  git add .
+  565  git commit
+  566  git commit -m "Added more documentation"
+  567  git push
+  574  git
+  575  git status
+  581  git push origin gh-pages
+  587  git push origin gh-pages
+  588  git commit -m "Testing"
+  589  git commit -a -m "Testing"
+  590  git push origin gh-pages
+  613  git add .
+  616  git commit -a -m "moved files"
+  620  git commit -a -m "moved files"
+  621  git push origin gh-pages
+  625  git commit -a -m "Updated date"
+  626  git push origin gh-pages
+  654  history | grep git

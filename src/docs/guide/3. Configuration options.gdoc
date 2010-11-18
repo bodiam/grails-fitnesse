@@ -1,0 +1,40 @@
+The following describes the list of configuration options. As in the convention over configuration principle, these configurations are not necessary, but can be used to change the behavior of the plugin a litte.
+
+h3. Slim Server Port
+
+The SlimServer opens and listens to a server socket. It gets the port number from FitNesse via the command line. The default is 8085 and it cycles through the next 10 ports to avoid collisions.
+If 8085 is not a convenient port number for you, you can set the SLIM_PORT variable in the Fitnesse Wiki to any port you like. See for more information the [Fitnesse User Guide|http://fitnesse.org/FitNesse.UserGuide.SliM.SlimProtocol.PortManagement].
+
+Changing the port in the Fitnesse Wiki also requires a change in the plugin configuration to tell the plugin on which port to listen.
+
+To change the port in the Grails application, you can set it in the Config.groovy. Add the following:
+
+{code}grails {
+  plugins {
+    fitnesse {
+      server {
+        port = 8085
+      }
+    }
+  }
+}{code}
+
+h3. Logging
+
+To add more logging to the application, add the following to the log4j DSL:
+
+{code}debug  'nl.jworks.grails.plugin.fitnesse'{code}
+
+*Verbose*
+
+To enable verbose logging, which outputs more information than normally needed, set the @verbose@ value to @true@:
+
+{code}grails {
+  plugins {
+    fitnesse {
+      server {
+        verbose = true
+      }
+    }
+  }
+}{code}

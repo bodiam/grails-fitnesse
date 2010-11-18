@@ -1,0 +1,30 @@
+The Wiki contains all the tests. The wiki consists of two parts:
+
+* Formatted text
+* Tables
+
+Tables are the tests, and only tables are executed.
+
+The following tests are at least supported by the Grails Fitnesse plugin:
+
+{table}
+ *Name* | *Description*
+Decision Table |Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture
+Query Table|Supplies the expected results of a query.  This is similar to the Fit Row Fixture
+Script Table| A series of actions and checks. Similar to Do Fixture.
+Import |Add a path to the fixture search path.
+{table}
+
+The following tables might work, but at the moment, they haven't been tested yet. They are included here for completeness.
+
+{table}
+ *Name* | *Description*
+Table Table| Whatever you want it to be!
+Subset Query Table |Supplies a subset of the expected results of a query.
+Ordered query Table|Supplies the expected results of a query.  The rows are expected to be in order.  This is similar to the Fit Row Fixture
+Comment |A table that does nothing.
+Scenario Table|A table that can be called from other tables.
+Library Table|A table that installs fixtures available for all test pages
+{table}
+
+For more information, please check out the Fitnesse Slim documentation on [Test Tables|http://fitnesse.org/FitNesse.UserGuide.SliM].

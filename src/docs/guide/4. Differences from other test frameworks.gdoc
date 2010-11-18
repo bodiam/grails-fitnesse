@@ -1,0 +1,9 @@
+Fitnesse is an Acceptance Test framework, and, as such, is different from Functional or Unit test frameworks.
+
+While Unit Tests focuses more on the design of the code and the functional correctness on a unit level (as in: per class) and Functional tests focus more on the UI and flow of pages, Fitnesse fills the gap between those areas. Fitnesse focuses on the correct behaviour of Business Logic. Fitnesse does this without the need for a UI, but it focus is much wider than a single unit of work.
+
+Fitnesse allows complete scripts of business functionality to be tested, with complete integration in the system. Also, because Fitnesse tests are not concerned with implementation details, Fitnesse Tests can be written Test First, allowing a fully integrated TDD approach from a requirement level, which isn't possible with most other frameworks.
+
+For more information about Fitnesse, please check the [Fitnesse website|http://www.fitnesse.org].
+
+
