@@ -23,6 +23,11 @@
 - Merge features of Marcin                                          DONE
 - Document features of Marcin                                       DONE
 
+0.5
+- Put in GitHub                                                     DONE
+- Embed Fitnesse Server                                           IN PROGRESS
+
+
 
 TODO:
 
@@ -30,7 +35,7 @@ TODO:
 
 
 - Fix 'stoptest' exception
-- Put in GitHub
+
 
 - Create screencast
 - Start Grails application
