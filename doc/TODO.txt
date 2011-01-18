@@ -25,8 +25,8 @@
 
 0.5
 - Put in GitHub                                                     DONE
-- Embed Fitnesse Server                                           IN PROGRESS
 
+- Grails Fitnesse test runner (:fitnesse)                       IN PROGRESS : erikp
 
 
 TODO:
@@ -42,7 +42,16 @@ TODO:
 - Stop Grails application
 - Think of something for easy loading / deleting of data
 
-- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain) 
+- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
+
+- Grails Fitnesse test runner (:fitnesse)
+- dependency injection through Spring for fixtures
+- bundle integration tests with the plugin
+- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
+- Think of something for easy loading / deleting of data
+- run every test in a new transaction
+- promo, blogging, GR8 conf, screencast, tutorials
+- make documentation better
 
 
 
