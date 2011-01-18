@@ -30,10 +30,6 @@
 
 
 TODO:
-
-
-
-
 - Fix 'stoptest' exception
 
 
@@ -52,7 +48,6 @@ TODO:
 - run every test in a new transaction
 - promo, blogging, GR8 conf, screencast, tutorials
 - make documentation better
-
 
 
 
