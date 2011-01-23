@@ -33,6 +33,7 @@ import org.codehaus.groovy.grails.commons.ApplicationHolder
 import java.lang.reflect.InvocationTargetException
 import org.apache.commons.lang.StringUtils
 import grails.util.GrailsUtil
+import org.springframework.beans.factory.BeanCreationException
 
 /**
  * This is the API for executing a SLIM statement. This class should not know
@@ -113,9 +114,14 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         }
 
         try {
-            Object instance = createInstanceOfConstructor(replacedClassName, replaceSymbols(args));
-
-            autowireDependencies(instance)
+            Object instance
+            Class<?> clazz = searchPathsForClass(replacedClassName)
+            Object[] argsWithValues = replaceSymbols(args);
+            if (isFixtureClass(clazz)) {
+                instance = getFixtureBean(clazz, argsWithValues);
+            } else {
+                instance = createInstanceOfConstructor(clazz, argsWithValues);
+            }
 
             if (isLibrary(instanceName)) {
                 libraries.add(new Library(instanceName, instance));
@@ -150,16 +156,24 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         return exceptionToString(new SlimError(String.format("message:<<COULD_NOT_INVOKE_CONSTRUCTOR %s[%d]>>", className, args.length)));
     }
 
-    private void autowireDependencies(instance) {
-        def context = ApplicationHolder.getApplication().mainContext
-        context.autowireCapableBeanFactory.autowireBeanProperties(instance, context.autowireCapableBeanFactory.AUTOWIRE_BY_NAME, false)
+    private boolean isFixtureClass(Class<?> clazz) {
+        return ApplicationHolder.application.isFitnesseFixtureClass(clazz)
     }
 
-    private Object createInstanceOfConstructor(String className, Object[] args) throws Exception {
-        Class<?> k = searchPathsForClass(className);
+    private Object getFixtureBean(Class<?> clazz, Object[] args) {
+        def context = ApplicationHolder.getApplication().mainContext
+        String beanName = StringUtils.uncapitalize(clazz.simpleName)
+        try {
+            return context.autowireCapableBeanFactory.getBean(beanName, *args)
+        } catch (BeanCreationException e) {
+            throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", clazz.name, args.length));
+        }
+    }
+
+    private Object createInstanceOfConstructor(Class<?> k, Object[] args) throws Exception {
         Constructor<?> constructor = getConstructor(k.getConstructors(), args);
         if (constructor == null)
-            throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", className, args.length));
+            throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", k.name, args.length));
 
         def instance = constructor.newInstance(GroovyConverterSupport.convertArgs(args, constructor.getParameterTypes()))
 
@@ -183,7 +197,7 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
 
     private Class<?> getClass(String className) {
         try {
-            // Load from the Grails application so it get's reloaded automatically whenever the Fixture class changes.
+            // Load from the Grails application so all classes are in the latest version
             ApplicationHolder.application.classLoader.loadClass(className)
         } catch (ClassNotFoundException e) {
             return null;
