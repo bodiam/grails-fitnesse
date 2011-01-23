@@ -34,6 +34,7 @@ import java.lang.reflect.InvocationTargetException
 import org.apache.commons.lang.StringUtils
 import grails.util.GrailsUtil
 import org.springframework.beans.factory.BeanCreationException
+import org.springframework.beans.BeanInstantiationException
 
 /**
  * This is the API for executing a SLIM statement. This class should not know
@@ -166,7 +167,12 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         try {
             return context.autowireCapableBeanFactory.getBean(beanName, *args)
         } catch (BeanCreationException e) {
-            throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", clazz.name, args.length));
+            if (!(e.cause in BeanInstantiationException)) {
+                throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", clazz.name, args.length))
+            } else {
+                Exception thrownInConstructor = e.cause?.cause
+                throw thrownInConstructor ?: e
+            }
         }
     }
 
