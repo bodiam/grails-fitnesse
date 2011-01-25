@@ -25,6 +25,7 @@
 
 0.5
 - Put in GitHub                                                     DONE
+- dependency injection through Spring for fixtures                  DONE
 
 - Grails Fitnesse test runner (:fitnesse)                       IN PROGRESS : erikp
 
@@ -41,7 +42,6 @@ TODO:
 - Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
 
 - Grails Fitnesse test runner (:fitnesse)
-- dependency injection through Spring for fixtures
 - bundle integration tests with the plugin
 - Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
 - Think of something for easy loading / deleting of data
