@@ -1,0 +1,15 @@
+On 19/11/2010, at 6:22 AM, Erik Pragt wrote:
+
+> I was wondering if anyone can give me a hint in the right direction for
+> creating a testrunner in Grails. I know you can run grails test-app
+> unit: or integration: , but I'd like to extend my Fitnesse plugin with a
+> similar runner, and I was wondering how to start with this. So, if
+> there's some documentation or source where I can start, I would
+> appreciate it if someone could send me into the right direction.
+
+This all revolves around instances of GrailsTestType. Basically you need to implement that (subclass GrailsTestTypeSupport if you can) and then register it.
+
+For an example of registration, see: http://code.google.com/p/spock/source/browse/trunk/spock-grails/scripts/_Events.groovy
+
+
+The classes/interfaces in this area (e.g. GrailsTestType) are reasonably well javadoc'd, which serves as the documentation for this.

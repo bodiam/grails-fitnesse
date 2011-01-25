@@ -152,7 +152,7 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
 
     private void autowireDependencies(instance) {
         def context = ApplicationHolder.getApplication().mainContext
-        context.autowireCapableBeanFactory.autowireBeanProperties(instance, context.autowireCapableBeanFactory.AUTOWIRE_BY_NAME, false)
+        context.autowireCapableBeanFactory.getBean()
     }
 
     private Object createInstanceOfConstructor(String className, Object[] args) throws Exception {

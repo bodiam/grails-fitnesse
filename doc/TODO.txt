@@ -48,6 +48,7 @@ TODO:
 - run every test in a new transaction
 - promo, blogging, GR8 conf, screencast, tutorials
 - make documentation better
+- Add per environment enabled/disabled of Fitnesse server
 
 
 
