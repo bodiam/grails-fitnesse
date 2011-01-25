@@ -1,0 +1,31 @@
+!1 Welcome to [[FitNesse][FitNesse.FitNesse]]!
+
+# Here is a good place to add your first page (WikiWord). For example, MyTopLevelApplicationPage
+To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[!-WikiWord-!][FitNesse.UserGuide.WikiWord]] to the page.
+
+| '''To Learn More...'''|
+| [[A One-Minute Description][FitNesse.UserGuide.OneMinuteDescription]]|''What is [[FitNesse][FitNesse.FitNesse]]? Start here.''|
+| [[A Two-Minute Example][FitNesse.UserGuide.TwoMinuteExample]]|''A brief example. Read this one next.''|
+| [[User Guide][FitNesse.UserGuide]]|''Answer the rest of your questions here.''|
+| [[Acceptance Tests][FitNesse.SuiteAcceptanceTests]]|''FitNesse's suite of Acceptance Tests''|
+
+!* Setup, do not edit
+!define TEST_SYSTEM {slim}
+#!define SLIM_PORT {10011}
+!define COMMAND_PATTERN {ls}
+
+!define TEST_SYSTEM {slim}
+*!
+
+
+!3 Grails
+
+>GrailsTestSuite
+>FitnesseQuickStart
+
+>VamosSuite
+
+>TestMe
+
+
+!note Release v20100303

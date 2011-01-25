@@ -1,0 +1,5 @@
+This fixture doesn't have any other purpose then to change it, reload this test, and see if the code compiles on the fly and is picked up by Fitnesse.
+
+|change me|
+|name |age |city  |
+|erik |30  |Almere|

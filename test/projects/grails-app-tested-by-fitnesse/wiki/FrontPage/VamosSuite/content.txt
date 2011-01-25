@@ -1,0 +1,11 @@
+!define TEST_SYSTEM {slim}
+!define SLIM_PORT {10011}
+!define COMMAND_PATTERN {echo}
+!define REGRACE_LINK {true}
+
+#!define SLIM_HOST {172.30.60.116}
+#!define location {/var/ccgui/import/}
+!define location {/Users/erikp/UserFiles/Projects/KPN/vamos/kpn-ccgui/ccgui/imports}
+
+
+>ProductImportSuite

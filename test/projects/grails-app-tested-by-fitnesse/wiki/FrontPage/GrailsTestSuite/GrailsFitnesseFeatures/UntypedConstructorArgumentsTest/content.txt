@@ -1,0 +1,13 @@
+This test tests if fixtures can handle Groovy's untyped arguments
+
+#|untyped constructor arguments|
+
+|untyped constructor arguments|erik|
+|output?|
+|5|
+
+Strange behavior when using untyped 'ints', which are seen as strings (1 = string value 49):
+
+|untyped constructor arguments|erik|1|
+|output?|
+|49|

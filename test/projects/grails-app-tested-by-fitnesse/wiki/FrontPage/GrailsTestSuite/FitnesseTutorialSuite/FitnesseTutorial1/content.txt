@@ -1,0 +1,35 @@
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {ls}
+
+|import|
+|tutorial|
+
+
+!1 Create the inventory
+
+First the inventory needs to be filled
+
+#|create book inventory|
+#|author|title|amount|
+#|Stephen King|IT|3|
+#|Dean Koontz|Chase|5|
+
+|create book inventory| 
+|book|amount| 
+|{author: Stephen King, title: IT}|3| 
+|{author: Dean Koontz, title: Chase}|5|
+
+
+!1 Customer buys books
+
+|script|buy book scenario|
+|customer buys|2|books with title|IT|
+|customer buys|1|books with title|Chase|
+|customer buys|1|books with title|IT|
+|customer buys|2|books with title|Chase|
+
+!1 Check the result
+
+|query:check book inventory|
+|author|title|amount|
+|Dean Koontz|Chase|2|

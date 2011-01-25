@@ -1,0 +1,11 @@
+|import                                    |
+|nl.kpn.vamos.ccgui.fitnesse.extpc.pcimport|
+
+!|import product catalog|${location}|
+|file name                          |
+|abc-Remove.xml                        |
+
+!|check product catalog                                                                                                                                                             |
+|id upn|common name?                                |implementation name?|supply name?                 |fixed transfer price?|currentTransferPrice?|fixedRecommendedPrice?|supplyId?|
+|235604|Autolader 12V BlackBerry 8220/8900/9500/9530|Standaard           |Standaard                    |50.00                |1                    |2                     |235604   |
+|308505|Nokia 6700 classic                          |Black               |Bij aanschaf CM Hi-abonnement|70.00                |50.00                |3                     |123      |

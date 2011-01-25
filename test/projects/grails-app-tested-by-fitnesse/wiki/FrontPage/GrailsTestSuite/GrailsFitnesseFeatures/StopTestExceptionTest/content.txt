@@ -1,0 +1,8 @@
+This test first create an exception, which causes a stop exception. The result of this is that the failure test should not execute.
+
+|script|stop test exception|
+|throw exception           |
+
+This should not be executed because a !-StopTestException-! should have been thrown.
+
+|fail fixture|

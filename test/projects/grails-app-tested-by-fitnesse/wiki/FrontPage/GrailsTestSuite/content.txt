@@ -1,0 +1,11 @@
+!define TEST_SYSTEM {slim}
+#!define SLIM_PORT {10011}
+#!define COMMAND_PATTERN {sh run-dummy.sh}
+!define COMMAND_PATTERN {echo}
+!define REGRACE_LINK {true}
+
+!1 Table of contents
+
+>SlimTestSystem
+>GrailsFitnesseFeatures
+>FitnesseTutorialSuite

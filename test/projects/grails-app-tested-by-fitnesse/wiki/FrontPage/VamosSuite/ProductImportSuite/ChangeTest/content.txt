@@ -1,0 +1,25 @@
+!define TEST_SYSTEM {slim}
+!define SLIM_PORT {10011}
+!define COMMAND_PATTERN {echo}
+!define REGRACE_LINK {true}
+
+#!define SLIM_HOST {172.30.60.116}
+#!define location {/var/ccgui/import/}
+!define location {/Users/erikp/UserFiles/Projects/KPN/vamos/kpn-ccgui/ccgui/imports}
+
+|import                                    |
+|nl.kpn.vamos.ccgui.fitnesse.extpc.pcimport|
+
+!|import product catalog|${location}|
+|file name                          |
+|abc-Add.xml                        |
+#|Mini.XML                                                                                  |
+
+#|gui change attribute|33332          |
+#|common name         |My Device      |
+#|supply name         |Zonder aanschaf|
+
+!|check product catalog                                                                                                                                                             |
+|id upn|common name?                                |implementation name?|supply name?                 |fixed transfer price?|currentTransferPrice?|fixedRecommendedPrice?|supplyId?|
+|235604|Autolader 12V BlackBerry 8220/8900/9500/9530|Standaard           |Standaard                    |50.00                |1                    |2                     |235604   |
+|308505|Nokia 6700 classic                          |Black               |Bij aanschaf CM Hi-abonnement|70.00                |50.00                |3                     |123      |

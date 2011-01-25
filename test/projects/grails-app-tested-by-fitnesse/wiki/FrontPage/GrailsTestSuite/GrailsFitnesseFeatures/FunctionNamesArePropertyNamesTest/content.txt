@@ -1,0 +1,26 @@
+Normally, decision tables are using a setter and a 'function', which is not a setter, but the same method name as the word in front of the question mark (see below).
+Since this doesn't apply to the setters, but only to getters, I find this behavior weird, and changed it by delegating 'name?' also to 'getName()'.
+
+|function name is property name|
+|name|name?|
+|erik|erik|
+
+'''Code'''
+{{{
+class FunctionNameIsPropertyNameFixture {
+    String name
+}
+}}}
+
+This also holds true for booleans:
+
+|boolean function name is property name|
+|happy|happy?|
+|true|true|
+
+'''Code'''
+{{{
+class BooleanFunctionNameIsPropertyNameFixture {
+    boolean happy
+}
+}}}

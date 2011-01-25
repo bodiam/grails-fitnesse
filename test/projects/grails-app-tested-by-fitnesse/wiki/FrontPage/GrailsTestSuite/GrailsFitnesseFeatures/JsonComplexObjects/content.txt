@@ -1,0 +1,8 @@
+|import   |
+|tutorial|
+
+
+|create book inventory| 
+|book|amount| 
+|{author: Stephen King, title: IT}|3| 
+|{author: Dean Koontz, title: Chase}|5|
