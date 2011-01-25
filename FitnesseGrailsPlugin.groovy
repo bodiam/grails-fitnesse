@@ -36,6 +36,13 @@ class FitnesseGrailsPlugin {
         def verbose = CH.config.grails.plugins.fitnesse.server.verbose ?: false
 
         grailsFitnesseSlimServer(GrailsFitnesseSlimServer, startPort, verbose)
+
+        final beanConfigureClosure = configureFixtureBean.clone()
+        beanConfigureClosure.delegate = delegate
+
+        application.fitnesseFixtureClasses.each { fixtureClass ->
+            beanConfigureClosure.call(fixtureClass)
+        }
     }
 
     def doWithDynamicMethods = { ctx ->
@@ -48,12 +55,16 @@ class FitnesseGrailsPlugin {
     }
 
     def onChange = { event ->
-        println "onChange"
-
         if (application.isFitnesseFixtureClass(event.source)) {
-            println "Change event detected in Fixture: ${event}"
+            def fixtureClass = application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source)
 
-            addFixtureDynamicMethods(application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source))
+            final beanConfigureClosure = configureFixtureBean.clone()
+            beans {
+                beanConfigureClosure.delegate = delegate
+                beanConfigureClosure.call(fixtureClass)
+            }.registerBeans(event.ctx)
+
+            addFixtureDynamicMethods(fixtureClass)
         }
     }
 
@@ -82,6 +93,13 @@ class FitnesseGrailsPlugin {
             fixtureClass.metaClass.query = { ->
                 mapResults(queryResults(), mapping)
             }
+        }
+    }
+
+    def configureFixtureBean = { fixtureClass ->
+        "${fixtureClass.propertyName}"(fixtureClass.clazz) { bean ->
+            bean.singleton = false
+            bean.autowire = 'byName'
         }
     }
 }
