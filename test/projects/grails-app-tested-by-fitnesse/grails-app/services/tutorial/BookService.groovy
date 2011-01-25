@@ -13,12 +13,6 @@ class BookService {
     }
 
     def checkInventory() {
-        return new Inventory(Book, Integer)
-
-        def results = Book.executeQuery("select b.title, b.author, count(*) from Book b group by title, author")
-
-        results.collect {
-            new Inventory()
-        }
+        return Book.executeQuery("select b.title, b.author, count(*) from Book b group by title, author")
     }
 }
