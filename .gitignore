@@ -3,4 +3,5 @@
 
 /stacktrace.log
 /target/
+/test/projects/grails-app-tested-by-fitnesse/target
 /.svn/

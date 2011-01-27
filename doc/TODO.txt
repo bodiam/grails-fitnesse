@@ -26,20 +26,26 @@
 0.5
 - Put in GitHub                                                     DONE
 - dependency injection through Spring for fixtures                  DONE
+- Fix 'stoptest' exception                                          DONE
+- grails runner for Fitnesse (grails run-fitnesse)              IN PROGRESS : erdi  <- fix configuration conflicts (slim/server)
 
 - Grails Fitnesse test runner (:fitnesse)                       IN PROGRESS : erikp
 
+DOCUMENTATITON:
+grails run-fitnesse:
+* by default starts fitnesse server on port 9090, can be configured by grails.plugins.fitnesse.server.port in Config.groovy
+    (I think that configuration for slim port and verbose options should be moved to grails.plugins.fitnesse.slim.* namespace....)
+* default directory for fitnesse files is "${basedir}/wiki", can be configured by grails.plugins.fitnesse.server.dir in Config.groovy
+* will automatically install fitnesse in the running directory
+
+
+
 
 TODO:
-- Fix 'stoptest' exception
-
-
 - Create screencast
 - Start Grails application
 - Stop Grails application
 - Think of something for easy loading / deleting of data
-
-- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
 
 - Grails Fitnesse test runner (:fitnesse)
 - bundle integration tests with the plugin
