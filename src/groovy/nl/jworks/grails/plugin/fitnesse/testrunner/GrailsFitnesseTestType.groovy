@@ -18,7 +18,7 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
     @Override
     protected int doPrepare() {
         println "doPrepare"
-        return 0
+        return 1
     }
 
     @Override
@@ -26,4 +26,13 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
         println "doRun"
         return null
     }
+
+    @Override
+    protected ClassLoader getTestClassLoader() {
+        println "getTestClassLoader"
+        
+        return null
+    }
+
+
 }

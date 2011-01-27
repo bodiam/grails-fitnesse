@@ -13,3 +13,10 @@ For an example of registration, see: http://code.google.com/p/spock/source/brows
 
 
 The classes/interfaces in this area (e.g. GrailsTestType) are reasonably well javadoc'd, which serves as the documentation for this.
+
+
+
+
+Syntax:
+
+grails test-app integration:fitnesse
