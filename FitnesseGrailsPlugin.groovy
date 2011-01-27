@@ -14,6 +14,9 @@ class FitnesseGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
+    def environments = ['dev', 'test']
+    def scopes = [excludes: 'war']
+
     def author = "Erik Pragt"
     def authorEmail = "erik.pragt@jworks.nl"
     def title = "Fitnesse Grails Plugin"

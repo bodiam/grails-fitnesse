@@ -27,6 +27,7 @@
 - Put in GitHub                                                     DONE
 - dependency injection through Spring for fixtures                  DONE
 - Fix 'stoptest' exception                                          DONE
+- Add per environment enabled/disabled of Fitnesse server           DONE
 - grails runner for Fitnesse (grails run-fitnesse)              IN PROGRESS : erdi  <- fix configuration conflicts (slim/server)
 
 - Grails Fitnesse test runner (:fitnesse)                       IN PROGRESS : erikp
@@ -54,7 +55,7 @@ TODO:
 - run every test in a new transaction
 - promo, blogging, GR8 conf, screencast, tutorials
 - make documentation better
-- Add per environment enabled/disabled of Fitnesse server
+
 
 
 
