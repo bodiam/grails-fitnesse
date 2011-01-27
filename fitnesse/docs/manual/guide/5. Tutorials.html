@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>5. Tutorials</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    <h1><a name="5. Tutorials">5. Tutorials</a></h1><h2><a name="5.1 Integration testing">5.1 Integration testing</a></h2>This tutorial describes the creation of a simple application and how to test it.<p class="paragraph"/><h4>1. Create your Grails application.</h4><p class="paragraph"/><div class="code"><pre>$ grails create&#45;app bookstore
+$ cd bookstore</pre></div>
+<h4>2. Install the plugin.</h4>
+<div class="code"><pre>$ grails install&#45;plugin fitnesse</pre></div><p class="paragraph"/>We are going to create a small bookstore with a small domain to test the core functionality without using a Functional or Unit test.
+Normally, I would recommend using Unit tests after writing the Fitnesse Acceptance Test, but that is outside the scope of this tutorial.<p class="paragraph"/>To start in a Test Driven approach, we'll start by creating the test first.<p class="paragraph"/>To do so, we'll need to start Fitnesse as well as Grails.<p class="paragraph"/><h4>3. Start the Grails server.</h4>
+<div class="code"><pre>$ grails run&#45;app</pre></div><p class="paragraph"/><h4>4. Start the Fitnesse server.</h4><p class="paragraph"/>If you haven't downloaded Fitnesse yet, please do download it from the <a href="http://www.fitnesse.org" target="blank">Fitnesse website</a>.<p class="paragraph"/>The following will extract Fitnesse and start it on port 9090.
+<div class="code"><pre>$ java &#45;jar fitnesse.jar &#45;p 9090</pre></div><p class="paragraph"/><h4>5. Create the test</h4><p class="paragraph"/>Open a web browser and point it to http://localhost:9090 . The Fitnesse front page will show up.<p class="paragraph"/>Click on <strong class="bold">Edit</strong>, and add the following to the text area: <code>^BookStoreTest</code> . Press <strong class="bold">Save</strong>.<p class="paragraph"/>You will now have a text with a question mark next to it. Click on the question mark to create a new page.<p class="paragraph"/>In the new page, remove the contents of the text area and replace it by the following:<p class="paragraph"/><div class="code"><pre>!define TEST_SYSTEM &#123;slim&#125;
+!define COMMAND_PATTERN &#123;echo&#125;<p class="paragraph"/>|create book inventory|
+|author|title|amount|
+|Stephen King|IT|3|
+|Dean Koontz|Chase|5|<p class="paragraph"/>|script|buy book scenario|
+|customer buys|2|books with title|IT|
+|customer buys|1|books with title|Chase|<p class="paragraph"/>|query:check book inventory|
+|Stephen King|IT|1|
+|Dean Koontz|Chase|4|</pre></div><p class="paragraph"/>Press save after you created the page.<p class="paragraph"/><blockquote class="note">
+The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to machine running Windows.
+</blockquote><p class="paragraph"/>In this test, you've used 3 kinds of Test tables:
+<ul class="star">
+<li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable" target="blank">Decision Table</a> (<code>create book inventory</code>) used to setup the data</li>
+<li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable" target="blank">Script Table</a> (<code>buy book scenario</code>) to execute the test</li>
+<li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.QueryTable" target="blank">Query table</a> (<code>check book inventory</code>) to verify the results of the test</li>
+</ul><p class="paragraph"/>Click on <strong class="bold">Test</strong> on the left side of the page. The test will execute, and will fail with errors like <code>Could not invoke constructor for CreateBookInventory&#91;0&#93;</code>. This is because no Fixtures have been created yet. This way of working is in line with the 'Red-Green-Refactor' TDD mantra; our test clearly is red (or yellow, in this case), so we need to focus on getting the test green. To make the test pass, we need to create the fixtures.<p class="paragraph"/><h4>6. Creating the Fixtures</h4><p class="paragraph"/>We'll start by creating the first Fixture mentioned in the error message, which is the <code>CreateBookInventory</code> Fixture. In your Grails project, go to the <code>grails-app/fitnesse</code> directory, and create a file called <code>CreateBookInventory.groovy</code>. Because the Fitnesse plugin will reload the Fixtures automatically, pressing the <strong class="bold">Test</strong> button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse.<p class="paragraph"/>Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding <code>Book</code> domain class.<p class="paragraph"/><blockquote class="note">
+Note, Grails might crash due to the Fixture missing the domain classes. Whenever this happens, please restart Grails.
+</blockquote><p class="paragraph"/><h5>6.1 The Decision Table</h5><p class="paragraph"/>The Fixture to support the <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable" target="blank">Decision Table</a> should look like this:<p class="paragraph"/><div class="code"><pre>class CreateBookInventoryFixture &#123;
+    <span class="java&#45;object">String</span> author
+    <span class="java&#45;object">String</span> title<p class="paragraph"/>    <span class="java&#45;object">int</span> amount<p class="paragraph"/>    def bookService<p class="paragraph"/>    CreateBookInventory() &#123;
+        Book.list()&#42;.delete()
+    &#125;<p class="paragraph"/>    void execute() &#123;
+        amount.times &#123;
+            bookService.addBook(<span class="java&#45;keyword">new</span> Book(author: author, title: title))
+        &#125;
+    &#125;
+&#125;</pre></div><p class="paragraph"/>The Fixture has an <code>execute</code> method. This method is called after input parameters have been set, but before any output parameters are requested. This allows us to have a place to do something with the input, and prepare the output.<p class="paragraph"/>The Book class like this:<p class="paragraph"/><div class="code"><pre>class Book &#123;
+    <span class="java&#45;object">String</span> author
+    <span class="java&#45;object">String</span> title
+&#125;</pre></div><p class="paragraph"/>We also need a BookService class, since the Fixtures should not hold any logic; they are just a translation of the test with the SUT. The BookService looks like this:<p class="paragraph"/><div class="code"><pre>class BookService &#123;<p class="paragraph"/>    <span class="java&#45;keyword">static</span> transactional = <span class="java&#45;keyword">true</span><p class="paragraph"/>    def addBook(book) &#123;
+        book.save()
+    &#125;<p class="paragraph"/>    def buyBook(title) &#123;
+        Book.findByTitle(title).delete()
+    &#125;<p class="paragraph"/>    def checkInventory() &#123;
+        Book.executeQuery(<span class="java&#45;quote">"select b.title, b.author, count(&#42;) from Book b group by title, author"</span>)
+    &#125;
+&#125;</pre></div><p class="paragraph"/>Execute the test again, and the first part of the test should be green. If not, and you're sure you've executed all steps correctly, please let me know because it would mean there's an error in the tutorial, or I've been unclear in the way to explain things. In any way, if you're stuck, please let <a href="http://www.jworks.nl/contact" target="blank">me</a> know.<p class="paragraph"/><h5>6.2 The Script Table</h5><p class="paragraph"/>The Script Fixture to execute the <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable" target="blank">Script Table</a> should look like this:<p class="paragraph"/><div class="code"><pre>class BuyBookScenarioFixture &#123;
+    def bookService<p class="paragraph"/>    void customerBuysBooksWithTitle(<span class="java&#45;object">int</span> amount, title) &#123;
+        amount.times &#123;
+            bookService.buyBook(title)
+        &#125;
+    &#125;
+&#125;</pre></div><p class="paragraph"/><blockquote class="note">
+Note that this implementation is very simplistic. In this example, I simply delete the books from the inventory instead of assigning them to a customer or a basket.
+</blockquote><p class="paragraph"/><h5>6.3 The Query Table</h5><p class="paragraph"/>Finally, to verify if our assertions match the execution of our code, we need to check the results of our actions. We do this by using a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.QueryTable" target="blank">Query Table</a>.<p class="paragraph"/><div class="code"><pre>class CheckBookInventoryFixture &#123;
+    def queryFixture = <span class="java&#45;keyword">true</span>  // indication that <span class="java&#45;keyword">this</span> is a query fixture
+    <span class="java&#45;keyword">static</span> mapping = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService       // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
+        bookService.checkInventory()
+    &#125;
+&#125;</pre></div><p class="paragraph"/>Now, when running the Test again in Fitnesse, everything should be green, and you have your first test running. Not you can refactor your code if you want, and check if the result is still valid by rerunning the Tests!<h2><a name="5.2 Refcard">5.2 Refcard</a></h2>I have written a Refcard to explain the basics of Fitnesse. It provides a starting point for those unfamiliar with the basics of Fitnesse and also provides some more advanced tips for those who have worked with Fitnesse before.<p class="paragraph"/>It has been published by DZone, and you can read it <a href="http://refcardz.dzone.com/refcardz/getting-started-fitnesse" target="blank">here</a>.
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>2.1 Quickstart</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    For the impatient, this is the quickstart to get Fitnesse to work with Grails.<p class="paragraph"/><h3>Step 1: Install the Fitnesse Plugin</h3>
+<div class="code"><pre>grails install&#45;plugin fitnesse</pre></div><p class="paragraph"/><h3>Step 2: Download Fitnesse</h3>
+Go to the <a href="http://www.fitnesse.org" target="blank">Fitnesse</a> website, to download Fitnesse.<p class="paragraph"/><h3>Step 3: Start the Grails application</h3>
+<div class="code"><pre>grails run&#45;app</pre></div><p class="paragraph"/><h3>Step 4: Start Fitnesse</h3>
+<div class="code"><pre>java &#45;jar fitnesse.jar &#45;p 9090</pre></div><p class="paragraph"/><h3>Step 5: Configure Fitnesse (for Linux/MacOS)</h3><p class="paragraph"/>Paste the following in the Fitnesse wiki:
+<div class="code"><pre>!define TEST_SYSTEM &#123;slim&#125;
+!define COMMAND_PATTERN &#123;echo&#125;</pre></div><p class="paragraph"/><h3>Step 6: Add the Test</h3>
+Paste the following also in the Fitnesse wiki:
+<div class="code"><pre>|<span class="java&#45;keyword">import</span>|
+|nl.jworks.fitnesse.demo.fixture|<p class="paragraph"/>|echo|
+|input|output?|
+|hello|hello|
+|world|world|</pre></div><p class="paragraph"/><strong class="bold">Save</strong> the page.<p class="paragraph"/><h3>Step 7: Verify it works</h3><p class="paragraph"/>Click on <strong class="bold">Properties</strong>, select <strong class="bold">Test</strong> for '<code>Page type</code>', click on <strong class="bold">Save properties</strong> to save the page.<p class="paragraph"/>Now press <strong class="bold">Test</strong>. Everything should be Green now!
+    </body>
+</html>

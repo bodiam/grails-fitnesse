@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>2.2 Fixtures</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    Fitnesse Fixtures, not to be confused with <a href="http://www.grails.org/plugin/fixtures" target="blank">Grails Fixtures</a>, allow a bridge between the Fitnesse Wiki and the System Under Test (SUT).<p class="paragraph"/>Fixtures are similar to Grails artifacts and share most of their characteristics, like hot reloading and Dependency Injection. All Fixtures should be created in the 'Fitnesse' directory in the <code>grails-app</code> directory.<p class="paragraph"/><h4>Example</h4><p class="paragraph"/>Below you'll find an example Wiki test plus the Fixture which will serve as the bridge between the Wiki and the SUT.<p class="paragraph"/>Wiki:
+<div class="code"><pre>|loan calculator       |
+|income|debts|category?|
+|10000 |500  |A        |
+|5000  |10000|C        |</pre></div><p class="paragraph"/>And the Fixture:<p class="paragraph"/><div class="code"><pre>class LoanCalculatorFixture &#123;
+    // Input parameters
+    <span class="java&#45;object">int</span> income
+    <span class="java&#45;object">int</span> debts<p class="paragraph"/>    // Output parameter
+    <span class="java&#45;object">String</span> category<p class="paragraph"/>    // Dependency Injected
+    def loanCalculationService<p class="paragraph"/>    void execute() &#123;
+        <span class="java&#45;keyword">this</span>.category = loanCalculationService.calculateLoanCategory(income, debts)
+    &#125;
+&#125;</pre></div><p class="paragraph"/><strong class="bold">Explanation</strong><p class="paragraph"/>The Wiki Tests consists of 3 parts:
+<ul class="star">
+<li>the fixture name (<code>loan calculator</code>)</li>
+<li>the header(income, debts, and category)</li>
+<li>and the body (the rest of the table). As you can see, <code>category</code> is suffixed with a question mark to indicate this is not a value to be set, but rather to be read ('get'). As such, first the input values are set, then the execute method is called by Fitnesse, and finally the output are called, in this case category.</li>
+</ul><p class="paragraph"/><blockquote class="note">
+A small note: normally output parameters are 'functions' and not getters. This means you would need an extra method for the output parameters. In the Grails version of the Fitnesse runner, this isn't necessary (fortunately!), and Fitnesse will check both the 'functions' as well as the Groovy properties. Less code to write, less code to maintain!
+</blockquote><p class="paragraph"/>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+DefaultPackage
+nl.jworks
+nl.jworks.domain
+nl.jworks.fitnesse.demo.fixture
+nl.jworks.grails.plugin.fitnesse
+nl.jworks.job
+nl.jworks.service
+tutorial

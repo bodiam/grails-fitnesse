@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>1. Introduction</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    The Fitnesse plugin provides a integration point between the popular Open Source testing framework <a href="Fitnesse:http://www.fitnesse.org" target="blank"></a> and Grails applications.<p class="paragraph"/>This guide documents the usage of the plugin and provides an easy starting point to get you up to speed with the plugin as well as with Fitnesse.<p class="paragraph"/><blockquote class="note">
+Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
+</blockquote><p class="paragraph"/><h4>Release History</h4>
+<ul class="star">
+<li>November 16, 2010</li>
+<ul class="star">
+<li>0.4 Release, thanks to Marcin Erdmann!</li>
+<ul class="star">
+<li>Complete refactoring of the plugin thanks to Marcin Erdmann (ie using Artefacts, Artefact Templates, JSON Code to enable complex objects, and more!)</li>
+<li><strong class="bold">Important</strong>: All fixtures should now be end with the suffix 'Fixture', as in 'CalculateFixture'. In the Wiki you can still refer to them as 'Calculate', but the plugin adds a Fixture suffix when looking for the class.</li>
+<li>Improved error messages</li>
+<li>You can now create complex objects from within Fitnesse by using JSON syntax.</li>
+<li>More documentation!</li>
+<li>Fixed some bugs in documentation (thanks Olivier Hedin for reporting!)</li>
+</ul>
+</ul>
+<li>October 12, 2010</li>
+<ul class="star">
+<li>0.3 Release.</li>
+<ul class="star">
+<li>Added more documentation (configuration options, quickstart), refactored the internals</li>
+<li>Added verbose logging switch</li>
+<li>Fixed a Grails reloading bug, which caused ports to be opened twice. Now the plugin closes all ports, and reopens them whenever Grails forces a restart</li>
+<li>You can now throw <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling" target="blank">StopTest Exceptions</a> from Fixture constructors (which is not possible in the Java Fitnesse)</li>
+</ul>
+</ul>
+<li>September 19, 2010</li>
+<ul class="star">
+<li>0.2 release. First public release. Includes lots of documentation, including a tutorial with 3 fixture types.</li>
+</ul>
+<li>September 15, 2010</li>
+<ul class="star">
+<li>initial 0.1 release.</li>
+</ul></ul><p class="paragraph"/><h4>Future plans:</h4>
+<ul class="star">
+<li>Add complete (Fitnesse) testset (which is also documentation)</li>
+<li>Bundle Fitnesse</li>
+</ul><p class="paragraph"/>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>3. Configuration options</title>
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Ref" charset="utf-8"/>
+    </head>
+    <body class="body">
+    The following describes the list of configuration options. As in the convention over configuration principle, these configurations are not necessary, but can be used to change the behavior of the plugin a litte.<p class="paragraph"/><h3>Slim Server Port</h3><p class="paragraph"/>The SlimServer opens and listens to a server socket. It gets the port number from FitNesse via the command line. The default is 8085 and it cycles through the next 10 ports to avoid collisions.
+If 8085 is not a convenient port number for you, you can set the SLIM_PORT variable in the Fitnesse Wiki to any port you like. See for more information the <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.SlimProtocol.PortManagement" target="blank">Fitnesse User Guide</a>.<p class="paragraph"/>Changing the port in the Fitnesse Wiki also requires a change in the plugin configuration to tell the plugin on which port to listen.<p class="paragraph"/>To change the port in the Grails application, you can set it in the Config.groovy. Add the following:<p class="paragraph"/><div class="code"><pre>grails &#123;
+  plugins &#123;
+    fitnesse &#123;
+      server &#123;
+        port = 8085
+      &#125;
+    &#125;
+  &#125;
+&#125;</pre></div><p class="paragraph"/><h3>Logging</h3><p class="paragraph"/>To add more logging to the application, add the following to the log4j DSL:<p class="paragraph"/><div class="code"><pre>debug  'nl.jworks.grails.plugin.fitnesse'</pre></div><p class="paragraph"/><strong class="bold">Verbose</strong><p class="paragraph"/>To enable verbose logging, which outputs more information than normally needed, set the <code>verbose</code> value to <code>true</code>:<p class="paragraph"/><div class="code"><pre>grails &#123;
+  plugins &#123;
+    fitnesse &#123;
+      server &#123;
+        verbose = <span class="java&#45;keyword">true</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;</pre></div>
+    </body>
+</html>
