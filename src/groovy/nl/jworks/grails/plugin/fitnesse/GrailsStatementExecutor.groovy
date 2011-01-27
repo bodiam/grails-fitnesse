@@ -117,12 +117,10 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         try {
             Object instance
             Class<?> clazz = searchPathsForClass(replacedClassName)
-            Object[] argsWithValues = replaceSymbols(args);
-            if (isFixtureClass(clazz)) {
-                instance = getFixtureBean(clazz, argsWithValues);
-            } else {
-                instance = createInstanceOfConstructor(clazz, argsWithValues);
-            }
+            Constructor<?> matchingConstructor = getConstructor(clazz.getConstructors(), args);
+            Object[] convertedArgs = GroovyConverterSupport.convertArgs(replaceSymbols(args), matchingConstructor.getParameterTypes())
+
+            instance = getFixtureBean(clazz, convertedArgs);
 
             if (isLibrary(instanceName)) {
                 libraries.add(new Library(instanceName, instance));
@@ -176,17 +174,6 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         }
     }
 
-    private Object createInstanceOfConstructor(Class<?> k, Object[] args) throws Exception {
-        Constructor<?> constructor = getConstructor(k.getConstructors(), args);
-        if (constructor == null)
-            throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", k.name, args.length));
-
-        def instance = constructor.newInstance(GroovyConverterSupport.convertArgs(args, constructor.getParameterTypes()))
-
-        return instance;
-    }
-
-
     private Class<?> searchPathsForClass(String className) {
         Class<?> k = getClass(className);
         if (k != null)
@@ -216,7 +203,7 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
             if (arguments.length == args.length)
                 return constructor;
         }
-        return null;
+        throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", k.name, args.length));
     }
 
     public Object call(String instanceName, String methodName, Object... args) {
