@@ -20,12 +20,8 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 
 !3 Grails
 
->GrailsTestSuite
 >FitnesseQuickStart
 
->VamosSuite
-
->TestMe
-
+>GrailsTestSuite
 
 !note Release v20100303

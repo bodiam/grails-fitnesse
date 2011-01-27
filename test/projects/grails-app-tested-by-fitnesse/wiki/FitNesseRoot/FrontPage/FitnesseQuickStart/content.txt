@@ -1,12 +1,11 @@
 !define TEST_SYSTEM {slim}
-!define SLIM_PORT {10011}
 !define COMMAND_PATTERN {echo}
 !define REGRACE_LINK {true}
 
 |import|
 |nl.jworks.fitnesse.demo.fixture|
 
-|echo fixture|
+|echo|
 |input|output?|
 |hello|hello|
 |world|world|
