@@ -37,8 +37,8 @@ class FitnesseGrailsPlugin {
     }
 
     def doWithSpring = {
-        def startPort = CH.config.grails.plugins.fitnesse.server.port ?: 8085
-        def verbose = CH.config.grails.plugins.fitnesse.server.verbose ?: false
+        def startPort = CH.config.grails.plugins.fitnesse.slim.port ?: 8085
+        def verbose = CH.config.grails.plugins.fitnesse.slim.verbose ?: false
 
         grailsFitnesseSlimServer(GrailsFitnesseSlimServer, startPort, verbose)
 

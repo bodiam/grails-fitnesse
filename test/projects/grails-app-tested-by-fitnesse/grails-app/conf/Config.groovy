@@ -48,6 +48,13 @@ grails.spring.bean.packages = []
 environments {
     production {
         grails.serverURL = "http://www.changeme.com"
+        grails {
+	        plugins {
+		        fitnesse {
+                    disabled = true
+                }
+            }
+        }
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -89,9 +96,13 @@ log4j = {
 grails {
 	plugins {
 		fitnesse {
-            server {
+            slim {
                 port = 8085
                 verbose = false
+            }
+            server {
+                port = 9090
+                dir = 'wiki'
             }
         }
     }

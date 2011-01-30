@@ -7,11 +7,11 @@ includeTargets << grailsScript('_GrailsPackage')
 
 target('default': 'Starts Fitnesse Server') {
     depends(checkVersion, compile, createConfig)
-    def fitnesseConfig = CH.config?.grails?.plugins?.fitnesse
+    def fitnesseConfig = CH.config.grails.plugins.fitnesse
 
     ant.java(jar: "${fitnessePluginDir}/lib/fitnesse.jar", fork: true) {
 	arg(value: '-d')
-	arg(path: "${fitnesseConfig?.server?.dir ?: 'wiki'}")
-	arg(line: "-p ${fitnesseConfig?.server?.port ?: 9090}")
+	arg(path: "${fitnesseConfig.server.dir ?: 'wiki'}")
+	arg(line: "-p ${fitnesseConfig.server.port ?: 9090}")
     }
 }
