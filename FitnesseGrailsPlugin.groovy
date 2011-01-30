@@ -1,6 +1,8 @@
 import nl.jworks.grails.plugin.fitnesse.FitnesseFixtureArtefactHandler
 import nl.jworks.grails.plugin.fitnesse.GrailsFitnesseSlimServer
 import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
+import grails.util.Environment
+import grails.util.BuildScope
 
 class FitnesseGrailsPlugin {
     // the plugin version
@@ -14,8 +16,8 @@ class FitnesseGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    def environments = ['dev', 'test']
-    def scopes = [excludes: 'war']
+
+    def scopes = CH.config.grails.plugins.fitnesse.disabled ? [excludes: 'all'] : []
 
     def author = "Erik Pragt"
     def authorEmail = "erik.pragt@jworks.nl"
