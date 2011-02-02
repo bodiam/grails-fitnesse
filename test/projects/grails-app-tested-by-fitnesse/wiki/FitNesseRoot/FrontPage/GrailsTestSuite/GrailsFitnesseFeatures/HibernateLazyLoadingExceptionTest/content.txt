@@ -1,0 +1,12 @@
+!contents -R2 -g -p -f -h
+
+|create car producer|Audi|
+|model|
+|TT|
+|A4|
+
+|load producer and put in context|Audi|
+
+|check models for producer in context|
+|size?|
+|2|
