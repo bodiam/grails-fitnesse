@@ -117,7 +117,7 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         try {
             Object instance
             Class<?> clazz = searchPathsForClass(replacedClassName)
-            Constructor<?> matchingConstructor = getConstructor(clazz.getConstructors(), args);
+            Constructor<?> matchingConstructor = getConstructor(clazz, args);
             Object[] convertedArgs = GroovyConverterSupport.convertArgs(replaceSymbols(args), matchingConstructor.getParameterTypes())
 
             instance = getFixtureBean(clazz, convertedArgs);
@@ -197,13 +197,14 @@ public class GrailsStatementExecutor implements StatementExecutorInterface {
         }
     }
 
-    private Constructor<?> getConstructor(Constructor<?>[] constructors, Object[] args) {
+    private Constructor<?> getConstructor(Class<?> clazz, Object[] args) {
+        Constructor<?>[] constructors = clazz.getConstructors()
         for (Constructor<?> constructor: constructors) {
             Class<?>[] arguments = constructor.getParameterTypes();
             if (arguments.length == args.length)
                 return constructor;
         }
-        throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", k.name, args.length));
+        throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", clazz.name, args.length));
     }
 
     public Object call(String instanceName, String methodName, Object... args) {
