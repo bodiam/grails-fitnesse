@@ -28,27 +28,31 @@ class GroovyMethodExecutor extends MethodExecutor {
     }
 
     protected MethodExecutionResult findAndInvoke(String methodName, Object[] args, Object instance) throws Throwable {
-        def method = findMatchingGroovyMethod(methodName, instance.getClass(), args.length)
+        Method method = findMatchingGroovyMethod(methodName, instance.getClass(), args.length)
         if (method) {
-            return new MethodExecutionResult(invokeGroovyMethod(instance, method, args))
+            return new MethodExecutionResult(invokeGroovyMethod(instance, method, args), method.returnType)
         }
         return MethodExecutionResult.noMethod(methodName, instance.getClass(), args.length)
     }
     
-    protected Object findMatchingGroovyMethod(String methodName, Class<? extends Object> k, int nArgs) {
-        def methods = k.methods.toList() + k.metaClass.methods
+    protected Method findMatchingGroovyMethod(String methodName, Class<? extends Object> k, int nArgs) {
+        List<Method> methods = k.methods.toList() + k.metaClass.methods
         methods.find { method ->
             method.name == methodName && nArgs == method.parameterTypes.size()
         }
     }
     
-    protected Object invokeGroovyMethod(Object instance, Object method, Object[] args) throws Throwable {
+    protected Object invokeGroovyMethod(Object instance, Method method, Object[] args) throws Throwable {
         Object[] convertedArgs = convertArgs(method, args)
         Object retval = callMethod(instance, method, convertedArgs)
-        Class<?> retType = method.returnType
+        return retval
+/*        Class<?> retType = method.returnType
         if ((retType == List.class || retType == Object.class) && retval instanceof List)
             return retval
-        return convertToString(retval, retType)
+        return convertToString(retval, retType) // Why convert to String??
+        */
+
+
     }
 
     private Object callMethod(Object instance, Object method, Object[] convertedArgs) throws Throwable {
@@ -61,12 +65,10 @@ class GroovyMethodExecutor extends MethodExecutor {
         return retval
     }
 
-    private Object[] convertArgs(Object method, Object[] args) {
+    private Object[] convertArgs(Method method, Object[] args) {
         return GroovyConverterSupport.convertArgs(args, method.parameterTypes)
     }
-    /**
-     * All these methods are copy and pasted because they are not protected yet.
-     */
+
     private Object convertToString(Object retval, Class<?> retType) {
       Converter converter = GroovyConverterSupport.getConverter(retType);
       if (converter != null)

@@ -20,3 +20,11 @@ The classes/interfaces in this area (e.g. GrailsTestType) are reasonably well ja
 Syntax:
 
 grails test-app integration:fitnesse
+
+
+java -jar fitnesse.jar -c "MyTestsPage[?]?test&format=text
+
+
+This works:
+
+java -jar fitnesse.jar -d "/Users/erikp/UserFiles/Projects/Personal/fitnesse-grails/fitnesse-with-longer-timeout" -c "FrontPage.GrailsTestSuite?suite&format=text"

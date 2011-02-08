@@ -40,7 +40,7 @@ class GrailsFitnesseSlimServer implements InitializingBean, DisposableBean {
 
                 slimServices[serverPort] = slimService
             } catch (SocketException e) {
-                log.warn "Warning, could not open a SlimSocket at port ${serverPort} : ${e.message}"
+                log.error "Error: could not open a SlimSocket at port ${serverPort} : ${e.message}"
             }
         }
     }

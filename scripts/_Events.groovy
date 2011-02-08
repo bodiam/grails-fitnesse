@@ -44,6 +44,7 @@ eventPackagePluginsEnd = {
 
 */
 
+/*
 eventAllTestsStart = {
     // java -jar fitnesse.jar -c "FrontPage.GrailsTestSuite.SlimTestSystem?suite&format=text"
     event("StatusFinal", ["Super duper plugin action complete!"])
@@ -72,3 +73,5 @@ ConfigObject getBuildConfig() {
 String getPluginLocation() {
     return getBuildConfig()?.grails?.plugin?.location?.'grails-fitnesse'
 }
+
+*/

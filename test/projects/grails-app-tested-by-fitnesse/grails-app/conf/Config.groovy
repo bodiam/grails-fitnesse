@@ -98,7 +98,7 @@ grails {
 		fitnesse {
             slim {
                 port = 8085
-                verbose = false
+                verbose = true
             }
             server {
                 port = 9090
