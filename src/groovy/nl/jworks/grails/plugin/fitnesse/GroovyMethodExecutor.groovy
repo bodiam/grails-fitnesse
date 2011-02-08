@@ -2,10 +2,8 @@ package nl.jworks.grails.plugin.fitnesse
 
 import fitnesse.slim.MethodExecutor
 import fitnesse.slim.MethodExecutionResult
-import java.lang.reflect.Method
 import fitnesse.slim.Converter
 import java.lang.reflect.InvocationTargetException
-import fitnesse.slim.SlimError
 
 /**
  * @author Erik Pragt
@@ -28,31 +26,23 @@ class GroovyMethodExecutor extends MethodExecutor {
     }
 
     protected MethodExecutionResult findAndInvoke(String methodName, Object[] args, Object instance) throws Throwable {
-        Method method = findMatchingGroovyMethod(methodName, instance.getClass(), args.length)
+        def method = findMatchingGroovyMethod(methodName, instance.getClass(), args.length)
         if (method) {
             return new MethodExecutionResult(invokeGroovyMethod(instance, method, args), method.returnType)
         }
         return MethodExecutionResult.noMethod(methodName, instance.getClass(), args.length)
     }
     
-    protected Method findMatchingGroovyMethod(String methodName, Class<? extends Object> k, int nArgs) {
-        List<Method> methods = k.methods.toList() + k.metaClass.methods
+    protected def findMatchingGroovyMethod(String methodName, Class<? extends Object> k, int nArgs) {
+        def methods = k.methods.toList() + k.metaClass.methods
         methods.find { method ->
             method.name == methodName && nArgs == method.parameterTypes.size()
         }
     }
     
-    protected Object invokeGroovyMethod(Object instance, Method method, Object[] args) throws Throwable {
-        Object[] convertedArgs = convertArgs(method, args)
-        Object retval = callMethod(instance, method, convertedArgs)
-        return retval
-/*        Class<?> retType = method.returnType
-        if ((retType == List.class || retType == Object.class) && retval instanceof List)
-            return retval
-        return convertToString(retval, retType) // Why convert to String??
-        */
-
-
+    protected Object invokeGroovyMethod(Object instance, method, Object[] args) throws Throwable {
+        Object[] convertedArgs = convertGroovyArgs(method, args)
+        return callMethod(instance, method, convertedArgs)
     }
 
     private Object callMethod(Object instance, Object method, Object[] convertedArgs) throws Throwable {
@@ -65,7 +55,7 @@ class GroovyMethodExecutor extends MethodExecutor {
         return retval
     }
 
-    private Object[] convertArgs(Method method, Object[] args) {
+    private Object[] convertGroovyArgs(method, Object[] args) {
         return GroovyConverterSupport.convertArgs(args, method.parameterTypes)
     }
 
