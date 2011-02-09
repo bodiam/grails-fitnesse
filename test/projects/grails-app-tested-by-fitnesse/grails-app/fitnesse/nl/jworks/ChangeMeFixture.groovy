@@ -9,4 +9,8 @@ class ChangeMeFixture {
     String name
     int age
     String city
+
+    String sentence() {
+        "$name is $age years old and is from $city"
+    }
 }

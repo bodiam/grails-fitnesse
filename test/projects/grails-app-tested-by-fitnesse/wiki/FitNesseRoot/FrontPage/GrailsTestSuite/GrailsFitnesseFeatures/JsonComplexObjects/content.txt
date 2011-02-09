@@ -6,3 +6,8 @@
 |book|amount| 
 |{author: Stephen King, title: IT}|3| 
 |{author: Dean Koontz, title: Chase}|5|
+
+|query:check book inventory|
+|author|title|amount|
+|Dean Koontz|Chase|5|
+|Stephen King|IT|3|

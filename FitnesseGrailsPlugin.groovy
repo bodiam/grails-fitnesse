@@ -3,6 +3,7 @@ import nl.jworks.grails.plugin.fitnesse.GrailsFitnesseSlimServer
 import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
 import grails.util.Environment
 import grails.util.BuildScope
+import nl.jworks.groovy.ClosureMetaMethodWithReturnType
 
 class FitnesseGrailsPlugin {
     // the plugin version
@@ -95,7 +96,7 @@ class FitnesseGrailsPlugin {
         }
 
         if (fixtureClass.mapping) {
-            fixtureClass.metaClass.query = { ->
+            registerClosureMetaMethodWithReturnType(fixtureClass.metaClass, 'query', List) { ->
                 mapResults(queryResults(), mapping)
             }
         }
@@ -106,5 +107,13 @@ class FitnesseGrailsPlugin {
             bean.singleton = false
             bean.autowire = 'byName'
         }
+    }
+
+    private void registerClosureMetaMethodWithReturnType(MetaClass ownerMetaClass, String name, Class returnType, Closure closure) {
+        ClosureMetaMethodWithReturnType metaMethod = new ClosureMetaMethodWithReturnType(name, returnType, this.class, closure)
+        if (!(ownerMetaClass in ExpandoMetaClass)) {
+            ownerMetaClass.replaceDelegate()
+        }
+        ownerMetaClass.registerInstanceMethod(metaMethod)
     }
 }

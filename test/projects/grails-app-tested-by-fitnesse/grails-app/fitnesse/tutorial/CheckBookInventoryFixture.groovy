@@ -5,7 +5,7 @@ package tutorial
  */
 class CheckBookInventoryFixture {
     def queryFixture = true  // indication that this is a query fixture
-    static mapping = [title: "book.title", author: 1, amount: 2]  // the mapping
+    static mapping = [author: 1, title: 0, amount: 2]  // the mapping
 
     def bookService       // injected service
 
