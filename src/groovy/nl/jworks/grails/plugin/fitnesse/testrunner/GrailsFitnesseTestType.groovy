@@ -10,41 +10,26 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
 
     GrailsFitnesseTestType(String name, String relativeSourcePath) {
         super(name, relativeSourcePath)
-
-        println "*" * 80
-        println "name $name"
-        println "rel $relativeSourcePath"
     }
 
     @Override
     protected int doPrepare() {
-        println "doPrepare"
-        return 1
+        return 1 // Currently no way to know how many tests to run, so I assume there's always on to run
     }
 
     @Override
     protected GrailsTestTypeResult doRun(GrailsTestEventPublisher eventPublisher) {
-        println "doRun"
-        println "doRun1"
-
         FitnesseGrailsTestTypeResult result = new FitnesseGrailsTestTypeResult()
-println "doRun2"
+
         eventPublisher.testCaseStart("CASE ALL")
-        println "doRun3"
         eventPublisher.testStart("ALL")
 
-println "doRun4"
 //        String[] arguments = ["-o", "-d", "wiki", "-c", "FitNesse.UserGuide.TwoMinuteExample?test&format=xml"] as String[]
         String[] arguments = ["-o", "-d", "wiki", "-c", "FrontPage.GrailsTestSuite.SlimTestSystem?suite&format=xml"] as String[]
-        println "Starting Fitnesse"
         new GrailsNonStaticFitnesseMain(result).start(arguments)
-        println "Fitnesse started / ended"
 
-        println "doRun5"
         eventPublisher.testEnd("ALL")
-        println "doRun6"
         eventPublisher.testCaseEnd("CASE ALL")
-println "doRun7 : ${result}"
         return result
     }
 

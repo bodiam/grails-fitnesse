@@ -11,11 +11,12 @@ import org.codehaus.groovy.grails.commons.ApplicationHolder
 import org.springframework.beans.BeanInstantiationException
 import org.springframework.beans.factory.BeanCreationException
 import java.lang.reflect.Constructor
-import fitnesse.slim.Library
-import fitnesse.slim.MethodExecutionResults
-import fitnesse.slim.MethodExecutionResult
+
 import fitnesse.slim.LibraryMethodExecutor
 import fitnesse.slim.SystemUnderTestMethodExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyQuotedMethodNameMethodExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.FunctionAsPropertyMethodExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor
 
 /**
  * This is the API for executing a SLIM statement. This class should not know

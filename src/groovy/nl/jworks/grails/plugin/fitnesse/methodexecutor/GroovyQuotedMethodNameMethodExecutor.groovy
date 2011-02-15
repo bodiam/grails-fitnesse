@@ -1,4 +1,4 @@
-package nl.jworks.grails.plugin.fitnesse
+package nl.jworks.grails.plugin.fitnesse.methodexecutor
 
 import fitnesse.slim.MethodExecutionResult
 

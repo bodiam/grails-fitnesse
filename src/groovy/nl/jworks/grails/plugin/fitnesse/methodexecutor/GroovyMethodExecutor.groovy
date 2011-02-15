@@ -1,9 +1,10 @@
-package nl.jworks.grails.plugin.fitnesse
+package nl.jworks.grails.plugin.fitnesse.methodexecutor
 
 import fitnesse.slim.MethodExecutor
 import fitnesse.slim.MethodExecutionResult
 import fitnesse.slim.Converter
 import java.lang.reflect.InvocationTargetException
+import nl.jworks.grails.plugin.fitnesse.GroovyConverterSupport
 
 /**
  * @author Erik Pragt
