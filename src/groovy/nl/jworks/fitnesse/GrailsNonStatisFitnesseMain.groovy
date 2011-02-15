@@ -3,14 +3,19 @@ package nl.jworks.fitnesse
 import fitnesse.FitNesseContext
 import fitnesse.FitNesse
 import fitnesse.Arguments
+import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseGrailsTestTypeResult
 
 class GrailsNonStaticFitnesseMain extends NonStaticFitNesseMain {
+    private FitnesseGrailsTestTypeResult result
 
+    GrailsNonStaticFitnesseMain(FitnesseGrailsTestTypeResult result) {
+        this.result = result
+    }
 
     @Override
     protected void executeSingleCommand(Arguments arguments, FitNesse fitnesse, FitNesseContext context) throws Exception {
         context.doNotChunk = true;
-        
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream()
         fitnesse.executeSingleCommand(arguments.getCommand(), baos);
 
@@ -24,12 +29,20 @@ class GrailsNonStaticFitnesseMain extends NonStaticFitNesseMain {
 
         def testResults = new XmlSlurper().parseText(xml)
 
-        def counts = testResults.result.counts
+        testResults.result.each { result ->
+            def counts =result.counts
 
-        println "${counts.right}"
-        println "${counts.wrong}"
-        println "${counts.ignores}"
-        println "${counts.exceptions}"
+            println "${counts.right}"
+            println "${counts.wrong}"
+            println "${counts.ignores}"
+            println "${counts.exceptions}"
+            
+            this.result.incrementRightCount counts.right.text().toInteger()
+            this.result.incrementWrongCount counts.wrong.text().toInteger()
+            this.result.incrementIgnores counts.ignores.text().toInteger()
+            this.result.incrementExceptions counts.exceptions.text().toInteger()
+
+        }
 
         System.out.println("-----Command Complete-----");
         fitnesse.stop();
@@ -38,7 +51,7 @@ class GrailsNonStaticFitnesseMain extends NonStaticFitNesseMain {
     private String stripHttpHeaders(String input) {
         StringBuffer buffer = new StringBuffer()
         input.eachLine { line ->
-            if(line.contains("<")) {
+            if (line.contains("<")) {
                 buffer << line
             }
         }

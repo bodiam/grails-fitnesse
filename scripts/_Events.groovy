@@ -1,5 +1,4 @@
 
-/*
 loadSpecTestTypeClass = {->
     def doLoad = {-> classLoader.loadClass('nl.jworks.grails.plugin.fitnesse.testrunner.GrailsFitnesseTestType') }
     try {
@@ -20,14 +19,14 @@ loadSpockTestTypes = {
         println unitTests
         println integrationTests
 
-        println "*** $name : $types"
+        println "*************** $name : $types"
 
         if (!types.any { it.class == specTestTypeClass }) {
             println "> spec : $specTestTypeClass"
 
             println "before: " + types
 
-            types << specTestTypeClass.newInstance('fitnesse    ', name)
+            types << specTestTypeClass.newInstance('fitnesse', name)
 
             println "after " + types
         }
@@ -42,7 +41,6 @@ eventPackagePluginsEnd = {
     loadSpockTestTypes()
 }
 
-*/
 
 /*
 eventAllTestsStart = {

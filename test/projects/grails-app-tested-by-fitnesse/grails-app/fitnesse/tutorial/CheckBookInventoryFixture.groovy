@@ -9,7 +9,11 @@ class CheckBookInventoryFixture {
 
     def bookService       // injected service
 
-    def queryResults() {  // queryResults() method, which must be named like this!
+    List queryResults() {  // queryResults() method, which must be named like this!
         bookService.checkInventory()
     }
+
+//    def query() {
+//        [[["title", "Chase"], ["author", "Dean Koontz"], ["amount", "2"]]]
+//    }
 }

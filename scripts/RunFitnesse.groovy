@@ -1,5 +1,3 @@
-import fitnesse.Arguments
-import fitnesseMain.FitNesseMain
 import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
 
 includeTargets << grailsScript('_GrailsInit')
