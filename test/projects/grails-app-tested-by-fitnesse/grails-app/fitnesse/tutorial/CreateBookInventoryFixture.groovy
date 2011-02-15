@@ -16,6 +16,7 @@ class CreateBookInventoryFixture {
 
     void execute() {
         amount.times {
+            book.discard()
             book.id = null
             bookService.addBook(book)
         }

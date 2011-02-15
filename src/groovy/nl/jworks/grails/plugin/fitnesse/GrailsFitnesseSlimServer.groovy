@@ -16,6 +16,8 @@ class GrailsFitnesseSlimServer implements InitializingBean, DisposableBean {
     private final int startPort
     private final boolean verbose
 
+    GrailsSlimFactory grailsSlimFactory
+
     private Map<Integer, SlimService> slimServices = [:]
 
     GrailsFitnesseSlimServer(int startPort, verbose) {
@@ -24,8 +26,6 @@ class GrailsFitnesseSlimServer implements InitializingBean, DisposableBean {
     }
 
     void startAcceptingConnections() {
-        def slimFactory = new GrailsSlimFactory();
-
         log.info "Accepting new connections starting at port ${startPort}"
 
         // BUG: For some reason, after closing the connection, the last opened slim server gets a SocketException. So I open 1 slim server extra
@@ -34,7 +34,7 @@ class GrailsFitnesseSlimServer implements InitializingBean, DisposableBean {
             int serverPort = startPort + offset
 
             try {
-                def slimService = new SlimService(serverPort, slimFactory.getSlimServer(verbose))
+                def slimService = new SlimService(serverPort, grailsSlimFactory.getSlimServer(verbose))
 
                 log.debug "Opening SlimService at port ${serverPort}."
 

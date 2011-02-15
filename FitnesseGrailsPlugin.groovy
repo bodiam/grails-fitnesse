@@ -1,8 +1,8 @@
+import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
+
 import nl.jworks.grails.plugin.fitnesse.FitnesseFixtureArtefactHandler
 import nl.jworks.grails.plugin.fitnesse.GrailsFitnesseSlimServer
-import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
-import grails.util.Environment
-import grails.util.BuildScope
+import nl.jworks.grails.plugin.fitnesse.GrailsSlimFactory
 import nl.jworks.groovy.ClosureMetaMethodWithReturnType
 
 class FitnesseGrailsPlugin {
@@ -41,7 +41,12 @@ class FitnesseGrailsPlugin {
         def startPort = CH.config.grails.plugins.fitnesse.slim.port ?: 8085
         def verbose = CH.config.grails.plugins.fitnesse.slim.verbose ?: false
 
-        grailsFitnesseSlimServer(GrailsFitnesseSlimServer, startPort, verbose)
+        grailsFitnesseSlimServer(GrailsFitnesseSlimServer, startPort, verbose) {
+            grailsSlimFactory = ref('grailsSlimFactory')
+        }
+        grailsSlimFactory(GrailsSlimFactory) {
+            sessionFactory = ref('sessionFactory')
+        }
 
         final beanConfigureClosure = configureFixtureBean.clone()
         beanConfigureClosure.delegate = delegate

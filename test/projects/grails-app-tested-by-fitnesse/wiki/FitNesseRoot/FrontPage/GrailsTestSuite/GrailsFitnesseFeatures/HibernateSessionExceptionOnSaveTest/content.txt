@@ -1,5 +1,5 @@
 !contents -R2 -g -p -f -h
 
 |inline save producer|
-|producer|
-|{name: Audi}|
+|producer|producersCount?|
+|{name: Audi}|1|
