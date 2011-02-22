@@ -1,2 +1,4 @@
 |import   |
 |nl.jworks|
+
+!define TRANSACTIONAL {true}

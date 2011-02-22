@@ -1,12 +1,20 @@
 package nl.jworks.grails.plugin.fitnesse.testrunner
 
-import org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport
+import fitnesse.Arguments
+import nl.jworks.fitnesse.GrailsFitnesseCommandRunner
+import org.codehaus.groovy.grails.test.GrailsTestTargetPattern
 import org.codehaus.groovy.grails.test.GrailsTestTypeResult
 import org.codehaus.groovy.grails.test.event.GrailsTestEventPublisher
-import nl.jworks.fitnesse.GrailsNonStaticFitnesseMain
+import org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-
+/**
+ * Class used by running 'grails test-app :fitnesse'. Registered using the _Events.groovy in the Grails eco system.
+ */
 class GrailsFitnesseTestType extends GrailsTestTypeSupport {
+
+    private final Logger log = LoggerFactory.getLogger(getClass())
 
     GrailsFitnesseTestType(String name, String relativeSourcePath) {
         super(name, relativeSourcePath)
@@ -21,24 +29,30 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
     protected GrailsTestTypeResult doRun(GrailsTestEventPublisher eventPublisher) {
         FitnesseGrailsTestTypeResult result = new FitnesseGrailsTestTypeResult()
 
-        eventPublisher.testCaseStart("CASE ALL")
-        eventPublisher.testStart("ALL")
+        List<String> commandPatterns = ["FrontPage?suite&format=xml"]
 
-//        String[] arguments = ["-o", "-d", "wiki", "-c", "FitNesse.UserGuide.TwoMinuteExample?test&format=xml"] as String[]
-        String[] arguments = ["-o", "-d", "wiki", "-c", "FrontPage.GrailsTestSuite.SlimTestSystem?suite&format=xml"] as String[]
-        new GrailsNonStaticFitnesseMain(result).start(arguments)
+        if (testTargetPatterns) {
+            commandPatterns = testTargetPatterns.collect { GrailsTestTargetPattern pattern -> "${pattern.rawPattern}&format=xml" }
+        }
 
-        eventPublisher.testEnd("ALL")
-        eventPublisher.testCaseEnd("CASE ALL")
+        if(log.debugEnabled) {
+            log.debug "Executing command patterns:"
+            commandPatterns.each { String commandPattern ->
+                log.debug commandPattern
+            }
+        }
+
+        Arguments arguments = new Arguments(omitUpdates: true, rootPath: 'wiki', command:'dummy-will-be-overruled-by-command-pattern')
+
+        GrailsFitnesseCommandRunner runner = new GrailsFitnesseCommandRunner(commandPatterns, result, eventPublisher)
+        // Fill the result and publish the test results to the event publisher
+        runner.launchFitNesse arguments
+
         return result
     }
 
     @Override
     protected ClassLoader getTestClassLoader() {
-        println "getTestClassLoader"
-        
         return null
     }
-
-
 }

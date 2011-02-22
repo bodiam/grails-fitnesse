@@ -28,3 +28,5 @@ java -jar fitnesse.jar -c "MyTestsPage[?]?test&format=text
 This works:
 
 java -jar fitnesse.jar -d "/Users/erikp/UserFiles/Projects/Personal/fitnesse-grails/fitnesse-with-longer-timeout" -c "FrontPage.GrailsTestSuite?suite&format=text"
+
+grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.SlimTestSystem?suite" "FrontPage.GrailsTestSuite.GrailsFitnesseFeatures?suite"

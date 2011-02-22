@@ -4,7 +4,6 @@
 |import|
 |tutorial|
 
-
 !1 Create the inventory
 
 First the inventory needs to be filled

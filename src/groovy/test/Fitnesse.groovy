@@ -1,5 +1,5 @@
-import nl.jworks.fitnesse.NonStaticFitNesseMain
-import nl.jworks.fitnesse.GrailsNonStaticFitnesseMain
+import nl.jworks.fitnesse.GrailsFitnesseCommandRunner
+
 /*
 includeTargets << grailsScript('_GrailsInit')
 
@@ -39,7 +39,7 @@ class Fitnesse {
 
         String[] arguments = ["-c", "FitNesse.UserGuide.TwoMinuteExample?test&format=xml"] as String[]
 
-        new GrailsNonStaticFitnesseMain().start(arguments)
+        new GrailsFitnesseCommandRunner().start(arguments)
 //        new NonStaticFitNesseMain().start(arguments)
 
     }

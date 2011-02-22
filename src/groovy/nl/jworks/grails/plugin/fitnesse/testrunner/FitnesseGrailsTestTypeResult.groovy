@@ -3,11 +3,11 @@ package nl.jworks.grails.plugin.fitnesse.testrunner
 import org.codehaus.groovy.grails.test.GrailsTestTypeResult
 
 /**
- * Holder for the results of a testrun
+ * Holder for the results of a testrun.
  */
 class FitnesseGrailsTestTypeResult implements GrailsTestTypeResult {
 
-    // Fitnesse stuff
+    // Fitnesse properties
     private int rightCount
     private int wrongCount
     private int ignores

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.InitializingBean
  * @author Erik Pragt
  */
 class GrailsFitnesseSlimServer implements InitializingBean, DisposableBean {
-    private final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass())
 
     private final int startPort
     private final boolean verbose
