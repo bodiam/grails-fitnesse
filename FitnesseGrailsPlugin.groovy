@@ -46,6 +46,7 @@ class FitnesseGrailsPlugin {
         }
         grailsSlimFactory(GrailsSlimFactory) {
             sessionFactory = ref('sessionFactory')
+            transactionManager = ref('transactionManager')
         }
 
         final beanConfigureClosure = configureFixtureBean.clone()

@@ -62,6 +62,8 @@ TODO:
 - promo, blogging, GR8 conf, screencast, tutorials
 - make documentation better
 
+- Fix not releasing hibarnate session due to an exception in HibernateSessionSlimServer - see TODO in comments
+
 
 
 

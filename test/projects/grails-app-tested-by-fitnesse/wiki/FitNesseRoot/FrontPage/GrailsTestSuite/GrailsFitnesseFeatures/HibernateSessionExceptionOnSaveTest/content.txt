@@ -1,5 +1,12 @@
 !contents -R2 -g -p -f -h
 
+|import   |
+|fitnesse.grails|
+
+|begin transaction|
+
 |inline save producer|
 |producer|producersCount?|
 |{name: Audi}|1|
+
+|rollback|

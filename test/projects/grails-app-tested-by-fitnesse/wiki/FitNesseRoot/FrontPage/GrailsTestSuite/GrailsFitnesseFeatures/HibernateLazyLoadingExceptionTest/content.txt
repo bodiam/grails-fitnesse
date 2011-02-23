@@ -1,5 +1,10 @@
 !contents -R2 -g -p -f -h
 
+|import   |
+|fitnesse.grails|
+
+|begin transaction|
+
 |create car producer|Audi|
 |model|
 |TT|
@@ -10,3 +15,5 @@
 |check models for producer in context|
 |size?|
 |2|
+
+|rollback|
