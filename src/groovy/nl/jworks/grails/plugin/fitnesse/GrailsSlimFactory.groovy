@@ -6,7 +6,6 @@ import fitnesse.slim.NameTranslatorIdentity
 import fitnesse.slim.StatementExecutorInterface
 import fitnesse.slim.SlimServer
 import org.hibernate.SessionFactory
-import org.springframework.transaction.PlatformTransactionManager
 
 /**
  * @author Erik Pragt
@@ -14,7 +13,6 @@ import org.springframework.transaction.PlatformTransactionManager
 class GrailsSlimFactory extends SlimFactory {
 
     SessionFactory sessionFactory
-    PlatformTransactionManager transactionManager
     private NameTranslator identityTranslator = new NameTranslatorIdentity()
 
     public StatementExecutorInterface getStatementExecutor() throws Exception {
@@ -28,7 +26,7 @@ class GrailsSlimFactory extends SlimFactory {
 
     @Override
     SlimServer getSlimServer(boolean verbose) {
-        return new HibernateSessionSlimServer(verbose, this, sessionFactory, transactionManager)
+        return new HibernateSessionSlimServer(verbose, this, sessionFactory)
     }
 
 
