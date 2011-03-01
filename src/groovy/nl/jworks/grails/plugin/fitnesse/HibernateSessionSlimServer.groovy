@@ -11,36 +11,36 @@ import org.hibernate.Transaction
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.TransactionStatus
 import org.springframework.jdbc.datasource.ConnectionHolder
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class HibernateSessionSlimServer extends SlimServer {
 
-    SessionFactory sessionFactory
-    PlatformTransactionManager transactionManager
+    private final Logger log = LoggerFactory.getLogger(getClass())
 
-    public HibernateSessionSlimServer(boolean verbose, SlimFactory slimFactory, SessionFactory sessionFactory, PlatformTransactionManager transactionManager) {
+    SessionFactory sessionFactory
+
+    public HibernateSessionSlimServer(boolean verbose, SlimFactory slimFactory, SessionFactory sessionFactory) {
         super(verbose, slimFactory)
         this.sessionFactory = sessionFactory
-        this.transactionManager = transactionManager
     }
 
     @Override
     void serve(Socket s) {
+        log.debug("Serving test request on port: $s.localPort")
         Session session = SessionFactoryUtils.getSession(sessionFactory, true)
         TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(session))
         try {
             super.serve(s)
+            log.debug("Successfully finished serving a test request on port: $s.localPort")
         } catch (Throwable th) {
-            throw th
+            log.error('Unexpected exception while serving a test request', th)
         } finally {
-            session.flush()
-            if (!TransactionSynchronizationManager.actualTransactionActive) {
+            try {
+                session.flush()
                 session.disconnect()
-            } else {
-                /*
-                 * TODO: this throws a strange exception, maybe it's a bug in Hibernate? Something should be done
-                 * about releasing the connection here
-                 */
-                //session.disconnect()
+            } catch (Throwable th) {
+                log.error('Unexpected exception while closing hibernate session after serving a test request', th)
             }
         }
     }

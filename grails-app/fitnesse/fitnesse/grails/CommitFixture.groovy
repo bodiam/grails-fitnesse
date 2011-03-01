@@ -1,14 +1,11 @@
 package fitnesse.grails
 
-import org.springframework.transaction.PlatformTransactionManager
-import org.springframework.transaction.support.DefaultTransactionDefinition
-import org.springframework.transaction.TransactionDefinition
+import org.springframework.transaction.TransactionStatus
 
-class CommitFixture {
+class CommitFixture extends EndTransactionFixture {
 
-    PlatformTransactionManager transactionManager
-
-    void table(def table) {
-        transactionManager.commit(transactionManager.getTransaction(new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_MANDATORY)))
+    @Override
+    void doEndTransaction(TransactionStatus transactionStatus) {
+        transactionManager.commit(transactionStatus)
     }
 }
