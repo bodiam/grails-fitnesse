@@ -29,21 +29,8 @@
 - Fix 'stoptest' exception                                          DONE
 - Add per environment enabled/disabled of Fitnesse server           DONE
 - grails runner for Fitnesse (grails run-fitnesse)                  DONE
-
-- Grails Fitnesse test runner (:fitnesse)                       IN PROGRESS : erikp
-
-DOCUMENTATITON:
-grails run-fitnesse:
-* by default starts fitnesse server on port 9090, can be configured by grails.plugin.fitnesse.server.port in Config.groovy
-* default directory for fitnesse files is "${basedir}/wiki", can be configured by grails.plugin.fitnesse.server.dir in Config.groovy
-* will automatically install fitnesse in the running directory
-
-Disabling plugin for certain envs:
-* set grails.plugin.fitnesse.disabled configuration key to true in a given environment closure
-
-Configuring grails SLIM server:
-* grails.plugin.fitnesse.slim.port (changed from grails.plugin.fitnesse.server.port) sets the starting port for creating slim servers in the application under test
-* grails.plugin.fitnesse.slim.verbose (changed from grails.plugin.fitnesse.server.verbose)
+- Grails Fitnesse test runner (:fitnesse)                           DONE
+- bundle integration tests with the plugin                          DONE
 
 
 TODO:
@@ -54,7 +41,6 @@ TODO:
 - Stop Grails application
 - Think of something for easy loading / deleting of data
 
-- Grails Fitnesse test runner (:fitnesse)
 - bundle integration tests with the plugin
 - Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
 - Think of something for easy loading / deleting of data
