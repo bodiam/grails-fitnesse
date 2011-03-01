@@ -7,7 +7,7 @@ class InlineSaveProducerFixture {
     CarProducer producer
 
     void execute() {
-        CarProducer.list()*.delete(flush: true)
+        //CarProducer.list()*.delete(flush: true)
         producer.save()
     }
 

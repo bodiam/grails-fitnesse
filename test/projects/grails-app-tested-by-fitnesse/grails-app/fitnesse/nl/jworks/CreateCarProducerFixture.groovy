@@ -10,7 +10,6 @@ class CreateCarProducerFixture {
     CarProducer producer
 
     public CreateCarProducerFixture(String name) {
-        CarProducer.list()*.delete()
         producer = new CarProducer(name: name)
     }
 
