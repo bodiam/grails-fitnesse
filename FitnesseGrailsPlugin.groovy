@@ -7,11 +7,11 @@ import nl.jworks.groovy.ClosureMetaMethodWithReturnType
 
 class FitnesseGrailsPlugin {
     // Plugin defaults
-    public static final int DEFAULT_SERVER_PORT = 8080
+    public static final int DEFAULT_SERVER_PORT = 8085
     public static final boolean DEFAULT_VERBOSITY = false
 
     // the plugin version
-    def version = "0.4"
+    def version = "0.5"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.2 > *"
     // the other plugins this plugin depends on
