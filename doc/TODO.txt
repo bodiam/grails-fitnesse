@@ -31,7 +31,26 @@
 - grails runner for Fitnesse (grails run-fitnesse)                  DONE
 - Grails Fitnesse test runner (:fitnesse)                           DONE
 - bundle integration tests with the plugin                          DONE
+- Grails Fitnesse test runner (:fitnesse)
+- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
+- make documentation better
 
+0.6
+
+
+DOCUMENTATITON:
+
+grails run-fitnesse:
+* by default starts fitnesse server on port 9090, can be configured by grails.plugin.fitnesse.server.port in Config.groovy
+* default directory for fitnesse files is "${basedir}/wiki", can be configured by grails.plugin.fitnesse.server.dir in Config.groovy
+* will automatically install fitnesse in the running directory
+
+Disabling plugin for certain envs:
+* set grails.plugin.fitnesse.disabled configuration key to true in a given environment closure
+
+Configuring grails SLIM server:
+* grails.plugin.fitnesse.slim.port (changed from grails.plugin.fitnesse.server.port) sets the starting port for creating slim servers in the application under test
+* grails.plugin.fitnesse.slim.verbose (changed from grails.plugin.fitnesse.server.verbose)
 
 TODO:
 - Create screencast
@@ -41,12 +60,10 @@ TODO:
 - Stop Grails application
 - Think of something for easy loading / deleting of data
 
-- bundle integration tests with the plugin
-- Start Fitnesse in Grails using 'grails fitnesse' (see FitnesseMain)
 - Think of something for easy loading / deleting of data
 - run every test in a new transaction
 - promo, blogging, GR8 conf, screencast, tutorials
-- make documentation better
+
 
 - Fix not releasing hibarnate session due to an exception in HibernateSessionSlimServer - see TODO in comments
 
