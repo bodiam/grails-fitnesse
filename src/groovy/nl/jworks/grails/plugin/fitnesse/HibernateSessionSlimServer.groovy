@@ -19,12 +19,15 @@ class HibernateSessionSlimServer extends SlimServer {
 
     @Override
     void serve(Socket s) {
-        if (!TransactionSynchronizationManager.hasResource(sessionFactory)) {
-            Session session = SessionFactoryUtils.getSession(sessionFactory, true)
-            TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(session))
+        Session session = SessionFactoryUtils.getSession(sessionFactory, true)
+        TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(session))
+        try {
+            super.serve(s)
+        } catch (Throwable th) {
+            throw th
+        } finally {
+            session.flush()
+            session.disconnect()
         }
-        super.serve(s)
     }
-
-
 }
