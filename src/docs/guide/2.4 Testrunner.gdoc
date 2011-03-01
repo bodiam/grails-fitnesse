@@ -1,0 +1,22 @@
+The Fitnesse Plugin can be used when testing your application from the command line by using the bundled testrunner. The testrunner can be launced by typing:
+
+{code}grails test-app integration:fitnesse <name of suite or test>{code}
+
+An example of this can be found below:
+
+{code}grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.SlimTestSystem?suite"{code}
+
+It is also possbible to run multiple tests or suites. This can done by appending the suite or tests names:
+
+{code}grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.FirstSuite?suite" "FrontPage.GrailsTestSuite.SecondSuite?suite"{code}
+
+Running these commands will start up the Grails application, launch the Fitnesse tests, and return the results in a standard Grails test report.
+
+h3. Run sequence
+
+The default Wiki Suite or Test which will be run using @grails test-app@ will be determined in the following way:
+
+# First, if a suite or test is specified as an argument to @grails test-app@, the argument will be used
+# Second, if a suite or test is specified in the Config.groovy, that one will be used
+# Thirdly, all tests defined on the Fitnesse Frontpage (FrontPage?suite) will be run if none of the above options are applicable
+

@@ -49,7 +49,7 @@ environments {
     production {
         grails.serverURL = "http://www.changeme.com"
         grails {
-	        plugins {
+	        plugin {
 		        fitnesse {
                     disabled = true
                 }
@@ -94,15 +94,16 @@ log4j = {
 
 
 grails {
-	plugins {
+	plugin {
 		fitnesse {
             slim {
                 port = 8085
                 verbose = false
             }
-            server {
+            wiki {
                 port = 9090
                 dir = 'wiki'
+                defaultSuite = ["FrontPage.GrailsTestSuite.SlimTestSystem?suite"]
             }
         }
     }

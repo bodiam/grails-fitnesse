@@ -1,0 +1,8 @@
+h1. create-fitnesse-query-fixture
+
+h2. Purpose
+
+Creates a starting point for creating Fitnesse Query Fixtures in the grails-app/fitnesse directory.
+
+bc.
+   grails create-fitnesse-query-fixture nl.jworks.AssertPersons

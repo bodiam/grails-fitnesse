@@ -1,23 +1,78 @@
 The following describes the list of configuration options. As in the convention over configuration principle, these configurations are not necessary, but can be used to change the behavior of the plugin a litte.
 
+h1. Wiki options
+
+h3. The Wiki Server port
+
+The Wiki contains all the test suites. It is an embedded HTTP server which by default is accessible on port 9090, but which can be changed if needed.
+
+This can be done by setting the @grails.plugin.wiki.port@ option. An example can be found below:
+
+{code}grails {
+  plugin {
+    wiki {
+        port = 9090
+    }
+  }
+}{code}
+
+h3. The Wiki Server directory
+
+The Wiki pages are stored in a specific directory, <project-root>/'wiki' by default.
+
+This can be changed if needed, by setting the @grails.plugin.wiki.dir@ option. An example can be found below:
+
+{code}grails {
+  plugin {
+    wiki {
+      dir = 'otherwiki'
+    }
+  }
+}{code}
+
+h3. The default Wiki Suite or Test
+
+When supplying no arguments to @grails test-app@, all tests on the Fronpage will be run.
+
+This can be changed if needed, by setting the @grails.plugin.wiki.defaultSuite@ option, which is a list of Suites or Tests. An example can be found below:
+
+{code}grails {
+    plugin {
+        fitnesse {
+            wiki {
+                defaultSuite = ["FrontPage.GrailsTestSuite.SlimTestSystem?suite"]
+            }
+        }
+    }
+}{code}
+
+It is also possible to supply the testsuite to run by passing it as an argument to @grails test-app@.
+
+Note: see 'Integration testing' to see which option takes presedence over the other.
+
+h1. Slim Server options
+
+
 h3. Slim Server Port
 
-The SlimServer opens and listens to a server socket. It gets the port number from FitNesse via the command line. The default is 8085 and it cycles through the next 10 ports to avoid collisions.
-If 8085 is not a convenient port number for you, you can set the SLIM_PORT variable in the Fitnesse Wiki to any port you like. See for more information the [Fitnesse User Guide|http://fitnesse.org/FitNesse.UserGuide.SliM.SlimProtocol.PortManagement].
+The SlimServer opens ports and listens to a server socket.  The default is 8085 and it cycles through the next 10 ports to avoid collisions.
+If 8085 is not a convenient port number for you, you can set the SLIM_PORT variable in the Fitnesse Wiki to any port you like.
+See for more information the [Fitnesse User Guide|http://fitnesse.org/FitNesse.UserGuide.SliM.SlimProtocol.PortManagement].
 
 Changing the port in the Fitnesse Wiki also requires a change in the plugin configuration to tell the plugin on which port to listen.
 
 To change the port in the Grails application, you can set it in the Config.groovy. Add the following:
 
 {code}grails {
-  plugins {
+  plugin {
     fitnesse {
-      server {
+      slim {
         port = 8085
       }
     }
   }
 }{code}
+
 
 h3. Logging
 
@@ -30,11 +85,31 @@ To add more logging to the application, add the following to the log4j DSL:
 To enable verbose logging, which outputs more information than normally needed, set the @verbose@ value to @true@:
 
 {code}grails {
-  plugins {
+  plugin {
     fitnesse {
-      server {
+      slim {
         verbose = true
       }
     }
   }
 }{code}
+
+h3. Disable the plugin per environment
+
+By default, the plugin is enabled for all environments, including production. However, it is possible to selectively disable the plugin per environment. This can be done by setting the @grails.plugin.fitnesse.disabled@ option to @true@.
+
+An example from @Config.groovy@ which disables the plugin in production:
+{code}environments {
+  production {
+    grails {
+      plugin {
+        fitnesse {
+          disabled = true
+        }
+      }
+    }
+  }
+}
+{code}
+
+

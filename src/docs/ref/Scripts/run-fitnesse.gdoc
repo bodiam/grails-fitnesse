@@ -1,0 +1,8 @@
+h1. run-fitnesse
+
+h2. Purpose
+
+Starts an embedded Fitnesse server without the need to configure one yourself
+
+bc.
+   grails run-fitnesse

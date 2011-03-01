@@ -28,12 +28,7 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
         commandPatterns.each { String commandPattern ->
             String xml = getFitnesseTestXmlResult(commandPattern, fitnesse, context)
 
-            println "x"
-            println "$xml"
-
             FitnesseTotalResult totalResult = resultParser.parseFitnesseXml(xml)
-
-            println "y"
 
             totalResult.each { FitnesseTestResult testResult ->
                 eventPublisher.testCaseStart(totalResult.rootPath + "." + testResult.relativePageName)
@@ -43,9 +38,8 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
                 result.incrementRightCount testResult.right
                 result.incrementWrongCount testResult.wrong
 
-                eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName, "hello", "world")
+                eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName)
             }
-            System.out.println("-----Command Complete-----");
         }
         fitnesse.stop();
     }

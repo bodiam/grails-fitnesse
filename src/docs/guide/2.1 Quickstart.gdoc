@@ -13,9 +13,9 @@ h3. Step 3: Start the Grails application
 grails run-app
 {code}
 
-h3. Step 4: Start Fitnesse
+h3. Step 4 (in a differtent console or terminal): Start Fitnesse
 {code}
-java -jar fitnesse.jar -p 9090
+grails run-fitnesse
 {code}
 
 h3. Step 5: Configure Fitnesse (for Linux/MacOS)
@@ -26,16 +26,20 @@ Paste the following in the Fitnesse wiki:
 !define COMMAND_PATTERN {echo}
 {code}
 
+{note}
+The COMMAND_PATTERN needs to be something which executes, but does noting. On Windows for example this can an empty batch file.
+{note}
+
 h3. Step 6: Add the Test
 Paste the following also in the Fitnesse wiki:
 {code}
-|import|
+|import                         |
 |nl.jworks.fitnesse.demo.fixture|
 
 |echo|
 |input|output?|
-|hello|hello|
-|world|world|
+|hello|  hello|
+|world|  world|
 {code}
 
 *Save* the page.

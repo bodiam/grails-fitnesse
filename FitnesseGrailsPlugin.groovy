@@ -6,6 +6,10 @@ import nl.jworks.grails.plugin.fitnesse.GrailsSlimFactory
 import nl.jworks.groovy.ClosureMetaMethodWithReturnType
 
 class FitnesseGrailsPlugin {
+    // Plugin defaults
+    public static final int DEFAULT_SERVER_PORT = 8080
+    public static final boolean DEFAULT_VERBOSITY = false
+
     // the plugin version
     def version = "0.4"
     // the version or versions of Grails the plugin is designed for
@@ -17,8 +21,7 @@ class FitnesseGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-
-    def scopes = CH.config.grails.plugins.fitnesse.disabled ? [excludes: 'all'] : []
+    def scopes = CH.config.grails.plugin.fitnesse.disabled ? [excludes: 'all'] : []
 
     def author = "Erik Pragt"
     def authorEmail = "erik.pragt@jworks.nl"
@@ -38,8 +41,8 @@ class FitnesseGrailsPlugin {
     }
 
     def doWithSpring = {
-        def startPort = CH.config.grails.plugins.fitnesse.slim.port ?: 8085
-        def verbose = CH.config.grails.plugins.fitnesse.slim.verbose ?: false
+        def startPort = CH.config.grails.plugin.fitnesse.slim.port ?: DEFAULT_SERVER_PORT
+        def verbose = CH.config.grails.plugin.fitnesse.slim.verbose ?: DEFAULT_VERBOSITY
 
         grailsFitnesseSlimServer(GrailsFitnesseSlimServer, startPort, verbose) {
             grailsSlimFactory = ref('grailsSlimFactory')

@@ -34,16 +34,16 @@
 
 DOCUMENTATITON:
 grails run-fitnesse:
-* by default starts fitnesse server on port 9090, can be configured by grails.plugins.fitnesse.server.port in Config.groovy
-* default directory for fitnesse files is "${basedir}/wiki", can be configured by grails.plugins.fitnesse.server.dir in Config.groovy
+* by default starts fitnesse server on port 9090, can be configured by grails.plugin.fitnesse.server.port in Config.groovy
+* default directory for fitnesse files is "${basedir}/wiki", can be configured by grails.plugin.fitnesse.server.dir in Config.groovy
 * will automatically install fitnesse in the running directory
 
 Disabling plugin for certain envs:
-* set grails.plugins.fitnesse.disabled configuration key to true in a given environment closure
+* set grails.plugin.fitnesse.disabled configuration key to true in a given environment closure
 
 Configuring grails SLIM server:
-* grails.plugins.fitnesse.slim.port (changed from grails.plugins.fitnesse.server.port) sets the starting port for creating slim servers in the application under test
-* grails.plugins.fitnesse.slim.verbose (changed from grails.plugins.fitnesse.server.verbose)
+* grails.plugin.fitnesse.slim.port (changed from grails.plugin.fitnesse.server.port) sets the starting port for creating slim servers in the application under test
+* grails.plugin.fitnesse.slim.verbose (changed from grails.plugin.fitnesse.server.verbose)
 
 
 TODO:
@@ -63,6 +63,8 @@ TODO:
 - make documentation better
 
 
+
+TODO: add configuration option for default Fitnesse suite to run!
 
 
   560  git add docs/

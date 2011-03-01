@@ -24,10 +24,10 @@ An example can be seen below:
 
 *Wiki*
 {code}
-|create book inventory|
-|book|amount|
-|{author: Stephen King, title: IT}|3|
-|{author: Dean Koontz, title: Chase}|5|
+|create book inventory                     |
+|book                               |amount|
+|{author: Stephen King, title: IT}  |     3|
+|{author: Dean Koontz, title: Chase}|     5|
 {code}
 
 This JSON code in the test is mapped to the following Fixture and Domain class:
@@ -103,7 +103,7 @@ class MyFixture {
 {code}
 
 h4. Default arguments
-Groovy supports default arguments. Fitnesse also supports this:
+Groovy supports default arguments. The Grails Fitnesse plugin also supports this:
 
 {code}
 class MyFixture {
@@ -135,7 +135,7 @@ This integer is interpreted as being a String, and hence it's converted to it's 
 {note}
 
 h3. Automatic reloading of Fixtures
-The Fixtures in the @grails-app/fitnesse@ directory are automatically reloaded by Grails. This enables faster testing and faster development!
+The Fixtures in the @grails-app/fitnesse@ directory are automatically reloaded and injected by Grails. This enables faster testing and faster development!
 
 h3. Functions are getters
 Fitnesse decision tables do *not* have getters and setters, but setters and functions. A function is the same as a getter, but without the 'get' part. (Still with me?). An example:
@@ -143,9 +143,9 @@ Fitnesse decision tables do *not* have getters and setters, but setters and func
 *Normal Fitnesse*
 {code}
 |my decision fixture|
-|digit|roman?|
-|1|I|
-|5|V|
+|digit | roman?|
+|1     |      I|
+|5     |      V|
 {code}
 
 This would result in the following Fixture:
@@ -182,4 +182,5 @@ class MyDecisionFixture {
 
 h3. Improved Stop Test Exceptions
 
-You can now throw [StopTest Exceptions|http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling] from Fixture constructors, to halt all further test execution. This is currently not possible in the Java version of Fitnesse.
+You can now throw [StopTest Exceptions|http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling] from Fixture constructors, to halt all further test execution.
+This is currently not handled correctly in the Java version of Fitnesse.
