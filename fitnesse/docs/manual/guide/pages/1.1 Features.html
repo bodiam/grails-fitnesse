@@ -6,10 +6,10 @@
     </head>
     <body class="body">
     The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Templates (since 0.4)</h3><p class="paragraph"/>You can now easily create Fixtures by typing:<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;query&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>Or<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>This will create a fixture in the grails-app&#102;itnesse directory, which should give you a head start on how to create a Fixture.<p class="paragraph"/><h3>Complex objects (since 0.4)</h3><p class="paragraph"/>You can now create complex objects from within Fitnesse. This uses the JSON format, since it's easy to read and write, and is becoming quite a standard.<p class="paragraph"/>An example can be seen below:<p class="paragraph"/><strong class="bold">Wiki</strong>
-<div class="code"><pre>|create book inventory|
-|book|amount|
-|&#123;author: Stephen King, title: IT&#125;|3|
-|&#123;author: Dean Koontz, title: Chase&#125;|5|</pre></div><p class="paragraph"/>This JSON code in the test is mapped to the following Fixture and Domain class:<p class="paragraph"/><strong class="bold">Fixture</strong>
+<div class="code"><pre>|create book inventory                     |
+|book                               |amount|
+|&#123;author: Stephen King, title: IT&#125;  |     3|
+|&#123;author: Dean Koontz, title: Chase&#125;|     5|</pre></div><p class="paragraph"/>This JSON code in the test is mapped to the following Fixture and Domain class:<p class="paragraph"/><strong class="bold">Fixture</strong>
 <div class="code"><pre>class CreateBookInventoryFixture &#123;
     Book book<p class="paragraph"/>    <span class="java&#45;object">int</span> amount<p class="paragraph"/>    def bookService<p class="paragraph"/>    CreateBookInventoryFixture() &#123;
         Book.list()&#42;.delete()
@@ -36,7 +36,7 @@ Groovy supports methods like <code>"this is a method"</code>. The Fitnesse plugi
      // &#8230;
   &#125;
 &#125;</pre></div><p class="paragraph"/><h4>Default arguments</h4>
-Groovy supports default arguments. Fitnesse also supports this:<p class="paragraph"/><div class="code"><pre>class MyFixture &#123;
+Groovy supports default arguments. The Grails Fitnesse plugin also supports this:<p class="paragraph"/><div class="code"><pre>class MyFixture &#123;
   MyFixture(<span class="java&#45;object">boolean</span> clearDatabase = <span class="java&#45;keyword">false</span>) &#123;
     // &#8230;
   &#125;
@@ -50,12 +50,12 @@ Groovy supports default arguments. Fitnesse also supports this:<p class="paragra
 Note that the Fitnesse SLIM protocol only supports Strings and Lists. A result of this, is that when using untyped arguments, things could go wrong. An example of this is when using an integer.
 This integer is interpreted as being a String, and hence it's converted to it's value, so int 1 becomes int 49. So, if you're unsure, use types in your fixtures.
 </blockquote><p class="paragraph"/><h3>Automatic reloading of Fixtures</h3>
-The Fixtures in the <code>grails-app/fitnesse</code> directory are automatically reloaded by Grails. This enables faster testing and faster development!<p class="paragraph"/><h3>Functions are getters</h3>
+The Fixtures in the <code>grails-app/fitnesse</code> directory are automatically reloaded and injected by Grails. This enables faster testing and faster development!<p class="paragraph"/><h3>Functions are getters</h3>
 Fitnesse decision tables do <strong class="bold">not</strong> have getters and setters, but setters and functions. A function is the same as a getter, but without the 'get' part. (Still with me?). An example:<p class="paragraph"/><strong class="bold">Normal Fitnesse</strong>
 <div class="code"><pre>|my decision fixture|
-|digit|roman?|
-|1|I|
-|5|V|</pre></div><p class="paragraph"/>This would result in the following Fixture:
+|digit | roman?|
+|1     |      I|
+|5     |      V|</pre></div><p class="paragraph"/>This would result in the following Fixture:
 <div class="code"><pre>class MyDecisionFixture &#123;
     <span class="java&#45;object">int</span> digit
     <span class="java&#45;object">String</span> roman<p class="paragraph"/>    void execute() &#123;
@@ -69,6 +69,7 @@ Fitnesse decision tables do <strong class="bold">not</strong> have getters and s
     <span class="java&#45;object">String</span> roman<p class="paragraph"/>    void execute() &#123;
        roman = RomanNumberConverter.convertDigit(digit)
     &#125;
-&#125;</pre></div><p class="paragraph"/><h3>Improved Stop Test Exceptions</h3><p class="paragraph"/>You can now throw <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling" target="blank">StopTest Exceptions</a> from Fixture constructors, to halt all further test execution. This is currently not possible in the Java version of Fitnesse.
+&#125;</pre></div><p class="paragraph"/><h3>Improved Stop Test Exceptions</h3><p class="paragraph"/>You can now throw <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling" target="blank">StopTest Exceptions</a> from Fixture constructors, to halt all further test execution.
+This is currently not handled correctly in the Java version of Fitnesse.
     </body>
 </html>

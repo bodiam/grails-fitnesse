@@ -9,6 +9,23 @@
 Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
 </blockquote><p class="paragraph"/><h4>Release History</h4>
 <ul class="star">
+<li>March 1, 2011</li>
+<ul class="star">
+<li>0.5 Release</li>
+<ul class="star">
+<li>Feature: Fitnesse testrunner created. Grails applications can now be tested using: grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.SlimTestSystem?suite"</li>
+<li>Feature: Fitnesse integrated. Fitnesse can now be started using: grails run-fitnesse</li>
+<li>Feature: Fitnesse can be disabled by setting the grails.plugin.fitnesse.disabled property to true</li>
+<li>Improvement: Internal Fitnesse upgraded to the newest Fitnesse version</li>
+<li>Improvement: Naming of configuration parameters have changed to be more consistent. *Beware: the 'plugins' configuration option has changes to 'plugin' (without the 's')</li>
+<li>Improvement: Bundled testproject in Github</li>
+<li>Improvement: Fixture classes are now Spring beans</li>
+<li>Bugfix: Fixed lazyloadingexception</li>
+<li>Bugfix: Fixed exception message when a given constructor is not found for a fixture</li>
+<li>Bugfix: Fixed reloading of services to give errors in Fixtures</li>
+<li>Bugfix: Marcin's surname is fixed in the documentation!</li>
+</ul>
+</ul>
 <li>November 16, 2010</li>
 <ul class="star">
 <li>0.4 Release, thanks to Marcin Erdmann!</li>
@@ -38,10 +55,6 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 <li>September 15, 2010</li>
 <ul class="star">
 <li>initial 0.1 release.</li>
-</ul></ul><p class="paragraph"/><h4>Future plans:</h4>
-<ul class="star">
-<li>Add complete (Fitnesse) testset (which is also documentation)</li>
-<li>Bundle Fitnesse</li>
-</ul><p class="paragraph"/>
+</ul></ul><p class="paragraph"/>
     </body>
 </html>
