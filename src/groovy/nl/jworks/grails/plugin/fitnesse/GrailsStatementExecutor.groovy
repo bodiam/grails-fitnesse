@@ -41,17 +41,26 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
     }
 
     public Object create(String instanceName, String className, Object[] args) {
-        String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
-        // This is needed for fixture names which are not camel cased, like 'Calculate'.
-        if (!replacedClassName.contains(".")) {
-            replacedClassName = StringUtils.capitalize(replacedClassName)
-        }
-
         try {
             if (hasStoredActor(className)) {
                 addToInstancesOrLibrary(instanceName, getStoredActor(className));
             } else {
-                Class<?> clazz = searchPathsForClass(replacedClassName)
+                Class<?> clazz = null
+                try {
+                  clazz = searchPathsForClass(className)
+                } catch(SlimError e) {
+                    // class not found using annotations. Continuing with Strategy 2.
+                }
+
+                if (!clazz?.isAnnotationPresent(Fixture)) {
+                    String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
+                    // This is needed for fixture names which are not camel cased, like 'Calculate'.
+                    if (!replacedClassName.contains(".")) {
+                        replacedClassName = StringUtils.capitalize(replacedClassName)
+                    }
+                    clazz = searchPathsForClass(replacedClassName)
+                }
+                
                 Constructor<?> matchingConstructor = getConstructor(clazz, args);
                 Object[] convertedArgs = GroovyConverterSupport.convertArgs(replaceSymbols(args), matchingConstructor.getParameterTypes())
 
@@ -83,7 +92,7 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
         def context = ApplicationHolder.getApplication().mainContext
         String beanName = StringUtils.uncapitalize(clazz.simpleName)
         try {
-            return context.autowireCapableBeanFactory.getBean(beanName, *args)
+            return context.autowireCapableBeanFactory.getBean(beanName, * args)
         } catch (BeanCreationException e) {
             if (!(e.cause in BeanInstantiationException)) {
                 throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s[%d]>>", clazz.name, args.length))

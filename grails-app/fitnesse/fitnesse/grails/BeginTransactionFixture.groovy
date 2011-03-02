@@ -9,6 +9,8 @@ class BeginTransactionFixture {
     PlatformTransactionManager transactionManager
 
     void table(def table) {
+
+
         println "begin on: ${transactionManager.getTransaction(new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRES_NEW)).transaction.sessionHolder.transaction}"
         println "begin on: ${transactionManager.getTransaction(/*new DefaultTransactionDefinition()*/).transaction.sessionHolder.transaction}"
         println "begin on: ${transactionManager.getTransaction(new DefaultTransactionDefinition()).transaction.sessionHolder.transaction}"

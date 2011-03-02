@@ -6,6 +6,9 @@
   <documentation>http://bodiam.github.com/grails-fitnesse-plugin/docs/manual/</documentation>
   <resources>
     <resource>Config</resource>
+    <resource>fitnesse.grails.BeginTransactionFixture</resource>
+    <resource>fitnesse.grails.CommitFixture</resource>
+    <resource>fitnesse.grails.RollbackFixture</resource>
     <resource>nl.jworks.fitnesse.demo.fixture.EchoFixture</resource>
   </resources>
   <dependencies />

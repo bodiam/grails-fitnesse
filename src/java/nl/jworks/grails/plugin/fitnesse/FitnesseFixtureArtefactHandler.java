@@ -13,4 +13,9 @@ public class FitnesseFixtureArtefactHandler extends ArtefactHandlerAdapter {
     public FitnesseFixtureArtefactHandler() {
         super(TYPE, GrailsFitnesseFixtureClass.class, DefaultGrailsFitnesseFixtureClass.class, CLASSNAME_SUFFIX);
     }
+
+    @Override
+    public boolean isArtefactClass(Class clazz) {
+        return clazz.isAnnotationPresent(Fixture.class) || super.isArtefactClass(clazz);
+    }
 }
