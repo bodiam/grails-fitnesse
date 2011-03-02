@@ -60,7 +60,6 @@ TODO:
 - Stop Grails application
 - Think of something for easy loading / deleting of data
 
-- Think of something for easy loading / deleting of data
 - run every test in a new transaction
 - promo, blogging, GR8 conf, screencast, tutorials
 
