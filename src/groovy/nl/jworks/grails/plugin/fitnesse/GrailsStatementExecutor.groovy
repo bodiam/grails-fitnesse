@@ -40,27 +40,41 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
         executorChain.add(new LibraryMethodExecutor(libraries));
     }
 
+    private Class findUsingAnnotation(String className) {
+        try {
+            Class clazz = searchPathsForClass(className)
+
+            if (clazz?.isAnnotationPresent(Fixture)) {
+                return clazz
+            } else {
+                return null
+            }
+        } catch (SlimError e) {
+            // class not found using annotations. Continuing with Strategy 2.
+            return null
+        }
+    }
+
+    private Class findUsingFixtureAppend(String className) {
+        String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
+        // This is needed for fixture names which are not camel cased, like 'Calculate'.
+        if (!replacedClassName.contains(".")) {
+            replacedClassName = StringUtils.capitalize(replacedClassName)
+        }
+        return searchPathsForClass(replacedClassName)
+    }
+
     public Object create(String instanceName, String className, Object[] args) {
         try {
             if (hasStoredActor(className)) {
                 addToInstancesOrLibrary(instanceName, getStoredActor(className));
             } else {
-                Class<?> clazz = null
-                try {
-                  clazz = searchPathsForClass(className)
-                } catch(SlimError e) {
-                    // class not found using annotations. Continuing with Strategy 2.
+                // TODO: This is not so nice code, since the methods behave differently in case no class was found.
+                Class<?> clazz = findUsingAnnotation(className)
+                if (!clazz) {
+                    clazz = findUsingFixtureAppend(className)
                 }
 
-                if (!clazz?.isAnnotationPresent(Fixture)) {
-                    String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
-                    // This is needed for fixture names which are not camel cased, like 'Calculate'.
-                    if (!replacedClassName.contains(".")) {
-                        replacedClassName = StringUtils.capitalize(replacedClassName)
-                    }
-                    clazz = searchPathsForClass(replacedClassName)
-                }
-                
                 Constructor<?> matchingConstructor = getConstructor(clazz, args);
                 Object[] convertedArgs = GroovyConverterSupport.convertArgs(replaceSymbols(args), matchingConstructor.getParameterTypes())
 
