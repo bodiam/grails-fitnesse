@@ -46,6 +46,7 @@ grails classloader failed when reloading it
 * document transaction support (using BeginTransaction, Commit and Rollback fixtures)
 
 TODO:
+- Cleanup not used fixture classes, names and packages
 - Add a test page specifically for commit/rollback support
 - Handle exceptions for not found classes in onChange closure
 - Drop all .svn directories and add a gitignore entry for them
