@@ -3,7 +3,7 @@
 !define REGRACE_LINK {true}
 
 |import|
-|nl.jworks.fitnesse.demo.fixture|
+|nl.jworks.fitnesse.quickstart|
 
 |echo|
 |input|output?|

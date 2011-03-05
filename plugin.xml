@@ -9,7 +9,7 @@
     <resource>fitnesse.grails.BeginTransactionFixture</resource>
     <resource>fitnesse.grails.CommitFixture</resource>
     <resource>fitnesse.grails.RollbackFixture</resource>
-    <resource>nl.jworks.fitnesse.demo.fixture.EchoFixture</resource>
+    <resource>nl.jworks.fitnesse.quickstart.EchoFixture</resource>
   </resources>
   <dependencies />
   <behavior />

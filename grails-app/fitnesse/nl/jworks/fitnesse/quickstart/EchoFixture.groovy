@@ -1,4 +1,4 @@
-package nl.jworks.fitnesse.demo.fixture
+package nl.jworks.fitnesse.quickstart
 
 /**
  * @author Erik Pragt

@@ -4,11 +4,15 @@ import nl.jworks.grails.plugin.fitnesse.FitnesseFixtureArtefactHandler
 import nl.jworks.grails.plugin.fitnesse.GrailsFitnesseSlimServer
 import nl.jworks.grails.plugin.fitnesse.GrailsSlimFactory
 import nl.jworks.groovy.ClosureMetaMethodWithReturnType
+import nl.jworks.grails.plugin.fitnesse.DefaultGrailsFitnesseFixtureClass
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger
 
 class FitnesseGrailsPlugin {
     // Plugin defaults
     public static final int DEFAULT_SERVER_PORT = 8085
     public static final boolean DEFAULT_VERBOSITY = false
+    private final Logger log = LoggerFactory.getLogger("nl.jworks.grails.plugin.fitnesse.FitnesseGrailsPlugin")
 
     // the plugin version
     def version = "0.5"
@@ -70,16 +74,21 @@ class FitnesseGrailsPlugin {
 
     def onChange = { event ->
         if (application.isFitnesseFixtureClass(event.source)) {
-            def fixtureClass = application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source)
-
+            application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source)
+        }
+        application.fitnesseFixtureClasses.each { DefaultGrailsFitnesseFixtureClass fixtureClass ->
+            Class underlyingClass = fixtureClass.clazz
+            Class reloadedClass = application.classLoader.reloadClass(underlyingClass.name)
+            DefaultGrailsFitnesseFixtureClass reloadedFixtureClass = new DefaultGrailsFitnesseFixtureClass(reloadedClass)
             final beanConfigureClosure = configureFixtureBean.clone()
             beans {
                 beanConfigureClosure.delegate = delegate
-                beanConfigureClosure.call(fixtureClass)
+                beanConfigureClosure.call(reloadedFixtureClass)
             }.registerBeans(event.ctx)
 
-            addFixtureDynamicMethods(fixtureClass)
+            addFixtureDynamicMethods(reloadedFixtureClass)
         }
+        log.debug("Reloaded ${application.fitnesseFixtureClasses.size()} fixture classes")
     }
 
     def onConfigChange = { event ->
