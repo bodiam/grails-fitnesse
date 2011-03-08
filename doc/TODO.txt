@@ -49,7 +49,6 @@ TODO:
 - Cleanup not used fixture classes, names and packages
 - Add a test page specifically for commit/rollback support
 - Handle exceptions for not found classes in onChange closure
-- Drop all .svn directories and add a gitignore entry for them
 - remove all zipfiles for fitnesse wiki from repo
 - Create screencast
 - Fix create-fitnesse-fixture Error executing script CreateFitnesseFixture: groovy.lang.MissingMethodException: No signature of method: CreateFitnesseFixture.purgeRedundantArtifactSuffix() is applicable for argument types: (java.lang.String, java.lang.String) values: [nl.jworks.CreateAuthor, Fixture]

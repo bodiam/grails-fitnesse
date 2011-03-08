@@ -8,4 +8,5 @@
 !/test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/FrontPage/
 grails-fitnesse*.zip
 
-/.svn/
+.svn
+**/.svn
