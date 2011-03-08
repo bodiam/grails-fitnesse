@@ -51,7 +51,6 @@ TODO:
 - Handle exceptions for not found classes in onChange closure
 - remove all zipfiles for fitnesse wiki from repo
 - Create screencast
-- Fix create-fitnesse-fixture Error executing script CreateFitnesseFixture: groovy.lang.MissingMethodException: No signature of method: CreateFitnesseFixture.purgeRedundantArtifactSuffix() is applicable for argument types: (java.lang.String, java.lang.String) values: [nl.jworks.CreateAuthor, Fixture]
 - Fix JSON conversion for domain classes with hasMany mappings
 - Start Grails application
 - Stop Grails application
