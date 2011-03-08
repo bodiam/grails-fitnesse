@@ -49,7 +49,6 @@ TODO:
 - Cleanup not used fixture classes, names and packages
 - Add a test page specifically for commit/rollback support
 - Handle exceptions for not found classes in onChange closure
-- remove all zipfiles for fitnesse wiki from repo
 - Create screencast
 - Fix JSON conversion for domain classes with hasMany mappings
 - Start Grails application
