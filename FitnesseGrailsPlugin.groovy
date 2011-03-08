@@ -78,15 +78,18 @@ class FitnesseGrailsPlugin {
         }
         application.fitnesseFixtureClasses.each { DefaultGrailsFitnesseFixtureClass fixtureClass ->
             Class underlyingClass = fixtureClass.clazz
-            Class reloadedClass = application.classLoader.reloadClass(underlyingClass.name)
-            DefaultGrailsFitnesseFixtureClass reloadedFixtureClass = new DefaultGrailsFitnesseFixtureClass(reloadedClass)
-            final beanConfigureClosure = configureFixtureBean.clone()
-            beans {
-                beanConfigureClosure.delegate = delegate
-                beanConfigureClosure.call(reloadedFixtureClass)
-            }.registerBeans(event.ctx)
-
-            addFixtureDynamicMethods(reloadedFixtureClass)
+            try {
+                Class reloadedClass = application.classLoader.reloadClass(underlyingClass.name)
+                DefaultGrailsFitnesseFixtureClass reloadedFixtureClass = new DefaultGrailsFitnesseFixtureClass(reloadedClass)
+                final beanConfigureClosure = configureFixtureBean.clone()
+                beans {
+                    beanConfigureClosure.delegate = delegate
+                    beanConfigureClosure.call(reloadedFixtureClass)
+                }.registerBeans(event.ctx)
+                addFixtureDynamicMethods(reloadedFixtureClass)
+            } catch (Throwable th) {
+                log.warn("Class $underlyingClass.name wasn't reloaded because an exception occured", th)
+            }
         }
         log.debug("Reloaded ${application.fitnesseFixtureClasses.size()} fixture classes")
     }
