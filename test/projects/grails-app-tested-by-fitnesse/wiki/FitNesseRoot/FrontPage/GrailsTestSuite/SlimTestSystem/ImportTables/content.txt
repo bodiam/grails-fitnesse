@@ -1,6 +1,6 @@
 !3 Import tables
 
-It's possible to load Fixtures with their fully qualified name:
+It's possible to load Fixtures with their fully qualified name (without the Fixture suffix):
 
 !|nl.jworks.Deduct          |
 |operand 1|operand 2|result?|
@@ -11,7 +11,7 @@ However, when using the import table, you can tell the Slim Executor where the f
 |import   |
 |nl.jworks|
 
-This way, only the classname of the fixture is needed.
+This way, only the name of the fixture is needed.
 
 |deduct                     |
 |operand 1|operand 2|result?|

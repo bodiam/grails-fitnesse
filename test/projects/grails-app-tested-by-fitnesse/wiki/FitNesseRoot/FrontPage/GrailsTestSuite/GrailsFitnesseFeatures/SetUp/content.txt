@@ -1,0 +1,4 @@
+|import   |
+|nl.jworks.grails.fitnesse.feature|
+|nl.jworks.grails.fitnesse.feature.hibernate|
+|nl.jworks.grails.fitnesse.feature.stoptest|

@@ -1,6 +1,6 @@
 !3 Decision Tables
 
-First of all, there's the name of the table: "calculate". This is named for a decision to be made. That's good style. Decision tables should be named for decisions. However that name also translates to the fixture class Calculate. If you run this test you'll notice that the name turns green. This means that Slim found the fixture class and was able to create an instance of it.
+First of all, there's the name of the table: "calculate". Calculate describes the functional intent of the operation which is tested. That's good style. However that name also translates to the fixture class CalculateFixture. If you run this test you'll notice that the name turns green. This means that Slim found the fixture class and was able to create an instance of it.
 
 The first cell could also have been Decision:calculate, or DT:calculate. The code Decision: or DT: tells Slim what kind of table this is. Decision table is the default.
 
@@ -25,19 +25,10 @@ class CalculateFixture {
 
     int start = 0
 
-    CalculateFixture() {
-    }
-
-    CalculateFixture(int start) {
-        this.start = start
-    }
-
     int expectation() {
         calculateService.addition(operand1, operand2) + start
     }
-
-    public void setCalculateService(value) {
-        this.calculateService = value
-    }
 }
 }}}
+
+Note that the Fixture doesn't contain any logic itself, but it delegates this to the application which is tested, in this case by using the calculateService. 

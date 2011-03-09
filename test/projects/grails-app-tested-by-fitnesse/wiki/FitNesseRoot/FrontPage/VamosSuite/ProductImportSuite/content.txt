@@ -1,3 +1,0 @@
->AddTest
->RemoveTest
->ChangeTest

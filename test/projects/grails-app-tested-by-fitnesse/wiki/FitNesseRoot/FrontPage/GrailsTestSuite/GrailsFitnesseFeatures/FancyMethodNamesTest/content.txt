@@ -1,6 +1,0 @@
-|script                   |register person|
-|ensure|register user|
-
-
-
-#|register person with name|Erik|and age|30|
