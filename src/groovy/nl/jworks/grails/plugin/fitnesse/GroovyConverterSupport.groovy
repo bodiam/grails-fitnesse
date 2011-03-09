@@ -1,21 +1,24 @@
 package nl.jworks.grails.plugin.fitnesse
 
-import fitnesse.slim.Slim
 import fitnesse.slim.Converter
 import fitnesse.slim.ConverterSupport
+import fitnesse.slim.Slim
+
+import java.lang.reflect.Type
+import java.lang.reflect.ParameterizedType
 
 class GroovyConverterSupport {
     
-    public static Converter getConverter(Class clazz) {
-        Converter converter = ConverterSupport.getConverter(clazz)
+    public static Converter getConverter(Type type) {
+        Converter converter = ConverterSupport.getConverter(type)
         if (!converter) {
-            converter = new GroovyObjectConverter(clazz)
-            Slim.addConverter(clazz, converter)
+            converter = type in ParameterizedType ? new GroovyCollectionConverter(type) : new GroovyObjectConverter(type)
+            Slim.addConverter(type, converter)
         }
         return converter
     }
 
-    public static Object convert(arg, Class type) {
+    public static Object convert(arg, Type type) {
         if (type == List.class && arg instanceof List) {
             return arg
         } else {

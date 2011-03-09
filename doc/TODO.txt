@@ -48,7 +48,11 @@ grails classloader failed when reloading it
 TODO:
 - Cleanup not used fixture classes, names and packages
 - Add a test page specifically for commit/rollback support
+<<<<<<< HEAD
 - Handle exceptions for not found classes in onChange closure
+=======
+- Check other types of tables
+>>>>>>> Implemented json converter for collections, not tested yet
 - Create screencast
 - Fix JSON conversion for domain classes with hasMany mappings
 - Start Grails application
