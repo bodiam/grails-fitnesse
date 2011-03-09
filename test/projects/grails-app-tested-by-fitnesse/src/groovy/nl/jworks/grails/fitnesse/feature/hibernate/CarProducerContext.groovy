@@ -1,6 +1,4 @@
-package nl.jworks
-
-import nl.jworks.grails.fitnesse.feature.hibernate.CarProducer
+package nl.jworks.grails.fitnesse.feature.hibernate
 
 class CarProducerContext {
 
