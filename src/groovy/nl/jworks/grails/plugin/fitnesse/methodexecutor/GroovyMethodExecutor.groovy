@@ -5,6 +5,8 @@ import fitnesse.slim.MethodExecutionResult
 import fitnesse.slim.Converter
 import java.lang.reflect.InvocationTargetException
 import nl.jworks.grails.plugin.fitnesse.GroovyConverterSupport
+import java.lang.reflect.Type
+import java.lang.reflect.Field
 
 /**
  * @author Erik Pragt
@@ -42,7 +44,7 @@ class GroovyMethodExecutor extends MethodExecutor {
     }
     
     protected Object invokeGroovyMethod(Object instance, method, Object[] args) throws Throwable {
-        Object[] convertedArgs = convertGroovyArgs(method, args)
+        Object[] convertedArgs = convertGroovyArgs(instance, method, args)
         return callMethod(instance, method, convertedArgs)
     }
 
@@ -56,8 +58,21 @@ class GroovyMethodExecutor extends MethodExecutor {
         return retval
     }
 
-    private Object[] convertGroovyArgs(method, Object[] args) {
-        return GroovyConverterSupport.convertArgs(args, method.parameterTypes)
+    private Object[] convertGroovyArgs(Object instance, method, Object[] args) {
+        Type[] methodParameterTypes = args.size() == 1 ? determineParameterType(instance, method) : method.parameterTypes
+        return GroovyConverterSupport.convertArgs(args, methodParameterTypes)
+    }
+
+    private Type[] determineParameterType(Object instance, method) {
+        MetaBeanProperty property = instance.metaClass.properties.find { MetaBeanProperty property ->
+            property.setter?.name == method.name
+        }
+        if (property?.field) {
+            Field field = property.field.field
+            return field.type in Collection ? [field.genericType] : [field.type]
+        } else {
+            return method.parameterTypes
+        }
     }
 
     private Object convertToString(Object retval, Class<?> retType) {
