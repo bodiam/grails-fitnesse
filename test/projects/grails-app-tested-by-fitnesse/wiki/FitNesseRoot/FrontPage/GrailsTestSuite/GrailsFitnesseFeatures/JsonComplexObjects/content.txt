@@ -11,3 +11,7 @@
 |author|title|amount|
 |Dean Koontz|Chase|5|
 |Stephen King|IT|3|
+
+|json collection converter test|
+|producer|
+|{name: 'Audi', models: [{name: 'A3'}, {name: 'A4'}]}|

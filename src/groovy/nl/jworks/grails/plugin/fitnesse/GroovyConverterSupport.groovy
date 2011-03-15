@@ -10,10 +10,12 @@ import java.lang.reflect.ParameterizedType
 class GroovyConverterSupport {
     
     public static Converter getConverter(Type type) {
-        Converter converter = ConverterSupport.getConverter(type)
+        //in doesn't work here for primitives that's why instanceof is used
+        boolean typeIsASimpleClass = type instanceof Class
+        Converter converter = typeIsASimpleClass ? ConverterSupport.getConverter(type) : null
         if (!converter) {
             converter = type in ParameterizedType ? new GroovyCollectionConverter(type) : new GroovyObjectConverter(type)
-            Slim.addConverter(type, converter)
+            typeIsASimpleClass && Slim.addConverter(type, converter)
         }
         return converter
     }

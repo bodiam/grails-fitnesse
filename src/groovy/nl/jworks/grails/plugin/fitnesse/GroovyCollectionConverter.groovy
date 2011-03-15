@@ -5,8 +5,8 @@ import fitnesse.slim.SlimError
 import grails.converters.JSON
 import java.lang.reflect.ParameterizedType
 import org.codehaus.groovy.grails.web.json.JSONArray
-import org.json.JSONObject
 import java.lang.reflect.Type
+import org.codehaus.groovy.grails.web.json.JSONObject
 
 class GroovyCollectionConverter implements Converter {
 
@@ -27,7 +27,9 @@ class GroovyCollectionConverter implements Converter {
         } catch (JSONException) {
             throw new SlimError("Converting to ${convertedClass.name} failed: '${arg}' is not a proper JSON array string")
         }
-        Type parameterType = type.actualTypeArguments.first()
-        json.collect { JSONObject jsonObject -> GroovyConverterSupport.convert(jsonObject, parameterType) }
+        Type parameterType = convertedType.actualTypeArguments.first()
+        json.collect { JSONObject jsonObject ->
+            GroovyConverterSupport.convert(jsonObject, parameterType)
+        }
     }
 }
