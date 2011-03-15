@@ -51,7 +51,6 @@ grails classloader failed when reloading it
 * document transaction support (using BeginTransaction, Commit and Rollback fixtures)
 
 TODO:
-- cleanup fitnesse wiki so there is no yellow tests and every test can be run from main
 - cleanup JsonComplexObjects test page, find a better name for JsonCollectionConverterTestFixture
 - run some code coverage tool agains fitnesse test for the plugin
 - Add a test page specifically for commit/rollback support
