@@ -1,3 +1,2 @@
-|annotated test|
-|echo|echo?|
-|test|test|
+|script|annotated test|
+|ensure|works|
