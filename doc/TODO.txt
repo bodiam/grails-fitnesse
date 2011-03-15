@@ -53,11 +53,7 @@ grails classloader failed when reloading it
 TODO:
 - cleanup fitnesse wiki so there is no yellow tests and every test can be run from main
 - Add a test page specifically for commit/rollback support
-<<<<<<< HEAD
-- Handle exceptions for not found classes in onChange closure
-=======
 - Check other types of tables
->>>>>>> Implemented json converter for collections, not tested yet
 - Create screencast
 - Fix JSON conversion for domain classes with hasMany mappings
 - Start Grails application
