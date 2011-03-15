@@ -17,12 +17,13 @@ The first cell of a slim table tells you what kind of table it is. Here are the 
 |[[Query Tables][>QueryTables]]|Supplies the expected results of a query.  This is similar to the Fit Row Fixture|
 |[[Script Tables][>ScriptTables]]|A series of actions and checks.  Similar to Do Fixture.|
 |[[Import][>ImportTables]]|Add a path to the fixture search path.|
-
-'''TODO'''
-
 |[[Subset Query Table][>SubsetQueryTable]]|Supplies a subset of the expected results of a query.|
 |[[Ordered query Table][>OrderedQueryTable]]|Supplies the expected results of a query.  The rows are expected to be in order.  This is similar to the Fit Row Fixture|
 |[[Table Table][>TableTable]]|Whatever you want it to be!|
 |[[Comment][>CommentTable]]|A table that does nothing.|
 |[[Scenario Table][>ScenarioTable]]|A table that can be called from other tables.|
+
+'''TODO'''
+
+
 |[[Library Table][>LibraryTable]]|A table that installs fixtures available for all test pages|

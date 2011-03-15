@@ -1,0 +1,15 @@
+|script|book driver|
+
+!|scenario           |buy book from author  |author    |with title |title |
+|ensure               |book available from   |@author   |with       |@title|
+|buy book from author2|@author                |with title|@title             |
+|ensure              |shopping cart contains|@title     |from author|@author|
+
+!|script                                        |
+|buy book from author|Stephen King|with title|It|
+|buy book from author|Stephen King|with title|Whatever|
+
+
+
+
+
