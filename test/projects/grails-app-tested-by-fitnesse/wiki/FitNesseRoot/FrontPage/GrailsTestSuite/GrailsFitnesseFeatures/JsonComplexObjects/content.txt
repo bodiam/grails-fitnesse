@@ -1,5 +1,6 @@
 |import   |
 |tutorial|
+|nl.jworks.grails.fitnesse.feature|
 
 
 |create book inventory| 
@@ -11,6 +12,8 @@
 |author|title|amount|
 |Dean Koontz|Chase|5|
 |Stephen King|IT|3|
+
+
 
 |json collection converter test|
 |producer|

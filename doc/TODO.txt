@@ -52,6 +52,7 @@ grails classloader failed when reloading it
 
 TODO:
 - cleanup fitnesse wiki so there is no yellow tests and every test can be run from main
+- cleanup JsonComplexObjects test page, find a better name for JsonCollectionConverterTestFixture
 - Add a test page specifically for commit/rollback support
 - Check other types of tables
 - Create screencast
