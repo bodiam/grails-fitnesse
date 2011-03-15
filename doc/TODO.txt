@@ -40,10 +40,10 @@
 - fix reloading classes and fixtures that use inheritance           DONE
 - add @Fixture annotation to mark fixture classes                   DONE
 - Cleanup not used fixture classes, names and packages              DONE
+- Fix JSON conversion for domain classes and collections            DONE
 - Fix for create fixture scripts                                    DONE
 - Fixed documentation in WIKI                                       DONE
 - Removed .svn directories and fitnesse zips                        DONE
-
 
 Documentation
 * changed the EchoFixture package used to do a quickstart test to nl.jworks.fitnesse.quickstart because otherwise
@@ -57,7 +57,6 @@ TODO:
 - Add a test page specifically for commit/rollback support
 - Check other types of tables
 - Create screencast
-- Fix JSON conversion for domain classes with hasMany mappings
 - Start Grails application
 - Stop Grails application
 - Think of something for easy loading / deleting of data
