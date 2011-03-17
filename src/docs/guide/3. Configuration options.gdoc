@@ -20,7 +20,7 @@ h3. The Wiki Server directory
 
 The Wiki pages are stored in a specific directory, <project-root>/'wiki' by default.
 
-This can be changed if needed, by setting the @grails.plugin.wiki.dir@ option. An example can be found below:
+This can be changed if needed, by setting the @grails.plugin.fitnesse.wiki.dir@ option. An example can be found below:
 
 {code}grails {
   plugin {
@@ -34,7 +34,7 @@ h3. The default Wiki Suite or Test
 
 When supplying no arguments to @grails test-app@, all tests on the Fronpage will be run.
 
-This can be changed if needed, by setting the @grails.plugin.wiki.defaultSuite@ option, which is a list of Suites or Tests. An example can be found below:
+This can be changed if needed, by setting the @grails.plugin.fitnesse.wiki.defaultSuite@ option, which is a list of Suites or Tests. An example can be found below:
 
 {code}grails {
     plugin {

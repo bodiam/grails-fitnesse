@@ -15,7 +15,7 @@ loadFitnesseTestTypes = {
 
     Class fitnesseTestTypeClass = loadFitnesseTestTypeClass()
 
-    [unit: unitTests, integration: integrationTests].each { name, types ->
+    [integration: integrationTests].each { name, types ->
         if (!types.any { it.class == fitnesseTestTypeClass }) {
             types << fitnesseTestTypeClass.newInstance('fitnesse', name)
         }

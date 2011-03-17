@@ -4,6 +4,7 @@
 /stacktrace.log
 /target/
 /test/projects/grails-app-tested-by-fitnesse/target
+/test/projects/grails-app-tested-by-fitnesse/*.log
 /test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/*
 !/test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/FrontPage/
 grails-fitnesse*.zip

@@ -30,7 +30,7 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
 
     @Override
     protected int doPrepare() {
-        return 1 // Currently there is no easy way to know how many tests to run, so to trigger the Grails runner, I assume there's always at least one to run
+        return 1 // Currently there is no easy way to know how many tests to run, so to trigger the Grails runner, I assume there's always at least one test to run
     }
 
     @Override
@@ -72,6 +72,6 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
 
 
     private boolean isDefaultGrailsPattern(GrailsTestTargetPattern[] testTargetPatterns) {
-        return testTargetPatterns && testTargetPatterns[0].rawPattern != "**.*"
+        return testTargetPatterns && testTargetPatterns[0].rawPattern == "**.*"
     }
 }
