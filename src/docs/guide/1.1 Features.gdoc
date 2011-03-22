@@ -96,6 +96,40 @@ class Book {
 }
 {code}
 
+Version 0.9 brings support for collections into JSON object conversion. The feature works for typed collection fixture fields but not for function parameters (because information about generics is is kept at runtime only for fields). It also works for hasMany relations in grails domain objects. Example usage is:
+
+*Wiki*
+{code}
+|json objects conversion with collections|
+|producer|models|match?|
+|{name: 'Audi', models: [{name: 'A3'}, {name: 'A4'}]}|[{name: 'A3'}, {name: 'A4'}]|true|
+{code}
+
+*Fixture*
+{code}
+class JsonObjectsConversionWithCollectionsFixture {
+    CarProducer producer
+
+    List<CarModel> models
+
+    boolean match() {
+        producer.models*.name.containsAll(models*.name)
+    }
+}
+{code}
+
+*Domain classes*
+{code}
+class CarProducer {
+    String name
+    static hasMany = [models: CarModel]
+}
+
+class CarModel {
+    String name
+}
+{code}
+
 h3. Query Fixture DSL (since 0.4)
 
 To make writing Query fixtures much easier, we've introduced the concept of a simple mapping DSL. This means that mapping values from, let's say a services, becomes almost trivial.
