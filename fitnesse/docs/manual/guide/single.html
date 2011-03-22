@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Fitnesse Grails Plugin 0.5 - Reference Documentation</title>
+        <title>Fitnesse Grails Plugin 0.9 - Reference Documentation</title>
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Style" charset="utf-8"/>
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
     </head>
@@ -16,7 +16,7 @@
             <div class="message">fitnesse</div>
             <h1>Fitnesse Grails Plugin - Reference Documentation</h1>
             <p><strong>Authors:</strong> Erik Pragt (<a href="http://www.jworks.nl">jWorks.nl</a>), Marcin Erdmann (<a href="http://www.jworks.nl">jWorks.nl</a>)</p>
-            <p><strong>Version:</strong> 0.5</p>
+            <p><strong>Version:</strong> 0.9</p>
             <em></em>
         </div>
 
@@ -29,6 +29,19 @@
 Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
 </blockquote><p class="paragraph"/><h4>Release History</h4>
 <ul class="star">
+<li>March 22, 2011</li>
+<ul class="star">
+<li>0.9 Release</li>
+<ul class="star">
+<li>We upped the version number to 0.9 because the plugin is quite feature complete now, and is almost stable enough to be a 1.0.</li>
+<li>Feature: Introduced @Fixture annotation, so fixtures can now be given any name (they don't have to be suffixed with Fixture), as long as they are annotated with the annotation.</li>
+<li>Feature: Added Transaction support</li>
+<li>Bugfix: Fixed JSON conversion for domain classes and collections</li>
+<li>Bugfix: Fixed reloading classes and fixtures that use inheritance</li>
+<li>Bugfix: Fixed grails test-app</li>
+<li>Bugfix: Fixed issues in the documentation</li>
+</ul>
+</ul>
 <li>March 1, 2011</li>
 <ul class="star">
 <li>0.5 Release</li>
@@ -75,7 +88,12 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 <li>September 15, 2010</li>
 <ul class="star">
 <li>initial 0.1 release.</li>
-</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Templates (since 0.4)</h3><p class="paragraph"/>You can now easily create Fixtures by typing:<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;query&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>Or<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>This will create a fixture in the grails-app&#102;itnesse directory, which should give you a head start on how to create a Fixture.<p class="paragraph"/><h3>Complex objects (since 0.4)</h3><p class="paragraph"/>You can now create complex objects from within Fitnesse. This uses the JSON format, since it's easy to read and write, and is becoming quite a standard.<p class="paragraph"/>An example can be seen below:<p class="paragraph"/><strong class="bold">Wiki</strong>
+</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Fixture annotation (since 0.9)</h3><p class="paragraph"/>Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
+This means that fixtures can now be given any name (ie. they don't have to be suffixed with Fixture), as long as they are annotated with the @Fixture annotation.<p class="paragraph"/><div class="code"><pre>@Fixture
+class BuyBook &#123;
+    // contents here
+&#125;</pre></div><p class="paragraph"/><h3>Transaction support (since 0.9)</h3><p class="paragraph"/>Transaction support provides three fixtures called BeginTransaction, Commit and Rollback. To use you need to import the fitnesse.grails package, i.e. in SetUp or SuiteSetUp:<p class="paragraph"/><div class="code"><pre>|<span class="java&#45;keyword">import</span>|
+|fitnesse.grails|</pre></div><p class="paragraph"/>The transaction support was introduced mainly for scenarios where test pages via fixtures modify the database and you don't want that modifications to be persisted after the end of the test page execution. It means that the test page can be run multiple times without the need of cleaning up the database afterwards and it doesn't affect other tests by database contamination. To run a test page within a rolledback transaction simply add <code>begin transaction</code> and <code>rollback</code> tables to your test page:<p class="paragraph"/><div class="code"><pre>|begin transaction|<p class="paragraph"/>&#45;&#45;some test tables&#45;&#45;<p class="paragraph"/>|rollback|</pre></div><p class="paragraph"/>If you wish to run all of your test pages contained within a suite in rolledback transactions simply add begin transaction and rollback tables to SetUp and TearDown pages respectively for the given suite.<p class="paragraph"/><h3>Templates (since 0.4)</h3><p class="paragraph"/>You can now easily create Fixtures by typing:<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;query&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>Or<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>This will create a fixture in the grails-app&#102;itnesse directory, which should give you a head start on how to create a Fixture.<p class="paragraph"/><h3>Complex objects (since 0.4)</h3><p class="paragraph"/>You can now create complex objects from within Fitnesse. This uses the JSON format, since it's easy to read and write, and is becoming quite a standard.<p class="paragraph"/>An example can be seen below:<p class="paragraph"/><strong class="bold">Wiki</strong>
 <div class="code"><pre>|create book inventory                     |
 |book                               |amount|
 |&#123;author: Stephen King, title: IT&#125;  |     3|
@@ -92,14 +110,28 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 &#125;</pre></div><p class="paragraph"/>And the very simple Domain class:<p class="paragraph"/><div class="code"><pre>class Book &#123;
     <span class="java&#45;object">String</span> author
     <span class="java&#45;object">String</span> title
+&#125;</pre></div><p class="paragraph"/>Version 0.9 brings support for collections into JSON object conversion. The feature works for typed collection fixture fields but not for function parameters (because information about generics is is kept at runtime only for fields). It also works for hasMany relations in grails domain objects. Example usage is:<p class="paragraph"/><strong class="bold">Wiki</strong>
+<div class="code"><pre>|json objects conversion with collections|
+|producer|models|match?|
+|&#123;name: 'Audi', models: &#91;&#123;name: 'A3'&#125;, &#123;name: 'A4'&#125;&#93;&#125;|&#91;&#123;name: 'A3'&#125;, &#123;name: 'A4'&#125;&#93;|<span class="java&#45;keyword">true</span>|</pre></div><p class="paragraph"/><strong class="bold">Fixture</strong>
+<div class="code"><pre>class JsonObjectsConversionWithCollectionsFixture &#123;
+    CarProducer producer<p class="paragraph"/>    List&#60;CarModel&#62; models<p class="paragraph"/>    <span class="java&#45;object">boolean</span> match() &#123;
+        producer.models&#42;.name.containsAll(models&#42;.name)
+    &#125;
+&#125;</pre></div><p class="paragraph"/><strong class="bold">Domain classes</strong>
+<div class="code"><pre>class CarProducer &#123;
+    <span class="java&#45;object">String</span> name
+    <span class="java&#45;keyword">static</span> hasMany = &#91;models: CarModel&#93;
+&#125;<p class="paragraph"/>class CarModel &#123;
+    <span class="java&#45;object">String</span> name
 &#125;</pre></div><p class="paragraph"/><h3>Query Fixture DSL (since 0.4)</h3><p class="paragraph"/>To make writing Query fixtures much easier, we've introduced the concept of a simple mapping DSL. This means that mapping values from, let's say a services, becomes almost trivial.<p class="paragraph"/>Consider the following Service method:<p class="paragraph"/><div class="code"><pre>def checkInventory() &#123;
     Book.executeQuery(<span class="java&#45;quote">"select b.title, b.author, count(&#42;) from Book b group by title, author"</span>)
 &#125;</pre></div><p class="paragraph"/>If you want to use this method in a Fixture, you can do by using the mapping DSL. An example can be shown below. Note that this only works for Query fixtures!<p class="paragraph"/><div class="code"><pre>class CheckBookInventoryFixture &#123;
-    def queryFixture = <span class="java&#45;keyword">true</span>                              // indication that <span class="java&#45;keyword">this</span> is a query fixture
+    <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span>                              // indication that <span class="java&#45;keyword">this</span> is a query fixture
     <span class="java&#45;keyword">static</span> mapping   = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService        // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
         bookService.checkInventory()
     &#125;
-&#125;</pre></div><p class="paragraph"/><h3>Strings as methods</h3>
+&#125;</pre></div><p class="paragraph"/>The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names.<p class="paragraph"/>Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.<p class="paragraph"/><h3>Strings as methods</h3>
 Groovy supports methods like <code>"this is a method"</code>. The Fitnesse plugin also supports this, making some Fixtures more readable.<p class="paragraph"/><strong class="bold">Example</strong>
 <div class="code"><pre>class MyFixture &#123;
   <span class="java&#45;object">boolean</span> <span class="java&#45;quote">"check <span class="java&#45;keyword">if</span> customers exists"</span>(<span class="java&#45;object">int</span> customerNumber) &#123;
@@ -192,13 +224,13 @@ A small note: normally output parameters are 'functions' and not getters. This m
         port = 9090
     &#125;
   &#125;
-&#125;</pre></div><p class="paragraph"/><h3>The Wiki Server directory</h3><p class="paragraph"/>The Wiki pages are stored in a specific directory, &#60;project-root&#62;/'wiki' by default.<p class="paragraph"/>This can be changed if needed, by setting the <code>grails.plugin.wiki.dir</code> option. An example can be found below:<p class="paragraph"/><div class="code"><pre>grails &#123;
+&#125;</pre></div><p class="paragraph"/><h3>The Wiki Server directory</h3><p class="paragraph"/>The Wiki pages are stored in a specific directory, &#60;project-root&#62;/'wiki' by default.<p class="paragraph"/>This can be changed if needed, by setting the <code>grails.plugin.fitnesse.wiki.dir</code> option. An example can be found below:<p class="paragraph"/><div class="code"><pre>grails &#123;
   plugin &#123;
     wiki &#123;
       dir = 'otherwiki'
     &#125;
   &#125;
-&#125;</pre></div><p class="paragraph"/><h3>The default Wiki Suite or Test</h3><p class="paragraph"/>When supplying no arguments to <code>grails test-app</code>, all tests on the Fronpage will be run.<p class="paragraph"/>This can be changed if needed, by setting the <code>grails.plugin.wiki.defaultSuite</code> option, which is a list of Suites or Tests. An example can be found below:<p class="paragraph"/><div class="code"><pre>grails &#123;
+&#125;</pre></div><p class="paragraph"/><h3>The default Wiki Suite or Test</h3><p class="paragraph"/>When supplying no arguments to <code>grails test-app</code>, all tests on the Fronpage will be run.<p class="paragraph"/>This can be changed if needed, by setting the <code>grails.plugin.fitnesse.wiki.defaultSuite</code> option, which is a list of Suites or Tests. An example can be found below:<p class="paragraph"/><div class="code"><pre>grails &#123;
     plugin &#123;
         fitnesse &#123;
             wiki &#123;
@@ -245,7 +277,7 @@ $ cd bookstore</pre></div>
 <div class="code"><pre>$ grails install&#45;plugin fitnesse</pre></div><p class="paragraph"/>We are going to create a small bookstore with a small domain to test the core functionality without using a Functional or Unit test.
 Normally, I would recommend using Unit tests after writing the Fitnesse Acceptance Test, but that is outside the scope of this tutorial.<p class="paragraph"/>To start in a Test Driven approach, we'll start by creating the test first.<p class="paragraph"/>To do so, we'll need to start Fitnesse as well as Grails.<p class="paragraph"/><h4>3. Start the Grails server.</h4>
 <div class="code"><pre>$ grails run&#45;app</pre></div><p class="paragraph"/><h4>4. Start the Fitnesse server.</h4><p class="paragraph"/>If you haven't downloaded Fitnesse yet, please do download it from the <a href="http://www.fitnesse.org" target="blank">Fitnesse website</a>.<p class="paragraph"/>The following will extract Fitnesse and start it on port 9090.
-<div class="code"><pre>$ java &#45;jar fitnesse.jar &#45;p 9090</pre></div><p class="paragraph"/><h4>5. Create the test</h4><p class="paragraph"/>Open a web browser and point it to http://localhost:9090 . The Fitnesse front page will show up.<p class="paragraph"/>Click on <strong class="bold">Edit</strong>, and add the following to the text area: <code>^BookStoreTest</code> . Press <strong class="bold">Save</strong>.<p class="paragraph"/>You will now have a text with a question mark next to it. Click on the question mark to create a new page.<p class="paragraph"/>In the new page, remove the contents of the text area and replace it by the following:<p class="paragraph"/><div class="code"><pre>!define TEST_SYSTEM &#123;slim&#125;
+<div class="code"><pre>$ grails run&#45;fitnesse</pre></div><p class="paragraph"/><h4>5. Create the test</h4><p class="paragraph"/>Open a web browser and point it to http://localhost:9090 . The Fitnesse front page will show up.<p class="paragraph"/>Click on <strong class="bold">Edit</strong>, and add the following to the text area: <code>^BookStoreTest</code> . Press <strong class="bold">Save</strong>.<p class="paragraph"/>You will now have a text with a question mark next to it. Click on the question mark to create a new page.<p class="paragraph"/>In the new page, remove the contents of the text area and replace it by the following:<p class="paragraph"/><div class="code"><pre>!define TEST_SYSTEM &#123;slim&#125;
 !define COMMAND_PATTERN &#123;echo&#125;<p class="paragraph"/>|create book inventory|
 |author|title|amount|
 |Stephen King|IT|3|
@@ -254,7 +286,7 @@ Normally, I would recommend using Unit tests after writing the Fitnesse Acceptan
 |customer buys|1|books with title|Chase|<p class="paragraph"/>|query:check book inventory|
 |Stephen King|IT|1|
 |Dean Koontz|Chase|4|</pre></div><p class="paragraph"/>Press save after you created the page.<p class="paragraph"/><blockquote class="note">
-The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to machine running Windows.
+The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to a machine running Windows.
 </blockquote><p class="paragraph"/>In this test, you've used 3 kinds of Test tables:
 <ul class="star">
 <li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable" target="blank">Decision Table</a> (<code>create book inventory</code>) used to setup the data</li>
@@ -262,7 +294,7 @@ The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' si
 <li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.QueryTable" target="blank">Query table</a> (<code>check book inventory</code>) to verify the results of the test</li>
 </ul><p class="paragraph"/>Click on <strong class="bold">Test</strong> on the left side of the page. The test will execute, and will fail with errors like <code>Could not invoke constructor for CreateBookInventory&#91;0&#93;</code>. This is because no Fixtures have been created yet. This way of working is in line with the 'Red-Green-Refactor' TDD mantra; our test clearly is red (or yellow, in this case), so we need to focus on getting the test green. To make the test pass, we need to create the fixtures.<p class="paragraph"/><h4>6. Creating the Fixtures</h4><p class="paragraph"/>We'll start by creating the first Fixture mentioned in the error message, which is the <code>CreateBookInventory</code> Fixture. In your Grails project, go to the <code>grails-app/fitnesse</code> directory, and create a file called <code>CreateBookInventory.groovy</code>. Because the Fitnesse plugin will reload the Fixtures automatically, pressing the <strong class="bold">Test</strong> button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse.<p class="paragraph"/>Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding <code>Book</code> domain class.<p class="paragraph"/><blockquote class="note">
 Note, Grails might crash due to the Fixture missing the domain classes. Whenever this happens, please restart Grails.
-</blockquote><p class="paragraph"/><h5>6.1 The Decision Table</h5><p class="paragraph"/>The Fixture to support the <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable" target="blank">Decision Table</a> should look like this:<p class="paragraph"/><div class="code"><pre>class CreateBookInventoryFixture &#123;
+</blockquote><p class="paragraph"/><h5>6.1 The Decision Table</h5><p class="paragraph"/>The Fixture to support the <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable" target="blank">Decision Table</a> should look like this:<p class="paragraph"/><div class="code"><pre>class CreateBookInventoryFixture &#123;
     <span class="java&#45;object">String</span> author
     <span class="java&#45;object">String</span> title<p class="paragraph"/>    <span class="java&#45;object">int</span> amount<p class="paragraph"/>    def bookService<p class="paragraph"/>    CreateBookInventory() &#123;
         Book.list()&#42;.delete()
@@ -290,7 +322,7 @@ Note, Grails might crash due to the Fixture missing the domain classes. Whenever
 &#125;</pre></div><p class="paragraph"/><blockquote class="note">
 Note that this implementation is very simplistic. In this example, I simply delete the books from the inventory instead of assigning them to a customer or a basket.
 </blockquote><p class="paragraph"/><h5>6.3 The Query Table</h5><p class="paragraph"/>Finally, to verify if our assertions match the execution of our code, we need to check the results of our actions. We do this by using a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.QueryTable" target="blank">Query Table</a>.<p class="paragraph"/><div class="code"><pre>class CheckBookInventoryFixture &#123;
-    def queryFixture = <span class="java&#45;keyword">true</span>  // indication that <span class="java&#45;keyword">this</span> is a query fixture
+    <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span>  // indication that <span class="java&#45;keyword">this</span> is a query fixture
     <span class="java&#45;keyword">static</span> mapping = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService       // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
         bookService.checkInventory()
     &#125;

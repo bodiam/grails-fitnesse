@@ -9,6 +9,19 @@
 Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
 </blockquote><p class="paragraph"/><h4>Release History</h4>
 <ul class="star">
+<li>March 22, 2011</li>
+<ul class="star">
+<li>0.9 Release</li>
+<ul class="star">
+<li>We upped the version number to 0.9 because the plugin is quite feature complete now, and is almost stable enough to be a 1.0.</li>
+<li>Feature: Introduced @Fixture annotation, so fixtures can now be given any name (they don't have to be suffixed with Fixture), as long as they are annotated with the annotation.</li>
+<li>Feature: Added Transaction support</li>
+<li>Bugfix: Fixed JSON conversion for domain classes and collections</li>
+<li>Bugfix: Fixed reloading classes and fixtures that use inheritance</li>
+<li>Bugfix: Fixed grails test-app</li>
+<li>Bugfix: Fixed issues in the documentation</li>
+</ul>
+</ul>
 <li>March 1, 2011</li>
 <ul class="star">
 <li>0.5 Release</li>
@@ -55,7 +68,12 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 <li>September 15, 2010</li>
 <ul class="star">
 <li>initial 0.1 release.</li>
-</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Templates (since 0.4)</h3><p class="paragraph"/>You can now easily create Fixtures by typing:<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;query&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>Or<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>This will create a fixture in the grails-app&#102;itnesse directory, which should give you a head start on how to create a Fixture.<p class="paragraph"/><h3>Complex objects (since 0.4)</h3><p class="paragraph"/>You can now create complex objects from within Fitnesse. This uses the JSON format, since it's easy to read and write, and is becoming quite a standard.<p class="paragraph"/>An example can be seen below:<p class="paragraph"/><strong class="bold">Wiki</strong>
+</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Fixture annotation (since 0.9)</h3><p class="paragraph"/>Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
+This means that fixtures can now be given any name (ie. they don't have to be suffixed with Fixture), as long as they are annotated with the @Fixture annotation.<p class="paragraph"/><div class="code"><pre>@Fixture
+class BuyBook &#123;
+    // contents here
+&#125;</pre></div><p class="paragraph"/><h3>Transaction support (since 0.9)</h3><p class="paragraph"/>Transaction support provides three fixtures called BeginTransaction, Commit and Rollback. To use you need to import the fitnesse.grails package, i.e. in SetUp or SuiteSetUp:<p class="paragraph"/><div class="code"><pre>|<span class="java&#45;keyword">import</span>|
+|fitnesse.grails|</pre></div><p class="paragraph"/>The transaction support was introduced mainly for scenarios where test pages via fixtures modify the database and you don't want that modifications to be persisted after the end of the test page execution. It means that the test page can be run multiple times without the need of cleaning up the database afterwards and it doesn't affect other tests by database contamination. To run a test page within a rolledback transaction simply add <code>begin transaction</code> and <code>rollback</code> tables to your test page:<p class="paragraph"/><div class="code"><pre>|begin transaction|<p class="paragraph"/>&#45;&#45;some test tables&#45;&#45;<p class="paragraph"/>|rollback|</pre></div><p class="paragraph"/>If you wish to run all of your test pages contained within a suite in rolledback transactions simply add begin transaction and rollback tables to SetUp and TearDown pages respectively for the given suite.<p class="paragraph"/><h3>Templates (since 0.4)</h3><p class="paragraph"/>You can now easily create Fixtures by typing:<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;query&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>Or<p class="paragraph"/><div class="code"><pre>grails create&#45;fitnesse&#45;fixture &#60;name of fixture&#62;</pre></div><p class="paragraph"/>This will create a fixture in the grails-app&#102;itnesse directory, which should give you a head start on how to create a Fixture.<p class="paragraph"/><h3>Complex objects (since 0.4)</h3><p class="paragraph"/>You can now create complex objects from within Fitnesse. This uses the JSON format, since it's easy to read and write, and is becoming quite a standard.<p class="paragraph"/>An example can be seen below:<p class="paragraph"/><strong class="bold">Wiki</strong>
 <div class="code"><pre>|create book inventory                     |
 |book                               |amount|
 |&#123;author: Stephen King, title: IT&#125;  |     3|
@@ -72,14 +90,28 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 &#125;</pre></div><p class="paragraph"/>And the very simple Domain class:<p class="paragraph"/><div class="code"><pre>class Book &#123;
     <span class="java&#45;object">String</span> author
     <span class="java&#45;object">String</span> title
+&#125;</pre></div><p class="paragraph"/>Version 0.9 brings support for collections into JSON object conversion. The feature works for typed collection fixture fields but not for function parameters (because information about generics is is kept at runtime only for fields). It also works for hasMany relations in grails domain objects. Example usage is:<p class="paragraph"/><strong class="bold">Wiki</strong>
+<div class="code"><pre>|json objects conversion with collections|
+|producer|models|match?|
+|&#123;name: 'Audi', models: &#91;&#123;name: 'A3'&#125;, &#123;name: 'A4'&#125;&#93;&#125;|&#91;&#123;name: 'A3'&#125;, &#123;name: 'A4'&#125;&#93;|<span class="java&#45;keyword">true</span>|</pre></div><p class="paragraph"/><strong class="bold">Fixture</strong>
+<div class="code"><pre>class JsonObjectsConversionWithCollectionsFixture &#123;
+    CarProducer producer<p class="paragraph"/>    List&#60;CarModel&#62; models<p class="paragraph"/>    <span class="java&#45;object">boolean</span> match() &#123;
+        producer.models&#42;.name.containsAll(models&#42;.name)
+    &#125;
+&#125;</pre></div><p class="paragraph"/><strong class="bold">Domain classes</strong>
+<div class="code"><pre>class CarProducer &#123;
+    <span class="java&#45;object">String</span> name
+    <span class="java&#45;keyword">static</span> hasMany = &#91;models: CarModel&#93;
+&#125;<p class="paragraph"/>class CarModel &#123;
+    <span class="java&#45;object">String</span> name
 &#125;</pre></div><p class="paragraph"/><h3>Query Fixture DSL (since 0.4)</h3><p class="paragraph"/>To make writing Query fixtures much easier, we've introduced the concept of a simple mapping DSL. This means that mapping values from, let's say a services, becomes almost trivial.<p class="paragraph"/>Consider the following Service method:<p class="paragraph"/><div class="code"><pre>def checkInventory() &#123;
     Book.executeQuery(<span class="java&#45;quote">"select b.title, b.author, count(&#42;) from Book b group by title, author"</span>)
 &#125;</pre></div><p class="paragraph"/>If you want to use this method in a Fixture, you can do by using the mapping DSL. An example can be shown below. Note that this only works for Query fixtures!<p class="paragraph"/><div class="code"><pre>class CheckBookInventoryFixture &#123;
-    def queryFixture = <span class="java&#45;keyword">true</span>                              // indication that <span class="java&#45;keyword">this</span> is a query fixture
+    <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span>                              // indication that <span class="java&#45;keyword">this</span> is a query fixture
     <span class="java&#45;keyword">static</span> mapping   = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService        // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
         bookService.checkInventory()
     &#125;
-&#125;</pre></div><p class="paragraph"/><h3>Strings as methods</h3>
+&#125;</pre></div><p class="paragraph"/>The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names.<p class="paragraph"/>Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.<p class="paragraph"/><h3>Strings as methods</h3>
 Groovy supports methods like <code>"this is a method"</code>. The Fitnesse plugin also supports this, making some Fixtures more readable.<p class="paragraph"/><strong class="bold">Example</strong>
 <div class="code"><pre>class MyFixture &#123;
   <span class="java&#45;object">boolean</span> <span class="java&#45;quote">"check <span class="java&#45;keyword">if</span> customers exists"</span>(<span class="java&#45;object">int</span> customerNumber) &#123;
