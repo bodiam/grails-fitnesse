@@ -16,10 +16,10 @@ public class DefaultGrailsFitnesseFixtureClass extends AbstractInjectableGrailsC
     public DefaultGrailsFitnesseFixtureClass(Class clazz) {
         super(clazz, FitnesseFixtureArtefactHandler.CLASSNAME_SUFFIX);
 
-        Object tmpIsQueryFixture = getPropertyOrStaticPropertyOrFieldValue(QUERY_FIXTURE, Boolean.class);
-        isQueryFixture = tmpIsQueryFixture != null && tmpIsQueryFixture.equals(Boolean.TRUE);
+        Object tmpIsQueryFixture = getStaticPropertyValue(QUERY_FIXTURE, Boolean.class);
+        isQueryFixture = Boolean.TRUE.equals(tmpIsQueryFixture);
 
-        mapping = getPropertyOrStaticPropertyOrFieldValue(MAPPING, Object.class);
+        mapping = getStaticPropertyValue(MAPPING, Object.class);
     }
 
     public boolean getIsQueryFixture() {

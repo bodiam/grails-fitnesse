@@ -44,6 +44,7 @@
 - Fix for create fixture scripts                                    DONE
 - Fixed documentation in WIKI                                       DONE
 - Removed .svn directories and fitnesse zips                        DONE
+- add configuration option for default Fitnesse suite to run!       DONE
 
 Documentation
 * changed the EchoFixture package used to do a quickstart test to nl.jworks.fitnesse.quickstart because otherwise
@@ -51,7 +52,6 @@ grails classloader failed when reloading it
 * document transaction support (using BeginTransaction, Commit and Rollback fixtures)
 
 TODO:
-- cleanup JsonComplexObjects test page, find a better name for JsonCollectionConverterTestFixture
 - run some code coverage tool against fitnesse test for the plugin
 - Add a test page specifically for commit/rollback support
 - Create screencast
