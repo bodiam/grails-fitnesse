@@ -53,7 +53,6 @@ grails classloader failed when reloading it
 
 TODO:
 - run some code coverage tool against fitnesse test for the plugin
-- Add a test page specifically for commit/rollback support
 - Create screencast
 - Start Grails application
 - Stop Grails application
@@ -63,8 +62,8 @@ TODO:
 - promo, blogging, GR8 conf, screencast, tutorials
 
 
-TODO: add configuration option for default Fitnesse suite to run!
-
+1.1 TODO:
+- GivWenZen integration
 
   560  git add docs/
   562  git commit

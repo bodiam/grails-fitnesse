@@ -168,7 +168,7 @@ Finally, to verify if our assertions match the execution of our code, we need to
 
 {code}
 class CheckBookInventoryFixture {
-    def queryFixture = true  // indication that this is a query fixture
+    static queryFixture = true  // indication that this is a query fixture
     static mapping = [title: 0, author: 1, amount: 2]  // the mapping
 
     def bookService       // injected service

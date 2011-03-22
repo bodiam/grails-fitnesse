@@ -91,7 +91,7 @@ If you want to use this method in a Fixture, you can do by using the mapping DSL
 
 {code}
 class CheckBookInventoryFixture {
-    def queryFixture = true                              // indication that this is a query fixture
+    static queryFixture = true                              // indication that this is a query fixture
     static mapping   = [title: 0, author: 1, amount: 2]  // the mapping
 
     def bookService        // injected service
@@ -101,6 +101,10 @@ class CheckBookInventoryFixture {
     }
 }
 {code}
+
+The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names.
+
+Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.
 
 h3. Strings as methods
 Groovy supports methods like @"this is a method"@. The Fitnesse plugin also supports this, making some Fixtures more readable.
