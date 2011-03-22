@@ -52,9 +52,8 @@ grails classloader failed when reloading it
 
 TODO:
 - cleanup JsonComplexObjects test page, find a better name for JsonCollectionConverterTestFixture
-- run some code coverage tool agains fitnesse test for the plugin
+- run some code coverage tool against fitnesse test for the plugin
 - Add a test page specifically for commit/rollback support
-- Check other types of tables
 - Create screencast
 - Start Grails application
 - Stop Grails application
