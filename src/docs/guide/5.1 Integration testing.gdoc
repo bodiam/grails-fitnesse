@@ -29,7 +29,7 @@ If you haven't downloaded Fitnesse yet, please do download it from the [Fitnesse
 
 The following will extract Fitnesse and start it on port 9090.
 {code}
-$ java -jar fitnesse.jar -p 9090
+$ grails run-fitnesse
 {code}
 
 h4. 5. Create the test
@@ -63,7 +63,7 @@ In the new page, remove the contents of the text area and replace it by the foll
 Press save after you created the page.
 
 {note}
-The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to machine running Windows.
+The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to a machine running Windows.
 {note}
 
 In this test, you've used 3 kinds of Test tables:
@@ -85,7 +85,7 @@ Note, Grails might crash due to the Fixture missing the domain classes. Whenever
 
 h5. 6.1 The Decision Table
 
-The Fixture to support the [Decision Table|http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable] should look like this:
+The Fixture to support the [Decision Table|http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable] should look like this:
 
 {code}
 class CreateBookInventoryFixture {

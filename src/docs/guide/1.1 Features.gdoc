@@ -1,5 +1,17 @@
 The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.
 
+h3. Fixture annotation (since 0.9)
+
+Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
+This means that fixtures can now be given any name (ie. they don't have to be suffixed with Fixture), as long as they are annotated with the @Fixture annotation.
+
+{code}
+@Fixture
+class BuyBook {
+    // contents here
+}
+{code}
+
 h3. Templates (since 0.4)
 
 You can now easily create Fixtures by typing:

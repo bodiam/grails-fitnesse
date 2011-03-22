@@ -58,6 +58,7 @@ TODO:
 - Start Grails application
 - Stop Grails application
 - Think of something for easy loading / deleting of data
+- Grails create-doc (produce word documentation)
 
 - promo, blogging, GR8 conf, screencast, tutorials
 

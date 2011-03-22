@@ -8,6 +8,15 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
+* March 22, 2011
+** 0.9 Release
+*** We upped the version number to 0.9 because the plugin is quite feature complete now, and is almost stable enough to be a 1.0.
+*** Feature: Introduced @Fixture annotation, so fixtures can now be given any name (they don't have to be suffixed with Fixture), as long as they are annotated with the annotation.
+*** Feature: Added Transaction support
+*** Bugfix: Fixed JSON conversion for domain classes and collections
+*** Bugfix: Fixed reloading classes and fixtures that use inheritance
+*** Bugfix: Fixed grails test-app
+*** Bugfix: Fixed issues in the documentation
 * March 1, 2011
 ** 0.5 Release
 *** Feature: Fitnesse testrunner created. Grails applications can now be tested using: grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.SlimTestSystem?suite"
