@@ -12,6 +12,27 @@ class BuyBook {
 }
 {code}
 
+h3. Transaction support (since 0.9)
+
+Transaction support provides three fixtures called BeginTransaction, Commit and Rollback. To use you need to import the fitnesse.grails package, i.e. in SetUp or SuiteSetUp:
+
+{code}
+|import|
+|fitnesse.grails|
+{code}
+
+The transaction support was introduced mainly for scenarios where test pages via fixtures modify the database and you don't want that modifications to be persisted after the end of the test page execution. It means that the test page can be run multiple times without the need of cleaning up the database afterwards and it doesn't affect other tests by database contamination. To run a test page within a rolledback transaction simply add @begin transaction@ and @rollback@ tables to your test page:
+
+{code}
+|begin transaction|
+
+--some test tables--
+
+|rollback|
+{code}
+
+If you wish to run all of your test pages contained within a suite in rolledback transactions simply add begin transaction and rollback tables to SetUp and TearDown pages respectively for the given suite.
+
 h3. Templates (since 0.4)
 
 You can now easily create Fixtures by typing:
