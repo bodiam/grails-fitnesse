@@ -15,6 +15,6 @@
 
 
 
-|json collection converter test|
+|json objects conversion with collections|
 |producer|models|match?|
 |{name: 'Audi', models: [{name: 'A3'}, {name: 'A4'}]}|[{name: 'A3'}, {name: 'A4'}]|true|
