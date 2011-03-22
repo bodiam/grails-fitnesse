@@ -46,11 +46,6 @@
 - Removed .svn directories and fitnesse zips                        DONE
 - add configuration option for default Fitnesse suite to run!       DONE
 
-Documentation
-* changed the EchoFixture package used to do a quickstart test to nl.jworks.fitnesse.quickstart because otherwise
-grails classloader failed when reloading it
-* document transaction support (using BeginTransaction, Commit and Rollback fixtures)
-
 TODO:
 - run some code coverage tool against fitnesse test for the plugin
 - Create screencast
