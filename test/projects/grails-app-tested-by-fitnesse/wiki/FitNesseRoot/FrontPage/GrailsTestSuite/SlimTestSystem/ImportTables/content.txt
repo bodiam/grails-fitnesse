@@ -2,14 +2,14 @@
 
 It's possible to load Fixtures with their fully qualified name (without the Fixture suffix):
 
-!|nl.jworks.Deduct          |
-|operand 1|operand 2|result?|
-|1        |3        |-2     |
+!|nl.jworks.grails.fitnesse.documentation.Deduct|
+|operand 1       |operand 2       |result?      |
+|1               |3               |-2           |
 
 However, when using the import table, you can tell the Slim Executor where the fixtures live.
 
 |import   |
-|nl.jworks|
+|nl.jworks.grails.fitnesse.documentation|
 
 This way, only the name of the fixture is needed.
 

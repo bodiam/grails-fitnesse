@@ -38,7 +38,11 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
                 result.incrementRightCount testResult.right
                 result.incrementWrongCount testResult.wrong
 
-                eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName)
+                if(testResult.exceptions || testResult.wrong) {
+                    eventPublisher.testFailure(totalResult.rootPath + "." + testResult.relativePageName)
+                } else {
+                    eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName)                    
+                }
             }
         }
         fitnesse.stop();
