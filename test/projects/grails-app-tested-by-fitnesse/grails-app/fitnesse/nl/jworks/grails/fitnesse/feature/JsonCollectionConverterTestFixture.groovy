@@ -9,6 +9,6 @@ class JsonCollectionConverterTestFixture {
     List<CarModel> models
 
     boolean match() {
-        producer.models.size() == producer.models*.name.intersect(models*.name).size()
+        producer.models*.name.containsAll(models*.name)
     }
 }
