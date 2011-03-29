@@ -2,7 +2,7 @@
 !define COMMAND_PATTERN {ls}
 
 |import|
-|tutorial|
+|nl.jworks.grails.fitnesse.tutorial|
 
 !1 Create the inventory
 
