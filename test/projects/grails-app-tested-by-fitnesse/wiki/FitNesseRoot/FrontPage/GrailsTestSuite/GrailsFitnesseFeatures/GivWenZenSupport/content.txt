@@ -8,3 +8,9 @@
 |given|the number 5|
 |when|incrementing it by 3|
 |then|the result is 8|
+
+|script|
+|given|the number 1|
+|when|incrementing it by 2|
+|and|incrementing it by 3|
+|then|the result is 6|
