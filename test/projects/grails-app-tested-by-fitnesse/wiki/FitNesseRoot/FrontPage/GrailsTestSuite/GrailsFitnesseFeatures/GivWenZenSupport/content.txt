@@ -1,0 +1,10 @@
+|import|
+|fitnesse.grails|
+
+|script|
+|start|giv wen zen for grails|
+
+|script|
+|given|the number 5|
+|when|incrementing it by 3|
+|then|the result is 8|
