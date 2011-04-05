@@ -190,7 +190,7 @@ class MyFixture {
 {code}
 
 h3. Untyped arguments
-Groovy supports default arguments. Fitnesse also supports this:
+Groovy supports untyped method arguments. The Grails Fitnesse plugin also supports this:
 
 {code}
 class MyFixture {
