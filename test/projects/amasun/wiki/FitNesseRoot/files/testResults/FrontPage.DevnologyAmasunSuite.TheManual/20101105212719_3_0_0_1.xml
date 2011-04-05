@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>TheManual</rootPath>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables</name>
+    <date>11/05/2010 21:27:19</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables?pageHistory&amp;resultDate=20101105212719</pageHistoryLink>
+    <counts>
+      <right>5</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>51</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.TheManual.ImportTables</name>
+    <date>11/05/2010 21:27:19</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.TheManual.ImportTables?pageHistory&amp;resultDate=20101105212719</pageHistoryLink>
+    <counts>
+      <right>8</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>4</exceptions>
+    </counts>
+    <runTimeInMillis>210</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.TheManual.QueryTables</name>
+    <date>11/05/2010 21:27:19</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.TheManual.QueryTables?pageHistory&amp;resultDate=20101105212719</pageHistoryLink>
+    <counts>
+      <right>6</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>10</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables</name>
+    <date>11/05/2010 21:27:19</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables?pageHistory&amp;resultDate=20101105212719</pageHistoryLink>
+    <counts>
+      <right>2</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>5</runTimeInMillis>
+  </pageHistoryReference>
+    <finalCounts>
+    <right>3</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>414</totalRunTimeInMillis>
+
+</suiteResults>
+

@@ -63,9 +63,9 @@ TODO:
 
 - promo, blogging, GR8 conf, screencast, tutorials
 
-
 1.1 TODO:
 - GivWenZen integration
+- Support CustomTypes (http://localhost:9090/FitNesse.UserGuide.SliM.CustomTypes)
 
   560  git add docs/
   562  git commit

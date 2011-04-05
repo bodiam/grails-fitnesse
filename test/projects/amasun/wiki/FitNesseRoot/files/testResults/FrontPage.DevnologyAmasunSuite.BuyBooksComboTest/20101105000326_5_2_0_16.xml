@@ -1,0 +1,1485 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>BuyBooksComboTest</rootPath>
+    <result>
+    <counts>
+      <right>5</right>
+      <wrong>2</wrong>
+      <ignores>0</ignores>
+      <exceptions>16</exceptions>
+    </counts>
+    <runTimeInMillis>267</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-4991437229081780495');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-4991437229081780495"/>
+	</a>
+&nbsp;<span class="meta">Precompiled Libraries </span>
+	<div class="hidden" id="-4991437229081780495"></div>
+</div>
+<br/><div class="setup">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-6373246196711709474');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-6373246196711709474"/>
+	</a>
+&nbsp;<span class="meta">Set Up: <a href="FrontPage.DevnologyAmasunSuite.SetUp">.Front Page .Devnology Amasun Suite .Set Up</a> <a href="FrontPage.DevnologyAmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="-6373246196711709474"><table border="1" cellspacing="0" _TABLENUMBER=3620428033630550912>
+<tr><td>import</td>
+</tr>
+<tr><td>nl.jworks.amasun.fitnesse.book</td>
+</tr>
+</table>
+</div>
+</div>
+<h1>Functionality - Buy a Book Combo</h1><br/>The core of our business is to sell books. To sell as much books as possible, we've introduced the concept of package deals (or promo packages, or book combos, or just-really-good-deals, as our customers call it). Since this is such an important part of our business, we need to assert it works correctly.<br/><br/>There are two types of discount: one fixed price (say 10 euro's discount on the total amount, which we'll call AMOUNT), and it would be nice if we could also get a discount which is percentage based, which will deduct a certain percentage of the combination of the two books (say 25% off when buying two fantasy books). We'll probably start using this in the beginning of 2011. Or 2012. But it's very important!<br/><br/>At the moment, we can link together books based on their ISBN code. We know it's not ideal, so in the future we should introduce our own code, but currently it works good enough, so any package can ben created by linking two books together. A promo package of more than two books is not needed at the moment, but would be nice for the future, say the end of 2013.<br/><br/><h2>Exercise</h2><br/>Step 1. Create a script and fixture for the execute step, that places an order with two books from a promotion package and checks if the charged Subtotal, Discount and Total are correct.<br/><br/>Step 2. Remove any duplication in this test and the previous one.<br/><br/><br/><h3>Setup</h3><br/>Setup the inventory<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=5156909014624778211>
+<tr><td colspan="5"><span class="pass">initialize book inventory</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>isbn</td>
+<td>price</td>
+<td>amount</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td>0-8352-2051-6</td>
+<td>10</td>
+<td>50</td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td>0-8352-8936-1</td>
+<td>49</td>
+<td>80</td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td>0-8352-3891-9</td>
+<td>25</td>
+<td>65</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0" _TABLENUMBER=5762112530299997759>
+<tr><td colspan="4"><span class="pass">create promo package</span></td>
+</tr>
+<tr><td>book 1 isbn</td>
+<td>book 2 isbn</td>
+<td>discount amount</td>
+<td>discount type</td>
+</tr>
+<tr><td>0-8352-2051-6 <span class="error">Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>0-8352-8936-1 <span class="error">Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>10 <span class="error">Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>AMOUNT <span class="error">Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+</tr>
+<tr><td>0-8352-2051-6 <span class="error">Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>0-8352-3891-9 <span class="error">Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>5 <span class="error">Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+<td>AMOUNT <span class="error">Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.</span></td>
+</tr>
+</table>
+<br/>Create the currently known customers.<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=3514866511417252811>
+<tr><td><span class="pass">intialize customer base</span></td>
+</tr>
+<tr><td>name</td>
+</tr>
+<tr><td>Rod Johnson</td>
+</tr>
+<tr><td>Jelle Hissink</td>
+</tr>
+<tr><td>Martin Fowler</td>
+</tr>
+<tr><td>Robert Martin</td>
+</tr>
+</table>
+<br/><h3>Execute</h3><br/>TODO: Implement this<br/><br/><h3>Verification</h3><br/><table border="1" cellspacing="0" _TABLENUMBER=8746761801757027377>
+<tr><td colspan="3"><span class="pass">check book inventory</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>amount?</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td>[25] <span class="fail">expected [49]</span></td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td>[77] <span class="fail">expected [79]</span></td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td><span class="pass">65</span></td>
+</tr>
+</table>
+]]></content>
+    <relativePageName>BuyBooksComboTest</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_1</name>
+                <row>
+                    <col><![CDATA[pass(initialize book inventory)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[isbn]]></col>
+                    <col><![CDATA[price]]></col>
+                    <col><![CDATA[amount]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King]]></col>
+                    <col><![CDATA[IT]]></col>
+                    <col><![CDATA[0-8352-2051-6]]></col>
+                    <col><![CDATA[10]]></col>
+                    <col><![CDATA[50]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+                    <col><![CDATA[0-8352-8936-1]]></col>
+                    <col><![CDATA[49]]></col>
+                    <col><![CDATA[80]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson]]></col>
+                    <col><![CDATA[Who Moved My Cheese?]]></col>
+                    <col><![CDATA[0-8352-3891-9]]></col>
+                    <col><![CDATA[25]]></col>
+                    <col><![CDATA[65]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_2</name>
+                <row>
+                    <col><![CDATA[pass(create promo package)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[book 1 isbn]]></col>
+                    <col><![CDATA[book 2 isbn]]></col>
+                    <col><![CDATA[discount amount]]></col>
+                    <col><![CDATA[discount type]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[0-8352-2051-6 error(Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[0-8352-8936-1 error(Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[10 error(Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[AMOUNT error(Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[0-8352-2051-6 error(Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[0-8352-3891-9 error(Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[5 error(Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+                    <col><![CDATA[AMOUNT error(Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_3</name>
+                <row>
+                    <col><![CDATA[pass(intialize customer base)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[name]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Rod Johnson]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Jelle Hissink]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Martin Fowler]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Robert Martin]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_4</name>
+                <row>
+                    <col><![CDATA[pass(check book inventory)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[amount?]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King]]></col>
+                    <col><![CDATA[IT]]></col>
+                    <col><![CDATA[[25] fail(expected [49])]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+                    <col><![CDATA[[77] fail(expected [79])]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson]]></col>
+                    <col><![CDATA[Who Moved My Cheese?]]></col>
+                    <col><![CDATA[pass(65)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_0, make, decisionTable_1, InitializeBookInventory]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[initialize book inventory]]></expected>
+                              <evaluationMessage><![CDATA[pass(initialize book inventory)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_1, call, decisionTable_1, table, [[author, title, isbn, price, amount], [S. King, IT, 0-8352-2051-6, 10, 50], [P.J. van de Sande, Large Scale Application Development with NCQRS, 0-8352-8936-1, 49, 80], [S. Johnson, Who Moved My Cheese?, 0-8352-3891-9, 25, 65]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_2, call, decisionTable_1, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_3, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_4, call, decisionTable_1, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_5, call, decisionTable_1, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_6, call, decisionTable_1, setIsbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_6</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_7, call, decisionTable_1, setPrice, 10]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_7</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_8, call, decisionTable_1, setAmount, 50]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_8</instructionId>
+          <col>4</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[50]]></expected>
+                              <evaluationMessage><![CDATA[50]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_9, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_10, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_11, call, decisionTable_1, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_11</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_12, call, decisionTable_1, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_12</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_13, call, decisionTable_1, setIsbn, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_13</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-8936-1]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-8936-1]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_14, call, decisionTable_1, setPrice, 49]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_14</instructionId>
+          <col>3</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[49]]></expected>
+                              <evaluationMessage><![CDATA[49]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_15, call, decisionTable_1, setAmount, 80]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_15</instructionId>
+          <col>4</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[80]]></expected>
+                              <evaluationMessage><![CDATA[80]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_16, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_17, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_18, call, decisionTable_1, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_18</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_19, call, decisionTable_1, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_19</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese?]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_20, call, decisionTable_1, setIsbn, 0-8352-3891-9]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_20</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-3891-9]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-3891-9]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_21, call, decisionTable_1, setPrice, 25]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_21</instructionId>
+          <col>3</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[25]]></expected>
+                              <evaluationMessage><![CDATA[25]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_22, call, decisionTable_1, setAmount, 65]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_22</instructionId>
+          <col>4</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[65]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_23, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_24, call, decisionTable_1, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_0, make, decisionTable_2, CreatePromoPackage]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_2_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[create promo package]]></expected>
+                              <evaluationMessage><![CDATA[pass(create promo package)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_1, call, decisionTable_2, table, [[book 1 isbn, book 2 isbn, discount amount, discount type], [0-8352-2051-6, 0-8352-8936-1, 10, AMOUNT], [0-8352-2051-6, 0-8352-3891-9, 5, AMOUNT]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_2, call, decisionTable_2, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_3, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_4, call, decisionTable_2, setBook1Isbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[!error:Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6 error(Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_5, call, decisionTable_2, setBook2Isbn, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[!error:Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[0-8352-8936-1]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-8936-1 error(Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_6, call, decisionTable_2, setDiscountAmount, 10]]]></instruction>
+        <slimResult><![CDATA[!error:Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_6</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10 error(Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_7, call, decisionTable_2, setDiscountType, AMOUNT]]]></instruction>
+        <slimResult><![CDATA[!error:Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_7</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[AMOUNT]]></expected>
+                              <evaluationMessage><![CDATA[AMOUNT error(Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_8, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_9, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_10, call, decisionTable_2, setBook1Isbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[!error:Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_10</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6 error(Method setBook1Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_11, call, decisionTable_2, setBook2Isbn, 0-8352-3891-9]]]></instruction>
+        <slimResult><![CDATA[!error:Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_11</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[0-8352-3891-9]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-3891-9 error(Method setBook2Isbn[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_12, call, decisionTable_2, setDiscountAmount, 5]]]></instruction>
+        <slimResult><![CDATA[!error:Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[5]]></expected>
+                              <evaluationMessage><![CDATA[5 error(Method setDiscountAmount[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_13, call, decisionTable_2, setDiscountType, AMOUNT]]]></instruction>
+        <slimResult><![CDATA[!error:Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_13</instructionId>
+          <col>3</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.]]></actual>
+                              <expected><![CDATA[AMOUNT]]></expected>
+                              <evaluationMessage><![CDATA[AMOUNT error(Method setDiscountType[1] not found in nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_14, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_15, call, decisionTable_2, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_0, make, decisionTable_3, IntializeCustomerBase]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_3_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[intialize customer base]]></expected>
+                              <evaluationMessage><![CDATA[pass(intialize customer base)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_1, call, decisionTable_3, table, [[name], [Rod Johnson], [Jelle Hissink], [Martin Fowler], [Robert Martin]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_2, call, decisionTable_3, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_3, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_4, call, decisionTable_3, setName, Rod Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Rod Johnson]]></expected>
+                              <evaluationMessage><![CDATA[Rod Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_5, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_6, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_7, call, decisionTable_3, setName, Jelle Hissink]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_7</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Jelle Hissink]]></expected>
+                              <evaluationMessage><![CDATA[Jelle Hissink]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_8, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_9, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_10, call, decisionTable_3, setName, Martin Fowler]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_10</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Martin Fowler]]></expected>
+                              <evaluationMessage><![CDATA[Martin Fowler]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_11, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_12, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_13, call, decisionTable_3, setName, Robert Martin]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_13</instructionId>
+          <col>0</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Robert Martin]]></expected>
+                              <evaluationMessage><![CDATA[Robert Martin]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_14, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_15, call, decisionTable_3, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_0, make, decisionTable_4, CheckBookInventory]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_4_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[check book inventory]]></expected>
+                              <evaluationMessage><![CDATA[pass(check book inventory)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_1, call, decisionTable_4, table, [[author, title, amount?], [S. King, IT, 49], [P.J. van de Sande, Large Scale Application Development with NCQRS, 79], [S. Johnson, Who Moved My Cheese?, 65]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_2, call, decisionTable_4, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_3, call, decisionTable_4, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_4, call, decisionTable_4, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_5, call, decisionTable_4, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_6, call, decisionTable_4, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_7, call, decisionTable_4, amount]]]></instruction>
+        <slimResult><![CDATA[25]]></slimResult>
+                <expectation>
+          <status>wrong</status>
+          <instructionId>decisionTable_4_7</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[25]]></actual>
+                              <expected><![CDATA[49]]></expected>
+                              <evaluationMessage><![CDATA[[25] fail(expected [49])]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_8, call, decisionTable_4, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_9, call, decisionTable_4, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_9</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_10, call, decisionTable_4, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_10</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_11, call, decisionTable_4, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_12, call, decisionTable_4, amount]]]></instruction>
+        <slimResult><![CDATA[77]]></slimResult>
+                <expectation>
+          <status>wrong</status>
+          <instructionId>decisionTable_4_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[77]]></actual>
+                              <expected><![CDATA[79]]></expected>
+                              <evaluationMessage><![CDATA[[77] fail(expected [79])]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_13, call, decisionTable_4, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_14, call, decisionTable_4, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_14</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_15, call, decisionTable_4, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_4_15</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese?]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_16, call, decisionTable_4, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_17, call, decisionTable_4, amount]]]></instruction>
+        <slimResult><![CDATA[65]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_4_17</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[65]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[pass(65)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_4_18, call, decisionTable_4, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.GeneratedMethodAccessor368.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

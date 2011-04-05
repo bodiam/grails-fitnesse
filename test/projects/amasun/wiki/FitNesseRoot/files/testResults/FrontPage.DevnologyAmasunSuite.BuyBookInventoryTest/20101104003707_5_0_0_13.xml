@@ -1,0 +1,1687 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>BuyBookInventoryTest</rootPath>
+    <result>
+    <counts>
+      <right>5</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>13</exceptions>
+    </counts>
+    <runTimeInMillis>1569</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-2440103204558126657');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-2440103204558126657"/>
+	</a>
+&nbsp;<span class="meta">Precompiled Libraries </span>
+	<div class="hidden" id="-2440103204558126657"></div>
+</div>
+<br/><div class="setup">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-4782080428541202546');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-4782080428541202546"/>
+	</a>
+&nbsp;<span class="meta">Set Up: <a href="FrontPage.DevnologyAmasunSuite.SetUp">.Front Page .Devnology Amasun Suite .Set Up</a> <a href="FrontPage.DevnologyAmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="-4782080428541202546"><table border="1" cellspacing="0" _TABLENUMBER=1019329854536434485>
+<tr><td>import</td>
+</tr>
+<tr><td>nl.jworks.amasun.fitnesse.book</td>
+</tr>
+</table>
+</div>
+</div>
+<h1>Functionality - Buying a book modifies inventory</h1><br/>One of the core businesses from Amasun is to sell books. To verify that the inventory part of this core functionality works, we've created an initial acceptance test which will support this business functionality.<br/><br/><h2>Exercise</h2>The test driver for the verification step is missing. Implement it and make sure the test succeeds.<br/><br/><h3>Setup</h3><br/>Setup the inventory<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=1250722362855341965>
+<tr><td colspan="5"><span class="pass">initialize book inventory</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>isbn</td>
+<td>price</td>
+<td>amount</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td>0-8352-2051-6</td>
+<td>10</td>
+<td>50</td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td>0-8352-8936-1</td>
+<td>49</td>
+<td>80</td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td>0-8352-3891-9</td>
+<td>25</td>
+<td>65</td>
+</tr>
+</table>
+<br/>Create the currently known customers.<br/><br/><div id="test_exceptions1"><H3> <span class="fail">Exceptions</span></H3><br/><a name="decisionTable_2_14"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-1644079031587908250');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-1644079031587908250"/></a>&nbsp;<span class="meta">decisionTable_2_14 </span>
+
+	<div class="hidden" id="-1644079031587908250"><pre>__EXCEPTION__:org.hibernate.HibernateException: No Hibernate Session bound to thread, and configuration does not allow creation of non-transactional one here
+	at org.springframework.orm.hibernate3.SpringSessionContext.currentSession(SpringSessionContext.java:63)
+	at org.hibernate.impl.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:574)
+	at org.codehaus.groovy.grails.orm.hibernate.validation.HibernateDomainClassValidator.validate(HibernateDomainClassValidator.java:70)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractSavePersistentMethod.doInvokeInternal(AbstractSavePersistentMethod.java:128)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractDynamicPersistentMethod.invoke(AbstractDynamicPersistentMethod.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSite.invoke(PojoMetaMethodSite.java:188)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport$_addBasicPersistenceMethods_closure72.doCall(HibernatePluginSupport.groovy:786)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:80)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1058)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1070)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:39)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.amasun.service.customer.CustomerRepository.add(CustomerRepository.groovy:10)
+	at nl.jworks.amasun.service.customer.CustomerRepository$add.call(Unknown Source)
+	at nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)
+	at sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)
+	at sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+</pre></div>
+</div><a name="decisionTable_2_11"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-4326996033321073810');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-4326996033321073810"/></a>&nbsp;<span class="meta">decisionTable_2_11 </span>
+
+	<div class="hidden" id="-4326996033321073810"><pre>__EXCEPTION__:org.hibernate.HibernateException: No Hibernate Session bound to thread, and configuration does not allow creation of non-transactional one here
+	at org.springframework.orm.hibernate3.SpringSessionContext.currentSession(SpringSessionContext.java:63)
+	at org.hibernate.impl.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:574)
+	at org.codehaus.groovy.grails.orm.hibernate.validation.HibernateDomainClassValidator.validate(HibernateDomainClassValidator.java:70)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractSavePersistentMethod.doInvokeInternal(AbstractSavePersistentMethod.java:128)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractDynamicPersistentMethod.invoke(AbstractDynamicPersistentMethod.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSite.invoke(PojoMetaMethodSite.java:188)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport$_addBasicPersistenceMethods_closure72.doCall(HibernatePluginSupport.groovy:786)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:80)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1058)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1070)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:39)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.amasun.service.customer.CustomerRepository.add(CustomerRepository.groovy:10)
+	at nl.jworks.amasun.service.customer.CustomerRepository$add.call(Unknown Source)
+	at nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)
+	at sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)
+	at sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+</pre></div>
+</div><a name="decisionTable_2_8"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-70526479368896171');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-70526479368896171"/></a>&nbsp;<span class="meta">decisionTable_2_8 </span>
+
+	<div class="hidden" id="-70526479368896171"><pre>__EXCEPTION__:org.hibernate.HibernateException: No Hibernate Session bound to thread, and configuration does not allow creation of non-transactional one here
+	at org.springframework.orm.hibernate3.SpringSessionContext.currentSession(SpringSessionContext.java:63)
+	at org.hibernate.impl.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:574)
+	at org.codehaus.groovy.grails.orm.hibernate.validation.HibernateDomainClassValidator.validate(HibernateDomainClassValidator.java:70)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractSavePersistentMethod.doInvokeInternal(AbstractSavePersistentMethod.java:128)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractDynamicPersistentMethod.invoke(AbstractDynamicPersistentMethod.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSite.invoke(PojoMetaMethodSite.java:188)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport$_addBasicPersistenceMethods_closure72.doCall(HibernatePluginSupport.groovy:786)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:80)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1058)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1070)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:39)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.amasun.service.customer.CustomerRepository.add(CustomerRepository.groovy:10)
+	at nl.jworks.amasun.service.customer.CustomerRepository$add.call(Unknown Source)
+	at nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)
+	at sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)
+	at sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+</pre></div>
+</div><a name="decisionTable_2_5"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('7216203723623581353');"><img src="/files/images/collapsableClosed.gif" class="left" id="img7216203723623581353"/></a>&nbsp;<span class="meta">decisionTable_2_5 </span>
+
+	<div class="hidden" id="7216203723623581353"><pre>__EXCEPTION__:org.hibernate.HibernateException: No Hibernate Session bound to thread, and configuration does not allow creation of non-transactional one here
+	at org.springframework.orm.hibernate3.SpringSessionContext.currentSession(SpringSessionContext.java:63)
+	at org.hibernate.impl.SessionFactoryImpl.getCurrentSession(SessionFactoryImpl.java:574)
+	at org.codehaus.groovy.grails.orm.hibernate.validation.HibernateDomainClassValidator.validate(HibernateDomainClassValidator.java:70)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractSavePersistentMethod.doInvokeInternal(AbstractSavePersistentMethod.java:128)
+	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractDynamicPersistentMethod.invoke(AbstractDynamicPersistentMethod.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSite.invoke(PojoMetaMethodSite.java:188)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:54)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport$_addBasicPersistenceMethods_closure72.doCall(HibernatePluginSupport.groovy:786)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:80)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1058)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1070)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at groovy.lang.MetaObjectProtocol$invokeMethod.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:133)
+	at org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport$_enhanceSessionFactory_closure13.doCall(HibernatePluginSupport.groovy:373)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:88)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:80)
+	at groovy.lang.MetaClassImpl.invokeMissingMethod(MetaClassImpl.java:813)
+	at groovy.lang.MetaClassImpl.invokePropertyOrMissing(MetaClassImpl.java:1107)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1060)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1070)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:886)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:39)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.amasun.service.customer.CustomerRepository.add(CustomerRepository.groovy:10)
+	at nl.jworks.amasun.service.customer.CustomerRepository$add.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)
+	at sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)
+	at sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)
+	at nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+</pre></div>
+</div></div><hr/><table border="1" cellspacing="0" _TABLENUMBER=3890653598013022790>
+<tr><td><span class="pass">intialize customer base</span></td>
+</tr>
+<tr><td>name</td>
+</tr>
+<tr><td>Rod Johnson</td>
+</tr>
+<tr><td>Jelle Hissink</td>
+</tr>
+<tr><td>Martin Fowler</td>
+</tr>
+<tr><td>Robert Martin</td>
+</tr>
+</table>
+<br/><h3>Execute</h3><br/><table border="1" cellspacing="0" _TABLENUMBER=9120939154087864224>
+<tr><td>script</td>
+<td colspan="5"><span class="pass">buy book scenario</span></td>
+</tr>
+<tr><td>customer</td>
+<td>Rod Johnson</td>
+<td>buys</td>
+<td>3</td>
+<td>books with title</td>
+<td>Large Scale Application Development with NCQRS</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0" _TABLENUMBER=6735344693921342160>
+<tr><td>script</td>
+<td colspan="5"><span class="pass">buy book scenario</span></td>
+</tr>
+<tr><td>customer</td>
+<td>Jelle Hissink</td>
+<td>buys</td>
+<td>25</td>
+<td>books with title</td>
+<td>IT</td>
+</tr>
+</table>
+<br/><h3>Verification</h3><br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"decisionTable_5_12\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-3957024744439199151');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-3957024744439199151\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_12 </span>\n\n\t<div class=\"hidden\" id=\"-3957024744439199151\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat sun.reflect.GeneratedMethodAccessor224.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:54)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.convertToString(GroovyMethodExecutor.groovy:73)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$convertToString(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:51)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:56)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor.execute(FunctionAsPropertyMethodExecutor.groovy:43)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor$execute.call(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_5_17\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-2150194561018477769');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-2150194561018477769\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_17 </span>\n\n\t<div class=\"hidden\" id=\"-2150194561018477769\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat sun.reflect.GeneratedMethodAccessor224.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:54)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.convertToString(GroovyMethodExecutor.groovy:73)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$convertToString(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:51)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:56)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor.execute(FunctionAsPropertyMethodExecutor.groovy:43)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor$execute.call(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_5_16\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-1745745025339990309');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-1745745025339990309\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_16 </span>\n\n\t<div class=\"hidden\" id=\"-1745745025339990309\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.service.book.InventoryService.countByAuthorAndTitle() is applicable for argument types: (java.lang.String, java.lang.String) values: [S. Johnson, Who Moved My Cheese?]\nPossible solutions: countAllByAuthorAndTitle(java.lang.String, java.lang.String)\n\tat org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:54)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:15)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_5_7\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-536455862983141129');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-536455862983141129\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_7 </span>\n\n\t<div class=\"hidden\" id=\"-536455862983141129\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat sun.reflect.GeneratedMethodAccessor224.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:54)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.convertToString(GroovyMethodExecutor.groovy:73)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$convertToString(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$convertToString.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:51)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:44)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:56)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor.execute(FunctionAsPropertyMethodExecutor.groovy:43)\n\tat nl.jworks.grails.plugin.fitnesse.FunctionAsPropertyMethodExecutor$execute.call(Unknown Source)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_5_11\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-1420367819762129508');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-1420367819762129508\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_11 </span>\n\n\t<div class=\"hidden\" id=\"-1420367819762129508\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.service.book.InventoryService.countByAuthorAndTitle() is applicable for argument types: (java.lang.String, java.lang.String) values: [P.J. van de Sande, Large Scale Application Development with NCQRS]\nPossible solutions: countAllByAuthorAndTitle(java.lang.String, java.lang.String)\n\tat org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:54)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:15)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_5_6\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-4935596069635749111');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-4935596069635749111\"/></a>&nbsp;<span class=\"meta\">decisionTable_5_6 </span>\n\n\t<div class=\"hidden\" id=\"-4935596069635749111\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.service.book.InventoryService.countByAuthorAndTitle() is applicable for argument types: (java.lang.String, java.lang.String) values: [S. King, IT]\nPossible solutions: countAllByAuthorAndTitle(java.lang.String, java.lang.String)\n\tat org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:54)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:15)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat sun.reflect.GeneratedMethodAccessor222.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)\n\tat org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:129)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.callMethod(GroovyMethodExecutor.groovy:57)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.this$3$callMethod(GroovyMethodExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$this$3$callMethod.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:47)\n\tat sun.reflect.GeneratedMethodAccessor221.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:33)\n\tat sun.reflect.GeneratedMethodAccessor215.invoke(Unknown Source)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)\n\tat java.lang.reflect.Method.invoke(Method.java:597)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:266)\n\tat org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:51)\n\tat org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:159)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:27)\n\tat nl.jworks.grails.plugin.fitnesse.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:206)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=7809393440246052497>
+<tr><td colspan="3"><span class="pass">check book inventory</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>amount?</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td><span class="error">Exception: <a href=#decisionTable_5_7>decisionTable_5_7</a></span></td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td><span class="error">Exception: <a href=#decisionTable_5_12>decisionTable_5_12</a></span></td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td><span class="error">Exception: <a href=#decisionTable_5_17>decisionTable_5_17</a></span></td>
+</tr>
+</table>
+]]></content>
+    <relativePageName>BuyBookInventoryTest</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_1</name>
+                <row>
+                    <col><![CDATA[pass(initialize book inventory)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[isbn]]></col>
+                    <col><![CDATA[price]]></col>
+                    <col><![CDATA[amount]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King]]></col>
+                    <col><![CDATA[IT]]></col>
+                    <col><![CDATA[0-8352-2051-6]]></col>
+                    <col><![CDATA[10]]></col>
+                    <col><![CDATA[50]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+                    <col><![CDATA[0-8352-8936-1]]></col>
+                    <col><![CDATA[49]]></col>
+                    <col><![CDATA[80]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson]]></col>
+                    <col><![CDATA[Who Moved My Cheese?]]></col>
+                    <col><![CDATA[0-8352-3891-9]]></col>
+                    <col><![CDATA[25]]></col>
+                    <col><![CDATA[65]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_2</name>
+                <row>
+                    <col><![CDATA[pass(intialize customer base)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[name]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Rod Johnson]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Jelle Hissink]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Martin Fowler]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Robert Martin]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>scriptTable_3</name>
+                <row>
+                    <col><![CDATA[script]]></col>
+                    <col><![CDATA[pass(buy book scenario)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[customer]]></col>
+                    <col><![CDATA[Rod Johnson]]></col>
+                    <col><![CDATA[buys]]></col>
+                    <col><![CDATA[3]]></col>
+                    <col><![CDATA[books with title]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>scriptTable_4</name>
+                <row>
+                    <col><![CDATA[script]]></col>
+                    <col><![CDATA[pass(buy book scenario)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[customer]]></col>
+                    <col><![CDATA[Jelle Hissink]]></col>
+                    <col><![CDATA[buys]]></col>
+                    <col><![CDATA[25]]></col>
+                    <col><![CDATA[books with title]]></col>
+                    <col><![CDATA[IT]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_5</name>
+                <row>
+                    <col><![CDATA[pass(check book inventory)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[amount?]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King]]></col>
+                    <col><![CDATA[IT]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_5_7>decisionTable_5_7</a>)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_5_12>decisionTable_5_12</a>)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson]]></col>
+                    <col><![CDATA[Who Moved My Cheese?]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_5_17>decisionTable_5_17</a>)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_0, make, decisionTable_1, InitializeBookInventory]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[initialize book inventory]]></expected>
+                              <evaluationMessage><![CDATA[pass(initialize book inventory)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_1, call, decisionTable_1, table, [[author, title, isbn, price, amount], [S. King, IT, 0-8352-2051-6, 10, 50], [P.J. van de Sande, Large Scale Application Development with NCQRS, 0-8352-8936-1, 49, 80], [S. Johnson, Who Moved My Cheese?, 0-8352-3891-9, 25, 65]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_2, call, decisionTable_1, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_3, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_4, call, decisionTable_1, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_5, call, decisionTable_1, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_6, call, decisionTable_1, setIsbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_6</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_7, call, decisionTable_1, setPrice, 10]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_7</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_8, call, decisionTable_1, setAmount, 50]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_8</instructionId>
+          <col>4</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[50]]></expected>
+                              <evaluationMessage><![CDATA[50]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_9, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_10, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_11, call, decisionTable_1, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_11</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_12, call, decisionTable_1, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_12</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_13, call, decisionTable_1, setIsbn, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_13</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-8936-1]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-8936-1]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_14, call, decisionTable_1, setPrice, 49]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_14</instructionId>
+          <col>3</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[49]]></expected>
+                              <evaluationMessage><![CDATA[49]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_15, call, decisionTable_1, setAmount, 80]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_15</instructionId>
+          <col>4</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[80]]></expected>
+                              <evaluationMessage><![CDATA[80]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_16, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_17, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_18, call, decisionTable_1, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_18</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_19, call, decisionTable_1, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_19</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese?]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_20, call, decisionTable_1, setIsbn, 0-8352-3891-9]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_20</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-3891-9]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-3891-9]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_21, call, decisionTable_1, setPrice, 25]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_21</instructionId>
+          <col>3</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[25]]></expected>
+                              <evaluationMessage><![CDATA[25]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_22, call, decisionTable_1, setAmount, 65]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_22</instructionId>
+          <col>4</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[65]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_23, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_24, call, decisionTable_1, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_0, make, decisionTable_2, IntializeCustomerBase]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_2_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[intialize customer base]]></expected>
+                              <evaluationMessage><![CDATA[pass(intialize customer base)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_1, call, decisionTable_2, table, [[name], [Rod Johnson], [Jelle Hissink], [Martin Fowler], [Robert Martin]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_2, call, decisionTable_2, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_3, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_4, call, decisionTable_2, setName, Rod Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Rod Johnson]]></expected>
+                              <evaluationMessage><![CDATA[Rod Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_5, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_5>decisionTable_2_5</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_6, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_7, call, decisionTable_2, setName, Jelle Hissink]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_7</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Jelle Hissink]]></expected>
+                              <evaluationMessage><![CDATA[Jelle Hissink]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_8, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_8>decisionTable_2_8</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_9, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_10, call, decisionTable_2, setName, Martin Fowler]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_10</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Martin Fowler]]></expected>
+                              <evaluationMessage><![CDATA[Martin Fowler]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_11, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_11>decisionTable_2_11</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_12, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_13, call, decisionTable_2, setName, Robert Martin]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_13</instructionId>
+          <col>0</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Robert Martin]]></expected>
+                              <evaluationMessage><![CDATA[Robert Martin]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_14, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_14>decisionTable_2_14</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_15, call, decisionTable_2, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_3_0, make, scriptTableActor, BuyBookScenario]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>scriptTable_3_0</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[buy book scenario]]></expected>
+                              <evaluationMessage><![CDATA[pass(buy book scenario)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_3_1, call, scriptTableActor, customerBuysBooksWithTitle, Rod Johnson, 3, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_3_1</instructionId>
+          <col>1</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_3_1</instructionId>
+          <col>3</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_3_1</instructionId>
+          <col>5</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_3_1</instructionId>
+          <col>0</col>
+          <row>1</row>
+          <type>ScriptActionExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[customer]]></expected>
+                              <evaluationMessage><![CDATA[customer]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_0, make, scriptTableActor, BuyBookScenario]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>scriptTable_4_0</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[buy book scenario]]></expected>
+                              <evaluationMessage><![CDATA[pass(buy book scenario)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_1, call, scriptTableActor, customerBuysBooksWithTitle, Jelle Hissink, 25, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>1</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>3</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>5</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>0</col>
+          <row>1</row>
+          <type>ScriptActionExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[customer]]></expected>
+                              <evaluationMessage><![CDATA[customer]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_0, make, decisionTable_5, CheckBookInventory]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_5_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[check book inventory]]></expected>
+                              <evaluationMessage><![CDATA[pass(check book inventory)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_1, call, decisionTable_5, table, [[author, title, amount?], [S. King, IT, 25], [P.J. van de Sande, Large Scale Application Development with NCQRS, 77], [S. Johnson, Who Moved My Cheese?, 65]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_2, call, decisionTable_5, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_3, call, decisionTable_5, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_4, call, decisionTable_5, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_5, call, decisionTable_5, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_6, call, decisionTable_5, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_6>decisionTable_5_6</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_7, call, decisionTable_5, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_7>decisionTable_5_7</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_7</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_5_7>decisionTable_5_7</a>]]></actual>
+                              <expected><![CDATA[25]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_5_7>decisionTable_5_7</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_8, call, decisionTable_5, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_9, call, decisionTable_5, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_9</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_10, call, decisionTable_5, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_10</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_11, call, decisionTable_5, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_11>decisionTable_5_11</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_12, call, decisionTable_5, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_12>decisionTable_5_12</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_5_12>decisionTable_5_12</a>]]></actual>
+                              <expected><![CDATA[77]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_5_12>decisionTable_5_12</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_13, call, decisionTable_5, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_14, call, decisionTable_5, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_14</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_15, call, decisionTable_5, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_15</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese?]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_16, call, decisionTable_5, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_16>decisionTable_5_16</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_17, call, decisionTable_5, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_5_17>decisionTable_5_17</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_5_17</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_5_17>decisionTable_5_17</a>]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_5_17>decisionTable_5_17</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_5_18, call, decisionTable_5, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:25)
+	at fitnesse.slim.MethodExecutionResults.returnValue(MethodExecutionResults.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:229)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:52)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.call(GrailsStatementExecutor.groovy:212)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

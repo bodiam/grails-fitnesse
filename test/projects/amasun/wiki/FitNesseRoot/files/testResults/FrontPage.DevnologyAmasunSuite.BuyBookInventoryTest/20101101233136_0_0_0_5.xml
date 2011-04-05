@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>BuyBookInventoryTest</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>5</exceptions>
+    </counts>
+    <runTimeInMillis>21</runTimeInMillis>
+    <content><![CDATA[<h1>Functionality - Buying a book modifies inventory</h1><br/>One of the core businesses from Amasun is to sell books. To verify that the inventory part of this core functionality works, we've created an initial acceptance test which will support this business functionality.<br/><br/><h2>Exercise</h2>The test driver for the verification step is missing. Implement it and make sure the test succeeds.<br/><br/><h3>Setup</h3><br/>Setup the inventory<br/><br/><table border="1" cellspacing="0">
+<tr><td colspan="5" class="error">initialize book inventory<hr/> <span class="fit_label">Could not find fixture: InitializeBookInventory.</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>isbn</td>
+<td>price</td>
+<td>amount</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td>0-8352-2051-6</td>
+<td>10</td>
+<td>50</td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td>0-8352-8936-1</td>
+<td>49</td>
+<td>80</td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td>0-8352-3891-9</td>
+<td>25</td>
+<td>65</td>
+</tr>
+</table>
+<br/>Create the currently known customers.<br/><br/><table border="1" cellspacing="0">
+<tr><td class="error">intialize customer base<hr/> <span class="fit_label">Could not find fixture: IntializeCustomerBase.</span></td>
+</tr>
+<tr><td>name</td>
+</tr>
+<tr><td>Rod Johnson</td>
+</tr>
+<tr><td>Jelle Hissink</td>
+</tr>
+<tr><td>Martin Fowler</td>
+</tr>
+<tr><td>Robert Martin</td>
+</tr>
+</table>
+<br/><h3>Execute</h3><br/><table border="1" cellspacing="0">
+<tr><td class="error">script<hr/> <span class="fit_label">Could not find fixture: script.</span></td>
+<td colspan="5">buy book scenario</td>
+</tr>
+<tr><td>customer</td>
+<td>Rod Johnson</td>
+<td>buys</td>
+<td>3</td>
+<td>books with title</td>
+<td>Large Scale Application Development with NCQRS</td>
+</tr>
+</table>
+<br/><table border="1" cellspacing="0">
+<tr><td class="error">script<hr/> <span class="fit_label">Could not find fixture: script.</span></td>
+<td colspan="5">buy book scenario</td>
+</tr>
+<tr><td>customer</td>
+<td>Jelle Hissink</td>
+<td>buys</td>
+<td>25</td>
+<td>books with title</td>
+<td>IT</td>
+</tr>
+</table>
+<br/><h3>Verification</h3><br/><table border="1" cellspacing="0">
+<tr><td colspan="3" class="error">check book inventory<hr/> <span class="fit_label">Could not find fixture: CheckBookInventory.</span></td>
+</tr>
+<tr><td>author</td>
+<td>title</td>
+<td>amount?</td>
+</tr>
+<tr><td>S. King</td>
+<td>IT</td>
+<td>25</td>
+</tr>
+<tr><td>P.J. van de Sande</td>
+<td>Large Scale Application Development with NCQRS</td>
+<td>77</td>
+</tr>
+<tr><td>S. Johnson</td>
+<td>Who Moved My Cheese?</td>
+<td>65</td>
+</tr>
+</table>
+]]></content>
+    <relativePageName>BuyBookInventoryTest</relativePageName>
+    
+    
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

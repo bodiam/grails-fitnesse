@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>DevnologyAmasunSuite</rootPath>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.BuyBookInventoryTest</name>
+    <date>11/01/2010 23:58:10</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.BuyBookInventoryTest?pageHistory&amp;resultDate=20101101235810</pageHistoryLink>
+    <counts>
+      <right>2</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>56</exceptions>
+    </counts>
+    <runTimeInMillis>541</runTimeInMillis>
+  </pageHistoryReference>
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>713</totalRunTimeInMillis>
+
+</suiteResults>
+

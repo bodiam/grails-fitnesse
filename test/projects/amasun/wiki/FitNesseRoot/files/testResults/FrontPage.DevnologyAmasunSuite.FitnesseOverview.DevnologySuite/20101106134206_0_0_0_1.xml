@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>DevnologySuite</rootPath>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test</name>
+    <date>11/06/2010 13:42:06</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test?pageHistory&amp;resultDate=20101106134206</pageHistoryLink>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>3</exceptions>
+    </counts>
+    <runTimeInMillis>11</runTimeInMillis>
+  </pageHistoryReference>
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>1</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>168</totalRunTimeInMillis>
+
+</suiteResults>
+

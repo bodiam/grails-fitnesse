@@ -167,7 +167,7 @@ public class ProtectedStatementExecutor implements StatementExecutorInterface {
 
   protected Object createInstanceOfConstructor(String className, Object[] args) throws Exception {
     Class<?> k = searchPathsForClass(className);
-    Constructor<?> constructor = getConstructor(k.getConstructors(), args);
+    Constructor<?> constructor = getConstructor(k, k.getConstructors(), args);
     if (constructor == null)
       throw new SlimError(String.format("message:<<NO_CONSTRUCTOR %s>>", className));
 
@@ -201,7 +201,7 @@ public class ProtectedStatementExecutor implements StatementExecutorInterface {
     }
   }
 
-  protected Constructor<?> getConstructor(Constructor<?>[] constructors, Object[] args) {
+  protected Constructor<?> getConstructor(Class k, Constructor<?>[] constructors, Object[] args) {
     for (Constructor<?> constructor : constructors) {
       Class<?>[] arguments = constructor.getParameterTypes();
       if (arguments.length == args.length)

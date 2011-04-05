@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>TheManual</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>18</exceptions>
+    </counts>
+    <runTimeInMillis>30</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-767423976854878135');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-767423976854878135"/>
+	</a>
+&nbsp;<span class="meta">Precompiled Libraries </span>
+	<div class="hidden" id="-767423976854878135"></div>
+</div>
+<br/><div class="setup">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-5707344210028619450');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-5707344210028619450"/>
+	</a>
+&nbsp;<span class="meta">Set Up: <a href="FrontPage.DevnologyAmasunSuite.SetUp">.Front Page .Devnology Amasun Suite .Set Up</a> <a href="FrontPage.DevnologyAmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="-5707344210028619450"><table border="1" cellspacing="0" _TABLENUMBER=3680525517567685155>
+<tr><td>import</td>
+</tr>
+<tr><td>nl.jworks.amasun.fitnesse.book</td>
+</tr>
+<tr><td>nl.jworks.amasun.fitnesse.solution</td>
+</tr>
+</table>
+</div>
+</div>
+<table border="1" cellspacing="0" _TABLENUMBER=6095331093731121935>
+<tr><td>import</td>
+</tr>
+<tr><td>nl.jworks.guide</td>
+</tr>
+</table>
+<br/>Slim (Simple List Invocation Method) is an alternative to Fit.  Rather than running all the HTML processing, comparisons, and colorizing in the System Under Test (SUT), Slim keeps all that behavior on in Fitnesse.  What executes in the SUT is a very tiny kernel that implements the <i>Slim Protocol</i>.  This protocol is a bare bones RPC system that allows Fitnesse to call functions in the SUT.<br/><br/>This strategy has a number of advantages:<br/><ul>
+	<li>The Slim protocol is very easy to port.  Getting new platforms to use SLIM is a matter of a few hours of work.</li>
+	<li>All the features are on the Fitnesse side, so test tables remain consistent regardless of the platform of the SUT.</li>
+	<li>Since HTML is not an intrinsic part of SLIM, new test syntaxes can be explored.</li>
+</ul>
+<br/><h3>Using the SLIM Test System</h3>If you want a test page to be run under SLIM, you simply set the TEST_SYSTEM variable to "slim" instead of "fit". <pre>!define TEST_SYSTEM {slim} </pre> If this variable is set on your page, (as it is on this page!) or on any parent page, then your page will be run with Slim.<br/><br/>Also, when using the Grails integration, you'll need to define a dummy command pattern: <pre>!define COMMAND_PATTERN {echo} </pre> This makes sure Fitnesse doesn't execute anything, since the Grails Fitnesse server should already be running.<br/><br/><h3>The Slim Tables</h3>The first cell of a slim table tells you what kind of table it is. Here are the table types so far:<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=4072470673349637382>
+<tr><td><a href="FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables">Decision Tables</a> <span class="error">Could not find class <a</span></td>
+<td>Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture <span class="error">The instance decisionTable_2. does not exist</span></td>
+</tr>
+<tr><td><a href="FrontPage.DevnologyAmasunSuite.TheManual.QueryTables">Query Tables</a></td>
+<td>Supplies the expected results of a query.  This is similar to the Fit Row Fixture</td>
+</tr>
+<tr><td><a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a> <span class="error">The instance decisionTable_2. does not exist</span></td>
+<td>A series of actions and checks.  Similar to Do Fixture. <span class="error">The instance decisionTable_2. does not exist</span></td>
+</tr>
+<tr><td><a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a> <span class="error">The instance decisionTable_2. does not exist</span></td>
+<td>Add a path to the fixture search path. <span class="error">The instance decisionTable_2. does not exist</span></td>
+</tr>
+</table>
+]]></content>
+    <relativePageName>TheManual</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.solution]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>import_1</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.guide]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_2</name>
+                <row>
+                    <col><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables">Decision Tables</a> error(Could not find class <a)]]></col>
+                    <col><![CDATA[Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture error(The instance decisionTable_2. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.QueryTables">Query Tables</a>]]></col>
+                    <col><![CDATA[Supplies the expected results of a query.  This is similar to the Fit Row Fixture]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a> error(The instance decisionTable_2. does not exist)]]></col>
+                    <col><![CDATA[A series of actions and checks.  Similar to Do Fixture. error(The instance decisionTable_2. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a> error(The instance decisionTable_2. does not exist)]]></col>
+                    <col><![CDATA[Add a path to the fixture search path. error(The instance decisionTable_2. does not exist)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_1, import, nl.jworks.amasun.fitnesse.solution]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_1_0, import, nl.jworks.guide]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_0, make, decisionTable_2, <a href="FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables">Decision Tables</a>, Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture]]]></instruction>
+        <slimResult><![CDATA[!error:Could not find class <a]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[!error:Could not find class <a]]></actual>
+                              <expected><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables">Decision Tables</a>]]></expected>
+                              <evaluationMessage><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.DecisionTables">Decision Tables</a> error(Could not find class <a)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_1, call, decisionTable_2, table, [[<a href="FrontPage.DevnologyAmasunSuite.TheManual.QueryTables">Query Tables</a>, Supplies the expected results of a query.  This is similar to the Fit Row Fixture], [<a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a>, A series of actions and checks.  Similar to Do Fixture.], [<a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a>, Add a path to the fixture search path.]]]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_1</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_2. does not exist]]></actual>
+                              <expected><![CDATA[Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture]]></expected>
+                              <evaluationMessage><![CDATA[Supplies the inputs and outputs for decisions.  This is similar to the Fit Column Fixture error(The instance decisionTable_2. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_2, call, decisionTable_2, beginTable]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_3, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_4, call, decisionTable_2, setAHrefFrontPageDevnologyAmasunSuiteTheManualQueryTablesQueryTablesA, <a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a>]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_2. does not exist]]></actual>
+                              <expected><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a>]]></expected>
+                              <evaluationMessage><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ScriptTables">Script Tables</a> error(The instance decisionTable_2. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_5, call, decisionTable_2, setSuppliesTheExpectedResultsOfAQueryThisIsSimilarToTheFitRowFixture, A series of actions and checks.  Similar to Do Fixture.]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_2. does not exist]]></actual>
+                              <expected><![CDATA[A series of actions and checks.  Similar to Do Fixture.]]></expected>
+                              <evaluationMessage><![CDATA[A series of actions and checks.  Similar to Do Fixture. error(The instance decisionTable_2. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_6, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_7, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_8, call, decisionTable_2, setAHrefFrontPageDevnologyAmasunSuiteTheManualQueryTablesQueryTablesA, <a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a>]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_8</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_2. does not exist]]></actual>
+                              <expected><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a>]]></expected>
+                              <evaluationMessage><![CDATA[<a href="FrontPage.DevnologyAmasunSuite.TheManual.ImportTables">Import</a> error(The instance decisionTable_2. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_9, call, decisionTable_2, setSuppliesTheExpectedResultsOfAQueryThisIsSimilarToTheFitRowFixture, Add a path to the fixture search path.]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_9</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_2. does not exist]]></actual>
+                              <expected><![CDATA[Add a path to the fixture search path.]]></expected>
+                              <evaluationMessage><![CDATA[Add a path to the fixture search path. error(The instance decisionTable_2. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_10, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_11, call, decisionTable_2, endTable]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_2. does not exist]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

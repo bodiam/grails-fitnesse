@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>DevnologyAmasunSuite</rootPath>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.BuyBookInventoryTest</name>
+    <date>11/05/2010 20:23:52</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.BuyBookInventoryTest?pageHistory&amp;resultDate=20101105202352</pageHistoryLink>
+    <counts>
+      <right>8</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>1498</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.BuyBooksComboPercentageTest</name>
+    <date>11/05/2010 20:23:54</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.BuyBooksComboPercentageTest?pageHistory&amp;resultDate=20101105202354</pageHistoryLink>
+    <counts>
+      <right>5</right>
+      <wrong>2</wrong>
+      <ignores>0</ignores>
+      <exceptions>4</exceptions>
+    </counts>
+    <runTimeInMillis>520</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.BuyBooksComboTest</name>
+    <date>11/05/2010 20:23:54</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.BuyBooksComboTest?pageHistory&amp;resultDate=20101105202354</pageHistoryLink>
+    <counts>
+      <right>6</right>
+      <wrong>3</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>459</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.DevnologyAmasunSuite.InventoryTest</name>
+    <date>11/05/2010 20:23:55</date>
+    <pageHistoryLink>FrontPage.DevnologyAmasunSuite.InventoryTest?pageHistory&amp;resultDate=20101105202355</pageHistoryLink>
+    <counts>
+      <right>3</right>
+      <wrong>1</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>109</runTimeInMillis>
+  </pageHistoryReference>
+    <finalCounts>
+    <right>1</right>
+    <wrong>3</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>3097</totalRunTimeInMillis>
+
+</suiteResults>
+

@@ -1,0 +1,9 @@
+!3 !-slim-!
+|'''Date: '''|!-8:23:55 PM (CET) on Friday, November 5, 2010-!|
+|'''Test Page: '''|.FrontPage.DevnologyAmasunSuite|
+|'''Command: '''|!-echo  8088-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-3.092 seconds-!|
+----'''Standard Output:'''
+{{{8088
+}}}

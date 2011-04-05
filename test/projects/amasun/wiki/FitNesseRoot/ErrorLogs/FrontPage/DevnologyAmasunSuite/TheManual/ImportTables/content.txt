@@ -1,0 +1,9 @@
+!3 !-slim-!
+|'''Date: '''|!-9:27:34 PM (CET) on Friday, November 5, 2010-!|
+|'''Test Page: '''|.FrontPage.DevnologyAmasunSuite.TheManual.ImportTables|
+|'''Command: '''|!-echo  8089-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-0.111 seconds-!|
+----'''Standard Output:'''
+{{{8089
+}}}

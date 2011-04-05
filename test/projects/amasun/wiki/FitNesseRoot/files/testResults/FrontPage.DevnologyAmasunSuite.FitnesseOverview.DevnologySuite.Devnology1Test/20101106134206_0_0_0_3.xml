@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20101101</FitNesseVersion>
+  <rootPath>Devnology1Test</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>3</exceptions>
+    </counts>
+    <runTimeInMillis>11</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('-3409057357867912291');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img-3409057357867912291"/>
+	</a>
+&nbsp;<span class="meta">Precompiled Libraries </span>
+	<div class="hidden" id="-3409057357867912291"></div>
+</div>
+<br/><div class="setup">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('1638234837416055487');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img1638234837416055487"/>
+	</a>
+&nbsp;<span class="meta">Set Up: <a href="FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp">.Front Page .Devnology Amasun Suite .Fitnesse Overview .Devnology Suite .Devnology 1 Test .Set Up</a> <a href="FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="1638234837416055487">hello world</div>
+</div>
+<h1>This is a test</h1><br/><table border="1" cellspacing="0" _TABLENUMBER=8389089123853593417>
+<tr><td>my first test <span class="error">Could not find class MyFirstTestFixture</span></td>
+</tr>
+</table>
+<br/><div class="teardown">
+	<div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div>
+	<a href="javascript:toggleCollapsable('1995624876631099639');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img1995624876631099639"/>
+	</a>
+&nbsp;<span class="meta">Tear Down: <a href="FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.TearDown">.Front Page .Devnology Amasun Suite .Fitnesse Overview .Devnology Suite .Devnology 1 Test .Tear Down</a> <a href="FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.TearDown?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="1995624876631099639"><div class="toc1">
+	<div class="contents">
+		<b>Contents:</b>
+		<ul/>
+	</div>
+</div>
+</div>
+</div>
+]]></content>
+    <relativePageName>Devnology1Test</relativePageName>
+    
+        <tables>
+            <table>
+        <name>decisionTable_0</name>
+                <row>
+                    <col><![CDATA[my first test error(Could not find class MyFirstTestFixture)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_0_0, make, decisionTable_0, MyFirstTest]]]></instruction>
+        <slimResult><![CDATA[!error:Could not find class MyFirstTestFixture]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_0_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[!error:Could not find class MyFirstTestFixture]]></actual>
+                              <expected><![CDATA[my first test]]></expected>
+                              <evaluationMessage><![CDATA[my first test error(Could not find class MyFirstTestFixture)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_0_1, call, decisionTable_0, table, []]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_0. does not exist]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

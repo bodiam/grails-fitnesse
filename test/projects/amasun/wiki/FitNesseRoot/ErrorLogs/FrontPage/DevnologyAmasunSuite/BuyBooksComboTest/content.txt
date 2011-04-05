@@ -1,0 +1,9 @@
+!3 !-slim-!
+|'''Date: '''|!-9:12:46 PM (CET) on Friday, November 5, 2010-!|
+|'''Test Page: '''|.FrontPage.DevnologyAmasunSuite.BuyBooksComboTest|
+|'''Command: '''|!-echo  8093-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-51.602 seconds-!|
+----'''Standard Output:'''
+{{{8093
+}}}
