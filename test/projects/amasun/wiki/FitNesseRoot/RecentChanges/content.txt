@@ -1,3 +1,4 @@
+|FrontPage.AmasunSuite.BuyBooksComboPercentageTest||24:24:05 Wed, Apr 13, 2011|
 |FrontPage.AmasunSuite.AtddExample||21:38:58 Tue, Apr 05, 2011|
 |FrontPage.DevnologyAmasunSuite.DiscountCouponTest||15:28:21 Sat, Nov 06, 2010|
 |FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp||13:39:59 Sat, Nov 06, 2010|

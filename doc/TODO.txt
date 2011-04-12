@@ -60,6 +60,9 @@ TODO:
 - Stop Grails application
 - Think of something for easy loading / deleting of data
 - Grails create-doc (produce word documentation)
+- Combine run-app with run-fitnesse
+- Add a -open-in-browser option after running run-fitnesse
+
 
 - promo, blogging, GR8 conf, screencast, tutorials
 

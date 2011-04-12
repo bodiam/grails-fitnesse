@@ -3,6 +3,7 @@ package nl.jworks.amasun.fitnesse.book
 import nl.jworks.amasun.domain.book.Book
 import nl.jworks.amasun.domain.book.Inventory
 import nl.jworks.amasun.domain.book.PromoPackage
+import nl.jworks.amasun.domain.order.Order
 
 /**
  * @author Erik Pragt
@@ -18,6 +19,7 @@ class InitializeBookInventoryFixture {
     InitializeBookInventoryFixture() {
         PromoPackage.list()*.delete()
         Inventory.list()*.delete()
+        Order.list()*.delete()
     }
 
     void reset() {
@@ -27,14 +29,4 @@ class InitializeBookInventoryFixture {
     void execute() {
         inventoryService.addBooks(book, amount)
     }
-
 }
-
-
-/*
-   (ApplicationHolder.application.getArtefacts("Domain") as List).each {
-      it.newInstance().list()*.delete()
-    }
-    sessionFactory.currentSession.flush()
-    sessionFactory.currentSession.clear()
- */

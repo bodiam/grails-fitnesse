@@ -7,6 +7,8 @@ import nl.jworks.amasun.domain.order.Order
 /**
  * @author Erik Pragt
  */
+
+@Deprecated
 class BuyBookScenarioFixture {
     def inventoryService
     def customerService
