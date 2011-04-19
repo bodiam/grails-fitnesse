@@ -1,9 +1,0 @@
-!3 !-slim-!
-|'''Date: '''|!-3:29:27 PM (CET) on Saturday, November 6, 2010-!|
-|'''Test Page: '''|.FrontPage.DevnologyAmasunSuite.DiscountCouponTest|
-|'''Command: '''|!-echo  8092-!|
-|'''Exit code: '''|!-0-!|
-|'''Time elapsed: '''|!-0.134 seconds-!|
-----'''Standard Output:'''
-{{{8092
-}}}

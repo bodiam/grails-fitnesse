@@ -1,0 +1,8 @@
+!1 Benefits
+
+ * Comprehensive examples
+ * Definition of done
+ * Trust in the system (Refactor safe)
+ * Promotes communication
+
+AtddExample

@@ -1,0 +1,9 @@
+!1 Detailed Explanation
+
+ 1 Grails Starts Webserver at Port 8080
+ 1 Fitnesse Plugin starts 10 Fitnesse sockets at port 8085-8094
+ 1 Start Fitnesse (manually)
+ 1 Configure Fitnesse to '''not''' start a webserver by changing the command_runner
+ 1 Run the tests
+
+WorkShop

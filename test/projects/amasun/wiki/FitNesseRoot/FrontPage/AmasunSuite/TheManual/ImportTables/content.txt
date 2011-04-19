@@ -1,0 +1,24 @@
+!3 Import tables
+
+It's possible to load Fixtures with their fully qualified name:
+
+!|nl.jworks.guide.Deduct          |
+|operand 1|operand 2|result?|
+|1        |3        |-2     |
+
+However, when using the import table, you can tell the Slim Executor where the fixtures live.
+
+|import   |
+|nl.jworks|
+
+This way, only the classname of the fixture is needed.
+
+|deduct                     |
+|operand 1|operand 2|result?|
+|1        |3        |-2     |
+|1        |11       |-10    |
+|100      |80       |20     |
+|35       |1        |34     |
+|10       |6        |4      |
+|999      |999      |0      |
+|500      |106      |394    |

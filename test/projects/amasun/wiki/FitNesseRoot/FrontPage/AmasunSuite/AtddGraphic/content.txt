@@ -1,0 +1,4 @@
+!1 Atdd Explained
+!img http://files/images/atdd/examples-tests-requirements-600.png
+
+AtddBenefits

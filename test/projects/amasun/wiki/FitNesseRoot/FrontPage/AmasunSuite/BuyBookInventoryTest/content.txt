@@ -1,0 +1,41 @@
+!1 Functionality - Buying a book modifies inventory
+
+One of the core businesses from Amasun is to sell books. To verify that the inventory part of this core functionality works, we've created an initial acceptance test which will support this business functionality.
+
+!2 Exercise
+The test driver for the verification step is missing. Implement it and make sure the test succeeds.
+
+!3 Setup 
+
+Setup the inventory
+
+|initialize book inventory                                                                  |
+|author           |title                                         |isbn         |price|amount|
+|S. King          |IT                                            |0-8352-2051-6|10   |50    |
+|P.J. van de Sande|Large Scale Application Development with NCQRS|0-8352-8936-1|49   |80    |
+|S. Johnson       |Who Moved My Cheese?                          |0-8352-3891-9|25   |65    |
+
+Create the currently known customers.
+
+|intialize customer base|
+|name                   |
+|Rod Johnson            |
+|Jelle Hissink          |
+|Martin Fowler          |
+|Robert Martin          |
+
+!3 Execute
+
+|script  |buy book scenario                                                                 |
+|customer|Rod Johnson|buys|3|books with title|Large Scale Application Development with NCQRS|
+
+|script  |buy book scenario                        |
+|customer|Jelle Hissink|buys|25|books with title|IT|
+
+!3 Verification
+
+|check book inventory                                                    |
+|author           |title                                         |amount?|
+|S. King          |IT                                            |25     |
+|P.J. van de Sande|Large Scale Application Development with NCQRS|77     |
+|S. Johnson       |Who Moved My Cheese?                          |65     |

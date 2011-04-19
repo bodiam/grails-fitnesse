@@ -1,0 +1,6 @@
+!1 What's the problem?
+
+ * Grails is a standalone container, which does 'magic'
+ * Fixtures need to be able to do 'magic' (like Book.count() )
+
+HowDidiSolveIt

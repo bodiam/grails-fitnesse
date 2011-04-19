@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<suiteResults>
+  <FitNesseVersion>v20110329</FitNesseVersion>
+  <rootPath>AmasunSuite</rootPath>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.AtddExample</name>
+    <date>04/12/2011 22:32:45</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.AtddExample?pageHistory&amp;resultDate=20110412223245</pageHistoryLink>
+    <counts>
+      <right>1</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>117</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.BuyBookInventoryTest</name>
+    <date>04/12/2011 22:32:45</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.BuyBookInventoryTest?pageHistory&amp;resultDate=20110412223245</pageHistoryLink>
+    <counts>
+      <right>3</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>2053</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.BuyBooksComboPercentageTest</name>
+    <date>04/12/2011 22:32:47</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.BuyBooksComboPercentageTest?pageHistory&amp;resultDate=20110412223247</pageHistoryLink>
+    <counts>
+      <right>1</right>
+      <wrong>2</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>618</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.BuyBooksComboTest</name>
+    <date>04/12/2011 22:32:48</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.BuyBooksComboTest?pageHistory&amp;resultDate=20110412223248</pageHistoryLink>
+    <counts>
+      <right>1</right>
+      <wrong>3</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>1073</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.DiscountCouponTest</name>
+    <date>04/12/2011 22:32:49</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.DiscountCouponTest?pageHistory&amp;resultDate=20110412223249</pageHistoryLink>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>9</exceptions>
+    </counts>
+    <runTimeInMillis>153</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test</name>
+    <date>04/12/2011 22:32:49</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test?pageHistory&amp;resultDate=20110412223249</pageHistoryLink>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>3</exceptions>
+    </counts>
+    <runTimeInMillis>1</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.InventoryTest</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.InventoryTest?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>2</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>133</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.ShippingCostsTest</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.ShippingCostsTest?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>3</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.TheManual.DecisionTables</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.TheManual.DecisionTables?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>4</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>84</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.TheManual.ImportTables</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.TheManual.ImportTables?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>8</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>119</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.TheManual.QueryTables</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.TheManual.QueryTables?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>5</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>46</runTimeInMillis>
+  </pageHistoryReference>
+    <pageHistoryReference>
+    <name>FrontPage.AmasunSuite.TheManual.ScriptTables</name>
+    <date>04/12/2011 22:32:50</date>
+    <pageHistoryLink>FrontPage.AmasunSuite.TheManual.ScriptTables?pageHistory&amp;resultDate=20110412223250</pageHistoryLink>
+    <counts>
+      <right>1</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>80</runTimeInMillis>
+  </pageHistoryReference>
+    <finalCounts>
+    <right>7</right>
+    <wrong>2</wrong>
+    <ignores>1</ignores>
+    <exceptions>2</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>5645</totalRunTimeInMillis>
+
+</suiteResults>
+

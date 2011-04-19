@@ -1,0 +1,21 @@
+!1 Functionality - Apply Discount Coupon
+
+Our marketing team wants to lure new customers to our website by advertising with discount coupons. The marketing team must be able to register coupon codes, along with a discount percentage. When the customer selects a valid discount code, the related discount percentage should be applied to the order.
+
+!2 Exercise 
+
+1. Implement this functionality in an ATDD fashion, first create the specs, then the testfixtures and finally implement the functionality itself. 
+
+!|Register Coupon               |
+|coupon code|discount percentage|
+|ErikPragt  |10                 |
+
+|Create Customer Order      |
+|customer name|order  |total|
+|Kees         |ABCD-12|100  |
+
+!|script|buy product scenario           |Kees                                   |
+|customer places order           |ABCD-12          |with total amount|100|
+|customer applies discount coupon|ErikPragt                              |
+|check                           |total order price|90                   |
+

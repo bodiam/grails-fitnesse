@@ -1,0 +1,22 @@
+!1 Functionality - Calculate shipping costs
+
+The available shipping methods are displayed to the customer. We support "one-day shipping" and "two-day shipping", the user has to select
+a shipping method. 
+
+When the user chooses "one-day shipping", dependening on the category, different costs are charged. Namely, for every book in the category 
+"fantasy" 2.00 EURO is charged,for every book in the category "thriller" 3.00 EURO is charged and for the "IT" category 10.00 EURO per book is 
+charged. 
+
+Different prices per category apply for the "two-day shipping" too, namely 1.50 EURO for the "fantasy" category, 1.90 EURO for the 
+"thriller" category and 8.90 EURO for the "IT" category.
+
+When the order contains any hardcover books, an additional 3.00 EURO of shipping costs are added to the total of shipping costs. So it doesn't matter 
+how many hardcover books are added, the additional costs are always 3.00 EURO.
+
+The user also has to provide a shipping location, we currently ship to three locations: The Netherlands, Europe and to the US. If the shipping location 
+is in the Netherlands, then no additional costs are being charged. If it's in Europe than 2.00 EURO is added to the shipping total and if it's in the US, 
+then 10.00 EURO is added to the shipping total. 
+
+!2 Exercise
+
+Implement this feature in a ATDD way: First write the test, then implement the Fixtures and finally implement the code need for this functionality to work.

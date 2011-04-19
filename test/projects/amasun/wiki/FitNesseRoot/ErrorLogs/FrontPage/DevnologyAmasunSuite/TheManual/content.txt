@@ -1,9 +1,0 @@
-!3 !-slim-!
-|'''Date: '''|!-9:27:38 PM (CET) on Friday, November 5, 2010-!|
-|'''Test Page: '''|.FrontPage.DevnologyAmasunSuite.TheManual|
-|'''Command: '''|!-echo  8090-!|
-|'''Exit code: '''|!-0-!|
-|'''Time elapsed: '''|!-0.297 seconds-!|
-----'''Standard Output:'''
-{{{8090
-}}}

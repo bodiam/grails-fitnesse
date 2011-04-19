@@ -1,0 +1,1687 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20110329</FitNesseVersion>
+  <rootPath>BuyBooksComboPercentageTest</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>71</exceptions>
+    </counts>
+    <runTimeInMillis>2498</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('81');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img81"/>
+	</a>
+&nbsp;
+	<span class="meta">Precompiled Libraries</span>
+	<div class="hidden" id="81"><br/></div>
+</div>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('82');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img82"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.SetUp">.Front Page .Amasun Suite .Set Up</a> <a href="FrontPage.AmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="82"><table border="1" cellspacing="0" _TABLENUMBER=7547835742118257952>
+	<tr>
+		<td>import</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.book</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.solution</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.guide</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.presentation</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><h1>Functionality - Buy a Book Combo - Percentages</h1>
+<br/><br/>The core of our business is to sell books. To sell as much books as possible, we've introduced the concept of package deals (or promo packages, or book combos, or just-really-good-deals, as our customers call it). Since this is such an important part of our business, we need to assert it works correctly. <br/><br/><b>There are two types of discount: one fixed price (say 10 euro's discount on the total amount, which we'll call AMOUNT), and it would be nice if we could also get a discount which is percentage based, which will deduct a certain percentage of the combination of the two books (say 25% off when buying two fantasy books).</b><br/><br/>At the moment, we can link together books based on their ISBN code. We know it's not ideal, so in the future we should introduce our own code, but currently it works good enough, so any package can ben created by linking two books together. A promo package of more than two books is not needed at the moment, but would be nice for the future, say the end of 2013.<br/><br/><h2>Exercise</h2>
+<br/><br/>Step 1. Create a script and fixture for the execute step, that places an order with two books from a promotion package and checks if the charged Subtotal, Discount and Total are correct.<br/><br/>Step 2. Remove any duplication in this test and the previous one.<br/><br/><br/><h3>Setup</h3>
+<br/><br/>Setup the inventory<br/><br/><div id="test_exceptions1"><H3> <span class="fail">Exceptions</span></H3><br/><a name="decisionTable_1_0"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('382284740672939381');"><img src="/files/images/collapsableClosed.gif" class="left" id="img382284740672939381"/></a>&nbsp;<span class="meta">decisionTable_1_0 </span>
+
+	<div class="hidden" id="382284740672939381"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.PromoPackage.list() is applicable for argument types: () values: []
+Possible solutions: is(java.lang.Object), wait(), wait(long), split(groovy.lang.Closure), print(java.lang.Object), use([Ljava.lang.Object;)
+	at nl.jworks.amasun.fitnesse.book.InitializeBookInventoryFixture.<init>(InitializeBookInventoryFixture.groovy:20)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.getFixtureBean(GrailsStatementExecutor.groovy:109)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.this$3$getFixtureBean(GrailsStatementExecutor.groovy)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor$this$3$getFixtureBean.callCurrent(Unknown Source)
+	at nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.create(GrailsStatementExecutor.groovy:81)
+	at fitnesse.slim.Statement.createInstance(Statement.java:88)
+	at fitnesse.slim.Statement.execute(Statement.java:68)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+</pre></div>
+</div></div><hr/><table border="1" cellspacing="0" _TABLENUMBER=3144847197893357069>
+	<tr>
+		<td colspan="5">!style_error(Unknown construction message:) Exception: <a href=#decisionTable_1_0>decisionTable_1_0</a></td>
+	</tr>
+	<tr>
+		<td>author</td>
+		<td>title</td>
+		<td>isbn</td>
+		<td>price</td>
+		<td>amount</td>
+	</tr>
+	<tr>
+		<td>S. King <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>IT <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>0-8352-2051-6 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>10 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>50 <span class="error">The instance decisionTable_1. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>P.J. van de Sande <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>Large Scale Application Development with NCQRS <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>0-8352-8936-1 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>49 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>80 <span class="error">The instance decisionTable_1. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>S. Johnson <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>Who Moved My Cheese? <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>0-8352-3891-9 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>25 <span class="error">The instance decisionTable_1. does not exist</span></td>
+		<td>65 <span class="error">The instance decisionTable_1. does not exist</span></td>
+	</tr>
+</table>
+<br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"decisionTable_2_14\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-3758737172177400583');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-3758737172177400583\"/></a>&nbsp;<span class=\"meta\">decisionTable_2_14 </span>\n\n\t<div class=\"hidden\" id=\"-3758737172177400583\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.Book.findByIsbn() is applicable for argument types: (java.lang.String) values: [0-8352-2051-6]\n\tat nl.jworks.amasun.service.book.BookService.findByIsbn(BookService.groovy:26)\n\tat nl.jworks.amasun.service.book.BookService$$FastClassByCGLIB$$3a387931.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.book.BookService$$EnhancerByCGLIB$$d805afb6.findByIsbn(<generated>)\n\tat nl.jworks.amasun.service.book.BookService$findByIsbn.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.execute(CreatePromoPackageFixture.groovy:21)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_2_8\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('1145506090477764080');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img1145506090477764080\"/></a>&nbsp;<span class=\"meta\">decisionTable_2_8 </span>\n\n\t<div class=\"hidden\" id=\"1145506090477764080\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.Book.findByIsbn() is applicable for argument types: (java.lang.String) values: [0-8352-2051-6]\n\tat nl.jworks.amasun.service.book.BookService.findByIsbn(BookService.groovy:26)\n\tat nl.jworks.amasun.service.book.BookService$$FastClassByCGLIB$$3a387931.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.book.BookService$$EnhancerByCGLIB$$d805afb6.findByIsbn(<generated>)\n\tat nl.jworks.amasun.service.book.BookService$findByIsbn.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.execute(CreatePromoPackageFixture.groovy:21)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=7815892768722750928>
+	<tr>
+		<td colspan="4"><span class="pass">create promo package</span></td>
+	</tr>
+	<tr>
+		<td>book 1 isbn</td>
+		<td>book 2 isbn</td>
+		<td>discount amount</td>
+		<td>discount type</td>
+	</tr>
+	<tr>
+		<td>0-8352-2051-6</td>
+		<td>0-8352-8936-1</td>
+		<td>10</td>
+		<td>AMOUNT</td>
+	</tr>
+	<tr>
+		<td>0-8352-2051-6</td>
+		<td>0-8352-3891-9</td>
+		<td>5</td>
+		<td>AMOUNT</td>
+	</tr>
+</table>
+<br/>Create the currently known customers.<br/><br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"decisionTable_3_11\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('2511611985758336385');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img2511611985758336385\"/></a>&nbsp;<span class=\"meta\">decisionTable_3_11 </span>\n\n\t<div class=\"hidden\" id=\"2511611985758336385\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.domain.customer.Customer.save() is applicable for argument types: () values: []\nPossible solutions: wait(), any(), wait(long), each(groovy.lang.Closure), sleep(long), any(groovy.lang.Closure)\n\tat nl.jworks.amasun.service.customer.CustomerService.add(CustomerService.groovy:10)\n\tat nl.jworks.amasun.service.customer.CustomerService$$FastClassByCGLIB$$e3ecd211.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.customer.CustomerService$$EnhancerByCGLIB$$31bf3956.add(<generated>)\n\tat nl.jworks.amasun.service.customer.CustomerService$add.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_3_5\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-2104316328100530890');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-2104316328100530890\"/></a>&nbsp;<span class=\"meta\">decisionTable_3_5 </span>\n\n\t<div class=\"hidden\" id=\"-2104316328100530890\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.domain.customer.Customer.save() is applicable for argument types: () values: []\nPossible solutions: wait(), any(), wait(long), each(groovy.lang.Closure), sleep(long), any(groovy.lang.Closure)\n\tat nl.jworks.amasun.service.customer.CustomerService.add(CustomerService.groovy:10)\n\tat nl.jworks.amasun.service.customer.CustomerService$$FastClassByCGLIB$$e3ecd211.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.customer.CustomerService$$EnhancerByCGLIB$$31bf3956.add(<generated>)\n\tat nl.jworks.amasun.service.customer.CustomerService$add.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_3_14\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('1201909142680069963');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img1201909142680069963\"/></a>&nbsp;<span class=\"meta\">decisionTable_3_14 </span>\n\n\t<div class=\"hidden\" id=\"1201909142680069963\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.domain.customer.Customer.save() is applicable for argument types: () values: []\nPossible solutions: wait(), any(), wait(long), each(groovy.lang.Closure), sleep(long), any(groovy.lang.Closure)\n\tat nl.jworks.amasun.service.customer.CustomerService.add(CustomerService.groovy:10)\n\tat nl.jworks.amasun.service.customer.CustomerService$$FastClassByCGLIB$$e3ecd211.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.customer.CustomerService$$EnhancerByCGLIB$$31bf3956.add(<generated>)\n\tat nl.jworks.amasun.service.customer.CustomerService$add.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_3_8\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('8925158376016187411');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img8925158376016187411\"/></a>&nbsp;<span class=\"meta\">decisionTable_3_8 </span>\n\n\t<div class=\"hidden\" id=\"8925158376016187411\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: nl.jworks.amasun.domain.customer.Customer.save() is applicable for argument types: () values: []\nPossible solutions: wait(), any(), wait(long), each(groovy.lang.Closure), sleep(long), any(groovy.lang.Closure)\n\tat nl.jworks.amasun.service.customer.CustomerService.add(CustomerService.groovy:10)\n\tat nl.jworks.amasun.service.customer.CustomerService$$FastClassByCGLIB$$e3ecd211.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.customer.CustomerService$$EnhancerByCGLIB$$31bf3956.add(<generated>)\n\tat nl.jworks.amasun.service.customer.CustomerService$add.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.execute(IntializeCustomerBaseFixture.groovy:14)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=3478703348362707506>
+	<tr>
+		<td><span class="pass">intialize customer base</span></td>
+	</tr>
+	<tr>
+		<td>name</td>
+	</tr>
+	<tr>
+		<td>Rod Johnson</td>
+	</tr>
+	<tr>
+		<td>Jelle Hissink</td>
+	</tr>
+	<tr>
+		<td>Martin Fowler</td>
+	</tr>
+	<tr>
+		<td>Robert Martin</td>
+	</tr>
+</table>
+<br/><h3>Execute</h3>
+<br/><br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"scriptTable_4_0\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('7004070870520693358');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img7004070870520693358\"/></a>&nbsp;<span class=\"meta\">scriptTable_4_0 </span>\n\n\t<div class=\"hidden\" id=\"7004070870520693358\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.customer.Customer.findByName() is applicable for argument types: (java.lang.String) values: [Robert Martin]\n\tat nl.jworks.amasun.fitnesse.book.CustomerBuysBookFixture.<init>(CustomerBuysBookFixture.groovy:15)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.getFixtureBean(GrailsStatementExecutor.groovy:109)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.this$3$getFixtureBean(GrailsStatementExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor$this$3$getFixtureBean.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.create(GrailsStatementExecutor.groovy:81)\n\tat fitnesse.slim.Statement.createInstance(Statement.java:88)\n\tat fitnesse.slim.Statement.execute(Statement.java:68)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=1091522221945876764>
+	<tr>
+		<td>script</td>
+		<td>!style_error(Unknown construction message:) Exception: <a href=#scriptTable_4_0>scriptTable_4_0</a></td>
+		<td colspan="2">Robert Martin <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>buy <span class="error">The instance scriptTableActor. does not exist</span></td>
+		<td>1</td>
+		<td>book with isbn</td>
+		<td>0-8352-2051-6</td>
+	</tr>
+	<tr>
+		<td>buy <span class="error">The instance scriptTableActor. does not exist</span></td>
+		<td>2</td>
+		<td>books with isbn</td>
+		<td>0-8352-8936-1</td>
+	</tr>
+	<tr>
+		<td colspan="4">place order <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+</table>
+<br/><h3>Verification</h3>
+<br/><br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"scriptTable_5_0\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('7132742186628472476');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img7132742186628472476\"/></a>&nbsp;<span class=\"meta\">scriptTable_5_0 </span>\n\n\t<div class=\"hidden\" id=\"7132742186628472476\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.customer.Customer.findByName() is applicable for argument types: (java.lang.String) values: [Robert Martin]\n\tat nl.jworks.amasun.fitnesse.book.CheckOrderForCustomer.<init>(CheckOrderForCustomer.groovy:13)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.getFixtureBean(GrailsStatementExecutor.groovy:109)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.this$3$getFixtureBean(GrailsStatementExecutor.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor$this$3$getFixtureBean.callCurrent(Unknown Source)\n\tat nl.jworks.grails.plugin.fitnesse.GrailsStatementExecutor.create(GrailsStatementExecutor.groovy:81)\n\tat fitnesse.slim.Statement.createInstance(Statement.java:88)\n\tat fitnesse.slim.Statement.execute(Statement.java:68)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=7660230192803088906>
+	<tr>
+		<td>script</td>
+		<td>!style_error(Unknown construction message:) Exception: <a href=#scriptTable_5_0>scriptTable_5_0</a></td>
+		<td>Robert Martin <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>check</td>
+		<td>subtotal</td>
+		<td>69 <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>check</td>
+		<td>discount</td>
+		<td>10 <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+	<tr>
+		<td>check</td>
+		<td>total</td>
+		<td>59 <span class="error">The instance scriptTableActor. does not exist</span></td>
+	</tr>
+</table>
+<br/><br/><script>var existingContent = document.getElementById("test_exceptions1").innerHTML;
+document.getElementById("test_exceptions1").innerHTML = existingContent + "<a name=\"decisionTable_6_12\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-12399768569101235');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-12399768569101235\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_12 </span>\n\n\t<div class=\"hidden\" id=\"-12399768569101235\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat fitnesse.slim.MethodExecutionResult.toString(MethodExecutionResult.java:90)\n\tat fitnesse.slim.MethodExecutionResult.returnValue(MethodExecutionResult.java:83)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_6_11\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-5130669072638745186');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-5130669072638745186\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_11 </span>\n\n\t<div class=\"hidden\" id=\"-5130669072638745186\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.Inventory.find() is applicable for argument types: (java.lang.String, java.util.LinkedHashMap) values: [from Inventory as i where i.book.author = :author and i.book.title = :title, [author:P.J. van de Sande, title:Large Scale Application Development with NCQRS]]\nPossible solutions: find(groovy.lang.Closure), any(), <init>(), ident(), wait(), getId()\n\tat nl.jworks.amasun.service.book.InventoryService.findByAuthorAndTitle(InventoryService.groovy:42)\n\tat nl.jworks.amasun.service.book.InventoryService.this$2$findByAuthorAndTitle(InventoryService.groovy)\n\tat nl.jworks.amasun.service.book.InventoryService$this$2$findByAuthorAndTitle.callCurrent(Unknown Source)\n\tat nl.jworks.amasun.service.book.InventoryService.getAmount(InventoryService.groovy:26)\n\tat nl.jworks.amasun.service.book.InventoryService$$FastClassByCGLIB$$2f4a4734.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.book.InventoryService$$EnhancerByCGLIB$$77891697.getAmount(<generated>)\n\tat nl.jworks.amasun.service.book.InventoryService$getAmount.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:22)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_6_16\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-6689356330669930692');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-6689356330669930692\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_16 </span>\n\n\t<div class=\"hidden\" id=\"-6689356330669930692\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.Inventory.find() is applicable for argument types: (java.lang.String, java.util.LinkedHashMap) values: [from Inventory as i where i.book.author = :author and i.book.title = :title, [author:S. Johnson, title:Who Moved My Cheese?]]\nPossible solutions: find(groovy.lang.Closure), any(), <init>(), ident(), wait(), getId()\n\tat nl.jworks.amasun.service.book.InventoryService.findByAuthorAndTitle(InventoryService.groovy:42)\n\tat nl.jworks.amasun.service.book.InventoryService.this$2$findByAuthorAndTitle(InventoryService.groovy)\n\tat nl.jworks.amasun.service.book.InventoryService$this$2$findByAuthorAndTitle.callCurrent(Unknown Source)\n\tat nl.jworks.amasun.service.book.InventoryService.getAmount(InventoryService.groovy:26)\n\tat nl.jworks.amasun.service.book.InventoryService$$FastClassByCGLIB$$2f4a4734.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.book.InventoryService$$EnhancerByCGLIB$$77891697.getAmount(<generated>)\n\tat nl.jworks.amasun.service.book.InventoryService$getAmount.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:22)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_6_6\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('4349690061210484781');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img4349690061210484781\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_6 </span>\n\n\t<div class=\"hidden\" id=\"4349690061210484781\"><pre>__EXCEPTION__:groovy.lang.MissingMethodException: No signature of method: static nl.jworks.amasun.domain.book.Inventory.find() is applicable for argument types: (java.lang.String, java.util.LinkedHashMap) values: [from Inventory as i where i.book.author = :author and i.book.title = :title, [author:S. King, title:IT]]\nPossible solutions: find(groovy.lang.Closure), any(), <init>(), ident(), wait(), getId()\n\tat nl.jworks.amasun.service.book.InventoryService.findByAuthorAndTitle(InventoryService.groovy:42)\n\tat nl.jworks.amasun.service.book.InventoryService.this$2$findByAuthorAndTitle(InventoryService.groovy)\n\tat nl.jworks.amasun.service.book.InventoryService$this$2$findByAuthorAndTitle.callCurrent(Unknown Source)\n\tat nl.jworks.amasun.service.book.InventoryService.getAmount(InventoryService.groovy:26)\n\tat nl.jworks.amasun.service.book.InventoryService$$FastClassByCGLIB$$2f4a4734.invoke(<generated>)\n\tat net.sf.cglib.proxy.MethodProxy.invoke(MethodProxy.java:149)\n\tat nl.jworks.amasun.service.book.InventoryService$$EnhancerByCGLIB$$77891697.getAmount(<generated>)\n\tat nl.jworks.amasun.service.book.InventoryService$getAmount.call(Unknown Source)\n\tat nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.execute(CheckBookInventoryFixture.groovy:22)\n\tat fitnesse.slim.MethodExecutor.callMethod(MethodExecutor.java:43)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.invokeGroovyMethod(GroovyMethodExecutor.groovy:48)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.findAndInvoke(GroovyMethodExecutor.groovy:34)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor.execute(GroovyMethodExecutor.groovy:28)\n\tat nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor$execute.call(Unknown Source)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.getMethodExecutionResult(ProtectedStatementExecutor.groovy:225)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_6_7\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('-1600641349838641757');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img-1600641349838641757\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_7 </span>\n\n\t<div class=\"hidden\" id=\"-1600641349838641757\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat fitnesse.slim.MethodExecutionResult.toString(MethodExecutionResult.java:90)\n\tat fitnesse.slim.MethodExecutionResult.returnValue(MethodExecutionResult.java:83)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div><a name=\"decisionTable_6_17\"/><b></b><div class=\"collapse_rim\"><div style=\"float: right;\" class=\"meta\"><a href=\"javascript:expandAll();\">Expand All</a> | <a href=\"javascript:collapseAll();\">Collapse All</a></div><a href=\"javascript:toggleCollapsable('1477409704322550718');\"><img src=\"/files/images/collapsableClosed.gif\" class=\"left\" id=\"img1477409704322550718\"/></a>&nbsp;<span class=\"meta\">decisionTable_6_17 </span>\n\n\t<div class=\"hidden\" id=\"1477409704322550718\"><pre>__EXCEPTION__:java.lang.NullPointerException\n\tat fitnesse.slim.converters.IntConverter.toString(IntConverter.java:9)\n\tat fitnesse.slim.MethodExecutionResult.toString(MethodExecutionResult.java:90)\n\tat fitnesse.slim.MethodExecutionResult.returnValue(MethodExecutionResult.java:83)\n\tat nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)\n\tat fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)\n\tat fitnesse.slim.Statement.call(Statement.java:92)\n\tat fitnesse.slim.Statement.execute(Statement.java:72)\n\tat fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)\n\tat fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)\n\tat fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)\n\tat fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)\n\tat fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)\n\tat fitnesse.slim.SlimServer.serve(SlimServer.java:30)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)\n\tat nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)\n\tat fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)\n\tat java.lang.Thread.run(Thread.java:680)\n</pre></div>\n</div>";
+</script>
+<table border="1" cellspacing="0" _TABLENUMBER=4986576988353506082>
+	<tr>
+		<td colspan="3"><span class="pass">check book inventory</span></td>
+	</tr>
+	<tr>
+		<td>author</td>
+		<td>title</td>
+		<td>amount?</td>
+	</tr>
+	<tr>
+		<td>S. King</td>
+		<td>IT</td>
+		<td><span class="error">Exception: <a href=#decisionTable_6_7>decisionTable_6_7</a></span></td>
+	</tr>
+	<tr>
+		<td>P.J. van de Sande</td>
+		<td>Large Scale Application Development with NCQRS</td>
+		<td><span class="error">Exception: <a href=#decisionTable_6_12>decisionTable_6_12</a></span></td>
+	</tr>
+	<tr>
+		<td>S. Johnson</td>
+		<td>Who Moved My Cheese?</td>
+		<td><span class="error">Exception: <a href=#decisionTable_6_17>decisionTable_6_17</a></span></td>
+	</tr>
+</table>
+]]></content>
+    <relativePageName>BuyBooksComboPercentageTest</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.solution]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.guide]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.presentation]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_1</name>
+                <row>
+                    <col><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#decisionTable_1_0>decisionTable_1_0</a>]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[isbn]]></col>
+                    <col><![CDATA[price]]></col>
+                    <col><![CDATA[amount]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[IT error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[0-8352-2051-6 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[10 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[50 error(The instance decisionTable_1. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[0-8352-8936-1 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[49 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[80 error(The instance decisionTable_1. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[Who Moved My Cheese? error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[0-8352-3891-9 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[25 error(The instance decisionTable_1. does not exist)]]></col>
+                    <col><![CDATA[65 error(The instance decisionTable_1. does not exist)]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_2</name>
+                <row>
+                    <col><![CDATA[pass(create promo package)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[book 1 isbn]]></col>
+                    <col><![CDATA[book 2 isbn]]></col>
+                    <col><![CDATA[discount amount]]></col>
+                    <col><![CDATA[discount type]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[0-8352-2051-6]]></col>
+                    <col><![CDATA[0-8352-8936-1]]></col>
+                    <col><![CDATA[10]]></col>
+                    <col><![CDATA[AMOUNT]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[0-8352-2051-6]]></col>
+                    <col><![CDATA[0-8352-3891-9]]></col>
+                    <col><![CDATA[5]]></col>
+                    <col><![CDATA[AMOUNT]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_3</name>
+                <row>
+                    <col><![CDATA[pass(intialize customer base)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[name]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Rod Johnson]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Jelle Hissink]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Martin Fowler]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[Robert Martin]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>scriptTable_4</name>
+                <row>
+                    <col><![CDATA[script]]></col>
+                    <col><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#scriptTable_4_0>scriptTable_4_0</a>]]></col>
+                    <col><![CDATA[Robert Martin error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[buy error(The instance scriptTableActor. does not exist)]]></col>
+                    <col><![CDATA[1]]></col>
+                    <col><![CDATA[book with isbn]]></col>
+                    <col><![CDATA[0-8352-2051-6]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[buy error(The instance scriptTableActor. does not exist)]]></col>
+                    <col><![CDATA[2]]></col>
+                    <col><![CDATA[books with isbn]]></col>
+                    <col><![CDATA[0-8352-8936-1]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[place order error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>scriptTable_5</name>
+                <row>
+                    <col><![CDATA[script]]></col>
+                    <col><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#scriptTable_5_0>scriptTable_5_0</a>]]></col>
+                    <col><![CDATA[Robert Martin error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[check]]></col>
+                    <col><![CDATA[subtotal]]></col>
+                    <col><![CDATA[69 error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[check]]></col>
+                    <col><![CDATA[discount]]></col>
+                    <col><![CDATA[10 error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[check]]></col>
+                    <col><![CDATA[total]]></col>
+                    <col><![CDATA[59 error(The instance scriptTableActor. does not exist)]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_6</name>
+                <row>
+                    <col><![CDATA[pass(check book inventory)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[author]]></col>
+                    <col><![CDATA[title]]></col>
+                    <col><![CDATA[amount?]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. King]]></col>
+                    <col><![CDATA[IT]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_6_7>decisionTable_6_7</a>)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[P.J. van de Sande]]></col>
+                    <col><![CDATA[Large Scale Application Development with NCQRS]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_6_12>decisionTable_6_12</a>)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[S. Johnson]]></col>
+                    <col><![CDATA[Who Moved My Cheese?]]></col>
+                    <col><![CDATA[error(Exception: <a href=#decisionTable_6_17>decisionTable_6_17</a>)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_1, import, nl.jworks.amasun.fitnesse.solution]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_2, import, nl.jworks.guide]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_3, import, nl.jworks.presentation]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_0, make, decisionTable_1, InitializeBookInventory]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_0>decisionTable_1_0</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_0>decisionTable_1_0</a>]]></actual>
+                              <expected><![CDATA[initialize book inventory]]></expected>
+                              <evaluationMessage><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#decisionTable_1_0>decisionTable_1_0</a>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_1, call, decisionTable_1, table, [[author, title, isbn, price, amount], [S. King, IT, 0-8352-2051-6, 10, 50], [P.J. van de Sande, Large Scale Application Development with NCQRS, 0-8352-8936-1, 49, 80], [S. Johnson, Who Moved My Cheese?, 0-8352-3891-9, 25, 65]]]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_2, call, decisionTable_1, beginTable]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_3, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_4, call, decisionTable_1, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_5, call, decisionTable_1, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_6, call, decisionTable_1, setIsbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_6</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_7, call, decisionTable_1, setPrice, 10]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_7</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_8, call, decisionTable_1, setAmount, 50]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_8</instructionId>
+          <col>4</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[50]]></expected>
+                              <evaluationMessage><![CDATA[50 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_9, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_10, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_11, call, decisionTable_1, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_11</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_12, call, decisionTable_1, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_12</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_13, call, decisionTable_1, setIsbn, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_13</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[0-8352-8936-1]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-8936-1 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_14, call, decisionTable_1, setPrice, 49]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_14</instructionId>
+          <col>3</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[49]]></expected>
+                              <evaluationMessage><![CDATA[49 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_15, call, decisionTable_1, setAmount, 80]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_15</instructionId>
+          <col>4</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[80]]></expected>
+                              <evaluationMessage><![CDATA[80 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_16, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_17, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_18, call, decisionTable_1, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_18</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_19, call, decisionTable_1, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_19</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese? error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_20, call, decisionTable_1, setIsbn, 0-8352-3891-9]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_20</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[0-8352-3891-9]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-3891-9 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_21, call, decisionTable_1, setPrice, 25]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_21</instructionId>
+          <col>3</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[25]]></expected>
+                              <evaluationMessage><![CDATA[25 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_22, call, decisionTable_1, setAmount, 65]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_22</instructionId>
+          <col>4</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance decisionTable_1. does not exist]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[65 error(The instance decisionTable_1. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_23, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_24, call, decisionTable_1, endTable]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_1. does not exist]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_0, make, decisionTable_2, CreatePromoPackage]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_2_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[create promo package]]></expected>
+                              <evaluationMessage><![CDATA[pass(create promo package)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_1, call, decisionTable_2, table, [[book 1 isbn, book 2 isbn, discount amount, discount type], [0-8352-2051-6, 0-8352-8936-1, 10, AMOUNT], [0-8352-2051-6, 0-8352-3891-9, 5, AMOUNT]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_2, call, decisionTable_2, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_3, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_4, call, decisionTable_2, setBook1Isbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_5, call, decisionTable_2, setBook2Isbn, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-8936-1]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-8936-1]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_6, call, decisionTable_2, setDiscountAmount, 10]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_6</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_7, call, decisionTable_2, setDiscountType, AMOUNT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_7</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[AMOUNT]]></expected>
+                              <evaluationMessage><![CDATA[AMOUNT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_8, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_8>decisionTable_2_8</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_9, call, decisionTable_2, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_10, call, decisionTable_2, setBook1Isbn, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_10</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-2051-6]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-2051-6]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_11, call, decisionTable_2, setBook2Isbn, 0-8352-3891-9]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_11</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[0-8352-3891-9]]></expected>
+                              <evaluationMessage><![CDATA[0-8352-3891-9]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_12, call, decisionTable_2, setDiscountAmount, 5]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[5]]></expected>
+                              <evaluationMessage><![CDATA[5]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_13, call, decisionTable_2, setDiscountType, AMOUNT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_2_13</instructionId>
+          <col>3</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[AMOUNT]]></expected>
+                              <evaluationMessage><![CDATA[AMOUNT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_14, call, decisionTable_2, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_2_14>decisionTable_2_14</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_2_15, call, decisionTable_2, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.CreatePromoPackageFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_0, make, decisionTable_3, IntializeCustomerBase]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_3_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[intialize customer base]]></expected>
+                              <evaluationMessage><![CDATA[pass(intialize customer base)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_1, call, decisionTable_3, table, [[name], [Rod Johnson], [Jelle Hissink], [Martin Fowler], [Robert Martin]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_2, call, decisionTable_3, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_3, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_4, call, decisionTable_3, setName, Rod Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Rod Johnson]]></expected>
+                              <evaluationMessage><![CDATA[Rod Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_5, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_3_5>decisionTable_3_5</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_6, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_7, call, decisionTable_3, setName, Jelle Hissink]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_7</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Jelle Hissink]]></expected>
+                              <evaluationMessage><![CDATA[Jelle Hissink]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_8, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_3_8>decisionTable_3_8</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_9, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_10, call, decisionTable_3, setName, Martin Fowler]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_10</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Martin Fowler]]></expected>
+                              <evaluationMessage><![CDATA[Martin Fowler]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_11, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_3_11>decisionTable_3_11</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_12, call, decisionTable_3, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_13, call, decisionTable_3, setName, Robert Martin]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_3_13</instructionId>
+          <col>0</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Robert Martin]]></expected>
+                              <evaluationMessage><![CDATA[Robert Martin]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_14, call, decisionTable_3, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_3_14>decisionTable_3_14</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_3_15, call, decisionTable_3, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.IntializeCustomerBaseFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_0, make, scriptTableActor, CustomerBuysBook, Robert Martin]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#scriptTable_4_0>scriptTable_4_0</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_0</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#scriptTable_4_0>scriptTable_4_0</a>]]></actual>
+                              <expected><![CDATA[customer buys book]]></expected>
+                              <evaluationMessage><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#scriptTable_4_0>scriptTable_4_0</a>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_1, call, scriptTableActor, buyBookWithIsbn, 1, 0-8352-2051-6]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>2</col>
+          <row>0</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[Robert Martin]]></expected>
+                              <evaluationMessage><![CDATA[Robert Martin error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>1</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>3</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_1</instructionId>
+          <col>0</col>
+          <row>1</row>
+          <type>ScriptActionExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[buy]]></expected>
+                              <evaluationMessage><![CDATA[buy error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_2, call, scriptTableActor, buyBooksWithIsbn, 2, 0-8352-8936-1]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_2</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_2</instructionId>
+          <col>3</col>
+          <row>2</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_2</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>ScriptActionExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[buy]]></expected>
+                              <evaluationMessage><![CDATA[buy error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_4_3, call, scriptTableActor, placeOrder]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_4_3</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>ScriptActionExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[place order]]></expected>
+                              <evaluationMessage><![CDATA[place order error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_5_0, make, scriptTableActor, CheckOrderForCustomer, Robert Martin]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#scriptTable_5_0>scriptTable_5_0</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_5_0</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#scriptTable_5_0>scriptTable_5_0</a>]]></actual>
+                              <expected><![CDATA[check order for customer]]></expected>
+                              <evaluationMessage><![CDATA[!style_error(Unknown construction message:) Exception: <a href=#scriptTable_5_0>scriptTable_5_0</a>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_5_1, call, scriptTableActor, subtotal]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_5_1</instructionId>
+          <col>2</col>
+          <row>0</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[Robert Martin]]></expected>
+                              <evaluationMessage><![CDATA[Robert Martin error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_5_1</instructionId>
+          <col>2</col>
+          <row>1</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[69]]></expected>
+                              <evaluationMessage><![CDATA[69 error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_5_2, call, scriptTableActor, discount]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_5_2</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[10 error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_5_3, call, scriptTableActor, total]]]></instruction>
+        <slimResult><![CDATA[!error:The instance scriptTableActor. does not exist]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_5_3</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[!error:The instance scriptTableActor. does not exist]]></actual>
+                              <expected><![CDATA[59]]></expected>
+                              <evaluationMessage><![CDATA[59 error(The instance scriptTableActor. does not exist)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_0, make, decisionTable_6, CheckBookInventory]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_6_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[check book inventory]]></expected>
+                              <evaluationMessage><![CDATA[pass(check book inventory)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_1, call, decisionTable_6, table, [[author, title, amount?], [S. King, IT, 49], [P.J. van de Sande, Large Scale Application Development with NCQRS, 79], [S. Johnson, Who Moved My Cheese?, 65]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_2, call, decisionTable_6, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_3, call, decisionTable_6, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_4, call, decisionTable_6, setAuthor, S. King]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. King]]></expected>
+                              <evaluationMessage><![CDATA[S. King]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_5, call, decisionTable_6, setTitle, IT]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[IT]]></expected>
+                              <evaluationMessage><![CDATA[IT]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_6, call, decisionTable_6, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_6>decisionTable_6_6</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_7, call, decisionTable_6, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_7>decisionTable_6_7</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_7</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_6_7>decisionTable_6_7</a>]]></actual>
+                              <expected><![CDATA[49]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_6_7>decisionTable_6_7</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_8, call, decisionTable_6, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_9, call, decisionTable_6, setAuthor, P.J. van de Sande]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_9</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[P.J. van de Sande]]></expected>
+                              <evaluationMessage><![CDATA[P.J. van de Sande]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_10, call, decisionTable_6, setTitle, Large Scale Application Development with NCQRS]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_10</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Large Scale Application Development with NCQRS]]></expected>
+                              <evaluationMessage><![CDATA[Large Scale Application Development with NCQRS]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_11, call, decisionTable_6, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_11>decisionTable_6_11</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_12, call, decisionTable_6, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_12>decisionTable_6_12</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_6_12>decisionTable_6_12</a>]]></actual>
+                              <expected><![CDATA[79]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_6_12>decisionTable_6_12</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_13, call, decisionTable_6, reset]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_14, call, decisionTable_6, setAuthor, S. Johnson]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_14</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[S. Johnson]]></expected>
+                              <evaluationMessage><![CDATA[S. Johnson]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_15, call, decisionTable_6, setTitle, Who Moved My Cheese?]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_15</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[Who Moved My Cheese?]]></expected>
+                              <evaluationMessage><![CDATA[Who Moved My Cheese?]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_16, call, decisionTable_6, execute]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_16>decisionTable_6_16</a>]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_17, call, decisionTable_6, amount]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_6_17>decisionTable_6_17</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_6_17</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_6_17>decisionTable_6_17</a>]]></actual>
+                              <expected><![CDATA[65]]></expected>
+                              <evaluationMessage><![CDATA[error(Exception: <a href=#decisionTable_6_17>decisionTable_6_17</a>)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_6_18, call, decisionTable_6, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.amasun.fitnesse.book.CheckBookInventoryFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

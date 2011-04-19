@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20110329</FitNesseVersion>
+  <rootPath>Devnology1Test</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>3</exceptions>
+    </counts>
+    <runTimeInMillis>1</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('11');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img11"/>
+	</a>
+&nbsp;
+	<span class="meta">Precompiled Libraries</span>
+	<div class="hidden" id="11"><br/></div>
+</div>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('12');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img12"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp">.Front Page .Amasun Suite .Fitnesse Overview .Devnology Suite .Devnology 1 Test .Set Up</a> <a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="12">hello world</div>
+</div>
+<br/><h1>This is a test</h1>
+<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=1340756061236518152>
+	<tr>
+		<td>my first test <span class="error">Could not invoke constructor for MyFirstTest[0]</span></td>
+	</tr>
+</table>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('13');">
+		<img src="/files/images/collapsableOpen.gif" class="left" id="img13"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.TearDown">.Front Page .Amasun Suite .Fitnesse Overview .Devnology Suite .Devnology 1 Test .Tear Down</a> <a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.TearDown?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="collapsable" id="13"><div class="toc1">
+	<div class="contents">
+		<b>Contents:</b>
+		<ul>
+			<li>
+				<a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp">SetUp</a>
+			</li>
+			<li>
+				<a href="FrontPage.AmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.TearDown">TearDown</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+<br/>]]></content>
+    <relativePageName>Devnology1Test</relativePageName>
+    
+        <tables>
+            <table>
+        <name>decisionTable_0</name>
+                <row>
+                    <col><![CDATA[my first test error(Could not invoke constructor for MyFirstTest[0])]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_0_0, make, decisionTable_0, MyFirstTest]]]></instruction>
+        <slimResult><![CDATA[!error:Could not invoke constructor for MyFirstTest[0]]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_0_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[!error:Could not invoke constructor for MyFirstTest[0]]]></actual>
+                              <expected><![CDATA[my first test]]></expected>
+                              <evaluationMessage><![CDATA[my first test error(Could not invoke constructor for MyFirstTest[0])]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_0_1, call, decisionTable_0, table, []]]]></instruction>
+        <slimResult><![CDATA[!error:The instance decisionTable_0. does not exist]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

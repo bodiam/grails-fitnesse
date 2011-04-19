@@ -1,0 +1,5 @@
+!1 Fitnesse Fixtures
+
+!include -seamless <FrontPage.AmasunSuite.TheManual 
+
+GrailsIntegration

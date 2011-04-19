@@ -1,0 +1,33 @@
+!1 The code
+|script |deposit money for customer|123|
+|deposit|500                           |
+|deposit|400                           |
+|deposit|25                            |
+|check  |total deposits            |925|
+
+{{{
+class DepositMoneyForCustomerFixture {
+    private Bank bank = new Bank()
+
+    String account
+
+    DepositMoneyForCustomerFixture(String account) {
+        this.account = account
+    }
+
+    void deposit(int money) {
+        bank.deposit(money, account)
+    }
+
+    int totalDeposits() {
+        bank.getAmount(account)
+    }
+}
+}}}
+
+!3 Note
+ * Thin layer between the Fixture and the SUT (Subject Under Test)
+ * No Business logic in the Fixture
+ * Simple
+
+FitnesseExplanation

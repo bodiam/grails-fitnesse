@@ -10,9 +10,6 @@ class BookService {
     static transactional = true
 
     void placeOrder(Order order) {
-        Integer discount = calculateDiscount(order)
-        order.applyDiscount(discount)
-
         order.books.each { Book book ->
             def amount = order.getAmount(book)
 
@@ -24,6 +21,13 @@ class BookService {
 
     Book findByIsbn(String isbn) {
         Book.findByIsbn(isbn)
+    }
+
+    void orderBook(Order order, Book book, Integer amount) {
+        order.addBook(book, amount)
+
+        Integer discount = calculateDiscount(order)
+        order.applyDiscount(discount)
     }
 
     private Integer calculateDiscount(Order order) {

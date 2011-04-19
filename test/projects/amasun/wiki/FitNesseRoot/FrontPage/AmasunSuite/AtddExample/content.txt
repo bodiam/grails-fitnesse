@@ -1,0 +1,16 @@
+!1 Example
+!3 Story
+
+As a customer of a bank, I want to be able to deposit money so that it is stored safely. 
+I want to be able to deposit multiple times, and ensure that the total amount is sum of all deposits.
+
+!3 Test
+
+|script |deposit money for customer|123|
+|deposit|500                           |
+|deposit|400                           |
+|deposit|25                            |
+|deposit|-25                            |
+|check  |total deposits            |900|
+
+TheCode

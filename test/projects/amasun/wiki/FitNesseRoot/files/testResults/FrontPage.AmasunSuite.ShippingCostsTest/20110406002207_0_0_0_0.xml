@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20110104</FitNesseVersion>
+  <rootPath>ShippingCostsTest</rootPath>
+    <result>
+    <counts>
+      <right>0</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>2</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('36');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img36"/>
+	</a>
+&nbsp;
+	<span class="meta">Precompiled Libraries</span>
+	<div class="hidden" id="36"><br/></div>
+</div>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('37');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img37"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.SetUp">.Front Page .Amasun Suite .Set Up</a> <a href="FrontPage.AmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="37"><table border="1" cellspacing="0" _TABLENUMBER=4484524343179899191>
+	<tr>
+		<td>import</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.book</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.solution</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.guide</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.presentation</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><h1>Functionality - Calculate shipping costs</h1>
+<br/><br/>The available shipping methods are displayed to the customer. We support "one-day shipping" and "two-day shipping", the user has to select<br/>a shipping method. <br/><br/>When the user chooses "one-day shipping", dependening on the category, different costs are charged. Namely, for every book in the category <br/>"fantasy" 2.00 EURO is charged,for every book in the category "thriller" 3.00 EURO is charged and for the "IT" category 10.00 EURO per book is <br/>charged. <br/><br/>Different prices per category apply for the "two-day shipping" too, namely 1.50 EURO for the "fantasy" category, 1.90 EURO for the <br/>"thriller" category and 8.90 EURO for the "IT" category.<br/><br/>When the order contains any hardcover books, an additional 3.00 EURO of shipping costs are added to the total of shipping costs. So it doesn't matter <br/>how many hardcover books are added, the additional costs are always 3.00 EURO.<br/><br/>The user also has to provide a shipping location, we currently ship to three locations: The Netherlands, Europe and to the US. If the shipping location <br/>is in the Netherlands, then no additional costs are being charged. If it's in Europe than 2.00 EURO is added to the shipping total and if it's in the US, <br/>then 10.00 EURO is added to the shipping total. <br/><br/><h2>Exercise</h2>
+<br/><br/>Implement this feature in a ATDD way: First write the test, then implement the Fixtures and finally implement the code need for this functionality to work.<br/>]]></content>
+    <relativePageName>ShippingCostsTest</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.solution]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.guide]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.presentation]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_1, import, nl.jworks.amasun.fitnesse.solution]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_2, import, nl.jworks.guide]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_3, import, nl.jworks.presentation]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

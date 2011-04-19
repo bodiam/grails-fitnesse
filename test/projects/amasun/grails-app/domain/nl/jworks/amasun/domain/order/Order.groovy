@@ -2,14 +2,19 @@ package nl.jworks.amasun.domain.order
 
 import nl.jworks.amasun.domain.customer.Customer
 import nl.jworks.amasun.domain.book.Book
+import nl.jworks.amasun.domain.book.PromoPackage
 
 class Order {
     static belongsTo = [customer:Customer]
 
-    private Map<Book, Integer> contents = [:]
+    private Map<Book, Integer> contents = [:] // basket...
     private Integer discount
 
-    static transients = ['discount', 'total', 'subtotal']
+    static transients = ['discount', 'total', 'subtotal','totalItems']
+
+    static mapping = {
+        table 'bookorder'
+    }
 
     protected Order() {
         
@@ -19,9 +24,6 @@ class Order {
         this.customer = customer
     }
 
-    static mapping = {
-        table 'bookorder'
-    }
 
     void addBook(Book book, Integer amount) {
         def currentAmount = contents[book]
@@ -34,6 +36,7 @@ class Order {
 
         contents[book] = currentAmount
     }
+
 
     Set<Book> getBooks() {
         return contents.keySet()
@@ -52,17 +55,18 @@ class Order {
     }
 
     Integer getDiscount() {
-        return discount;
+        return discount ?: 0
     }
 
     Integer getTotal() {
-        println getSubtotal()
-        println getDiscount()
-
         return getSubtotal() - getDiscount()
     }
 
+    Integer getTotalItems() {
+        contents.collect { k,v -> v }.sum() ?: 0
+    }
+
     Integer getSubtotal() {
-        contents.collect { k,v -> k.price * v }.sum()
+        contents.collect { k,v -> k.price * v }.sum() ?: 0
     }
 }

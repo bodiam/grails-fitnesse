@@ -1,0 +1,5 @@
+!1 How does Fitnesse work
+
+!img http://files/images/atdd/fitnesse_architecture.jpg
+
+ComparisonToOtherFrameworks

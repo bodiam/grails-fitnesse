@@ -1,0 +1,10 @@
+!1 What is ATDD 
+
+ * It's TDD
+ * Real World Examples to build a shared understanding of the Domain
+ * Examples become specifications and are acceptance criteria
+ * Documentation becomes Executable 
+ * Tests are automated
+
+AtddGraphic
+

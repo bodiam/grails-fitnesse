@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20110104</FitNesseVersion>
+  <rootPath>ScriptTables</rootPath>
+    <result>
+    <counts>
+      <right>1</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>65</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('44');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img44"/>
+	</a>
+&nbsp;
+	<span class="meta">Precompiled Libraries</span>
+	<div class="hidden" id="44"><br/></div>
+</div>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('45');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img45"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.SetUp">.Front Page .Amasun Suite .Set Up</a> <a href="FrontPage.AmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="45"><table border="1" cellspacing="0" _TABLENUMBER=5670202008849713669>
+	<tr>
+		<td>import</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.book</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.solution</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.guide</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.presentation</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><h3>Script Tables</h3>
+<br/><br/>Each row is a single instruction in the script. The first row is simply the word "Script" followed by the name and constructor arguments of the fixture (known as the "actor") that will be used by the rest of the table. If there is no actor specified then the previous script table's actor on this test page will be used.<br/><br/>Most instructions involve some kind of function call. By default, the name of the function is assembled from tokens in every other cell. The arguments of the function are the intervening cells. Appending ";" to the end of a function name in a cell invokes sequential argument processing, which means that the arguments to the function are all subsequent cells.<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=9113386191550545647>
+	<tr>
+		<td>script</td>
+		<td colspan="6"><span class="pass">calculate script</span></td>
+	</tr>
+	<tr>
+		<td>check</td>
+		<td>that adding</td>
+		<td>3</td>
+		<td>and</td>
+		<td>4</td>
+		<td>equals</td>
+		<td><span class="pass">7</span></td>
+	</tr>
+</table>
+]]></content>
+    <relativePageName>ScriptTables</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.solution]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.guide]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.presentation]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>scriptTable_1</name>
+                <row>
+                    <col><![CDATA[script]]></col>
+                    <col><![CDATA[pass(calculate script)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[check]]></col>
+                    <col><![CDATA[that adding]]></col>
+                    <col><![CDATA[3]]></col>
+                    <col><![CDATA[and]]></col>
+                    <col><![CDATA[4]]></col>
+                    <col><![CDATA[equals]]></col>
+                    <col><![CDATA[pass(7)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_1, import, nl.jworks.amasun.fitnesse.solution]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_2, import, nl.jworks.guide]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_3, import, nl.jworks.presentation]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_1_0, make, scriptTableActor, CalculateScript]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>scriptTable_1_0</instructionId>
+          <col>1</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[calculate script]]></expected>
+                              <evaluationMessage><![CDATA[pass(calculate script)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[scriptTable_1_1, call, scriptTableActor, thatAddingAndEquals, 3, 4]]]></instruction>
+        <slimResult><![CDATA[7]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>scriptTable_1_1</instructionId>
+          <col>6</col>
+          <row>1</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[7]]></actual>
+                              <expected><![CDATA[7]]></expected>
+                              <evaluationMessage><![CDATA[pass(7)]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_1_1</instructionId>
+          <col>2</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>scriptTable_1_1</instructionId>
+          <col>4</col>
+          <row>1</row>
+          <type>ArgumentExpectation</type>
+                                        <evaluationMessage><![CDATA[]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

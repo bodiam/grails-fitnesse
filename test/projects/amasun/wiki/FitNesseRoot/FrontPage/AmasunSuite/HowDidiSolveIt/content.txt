@@ -1,0 +1,11 @@
+!1 How did I solve it
+
+ * Tried many things
+  * Start Grails from Fitnesse
+  * Use Grails scripts
+ * Solution:
+  * Make Fitnesse Server for Grails
+  * Groovy = Java, Fitnesse = Java
+  * Reuse and extend
+
+DetailedExplanation

@@ -1,0 +1,3 @@
+!1 Workshop
+
+ * Some exercises, make them work!

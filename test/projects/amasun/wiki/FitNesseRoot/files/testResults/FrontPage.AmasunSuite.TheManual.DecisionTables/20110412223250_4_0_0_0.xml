@@ -1,0 +1,643 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20110329</FitNesseVersion>
+  <rootPath>DecisionTables</rootPath>
+    <result>
+    <counts>
+      <right>4</right>
+      <wrong>0</wrong>
+      <ignores>0</ignores>
+      <exceptions>0</exceptions>
+    </counts>
+    <runTimeInMillis>84</runTimeInMillis>
+    <content><![CDATA[<div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('18');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img18"/>
+	</a>
+&nbsp;
+	<span class="meta">Precompiled Libraries</span>
+	<div class="hidden" id="18"><br/></div>
+</div>
+<br/><div class="collapse_rim">
+	<div style="float: right;" class="meta">
+		<a href="javascript:expandAll();">Expand All</a>
+ | 
+		<a href="javascript:collapseAll();">Collapse All</a>
+	</div>
+	<a href="javascript:toggleCollapsable('19');">
+		<img src="/files/images/collapsableClosed.gif" class="left" id="img19"/>
+	</a>
+&nbsp;
+	<span class="meta">Included page: <a href="FrontPage.AmasunSuite.SetUp">.Front Page .Amasun Suite .Set Up</a> <a href="FrontPage.AmasunSuite.SetUp?edit&amp;redirectToReferer=true&amp;redirectAction=">(edit)</a></span>
+	<div class="hidden" id="19"><table border="1" cellspacing="0" _TABLENUMBER=6312229267328174984>
+	<tr>
+		<td>import</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.book</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.amasun.fitnesse.solution</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.guide</td>
+	</tr>
+	<tr>
+		<td>nl.jworks.presentation</td>
+	</tr>
+</table>
+</div>
+</div>
+<br/><h3>Decision Tables</h3>
+<br/><br/>First of all, there's the name of the table: "calculate". This is named for a decision to be made. That's good style. Decision tables should be named for decisions. However that name also translates to the fixture class Calculate. If you run this test you'll notice that the name turns green. This means that Slim found the fixture class and was able to create an instance of it.<br/><br/>The first cell could also have been Decision:calculate, or DT:calculate. The code Decision: or DT: tells Slim what kind of table this is. Decision table is the default.<br/><br/>Next, there's the row of column headers. If you look carefully at them you'll see that they all correspond to functions in the fixture class. However, the first three correspond to set functions. That's because they don't have a ?. The Decision Table considers them to be inputs, and automatically calls the appropriately named set function.<br/><br/>The last column header does have a ?. Decision Table considers it to be an output and so calls it as a function and expects a return value. That return value is compared to the contents of the column and turns the corresponding cell red or green depending whether it matches.<br/><br/><table border="1" cellspacing="0" _TABLENUMBER=6834326510529786024>
+	<tr>
+		<td colspan="3"><span class="pass">calculate</span></td>
+	</tr>
+	<tr>
+		<td>operand 1</td>
+		<td>operand 2</td>
+		<td>expectation?</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>3</td>
+		<td><span class="pass">4</span></td>
+	</tr>
+	<tr>
+		<td>9</td>
+		<td>1</td>
+		<td><span class="pass">10</span></td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>5</td>
+		<td><span class="pass">10</span></td>
+	</tr>
+	<tr>
+		<td>90</td>
+		<td>30</td>
+		<td><span class="pass">120</span></td>
+	</tr>
+</table>
+<br/>The Fixture class for this Test looks like this:<br/><pre>
+class CalculateFixture {
+    def calculateService
+
+    int operand1
+    int operand2
+
+    int start = 0
+
+    CalculateFixture() {
+    }
+
+    CalculateFixture(int start) {
+        this.start = start
+    }
+
+    int expectation() {
+        calculateService.addition(operand1, operand2) + start
+    }
+
+    public void setCalculateService(value) {
+        this.calculateService = value
+    }
+}
+</pre>
+]]></content>
+    <relativePageName>DecisionTables</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.book]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.amasun.fitnesse.solution]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.guide]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[nl.jworks.presentation]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_1</name>
+                <row>
+                    <col><![CDATA[pass(calculate)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[operand 1]]></col>
+                    <col><![CDATA[operand 2]]></col>
+                    <col><![CDATA[expectation?]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[1]]></col>
+                    <col><![CDATA[3]]></col>
+                    <col><![CDATA[pass(4)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[9]]></col>
+                    <col><![CDATA[1]]></col>
+                    <col><![CDATA[pass(10)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[5]]></col>
+                    <col><![CDATA[5]]></col>
+                    <col><![CDATA[pass(10)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[90]]></col>
+                    <col><![CDATA[30]]></col>
+                    <col><![CDATA[pass(120)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, nl.jworks.amasun.fitnesse.book]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_1, import, nl.jworks.amasun.fitnesse.solution]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_2, import, nl.jworks.guide]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_3, import, nl.jworks.presentation]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_0, make, decisionTable_1, calculate]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[calculate]]></expected>
+                              <evaluationMessage><![CDATA[pass(calculate)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_1, call, decisionTable_1, table, [[operand 1, operand 2, expectation?], [1, 3, 4], [9, 1, 10], [5, 5, 10], [90, 30, 120]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_2, call, decisionTable_1, beginTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS beginTable[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_3, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_4, call, decisionTable_1, setOperand1, 1]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_4</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[1]]></expected>
+                              <evaluationMessage><![CDATA[1]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_5, call, decisionTable_1, setOperand2, 3]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[3]]></expected>
+                              <evaluationMessage><![CDATA[3]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_6, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_7, call, decisionTable_1, expectation]]]></instruction>
+        <slimResult><![CDATA[4]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_7</instructionId>
+          <col>2</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[4]]></actual>
+                              <expected><![CDATA[4]]></expected>
+                              <evaluationMessage><![CDATA[pass(4)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_8, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_9, call, decisionTable_1, setOperand1, 9]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_9</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[9]]></expected>
+                              <evaluationMessage><![CDATA[9]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_10, call, decisionTable_1, setOperand2, 1]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_10</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[1]]></expected>
+                              <evaluationMessage><![CDATA[1]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_11, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_12, call, decisionTable_1, expectation]]]></instruction>
+        <slimResult><![CDATA[10]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_12</instructionId>
+          <col>2</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[10]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[pass(10)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_13, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_14, call, decisionTable_1, setOperand1, 5]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_14</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[5]]></expected>
+                              <evaluationMessage><![CDATA[5]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_15, call, decisionTable_1, setOperand2, 5]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_15</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[5]]></expected>
+                              <evaluationMessage><![CDATA[5]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_16, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_17, call, decisionTable_1, expectation]]]></instruction>
+        <slimResult><![CDATA[10]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_17</instructionId>
+          <col>2</col>
+          <row>4</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[10]]></actual>
+                              <expected><![CDATA[10]]></expected>
+                              <evaluationMessage><![CDATA[pass(10)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_18, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_19, call, decisionTable_1, setOperand1, 90]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_19</instructionId>
+          <col>0</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[90]]></expected>
+                              <evaluationMessage><![CDATA[90]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_20, call, decisionTable_1, setOperand2, 30]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_20</instructionId>
+          <col>1</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[30]]></expected>
+                              <evaluationMessage><![CDATA[30]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_21, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_22, call, decisionTable_1, expectation]]]></instruction>
+        <slimResult><![CDATA[120]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_22</instructionId>
+          <col>2</col>
+          <row>5</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[120]]></actual>
+                              <expected><![CDATA[120]]></expected>
+                              <evaluationMessage><![CDATA[pass(120)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_23, call, decisionTable_1, endTable]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS endTable[0] nl.jworks.guide.CalculateFixture.>>
+	at fitnesse.slim.MethodExecutionResult$NoMethod.returnValue(MethodExecutionResult.java:27)
+	at nl.jworks.fitnesse.ProtectedStatementExecutor.call(ProtectedStatementExecutor.groovy:215)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:99)
+	at fitnesse.slim.Statement.call(Statement.java:92)
+	at fitnesse.slim.Statement.execute(Statement.java:72)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:36)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:93)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:78)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:69)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:55)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:30)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.super$2$serve(HibernateSessionSlimServer.groovy)
+	at nl.jworks.grails.plugin.fitnesse.HibernateSessionSlimServer.serve(HibernateSessionSlimServer.groovy:34)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:95)
+	at java.lang.Thread.run(Thread.java:680)
+]]></slimResult>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+    <finalCounts>
+    <right>0</right>
+    <wrong>0</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  <totalRunTimeInMillis>0</totalRunTimeInMillis>
+  
+</testResults>
+

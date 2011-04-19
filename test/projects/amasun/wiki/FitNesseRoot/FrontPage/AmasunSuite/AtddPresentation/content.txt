@@ -1,0 +1,7 @@
+!1 Why ATDD
+
+ * Complex business logic needs a test
+ * Tests promote discussion
+ * But keep implementation details open (a good thing!)
+
+WhatIsAtdd

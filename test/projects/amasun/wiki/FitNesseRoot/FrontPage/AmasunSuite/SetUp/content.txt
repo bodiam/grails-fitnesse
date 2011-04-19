@@ -1,0 +1,5 @@
+|import|
+|nl.jworks.amasun.fitnesse.book|
+|nl.jworks.amasun.fitnesse.solution|
+|nl.jworks.guide|
+|nl.jworks.presentation|

@@ -1,0 +1,8 @@
+!1 Downsides
+
+ * It's ugly
+ * It takes time to learn
+ * It takes even more time to do it right
+ * And it's ugly
+
+GrailsIntegration

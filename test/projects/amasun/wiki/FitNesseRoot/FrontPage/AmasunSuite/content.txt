@@ -1,0 +1,15 @@
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {echo}
+!define REGRACE_LINK {true}
+
+>InventoryTest
+
+>BuyBookInventoryTest
+>BuyBooksComboTest
+>BuyBooksComboPercentageTest
+>DiscountCouponTest
+>ShippingCostsTest
+
+>TheManual
+
+>AtddPresentation
