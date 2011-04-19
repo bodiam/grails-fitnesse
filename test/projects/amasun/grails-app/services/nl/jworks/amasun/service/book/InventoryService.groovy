@@ -37,6 +37,10 @@ class InventoryService {
         inventory.save()
     }
 
+    List<Inventory> checkInventory() {
+        return Inventory.list()
+    }
+
 
     private Inventory findByAuthorAndTitle(author, title) {
         Inventory.find("from Inventory as i where i.book.author = :author and i.book.title = :title", [author:author, title:title])

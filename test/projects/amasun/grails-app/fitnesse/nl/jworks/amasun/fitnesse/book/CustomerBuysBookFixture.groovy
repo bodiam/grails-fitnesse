@@ -24,7 +24,7 @@ class CustomerBuysBookFixture {
     void buyBooksWithIsbn(int amount, String isbn) {
         Book book = bookService.findByIsbn(isbn)
 
-        order.addBook(book, amount)
+        bookService.orderBook(order, book, amount)
     }
 
     void placeOrder() {

@@ -12,4 +12,8 @@ class CheckOrderForCustomer {
     CheckOrderForCustomer(String name) {
         this.order = Order.findByCustomer(Customer.findByName(name))
     }
+
+    boolean discountIs(Integer amount) {
+        order.discount == amount
+    }
 }

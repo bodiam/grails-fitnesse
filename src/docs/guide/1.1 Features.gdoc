@@ -157,7 +157,28 @@ class CheckBookInventoryFixture {
 }
 {code}
 
-The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names.
+The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names. An example can be found below:
+
+{code}
+class BookService {
+     List<Book> checkInventory() {
+        return Book.list()
+     }
+}
+
+class CheckBookInventoryFixture {
+    static queryFixture = true                              // indication that this is a query fixture
+    static mapping = ["title", "author", "amount"]        // a different mapping
+
+    def bookService        // injected service
+
+    def queryResults() {  // queryResults() method, which must be named like this!
+        bookService.checkInventory()
+    }
+}
+{code}
+
+
 
 Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.
 
