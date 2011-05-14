@@ -4,9 +4,10 @@ import nl.jworks.grails.plugin.fitnesse.FitnesseFixtureArtefactHandler
 import nl.jworks.grails.plugin.fitnesse.GrailsFitnesseSlimServer
 import nl.jworks.grails.plugin.fitnesse.GrailsSlimFactory
 import nl.jworks.groovy.ClosureMetaMethodWithReturnType
-import nl.jworks.grails.plugin.fitnesse.DefaultGrailsFitnesseFixtureClass
-import org.slf4j.LoggerFactory
+import org.codehaus.groovy.grails.plugins.GrailsPluginUtils
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import org.springframework.core.io.Resource
 
 class FitnesseGrailsPlugin {
     // Plugin defaults
@@ -33,7 +34,7 @@ class FitnesseGrailsPlugin {
     def description = '''The Fitnesse Grails plugin provides a bridge between Fitnesse and Grails.'''
     def documentation = "http://bodiam.github.com/grails-fitnesse-plugin/docs/manual/"
 
-    def artefacts = [ FitnesseFixtureArtefactHandler ]
+    def artefacts = [FitnesseFixtureArtefactHandler]
 
     def watchedResources = [
             "file:./grails-app/fitnesse/**/*.groovy",
@@ -74,24 +75,22 @@ class FitnesseGrailsPlugin {
 
     def onChange = { event ->
         if (application.isFitnesseFixtureClass(event.source)) {
-            application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source)
-        }
-        application.fitnesseFixtureClasses.each { DefaultGrailsFitnesseFixtureClass fixtureClass ->
-            Class underlyingClass = fixtureClass.clazz
-            try {
-                Class reloadedClass = application.classLoader.reloadClass(underlyingClass.name)
-                DefaultGrailsFitnesseFixtureClass reloadedFixtureClass = new DefaultGrailsFitnesseFixtureClass(reloadedClass)
-                final beanConfigureClosure = configureFixtureBean.clone()
-                beans {
-                    beanConfigureClosure.delegate = delegate
-                    beanConfigureClosure.call(reloadedFixtureClass)
-                }.registerBeans(event.ctx)
-                addFixtureDynamicMethods(reloadedFixtureClass)
-            } catch (Throwable th) {
-                log.warn("Class $underlyingClass.name wasn't reloaded because an exception occured", th)
+            if (!artefactIsAlreadyInResources(event.source)) {
+                log.debug("New fixture class $event.source.name found, clearing resources cache")
+                GrailsPluginUtils.pluginBuildSettings.clearCache()
+            } else {
+                log.debug("Reloading $event.source.name fixture class")
             }
+            def fixtureClass = application.addArtefact(FitnesseFixtureArtefactHandler.TYPE, event.source)
+
+            final beanConfigureClosure = configureFixtureBean.clone()
+            beans {
+                beanConfigureClosure.delegate = delegate
+                beanConfigureClosure.call(fixtureClass)
+            }.registerBeans(event.ctx)
+
+            addFixtureDynamicMethods(fixtureClass)
         }
-        log.debug("Reloaded ${application.fitnesseFixtureClasses.size()} fixture classes")
     }
 
     def onConfigChange = { event ->
@@ -104,19 +103,19 @@ class FitnesseGrailsPlugin {
                 if (propertyMapping in Collection) {
                     propertyMapping = propertyMapping.inject([:]) { map, property ->
                         map << new MapEntry(property, property)
-                    }   
+                    }
                 }
 
                 results.collect { result ->
                     propertyMapping.collect { name, property ->
                         [name, result[property].toString()]
-                    }   
+                    }
                 }
             }
         }
 
         if (fixtureClass.mapping) {
-            registerClosureMetaMethodWithReturnType(fixtureClass.metaClass, 'query', List) { ->
+            registerClosureMetaMethodWithReturnType(fixtureClass.metaClass, 'query', List) {->
                 mapResults(queryResults(), mapping)
             }
         }
@@ -135,5 +134,17 @@ class FitnesseGrailsPlugin {
             ownerMetaClass.replaceDelegate()
         }
         ownerMetaClass.registerInstanceMethod(metaMethod)
+    }
+
+    private boolean artefactIsAlreadyInResources(Class clazz) {
+        Resource[] resources = GrailsPluginUtils.pluginBuildSettings.artefactResources
+
+        def classNamesOfResources = resources.collect { Resource resource
+            def split = it.path.split('/') as List
+            def start = split.lastIndexOf('grails-app') + 2
+            split[start..-1].join('.') - '.groovy'
+        }
+
+        return clazz.name in classNamesOfResources
     }
 }
