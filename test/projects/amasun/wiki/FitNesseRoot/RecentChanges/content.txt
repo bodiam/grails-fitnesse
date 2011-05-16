@@ -1,4 +1,12 @@
-|FrontPage.AmasunSuite.BuyBooksComboPercentageTest||23:26:15 Tue, Apr 19, 2011|
+|FrontPage.AmasunSuite.BuyBooksComboAmountTest||16:56:33 Fri, May 13, 2011|
+|MyFirstTest||16:09:37 Fri, May 13, 2011|
+|MyFirstSuite||16:08:27 Fri, May 13, 2011|
+|MyFirstPage||16:08:16 Fri, May 13, 2011|
+|FrontPage||16:07:29 Fri, May 13, 2011|
+|FrontPage.AmasunSuite.BuyBooksComboPercentageTest||19:49:07 Tue, May 10, 2011|
+|FrontPage.MyFirst||19:28:00 Tue, May 10, 2011|
+|FrontPage.MyFirstSuite||19:27:33 Tue, May 10, 2011|
+|FrontPage.AmasunSuite||16:24:59 Tue, May 10, 2011|
 |FrontPage.AmasunSuite.AtddExample||21:38:58 Tue, Apr 05, 2011|
 |FrontPage.DevnologyAmasunSuite.DiscountCouponTest||15:28:21 Sat, Nov 06, 2010|
 |FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp||13:39:59 Sat, Nov 06, 2010|
@@ -33,4 +41,3 @@
 |FrontPage.DevnologyAmasunSuite.InventoryTest||01:07:53 Fri, Nov 05, 2010|
 |FrontPage.DevnologyAmasunSuite.BuyBooksComboTest||01:02:53 Fri, Nov 05, 2010|
 |FrontPage.DevnologyAmasunSuite.BuyBookInventoryTest||23:30:37 Mon, Nov 01, 2010|
-|FrontPage||23:11:55 Mon, Nov 01, 2010|

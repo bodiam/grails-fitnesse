@@ -30,7 +30,7 @@ class InventoryService {
         def inventory = findByAuthorAndTitle(book.author, book.title)
 
         if(inventory.amount - amount < 0) {
-            throw new IllegalArgumentException("Not enough books in stock: current stock is ${stock}, trying to deduct ${amount}")
+            throw new IllegalArgumentException("Not enough books in stock: current stock is ${inventory.amount}, trying to deduct ${amount}")
         }
 
         inventory.amount = inventory.amount - amount

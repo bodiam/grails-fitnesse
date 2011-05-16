@@ -1,5 +1,5 @@
 !|scenario|import|importedPage|into|importingPage|
-|check|request page|@importingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT}/@importedPage|200|
+|check|request page|@importingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT9123/@importedPage|200|
 
 !|scenario|Water mark and edit buttons should be on page|page|
 |check|request page|@page|200|
