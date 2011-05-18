@@ -9,6 +9,15 @@
 Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
 </blockquote><p class="paragraph"/><h4>Release History</h4>
 <ul class="star">
+<li>May 18, 2011</li>
+<ul class="star">
+<li>0.95 Release</li>
+<ul class="star">
+<li>Feature: Enabled easy mapping of enums classes</li>
+<li>Improvement: Improved Query Fixture DSL to allow dotted notation</li>
+<li>Improvement: Enhanced reloading of application</li>
+</ul>
+</ul>
 <li>March 22, 2011</li>
 <ul class="star">
 <li>0.9 Release</li>
@@ -68,7 +77,18 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 <li>September 15, 2010</li>
 <ul class="star">
 <li>initial 0.1 release.</li>
-</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Fixture annotation (since 0.9)</h3><p class="paragraph"/>Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
+</ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/>
+<h3>Automatic Enum mapping (since 0.95)</h3><p class="paragraph"/>Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.<p class="paragraph"/>An example:
+<div class="code"><pre>class MyEnumFixture &#123;
+    Color color
+&#125;<p class="paragraph"/>enum Color &#123; RED, GREEN, BLUE &#125;</pre></div><p class="paragraph"/>By specifying the name of the enum value in the test (see below), the mapping is automatically done:<p class="paragraph"/><div class="code"><pre>|my enum     |
+|color|color?|
+|RED  |RED   |</pre></div><p class="paragraph"/><h3>Nested property mapping for Query Fixtures (since 0.95)</h3><p class="paragraph"/>It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties, as can be seen below:<p class="paragraph"/><div class="code"><pre>class NestedPropertyKeyValueQueryFixture &#123;
+    <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span><p class="paragraph"/>    <span class="java&#45;keyword">static</span> mapping = &#91;<span class="java&#45;quote">"name"</span>:<span class="java&#45;quote">"author.name"</span>, <span class="java&#45;quote">"birthYear"</span>:<span class="java&#45;quote">"author.birthYear"</span>, <span class="java&#45;quote">"title"</span>:<span class="java&#45;quote">"title"</span>&#93;<p class="paragraph"/>    def queryResults() &#123;
+        <span class="java&#45;keyword">return</span> &#91;<span class="java&#45;keyword">new</span> Book(title:'Grails in Action', author: <span class="java&#45;keyword">new</span> Author(name:<span class="java&#45;quote">"Peter Ledbrook"</span>, birthYear: 1980))&#93;
+    &#125;
+&#125;</pre></div><p class="paragraph"/>
+<h3>Fixture annotation (since 0.9)</h3><p class="paragraph"/>Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
 This means that fixtures can now be given any name (ie. they don't have to be suffixed with Fixture), as long as they are annotated with the @Fixture annotation.<p class="paragraph"/><div class="code"><pre>@Fixture
 class BuyBook &#123;
     // contents here
@@ -111,7 +131,21 @@ class BuyBook &#123;
     <span class="java&#45;keyword">static</span> mapping   = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService        // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
         bookService.checkInventory()
     &#125;
-&#125;</pre></div><p class="paragraph"/>The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names.<p class="paragraph"/>Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.<p class="paragraph"/><h3>Strings as methods</h3>
+&#125;</pre></div><p class="paragraph"/>The mapping property determines how the query results will be mapped before being sent back to FitNesse. The keys of the map are column names from the FitNesse query table for the given fixture. The values might be indexes of columns returned by the implementation of queryResults method (i.e. if they are results from a executeQuery) or property names (i.e. if queryResults returns a collection of domain objects). The mapping property can also be a list of property names if property names of the result map one to one to table column names. An example can be found below:<p class="paragraph"/><div class="code"><pre>class BookService &#123;
+     List&#60;Book&#62; checkInventory() &#123;
+        <span class="java&#45;keyword">return</span> Book.list()
+     &#125;
+&#125;<p class="paragraph"/>class CheckBookInventoryFixture &#123;
+    <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span>                              // indication that <span class="java&#45;keyword">this</span> is a query fixture
+    <span class="java&#45;keyword">static</span> mapping = &#91;<span class="java&#45;quote">"title"</span>, <span class="java&#45;quote">"author"</span>, <span class="java&#45;quote">"amount"</span>&#93;        // a different mapping<p class="paragraph"/>    def bookService        // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
+        bookService.checkInventory()
+    &#125;
+&#125;</pre></div><p class="paragraph"/>or:<p class="paragraph"/>class CheckBookInventoryFixture {
+    static queryFixture = true                              // indication that this is a query fixture
+    static mapping = <a href=""objectTitle",">title</a> <a href=""theAuthor",">author</a> <a href=""amount"">amount</a> // a different mapping, where the key is the name of the test, and the value the property name of the object<p class="paragraph"/>    def bookService        // injected service<p class="paragraph"/>    def queryResults() {  // queryResults() method, which must be named like this!
+        bookService.checkInventory()
+    }
+}<p class="paragraph"/><p class="paragraph"/>Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.<p class="paragraph"/><h3>Strings as methods</h3>
 Groovy supports methods like <code>"this is a method"</code>. The Fitnesse plugin also supports this, making some Fixtures more readable.<p class="paragraph"/><strong class="bold">Example</strong>
 <div class="code"><pre>class MyFixture &#123;
   <span class="java&#45;object">boolean</span> <span class="java&#45;quote">"check <span class="java&#45;keyword">if</span> customers exists"</span>(<span class="java&#45;object">int</span> customerNumber) &#123;
@@ -124,7 +158,7 @@ Groovy supports default arguments. The Grails Fitnesse plugin also supports this
   &#125;
 &#125;</pre></div><p class="paragraph"/><strong class="bold">Wiki:</strong>
 <div class="code"><pre>|my fixture|<span class="java&#45;keyword">true</span>|</pre></div><p class="paragraph"/><h3>Untyped arguments</h3>
-Groovy supports default arguments. Fitnesse also supports this:<p class="paragraph"/><div class="code"><pre>class MyFixture &#123;
+Groovy supports untyped method arguments. The Grails Fitnesse plugin also supports this:<p class="paragraph"/><div class="code"><pre>class MyFixture &#123;
   <span class="java&#45;object">boolean</span> checkCustomer(customerNumber) &#123;
     // &#8230;
   &#125;
