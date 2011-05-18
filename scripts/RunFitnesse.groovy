@@ -8,8 +8,8 @@ target('default': 'Starts Fitnesse Server') {
     def fitnesseConfig = CH.config.grails.plugin.fitnesse
 
     ant.java(jar: "${fitnessePluginDir}/lib/fitnesse.jar", fork: true) {
-	arg(value: '-d')
-	arg(path: "${fitnesseConfig.wiki.dir ?: 'wiki'}")
-	arg(line: "-p ${fitnesseConfig.wiki.port ?: 9090}")
+        arg(value: '-d')
+        arg(path: "${fitnesseConfig.wiki.dir ?: 'wiki'}")
+        arg(line: "-p ${fitnesseConfig.wiki.port ?: 9090}")
     }
 }

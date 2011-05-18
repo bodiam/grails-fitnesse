@@ -8,6 +8,11 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
+* May 18, 2011
+** 0.95 Release
+*** Feature: Enabled easy mapping of enums classes
+*** Improvement: Improved Query Fixture DSL to allow dotted notation
+*** Improvement: Enhanced reloading of application
 * March 22, 2011
 ** 0.9 Release
 *** We upped the version number to 0.9 because the plugin is quite feature complete now, and is almost stable enough to be a 1.0.

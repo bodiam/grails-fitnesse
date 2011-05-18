@@ -1,5 +1,44 @@
 The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.
 
+
+h3. Automatic Enum mapping (since 0.95)
+
+Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.
+
+An example:
+{code}
+class MyEnumFixture {
+    Color color
+}
+
+enum Color { RED, GREEN, BLUE }
+{code}
+
+By specifying the name of the enum value in the test (see below), the mapping is automatically done:
+
+{code}
+|my enum     |
+|color|color?|
+|RED  |RED   |
+{code}
+
+h3. Nested property mapping for Query Fixtures (since 0.95)
+
+It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties, as can be seen below:
+
+{code}
+class NestedPropertyKeyValueQueryFixture {
+    static queryFixture = true
+
+    static mapping = ["name":"author.name", "birthYear":"author.birthYear", "title":"title"]
+
+    def queryResults() {
+        return [new Book(title:'Grails in Action', author: new Author(name:"Peter Ledbrook", birthYear: 1980))]
+    }
+}
+{code}
+
+
 h3. Fixture annotation (since 0.9)
 
 Since version 0.9, it's possible to annotate Fixture classes with the @Fixture annotatation.
@@ -177,6 +216,19 @@ class CheckBookInventoryFixture {
     }
 }
 {code}
+
+or:
+
+class CheckBookInventoryFixture {
+    static queryFixture = true                              // indication that this is a query fixture
+    static mapping = ["title":"objectTitle", "author":"theAuthor", "amount":"amount"] // a different mapping, where the key is the name of the test, and the value the property name of the object
+
+    def bookService        // injected service
+
+    def queryResults() {  // queryResults() method, which must be named like this!
+        bookService.checkInventory()
+    }
+}
 
 
 

@@ -2,3 +2,5 @@
 |nl.jworks.grails.fitnesse.feature|
 |nl.jworks.grails.fitnesse.feature.hibernate|
 |nl.jworks.grails.fitnesse.feature.stoptest|
+|nl.jworks.grails.fitnesse.feature.enums|
+|nl.jworks.grails.fitnesse.feature.querydsl|

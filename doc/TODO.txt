@@ -46,6 +46,13 @@
 - Removed .svn directories and fitnesse zips                        DONE
 - add configuration option for default Fitnesse suite to run!       DONE
 
+0.95
+
+- better reloading of the application                                       DONE
+- Support queryMaping dsl with dots ("."), like ["book.title", "amount"]    DONE
+- Automatic enum mapping support                                            DONE
+
+
 1.0
 - givwenzen integration                                             ALMOST DONE (include a released version when patched and get rid of SLF4J warnings)
 
@@ -69,7 +76,7 @@ TODO:
 1.1 TODO:
 - GivWenZen integration
 - Support CustomTypes (http://localhost:9090/FitNesse.UserGuide.SliM.CustomTypes)
-- Support queryMaping dsl with dots ("."), like ["book.title", "amount"]
+
 
 
 

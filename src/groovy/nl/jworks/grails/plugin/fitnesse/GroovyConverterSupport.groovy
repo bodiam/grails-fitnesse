@@ -12,6 +12,12 @@ class GroovyConverterSupport {
     public static Converter getConverter(Type type) {
         //in doesn't work here for primitives that's why instanceof is used
         boolean typeIsASimpleClass = type instanceof Class
+        boolean typeIsEnumClass = type.isEnum()
+
+        if(typeIsEnumClass) {
+            Slim.addConverter(type, new EnumConverter(type))
+        }
+
         Converter converter = typeIsASimpleClass ? ConverterSupport.getConverter(type) : null
         if (!converter) {
             converter = type in ParameterizedType ? new GroovyCollectionConverter(type) : new GroovyObjectConverter(type)

@@ -9,11 +9,11 @@ import fitnesse.slim.Converter
  * @author Erik Pragt
  */
 class ObjectConverter implements Converter {
-  public String toString(Object o) {
-    return o.toString();
-  }
+    public String toString(Object o) {
+        return o.toString();
+    }
 
-  public Object fromString(String arg) {
-    return arg;
-  }
+    public Object fromString(String arg) {
+        return arg;
+    }
 }

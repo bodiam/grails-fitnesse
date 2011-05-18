@@ -29,6 +29,7 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
 
     public GrailsStatementExecutor() {
         Slim.addConverter(Object.class, new ObjectConverter())
+//        Slim.addConverter(Object.class, new EnumConverter())
     }
 
     @Override
