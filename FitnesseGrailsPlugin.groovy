@@ -16,7 +16,7 @@ class FitnesseGrailsPlugin {
     private final Logger log = LoggerFactory.getLogger("nl.jworks.grails.plugin.fitnesse.FitnesseGrailsPlugin")
 
     // the plugin version
-    def version = "0.95"
+    def version = "0.97"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.2 > *"
     // the other plugins this plugin depends on
@@ -119,6 +119,10 @@ class FitnesseGrailsPlugin {
                 mapResults(queryResults(), mapping)
             }
         }
+    }
+
+    private def findPropertyValue(object, Number index) {
+        return object[index].toString()
     }
 
     private def findPropertyValue(object, String path) {

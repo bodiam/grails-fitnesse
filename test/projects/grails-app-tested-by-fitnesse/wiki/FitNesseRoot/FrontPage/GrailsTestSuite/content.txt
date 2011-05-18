@@ -9,5 +9,3 @@
 >SlimTestSystem
 >GrailsFitnesseFeatures
 >FitnesseTutorialSuite
-
->TransactionTest

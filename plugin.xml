@@ -1,4 +1,4 @@
-<plugin name='fitnesse' version='0.95' grailsVersion='1.3.2 &gt; *'>
+<plugin name='fitnesse' version='0.97' grailsVersion='1.3.2 &gt; *'>
   <author>Erik Pragt</author>
   <authorEmail>erik.pragt@jworks.nl</authorEmail>
   <title>Fitnesse Grails Plugin</title>

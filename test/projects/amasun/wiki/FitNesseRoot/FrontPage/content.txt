@@ -13,10 +13,3 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 >AmasunSuite
 
 !note Release v20101101
-
-
->MyFirstSuite
-
-
-
-MyFirstPage
