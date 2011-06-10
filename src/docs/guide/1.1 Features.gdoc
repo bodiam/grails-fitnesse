@@ -1,6 +1,58 @@
 The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.
 
 
+h3. Support for GivWenZen (since 1.0)
+
+Since version 1.0, we support the [GivWenZen|http://code.google.com/p/givwenzen/] library. GivWenZen allows a user to use the BDD Given When Then vocabulary and plain text sentences to help a team get the words right and create a ubiquitous language to describe and test a business domain. See the [GivWenZen|http://code.google.com/p/givwenzen/] website for more information.
+
+To use GivWenZen in Grails Fitnesse, import the @fitnesse.grails@ package and use the @GivWenZenForGrails@ fixture in a script table, as can be seen in the example below:
+
+{code}
+|import|
+|fitnesse.grails|
+
+|script|
+|start|giv wen zen for grails|
+
+|script|
+|given|the number 5|
+|when|incrementing it by 3|
+|then|the result is 8|
+
+|script|
+|given|the number 1|
+|when|incrementing it by 2|
+|and|incrementing it by 3|
+|then|the result is 6|
+{code}
+
+To make this test work, you'll need a step class like the one below:
+
+{code}
+import org.givwenzen.annotations.DomainStep
+import org.givwenzen.annotations.DomainSteps
+
+@DomainSteps
+class GivWenZenSupportSteps {
+	private int number
+
+	@DomainStep("the number (\\d+)")
+	void setNumber(int number) {
+		this.number = number
+	}
+
+	@DomainStep("incrementing it by (\\d+)")
+	void incrementNumber(int by) {
+		number += by
+	}
+
+	@DomainStep("the result is (\\d+)")
+	boolean expect(int result) {
+		number == result
+	}
+}
+{code}
+
 h3. Automatic Enum mapping (since 0.95)
 
 Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.

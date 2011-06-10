@@ -8,6 +8,12 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
+* June 10, 2011
+** 1.0 Release!
+*** Feature: Support for GivWenZen
+*** Bugfix: Fixed the tutorial documentation (thanks Pierre D. Tremblay!)
+*** Bugfix: Fixed the dependency resolution of libraries (thanks Steef de Bruijn)
+*** Bugfix: Fixed plugin scopes (thanks Steef de Bruijn)
 * May 18, 2011
 ** 0.95 Release
 *** Feature: Enabled easy mapping of enums classes
