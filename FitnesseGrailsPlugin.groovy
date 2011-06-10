@@ -26,7 +26,7 @@ class FitnesseGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    def scopes = CH.config.grails.plugin.fitnesse.disabled ? [excludes: 'all'] : []
+    def scopes = CH.config.grails.plugin.fitnesse.disabled ? [excludes: ['war', 'all']] : [:]
 
     def author = "Erik Pragt"
     def authorEmail = "erik.pragt@jworks.nl"
