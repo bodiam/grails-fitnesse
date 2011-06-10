@@ -24,7 +24,7 @@ By specifying the name of the enum value in the test (see below), the mapping is
 
 h3. Nested property mapping for Query Fixtures (since 0.95)
 
-It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties, as can be seen below:
+It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties using a dotted (.) notation, as can be seen below:
 
 {code}
 class NestedPropertyKeyValueQueryFixture {

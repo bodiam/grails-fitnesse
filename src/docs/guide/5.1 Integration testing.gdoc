@@ -25,9 +25,9 @@ $ grails run-app
 
 h4. 4. Start the Fitnesse server.
 
-If you haven't downloaded Fitnesse yet, please do download it from the [Fitnesse website|http://www.fitnesse.org].
+Since Fitnesse is bundled with the plugin, there's no need to download anything.
 
-The following will extract Fitnesse and start it on port 9090.
+The following will extract Fitnesse and start it on the default port, 9090.
 {code}
 $ grails run-fitnesse
 {code}
@@ -46,6 +46,9 @@ In the new page, remove the contents of the text area and replace it by the foll
 !define TEST_SYSTEM {slim}
 !define COMMAND_PATTERN {echo}
 
+|import|
+|bookstore|
+
 |create book inventory|
 |author|title|amount|
 |Stephen King|IT|3|
@@ -56,6 +59,7 @@ In the new page, remove the contents of the text area and replace it by the foll
 |customer buys|1|books with title|Chase|
 
 |query:check book inventory|
+|author|title|amount|
 |Stephen King|IT|1|
 |Dean Koontz|Chase|4|
 {code}
@@ -63,7 +67,8 @@ In the new page, remove the contents of the text area and replace it by the foll
 Press save after you created the page.
 
 {note}
-The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to a machine running Windows.
+The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'echo' since I'm on a Mac, but for Windows users you need to create a batch file, for example, echo.bat, without any contents.
+The reason for doing this is that Fitnesse normally starts a Slim Server itself. However, in our case, our Grails application starts the Slim Server for us. So, to prevent starting the server, we use a dummy command pattern.
 {note}
 
 In this test, you've used 3 kinds of Test tables:
@@ -75,7 +80,15 @@ Click on *Test* on the left side of the page. The test will execute, and will fa
 
 h4. 6. Creating the Fixtures
 
-We'll start by creating the first Fixture mentioned in the error message, which is the @CreateBookInventory@ Fixture. In your Grails project, go to the @grails-app/fitnesse@ directory, and create a file called @CreateBookInventory.groovy@. Because the Fitnesse plugin will reload the Fixtures automatically, pressing the *Test* button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse.
+We'll start by creating the first Fixture mentioned in the error message, which is the @CreateBookInventory@ Fixture. To create the Fixture, use the Grails task @create-fitnesse-fixture*. You can involve the script by typing the following:
+
+{code}
+$ grails create-fitnesse-fixture CreateBookInventory
+{code}
+
+This will create a file called @CreateBookInventoryFixture.groovy@ in the @grails-app/fitnesse/bookstore@ directory.
+
+Because the Fitnesse plugin will reload the Fixtures automatically, pressing the *Test* button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse. If for some reason this doesn't work, please restart the Grails application, and try again.
 
 Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding @Book@ domain class.
 
@@ -96,7 +109,7 @@ class CreateBookInventoryFixture {
 
     def bookService
 
-    CreateBookInventory() {
+    CreateBookInventoryFixture() {
         Book.list()*.delete()
     }
 
@@ -178,5 +191,9 @@ class CheckBookInventoryFixture {
     }
 }
 {code}
+
+{note}
+The mapping is used here to map the column names to the position of the values returned by the queryResults method. For more information, please check the 'Query DSL' part in the 'Features' documentation.
+{note}
 
 Now, when running the Test again in Fitnesse, everything should be green, and you have your first test running. Not you can refactor your code if you want, and check if the result is still valid by rerunning the Tests!

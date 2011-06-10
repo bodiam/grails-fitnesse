@@ -1,3 +1,4 @@
+<%@ page import="nl.jworks.amasun.domain.book.PromoPackage" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -81,31 +82,30 @@
              
              <div class="right_box">
              
-             	<div class="title"><span class="title_icon"><g:img src="images/bullet4.gif" alt="" title="" /></span>Promotions</div> 
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><g:img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><g:img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>
+             	<div class="title"><span class="title_icon"><g:img src="images/bullet4.gif" alt="" title="" /></span>Promotions</div>
+                    <g:each in="${PromoPackage.list()}" var="promoPackage">
+                        <g:set var="book1" value="${promoPackage.book1}" />
+                        <g:set var="book2" value="${promoPackage.book2}" />
+
+                        <div class="new_prod_box">
+                            <a href="details.html">${book1.title}</a>
+                            <div class="new_prod_bg">
+                            <span class="new_icon"><g:img src="images/promo_icon.gif" alt="" title="" /></span>
+                            <a href="details.html?id=${book1.id}"><g:img src="images/${book1.title}.jpg" alt="" title="" class="thumb" border="0" /></a>
+                            </div>
+                        </div>
+
+                        <div class="new_prod_box">
+                            <a href="details.html">${book2.title}</a>
+                            <div class="new_prod_bg">
+                            <span class="new_icon"><g:img src="images/promo_icon.gif" alt="" title="" /></span>
+                            <a href="details.html?id=${book2.id}"><g:img src="images/${book2.title}.jpg" alt="" title="" class="thumb" border="0" /></a>
+                            </div>
+                        </div>
+
+
+                </g:each>
                     
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><g:img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><g:img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>                    
-                    
-                    <div class="new_prod_box">
-                        <a href="details.html">product name</a>
-                        <div class="new_prod_bg">
-                        <span class="new_icon"><g:img src="images/promo_icon.gif" alt="" title="" /></span>
-                        <a href="details.html"><g:img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
-                        </div>           
-                    </div>              
-             
              </div>
              
              <div class="right_box">

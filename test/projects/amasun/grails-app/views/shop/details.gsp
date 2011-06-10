@@ -19,7 +19,7 @@
 
 <div class="feat_prod_box_details">
 
-    <div class="prod_img"><a href="details.html"><g:img src="images/${book.title}.jpg" style="width: 115px" alt="" title="" border="0"/></a>
+    <div class="prod_img"><a href="details.html?id=${book.id}"><g:img src="images/${book.title}.jpg" style="width: 115px" alt="" title="" border="0"/></a>
         <br/><br/>
         <a href="../images/big_${book.title}.jpg" rel="lightbox"><g:img src="images/zoom.gif" alt="" title="" border="0"/></a>
     </div>
