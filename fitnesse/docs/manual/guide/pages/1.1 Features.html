@@ -6,12 +6,34 @@
     </head>
     <body class="body">
     The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/>
-<h3>Automatic Enum mapping (since 0.95)</h3><p class="paragraph"/>Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.<p class="paragraph"/>An example:
+<h3>Support for GivWenZen (since 1.0)</h3><p class="paragraph"/>Since version 1.0, we support the <a href="http://code.google.com/p/givwenzen/" target="blank">GivWenZen</a> library. GivWenZen allows a user to use the BDD Given When Then vocabulary and plain text sentences to help a team get the words right and create a ubiquitous language to describe and test a business domain. See the <a href="http://code.google.com/p/givwenzen/" target="blank">GivWenZen</a> website for more information.<p class="paragraph"/>To use GivWenZen in Grails Fitnesse, import the <code>fitnesse.grails</code> package and use the <code>GivWenZenForGrails</code> fixture in a script table, as can be seen in the example below:<p class="paragraph"/><div class="code"><pre>|<span class="java&#45;keyword">import</span>|
+|fitnesse.grails|<p class="paragraph"/>|script|
+|start|giv wen zen <span class="java&#45;keyword">for</span> grails|<p class="paragraph"/>|script|
+|given|the number 5|
+|when|incrementing it by 3|
+|then|the result is 8|<p class="paragraph"/>|script|
+|given|the number 1|
+|when|incrementing it by 2|
+|and|incrementing it by 3|
+|then|the result is 6|</pre></div><p class="paragraph"/>To make this test work, you'll need a step class like the one below:<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">import</span> org.givwenzen.annotations.DomainStep
+<span class="java&#45;keyword">import</span> org.givwenzen.annotations.DomainSteps<p class="paragraph"/>@DomainSteps
+class GivWenZenSupportSteps &#123;
+	<span class="java&#45;keyword">private</span> <span class="java&#45;object">int</span> number<p class="paragraph"/>	@DomainStep("the number (&#92;&#92;d+)<span class="java&#45;quote">")
+	void setNumber(<span class="java&#45;object">int</span> number) &#123;
+		<span class="java&#45;keyword">this</span>.number = number
+	&#125;<p class="paragraph"/>	@DomainStep("</span>incrementing it by (&#92;&#92;d+)<span class="java&#45;quote">")
+	void incrementNumber(<span class="java&#45;object">int</span> by) &#123;
+		number += by
+	&#125;<p class="paragraph"/>	@DomainStep("</span>the result is (&#92;&#92;d+)")
+	<span class="java&#45;object">boolean</span> expect(<span class="java&#45;object">int</span> result) &#123;
+		number == result
+	&#125;
+&#125;</pre></div><p class="paragraph"/><h3>Automatic Enum mapping (since 0.95)</h3><p class="paragraph"/>Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.<p class="paragraph"/>An example:
 <div class="code"><pre>class MyEnumFixture &#123;
     Color color
 &#125;<p class="paragraph"/>enum Color &#123; RED, GREEN, BLUE &#125;</pre></div><p class="paragraph"/>By specifying the name of the enum value in the test (see below), the mapping is automatically done:<p class="paragraph"/><div class="code"><pre>|my enum     |
 |color|color?|
-|RED  |RED   |</pre></div><p class="paragraph"/><h3>Nested property mapping for Query Fixtures (since 0.95)</h3><p class="paragraph"/>It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties, as can be seen below:<p class="paragraph"/><div class="code"><pre>class NestedPropertyKeyValueQueryFixture &#123;
+|RED  |RED   |</pre></div><p class="paragraph"/><h3>Nested property mapping for Query Fixtures (since 0.95)</h3><p class="paragraph"/>It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties using a dotted (.) notation, as can be seen below:<p class="paragraph"/><div class="code"><pre>class NestedPropertyKeyValueQueryFixture &#123;
     <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span><p class="paragraph"/>    <span class="java&#45;keyword">static</span> mapping = &#91;<span class="java&#45;quote">"name"</span>:<span class="java&#45;quote">"author.name"</span>, <span class="java&#45;quote">"birthYear"</span>:<span class="java&#45;quote">"author.birthYear"</span>, <span class="java&#45;quote">"title"</span>:<span class="java&#45;quote">"title"</span>&#93;<p class="paragraph"/>    def queryResults() &#123;
         <span class="java&#45;keyword">return</span> &#91;<span class="java&#45;keyword">new</span> Book(title:'Grails in Action', author: <span class="java&#45;keyword">new</span> Author(name:<span class="java&#45;quote">"Peter Ledbrook"</span>, birthYear: 1980))&#93;
     &#125;

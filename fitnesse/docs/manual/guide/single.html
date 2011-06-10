@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Fitnesse Grails Plugin 0.95 - Reference Documentation</title>
+        <title>Fitnesse Grails Plugin 1.0 - Reference Documentation</title>
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" title="Style" charset="utf-8"/>
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
     </head>
@@ -16,7 +16,7 @@
             <div class="message">fitnesse</div>
             <h1>Fitnesse Grails Plugin - Reference Documentation</h1>
             <p><strong>Authors:</strong> Erik Pragt (<a href="http://www.jworks.nl">jWorks.nl</a>), Marcin Erdmann (<a href="http://www.jworks.nl">jWorks.nl</a>)</p>
-            <p><strong>Version:</strong> 0.95</p>
+            <p><strong>Version:</strong> 1.0</p>
             <em></em>
         </div>
 
@@ -29,6 +29,16 @@
 Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
 </blockquote><p class="paragraph"/><h4>Release History</h4>
 <ul class="star">
+<li>June 10, 2011</li>
+<ul class="star">
+<li>1.0 Release!</li>
+<ul class="star">
+<li>Feature: Support for GivWenZen</li>
+<li>Bugfix: Fixed the tutorial documentation (thanks Pierre D. Tremblay!)</li>
+<li>Bugfix: Fixed the dependency resolution of libraries (thanks Steef de Bruijn)</li>
+<li>Bugfix: Fixed plugin scopes (thanks Steef de Bruijn)</li>
+</ul>
+</ul>
 <li>May 18, 2011</li>
 <ul class="star">
 <li>0.95 Release</li>
@@ -98,12 +108,34 @@ Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supporte
 <ul class="star">
 <li>initial 0.1 release.</li>
 </ul></ul><p class="paragraph"/><h2><a name="1.1 Features">1.1 Features</a></h2>The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/>
-<h3>Automatic Enum mapping (since 0.95)</h3><p class="paragraph"/>Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.<p class="paragraph"/>An example:
+<h3>Support for GivWenZen (since 1.0)</h3><p class="paragraph"/>Since version 1.0, we support the <a href="http://code.google.com/p/givwenzen/" target="blank">GivWenZen</a> library. GivWenZen allows a user to use the BDD Given When Then vocabulary and plain text sentences to help a team get the words right and create a ubiquitous language to describe and test a business domain. See the <a href="http://code.google.com/p/givwenzen/" target="blank">GivWenZen</a> website for more information.<p class="paragraph"/>To use GivWenZen in Grails Fitnesse, import the <code>fitnesse.grails</code> package and use the <code>GivWenZenForGrails</code> fixture in a script table, as can be seen in the example below:<p class="paragraph"/><div class="code"><pre>|<span class="java&#45;keyword">import</span>|
+|fitnesse.grails|<p class="paragraph"/>|script|
+|start|giv wen zen <span class="java&#45;keyword">for</span> grails|<p class="paragraph"/>|script|
+|given|the number 5|
+|when|incrementing it by 3|
+|then|the result is 8|<p class="paragraph"/>|script|
+|given|the number 1|
+|when|incrementing it by 2|
+|and|incrementing it by 3|
+|then|the result is 6|</pre></div><p class="paragraph"/>To make this test work, you'll need a step class like the one below:<p class="paragraph"/><div class="code"><pre><span class="java&#45;keyword">import</span> org.givwenzen.annotations.DomainStep
+<span class="java&#45;keyword">import</span> org.givwenzen.annotations.DomainSteps<p class="paragraph"/>@DomainSteps
+class GivWenZenSupportSteps &#123;
+	<span class="java&#45;keyword">private</span> <span class="java&#45;object">int</span> number<p class="paragraph"/>	@DomainStep("the number (&#92;&#92;d+)<span class="java&#45;quote">")
+	void setNumber(<span class="java&#45;object">int</span> number) &#123;
+		<span class="java&#45;keyword">this</span>.number = number
+	&#125;<p class="paragraph"/>	@DomainStep("</span>incrementing it by (&#92;&#92;d+)<span class="java&#45;quote">")
+	void incrementNumber(<span class="java&#45;object">int</span> by) &#123;
+		number += by
+	&#125;<p class="paragraph"/>	@DomainStep("</span>the result is (&#92;&#92;d+)")
+	<span class="java&#45;object">boolean</span> expect(<span class="java&#45;object">int</span> result) &#123;
+		number == result
+	&#125;
+&#125;</pre></div><p class="paragraph"/><h3>Automatic Enum mapping (since 0.95)</h3><p class="paragraph"/>Since version 0.95, it's possible to automatically map enum values. Just specify the value of the enum in the table, and you're done.<p class="paragraph"/>An example:
 <div class="code"><pre>class MyEnumFixture &#123;
     Color color
 &#125;<p class="paragraph"/>enum Color &#123; RED, GREEN, BLUE &#125;</pre></div><p class="paragraph"/>By specifying the name of the enum value in the test (see below), the mapping is automatically done:<p class="paragraph"/><div class="code"><pre>|my enum     |
 |color|color?|
-|RED  |RED   |</pre></div><p class="paragraph"/><h3>Nested property mapping for Query Fixtures (since 0.95)</h3><p class="paragraph"/>It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties, as can be seen below:<p class="paragraph"/><div class="code"><pre>class NestedPropertyKeyValueQueryFixture &#123;
+|RED  |RED   |</pre></div><p class="paragraph"/><h3>Nested property mapping for Query Fixtures (since 0.95)</h3><p class="paragraph"/>It was already possible (since version 0.4) to create a simple Query Fixture using the Query Fixture DSL. This DSL has been extended by also allowing nested properties using a dotted (.) notation, as can be seen below:<p class="paragraph"/><div class="code"><pre>class NestedPropertyKeyValueQueryFixture &#123;
     <span class="java&#45;keyword">static</span> queryFixture = <span class="java&#45;keyword">true</span><p class="paragraph"/>    <span class="java&#45;keyword">static</span> mapping = &#91;<span class="java&#45;quote">"name"</span>:<span class="java&#45;quote">"author.name"</span>, <span class="java&#45;quote">"birthYear"</span>:<span class="java&#45;quote">"author.birthYear"</span>, <span class="java&#45;quote">"title"</span>:<span class="java&#45;quote">"title"</span>&#93;<p class="paragraph"/>    def queryResults() &#123;
         <span class="java&#45;keyword">return</span> &#91;<span class="java&#45;keyword">new</span> Book(title:'Grails in Action', author: <span class="java&#45;keyword">new</span> Author(name:<span class="java&#45;quote">"Peter Ledbrook"</span>, birthYear: 1980))&#93;
     &#125;
@@ -310,27 +342,30 @@ $ cd bookstore</pre></div>
 <h4>2. Install the plugin.</h4>
 <div class="code"><pre>$ grails install&#45;plugin fitnesse</pre></div><p class="paragraph"/>We are going to create a small bookstore with a small domain to test the core functionality without using a Functional or Unit test.
 Normally, I would recommend using Unit tests after writing the Fitnesse Acceptance Test, but that is outside the scope of this tutorial.<p class="paragraph"/>To start in a Test Driven approach, we'll start by creating the test first.<p class="paragraph"/>To do so, we'll need to start Fitnesse as well as Grails.<p class="paragraph"/><h4>3. Start the Grails server.</h4>
-<div class="code"><pre>$ grails run&#45;app</pre></div><p class="paragraph"/><h4>4. Start the Fitnesse server.</h4><p class="paragraph"/>If you haven't downloaded Fitnesse yet, please do download it from the <a href="http://www.fitnesse.org" target="blank">Fitnesse website</a>.<p class="paragraph"/>The following will extract Fitnesse and start it on port 9090.
+<div class="code"><pre>$ grails run&#45;app</pre></div><p class="paragraph"/><h4>4. Start the Fitnesse server.</h4><p class="paragraph"/>Since Fitnesse is bundled with the plugin, there's no need to download anything.<p class="paragraph"/>The following will extract Fitnesse and start it on the default port, 9090.
 <div class="code"><pre>$ grails run&#45;fitnesse</pre></div><p class="paragraph"/><h4>5. Create the test</h4><p class="paragraph"/>Open a web browser and point it to http://localhost:9090 . The Fitnesse front page will show up.<p class="paragraph"/>Click on <strong class="bold">Edit</strong>, and add the following to the text area: <code>^BookStoreTest</code> . Press <strong class="bold">Save</strong>.<p class="paragraph"/>You will now have a text with a question mark next to it. Click on the question mark to create a new page.<p class="paragraph"/>In the new page, remove the contents of the text area and replace it by the following:<p class="paragraph"/><div class="code"><pre>!define TEST_SYSTEM &#123;slim&#125;
-!define COMMAND_PATTERN &#123;echo&#125;<p class="paragraph"/>|create book inventory|
+!define COMMAND_PATTERN &#123;echo&#125;<p class="paragraph"/>|<span class="java&#45;keyword">import</span>|
+|bookstore|<p class="paragraph"/>|create book inventory|
 |author|title|amount|
 |Stephen King|IT|3|
 |Dean Koontz|Chase|5|<p class="paragraph"/>|script|buy book scenario|
 |customer buys|2|books with title|IT|
 |customer buys|1|books with title|Chase|<p class="paragraph"/>|query:check book inventory|
+|author|title|amount|
 |Stephen King|IT|1|
 |Dean Koontz|Chase|4|</pre></div><p class="paragraph"/>Press save after you created the page.<p class="paragraph"/><blockquote class="note">
-The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'ls' since I'm on a Mac, but for Windows users you (probably...) can type something like cmd.exe here. I haven't tested this, since I have no access to a machine running Windows.
+The COMMAND_PATTERN should (currently) have a dummy value! I have chosen 'echo' since I'm on a Mac, but for Windows users you need to create a batch file, for example, echo.bat, without any contents.
+The reason for doing this is that Fitnesse normally starts a Slim Server itself. However, in our case, our Grails application starts the Slim Server for us. So, to prevent starting the server, we use a dummy command pattern.
 </blockquote><p class="paragraph"/>In this test, you've used 3 kinds of Test tables:
 <ul class="star">
 <li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable" target="blank">Decision Table</a> (<code>create book inventory</code>) used to setup the data</li>
 <li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.ScriptTable" target="blank">Script Table</a> (<code>buy book scenario</code>) to execute the test</li>
 <li>a <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.QueryTable" target="blank">Query table</a> (<code>check book inventory</code>) to verify the results of the test</li>
-</ul><p class="paragraph"/>Click on <strong class="bold">Test</strong> on the left side of the page. The test will execute, and will fail with errors like <code>Could not invoke constructor for CreateBookInventory&#91;0&#93;</code>. This is because no Fixtures have been created yet. This way of working is in line with the 'Red-Green-Refactor' TDD mantra; our test clearly is red (or yellow, in this case), so we need to focus on getting the test green. To make the test pass, we need to create the fixtures.<p class="paragraph"/><h4>6. Creating the Fixtures</h4><p class="paragraph"/>We'll start by creating the first Fixture mentioned in the error message, which is the <code>CreateBookInventory</code> Fixture. In your Grails project, go to the <code>grails-app/fitnesse</code> directory, and create a file called <code>CreateBookInventory.groovy</code>. Because the Fitnesse plugin will reload the Fixtures automatically, pressing the <strong class="bold">Test</strong> button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse.<p class="paragraph"/>Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding <code>Book</code> domain class.<p class="paragraph"/><blockquote class="note">
+</ul><p class="paragraph"/>Click on <strong class="bold">Test</strong> on the left side of the page. The test will execute, and will fail with errors like <code>Could not invoke constructor for CreateBookInventory&#91;0&#93;</code>. This is because no Fixtures have been created yet. This way of working is in line with the 'Red-Green-Refactor' TDD mantra; our test clearly is red (or yellow, in this case), so we need to focus on getting the test green. To make the test pass, we need to create the fixtures.<p class="paragraph"/><h4>6. Creating the Fixtures</h4><p class="paragraph"/>We'll start by creating the first Fixture mentioned in the error message, which is the <code>CreateBookInventory</code> Fixture. To create the Fixture, use the Grails task @create-fitnesse-fixture<strong class="bold">. You can involve the script by typing the following:<p class="paragraph"/><div class="code"><pre>$ grails create&#45;fitnesse&#45;fixture CreateBookInventory</pre></div><p class="paragraph"/>This will create a file called @CreateBookInventoryFixture.groovy<code> in the </code>grails-app/fitnesse/bookstore<code> directory.<p class="paragraph"/>Because the Fitnesse plugin will reload the Fixtures automatically, pressing the </strong>Test* button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse. If for some reason this doesn't work, please restart the Grails application, and try again.<p class="paragraph"/>Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding </code>Book@ domain class.<p class="paragraph"/><blockquote class="note">
 Note, Grails might crash due to the Fixture missing the domain classes. Whenever this happens, please restart Grails.
 </blockquote><p class="paragraph"/><h5>6.1 The Decision Table</h5><p class="paragraph"/>The Fixture to support the <a href="http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable" target="blank">Decision Table</a> should look like this:<p class="paragraph"/><div class="code"><pre>class CreateBookInventoryFixture &#123;
     <span class="java&#45;object">String</span> author
-    <span class="java&#45;object">String</span> title<p class="paragraph"/>    <span class="java&#45;object">int</span> amount<p class="paragraph"/>    def bookService<p class="paragraph"/>    CreateBookInventory() &#123;
+    <span class="java&#45;object">String</span> title<p class="paragraph"/>    <span class="java&#45;object">int</span> amount<p class="paragraph"/>    def bookService<p class="paragraph"/>    CreateBookInventoryFixture() &#123;
         Book.list()&#42;.delete()
     &#125;<p class="paragraph"/>    void execute() &#123;
         amount.times &#123;
@@ -360,7 +395,9 @@ Note that this implementation is very simplistic. In this example, I simply dele
     <span class="java&#45;keyword">static</span> mapping = &#91;title: 0, author: 1, amount: 2&#93;  // the mapping<p class="paragraph"/>    def bookService       // injected service<p class="paragraph"/>    def queryResults() &#123;  // queryResults() method, which must be named like <span class="java&#45;keyword">this</span>!
         bookService.checkInventory()
     &#125;
-&#125;</pre></div><p class="paragraph"/>Now, when running the Test again in Fitnesse, everything should be green, and you have your first test running. Not you can refactor your code if you want, and check if the result is still valid by rerunning the Tests!<h2><a name="5.2 Refcard">5.2 Refcard</a></h2>I (Erik Pragt) have written a Refcard to explain the basics of Fitnesse. It provides a starting point for those unfamiliar with the basics of Fitnesse and also provides some more advanced tips for those who have worked with Fitnesse before.<p class="paragraph"/>It has been published by DZone, and you can read it <a href="http://refcardz.dzone.com/refcardz/getting-started-fitnesse" target="blank">here</a>.<h2><a name="5.3 Example project">5.3 Example project</a></h2>To properly test our plugin, we have creates an example project which goes through all the features the plugin provides, like exception handling, transactions, conversions, etc.<p class="paragraph"/>The example project is not bundled in the plugin itself, but can be found as a separate download, which can be found on <a href="../ref/Httpsgithubcombodiamgrailsfitnessetreemastertestprojects/github.html" class="https://github.com/bodiam/grails-fitnesse/tree/master/test/projects">github</a>.
+&#125;</pre></div><p class="paragraph"/><blockquote class="note">
+The mapping is used here to map the column names to the position of the values returned by the queryResults method. For more information, please check the 'Query DSL' part in the 'Features' documentation.
+</blockquote><p class="paragraph"/>Now, when running the Test again in Fitnesse, everything should be green, and you have your first test running. Not you can refactor your code if you want, and check if the result is still valid by rerunning the Tests!<h2><a name="5.2 Refcard">5.2 Refcard</a></h2>I (Erik Pragt) have written a Refcard to explain the basics of Fitnesse. It provides a starting point for those unfamiliar with the basics of Fitnesse and also provides some more advanced tips for those who have worked with Fitnesse before.<p class="paragraph"/>It has been published by DZone, and you can read it <a href="http://refcardz.dzone.com/refcardz/getting-started-fitnesse" target="blank">here</a>.<h2><a name="5.3 Example project">5.3 Example project</a></h2>To properly test our plugin, we have creates an example project which goes through all the features the plugin provides, like exception handling, transactions, conversions, etc.<p class="paragraph"/>The example project is not bundled in the plugin itself, but can be found as a separate download, which can be found on <a href="../ref/Httpsgithubcombodiamgrailsfitnessetreemastertestprojects/github.html" class="https://github.com/bodiam/grails-fitnesse/tree/master/test/projects">github</a>.
  
         </div>
         <div id="footer">
