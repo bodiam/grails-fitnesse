@@ -68,10 +68,6 @@ eventPackagePluginsEnd = {
     tryToLoadTestTypes()
 }
 
-eventTestPhasesStart = { phases ->
-    println "Test Phase Start"
-}
-
 eventTestPhaseStart = { phaseName ->
     if (phaseName == 'fitnesse') {
         // GRAILS-7563

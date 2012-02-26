@@ -27,7 +27,20 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
     protected void executeSingleCommand(Arguments arguments, FitNesse fitnesse, FitNesseContext context) throws Exception {
         commandPatterns.each { String commandPattern ->
             String xml = getFitnesseTestXmlResult(commandPattern, fitnesse, context)
-
+            String prefix = commandPattern.replaceAll("[\\?, \\.]", "-").split("&")[0]
+            File dir = new File(System.getProperty("fitnesse.build.reportsDir"))
+            if(!dir.exists()) {
+                dir.mkdirs()
+            }
+            File file = new File(System.getProperty("fitnesse.build.reportsDir"), prefix + ".xml")
+            if (file.createNewFile()) {
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(bos))
+                bw.write(xml)
+                bw.close()
+            } else {
+                println "Couldn't create file"
+            }
             FitnesseTotalResult totalResult = resultParser.parseFitnesseXml(xml)
 
             totalResult.each { FitnesseTestResult testResult ->
