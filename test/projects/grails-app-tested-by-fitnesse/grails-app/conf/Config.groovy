@@ -98,16 +98,16 @@ grails {
 		fitnesse {
             slim {
                 port = 8085
-                verbose = false
+                verbose = true
             }
             wiki {
                 port = 9090
                 dir = 'wiki'
                 defaultSuite = ["FrontPage.GrailsTestSuite.SlimTestSystem?suite"]
             }
-            givWenZen {
-                packageName = 'nl.jworks.grails.fitnesse.gwz'
-            }
+//            givWenZen {
+//                packageName = 'nl.jworks.grails.fitnesse.gwz'
+//            }
         }
     }
 }
