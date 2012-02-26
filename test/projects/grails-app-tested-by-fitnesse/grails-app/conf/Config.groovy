@@ -105,9 +105,9 @@ grails {
                 dir = 'wiki'
                 defaultSuite = ["FrontPage.GrailsTestSuite.SlimTestSystem?suite"]
             }
-//            givWenZen {
-//                packageName = 'nl.jworks.grails.fitnesse.gwz'
-//            }
+            givWenZen {
+                packageName = 'nl.jworks.grails.fitnesse.gwz'
+            }
         }
     }
 }

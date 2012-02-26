@@ -89,17 +89,11 @@ eventTestPhaseStart = { phaseName ->
     }
 }
 
-eventTestSuiteStart = { type ->
-    if(type == 'fitnesse') {
-        println "Running fitnesse test suite"
-    }
-}
-
 fitnesseTestPhasePreparation = {
-    functionalTestPhasePreparation()
+    integrationTestPhasePreparation()
 }
 fitnesseTestPhaseCleanUp = {
-    functionalTestPhaseCleanUp()
+    integrationTestPhaseCleanUp()
 }
 
 // Just upgrade plugins without user input when building this plugin
