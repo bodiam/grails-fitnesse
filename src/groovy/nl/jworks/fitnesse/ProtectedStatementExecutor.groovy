@@ -39,24 +39,24 @@ public class ProtectedStatementExecutor implements StatementExecutorInterface {
   }
     
   protected void addConverters() {
-      Slim.addConverter(void.class, new VoidConverter());
-      Slim.addConverter(String.class, new StringConverter());
-      Slim.addConverter(int.class, new IntConverter());
-      Slim.addConverter(double.class, new DoubleConverter());
-      Slim.addConverter(Integer.class, new IntConverter());
-      Slim.addConverter(Double.class, new DoubleConverter());
-      Slim.addConverter(char.class, new CharConverter());
-      Slim.addConverter(boolean.class, new BooleanConverter());
-      Slim.addConverter(Boolean.class, new BooleanConverter());
-      Slim.addConverter(Date.class, new DateConverter());
-      Slim.addConverter(List.class, new ListConverter());
-      Slim.addConverter(Integer[].class, new IntegerArrayConverter());
-      Slim.addConverter(int[].class, new IntegerArrayConverter());
-      Slim.addConverter(String[].class, new StringArrayConverter());
-      Slim.addConverter(boolean[].class, new BooleanArrayConverter());
-      Slim.addConverter(Boolean[].class, new BooleanArrayConverter());
-      Slim.addConverter(double[].class, new DoubleArrayConverter());
-      Slim.addConverter(Double[].class, new DoubleArrayConverter());
+      ConverterRegistry.addConverter(void.class, new VoidConverter());
+      ConverterRegistry.addConverter(String.class, new StringConverter());
+      ConverterRegistry.addConverter(int.class, new IntConverter());
+      ConverterRegistry.addConverter(double.class, new DoubleConverter());
+      ConverterRegistry.addConverter(Integer.class, new IntConverter());
+      ConverterRegistry.addConverter(Double.class, new DoubleConverter());
+      ConverterRegistry.addConverter(char.class, new CharConverter());
+      ConverterRegistry.addConverter(boolean.class, new BooleanConverter());
+      ConverterRegistry.addConverter(Boolean.class, new BooleanConverter());
+      ConverterRegistry.addConverter(Date.class, new DateConverter());
+      ConverterRegistry.addConverter(List.class, new ListConverter());
+      ConverterRegistry.addConverter(Integer[].class, new IntegerArrayConverter());
+      ConverterRegistry.addConverter(int[].class, new IntegerArrayConverter());
+      ConverterRegistry.addConverter(String[].class, new StringArrayConverter());
+      ConverterRegistry.addConverter(boolean[].class, new BooleanArrayConverter());
+      ConverterRegistry.addConverter(Boolean[].class, new BooleanArrayConverter());
+      ConverterRegistry.addConverter(double[].class, new DoubleArrayConverter());
+      ConverterRegistry.addConverter(Double[].class, new DoubleArrayConverter());
   }
 
   protected void registerEditors() {
