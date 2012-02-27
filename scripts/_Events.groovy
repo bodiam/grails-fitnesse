@@ -58,7 +58,7 @@ eventAllTestsStart = {
         def testTypeClass = softLoadClass(testTypeClassName)
         if (testTypeClass) {
             if (!fitnesseTests.any { it.class == testTypeClass }) {
-                fitnessesTests << testTypeClass.newInstance('fitnesse', 'fitnesse')
+                fitnesseTests << testTypeClass.newInstance('fitnesse', 'fitnesse')
             }
         }
     }
