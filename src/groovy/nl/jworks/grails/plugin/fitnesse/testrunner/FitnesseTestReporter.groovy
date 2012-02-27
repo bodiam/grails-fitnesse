@@ -73,7 +73,7 @@ class FitnesseTestReporter {
         reports.setSystemOutput("Runtime: ${result.totalRunTimeInMillis}, Pass: ${result.totalRight}, Fail: ${result.totalWrong}, Ignore: ${result.totalIgnores}")
         suite.runTime = result.totalRunTimeInMillis
         def runs = result.totalRight + result.totalWrong + result.totalIgnores
-        suite.setCounts(runs, result.totalWrong, result.totalIgnores)
+        suite.setCounts(runs, result.totalWrong, result.totalExceptions)
         reports.endTestSuite(suite)
     }
     
