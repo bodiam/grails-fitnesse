@@ -9,38 +9,28 @@ import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseXmlResultParser
 import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTotalResult
 import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTestResult
 import org.codehaus.groovy.grails.test.GrailsTestTypeResult
+import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTestReporter
 
 class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
     private FitnesseGrailsTestTypeResult result
     private GrailsTestEventPublisher eventPublisher
     private List<String> commandPatterns
+    private Binding binding
 
     private FitnesseXmlResultParser resultParser = new FitnesseXmlResultParser()
 
-    GrailsFitnesseCommandRunner(List<String> commandPatterns, FitnesseGrailsTestTypeResult result, GrailsTestEventPublisher eventPublisher) {
+    GrailsFitnesseCommandRunner(List<String> commandPatterns, FitnesseGrailsTestTypeResult result, GrailsTestEventPublisher eventPublisher, Binding binding) {
         this.commandPatterns = commandPatterns
         this.result = result
         this.eventPublisher = eventPublisher
+        this.binding = binding
     }
 
     @Override
     protected void executeSingleCommand(Arguments arguments, FitNesse fitnesse, FitNesseContext context) throws Exception {
         commandPatterns.each { String commandPattern ->
             String xml = getFitnesseTestXmlResult(commandPattern, fitnesse, context)
-            String prefix = commandPattern.replaceAll("[\\?, \\.]", "-").split("&")[0]
-            File dir = new File(System.getProperty("fitnesse.build.reportsDir"))
-            if(!dir.exists()) {
-                dir.mkdirs()
-            }
-            File file = new File(System.getProperty("fitnesse.build.reportsDir"), prefix + ".xml")
-            if (file.createNewFile()) {
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(bos))
-                bw.write(xml)
-                bw.close()
-            } else {
-                println "Couldn't create file"
-            }
+
             FitnesseTotalResult totalResult = resultParser.parseFitnesseXml(xml)
 
             totalResult.each { FitnesseTestResult testResult ->
@@ -57,6 +47,9 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
                     eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName)                    
                 }
             }
+            FitnesseTestReporter reporter = new FitnesseTestReporter(commandPattern, totalResult, xml, binding)
+            reporter.writeXmlResults()
+            reporter.reportJUnitResults()
         }
         fitnesse.stop();
     }
