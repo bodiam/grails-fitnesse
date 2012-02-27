@@ -20,6 +20,7 @@ class FitnesseTestResult {
     int wrong
     int ignores
     int exceptions
+    String pageHistoryLink
 
     int runTimeInMillis
 

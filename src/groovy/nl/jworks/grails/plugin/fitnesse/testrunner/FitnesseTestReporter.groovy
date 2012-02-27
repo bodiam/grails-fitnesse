@@ -47,10 +47,12 @@ class FitnesseTestReporter {
     public void reportJUnitResults() {
         def factory = JUnitReportsFactory.createFromBuildBinding(buildBinding)
         JUnitReports reports = factory.createReports(getSuiteName())
-        reports.startTestSuite(getTestSuite())
+        def suite = getTestSuite()
+        reports.startTestSuite(suite)
         result.each {FitnesseTestResult testResult ->
             def description = getDescriptionFor(testResult)
-            reports.startTest(getTest(description))
+            def test = getTest(description)
+            reports.startTest(test)
             if(testResult.exceptions) {
                 (1..testResult.exceptions).each {
                     reports.addError(getTest(description), new Exception("Fitnesse reported exception in [${testResult.relativePageName}]"))
@@ -61,7 +63,7 @@ class FitnesseTestReporter {
                     reports.addFailure(getTest(description), new AssertionFailedError("Fitnesse reported assertion wrong in [${testResult.relativePageName}]"))
                 }
             }
-            reports.endTest(getTest(description))
+            reports.endTest(test)
         }
         if(result.totalExceptions) {
             reports.setSystemError("Total Exceptions: ${result.totalExceptions}")
@@ -69,7 +71,10 @@ class FitnesseTestReporter {
             reports.setSystemError("")
         }
         reports.setSystemOutput("Runtime: ${result.totalRunTimeInMillis}, Pass: ${result.totalRight}, Fail: ${result.totalWrong}, Ignore: ${result.totalIgnores}")
-        reports.endTestSuite(getTestSuite())
+        suite.runTime = result.totalRunTimeInMillis
+        def runs = result.totalRight + result.totalWrong + result.totalIgnores
+        suite.setCounts(runs, result.totalWrong, result.totalIgnores)
+        reports.endTestSuite(suite)
     }
     
     protected String getSuiteName() {
