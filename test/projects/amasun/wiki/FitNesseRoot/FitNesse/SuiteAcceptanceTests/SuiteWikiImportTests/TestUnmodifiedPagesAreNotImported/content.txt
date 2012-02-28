@@ -16,7 +16,7 @@ Create an importing page.
 This !-ImportingPage-! will now import the !-ImportingRoot-! page created above.
 !|Response Requester.                                                                          |
 |uri                                                                                    |valid?|
-|ImportingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT9123/ImportedRoot|true  |
+|ImportingPage?responder=import&remoteUrl=http://localhost:${INTERNAL_PORT}/ImportedRoot|true  |
 
 We see all 3 pages imported.
 !|Response Examiner                     |

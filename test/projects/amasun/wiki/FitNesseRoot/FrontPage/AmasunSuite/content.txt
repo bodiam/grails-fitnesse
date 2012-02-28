@@ -6,7 +6,7 @@
 
 #>BuyBookInventoryTest
 #>BuyBooksComboTest
->BuyBooksComboAmountTest
+#>BuyBooksComboAmountTest
 #>DiscountCouponTest
 #>ShippingCostsTest
 
