@@ -7,6 +7,7 @@ import fitnesse.slim.converters.StringConverter
 import fitnesse.slim.converters.IntConverter
 
 import grails.test.*
+import fitnesse.slim.converters.ConverterRegistry
 
 class ConverterTestClass {
     int number
@@ -23,10 +24,11 @@ class GroovyObjectConverterTests extends GrailsUnitTestCase {
     def converter = new GroovyObjectConverter(ConverterTestClass.class)
 
     public GroovyObjectConverterTests() {
-        Slim.addConverter(int.class, new IntConverter())
-        Slim.addConverter(String.class, new StringConverter())
-        Slim.addConverter(int[].class, new IntegerArrayConverter())
+        ConverterRegistry.addConverter(int.class, new IntConverter())
+        ConverterRegistry.addConverter(String.class, new StringConverter())
+        ConverterRegistry.addConverter(int[].class, new IntegerArrayConverter())
     }
+
     
     void testFailOnBadJSON() {
         shouldFail(SlimError.class) {
@@ -49,8 +51,8 @@ class GroovyObjectConverterTests extends GrailsUnitTestCase {
     void testComplexFromString() {
         def complex = new GroovyObjectConverter(ComplexConverterTestClass.class)
         ComplexConverterTestClass result = complex.fromString('{numbers: [1,2,3], inner: {number: 5, string: test}}')
-        assertEquals result.numbers, [1,2,3]
-        assertEquals result.inner.number, 5
-        assertEquals result.inner.string, 'test'
+        assert result.numbers == [1,2,3]
+        assert result.inner.number == 5
+        assert result.inner.string == 'test'
     }
 }
