@@ -6,6 +6,7 @@ import fitnesse.slim.Slim
 
 import java.lang.reflect.Type
 import java.lang.reflect.ParameterizedType
+import fitnesse.slim.converters.ConverterRegistry
 
 class GroovyConverterSupport {
     
@@ -15,13 +16,13 @@ class GroovyConverterSupport {
         boolean typeIsEnumClass = type.isEnum()
 
         if(typeIsEnumClass) {
-            Slim.addConverter(type, new EnumConverter(type))
+            ConverterRegistry.addConverter(type, new EnumConverter(type))
         }
 
         Converter converter = typeIsASimpleClass ? ConverterSupport.getConverter(type) : null
         if (!converter) {
             converter = type in ParameterizedType ? new GroovyCollectionConverter(type) : new GroovyObjectConverter(type)
-            typeIsASimpleClass && Slim.addConverter(type, converter)
+            typeIsASimpleClass && ConverterRegistry.addConverter(type, converter)
         }
         return converter
     }

@@ -56,6 +56,7 @@ class FitnesseGrailsPlugin {
             sessionFactory = ref('sessionFactory')
         }
 
+
         final beanConfigureClosure = configureFixtureBean.clone()
         beanConfigureClosure.delegate = delegate
 

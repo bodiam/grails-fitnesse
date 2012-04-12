@@ -10,3 +10,4 @@
 //
 
 ant.mkdir(dir:"${basedir}/grails-app/fitnesse")
+ant.mkdir(dir:"${basedir}/test/fitnesse")

@@ -17,6 +17,7 @@ import fitnesse.slim.SystemUnderTestMethodExecutor
 import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyQuotedMethodNameMethodExecutor
 import nl.jworks.grails.plugin.fitnesse.methodexecutor.FunctionAsPropertyMethodExecutor
 import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor
+import fitnesse.slim.converters.ConverterRegistry
 
 /**
  * This is the API for executing a SLIM statement. This class should not know
@@ -28,8 +29,8 @@ import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor
 public class GrailsStatementExecutor extends ProtectedStatementExecutor {
 
     public GrailsStatementExecutor() {
-        Slim.addConverter(Object.class, new ObjectConverter())
-//        Slim.addConverter(Object.class, new EnumConverter())
+        ConverterRegistry.addConverter(Object.class, new ObjectConverter())
+//        ConverterRegistry.addConverter(Object.class, new EnumConverter())
     }
 
     @Override

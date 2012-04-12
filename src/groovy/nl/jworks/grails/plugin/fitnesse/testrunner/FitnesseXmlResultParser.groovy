@@ -27,7 +27,8 @@ class FitnesseXmlResultParser {
                     ignores: counts.ignores.text().toInteger(),
                     exceptions: counts.exceptions.text().toInteger(),
                     runTimeInMillis: result.runTimeInMillis.text().toInteger(),
-                    relativePageName: result.relativePageName.text()
+                    relativePageName: result.relativePageName.text(),
+                    pageHistoryLink: result.pageHistoryLink.text()
             )
         }
 

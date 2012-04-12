@@ -1,5 +1,5 @@
 !define TEST_SYSTEM {slim}
-!define COMMAND_PATTERN {ls}
+!define COMMAND_PATTERN {echo}
 
 |import|
 |nl.jworks.grails.fitnesse.tutorial|

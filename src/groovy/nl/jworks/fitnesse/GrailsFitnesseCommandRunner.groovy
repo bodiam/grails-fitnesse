@@ -9,18 +9,21 @@ import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseXmlResultParser
 import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTotalResult
 import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTestResult
 import org.codehaus.groovy.grails.test.GrailsTestTypeResult
+import nl.jworks.grails.plugin.fitnesse.testrunner.FitnesseTestReporter
 
 class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
     private FitnesseGrailsTestTypeResult result
     private GrailsTestEventPublisher eventPublisher
     private List<String> commandPatterns
+    private Binding binding
 
     private FitnesseXmlResultParser resultParser = new FitnesseXmlResultParser()
 
-    GrailsFitnesseCommandRunner(List<String> commandPatterns, FitnesseGrailsTestTypeResult result, GrailsTestEventPublisher eventPublisher) {
+    GrailsFitnesseCommandRunner(List<String> commandPatterns, FitnesseGrailsTestTypeResult result, GrailsTestEventPublisher eventPublisher, Binding binding) {
         this.commandPatterns = commandPatterns
         this.result = result
         this.eventPublisher = eventPublisher
+        this.binding = binding
     }
 
     @Override
@@ -44,6 +47,9 @@ class GrailsFitnesseCommandRunner extends NonStaticFitNesseMain {
                     eventPublisher.testCaseEnd(totalResult.rootPath + "." + testResult.relativePageName)                    
                 }
             }
+            FitnesseTestReporter reporter = new FitnesseTestReporter(commandPattern, totalResult, xml, binding)
+            reporter.writeXmlResults()
+            reporter.reportJUnitResults()
         }
         fitnesse.stop();
     }
