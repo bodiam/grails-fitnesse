@@ -2,14 +2,14 @@
 !define COMMAND_PATTERN {echo}
 !define REGRACE_LINK {true}
 
-#>InventoryTest
+>InventoryTest
 
-#>BuyBookInventoryTest
-#>BuyBooksComboTest
+>BuyBookInventoryTest
+>BuyBooksComboTest
 #>BuyBooksComboAmountTest
-#>DiscountCouponTest
-#>ShippingCostsTest
+>DiscountCouponTest
+>ShippingCostsTest
 
-#>TheManual
+>TheManual
 
-#>AtddPresentation
+>AtddPresentation

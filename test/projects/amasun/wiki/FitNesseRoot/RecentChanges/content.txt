@@ -1,3 +1,4 @@
+|FrontPage.AmasunSuite||10:50:23 Fri, Apr 13, 2012|
 |FrontPage.Gr8Conf.MyFirstSuite.MyFirst||15:13:14 Thu, May 19, 2011|
 |FrontPage.Gr8Conf||15:11:08 Thu, May 19, 2011|
 |FrontPage||15:11:01 Thu, May 19, 2011|
@@ -8,7 +9,6 @@
 |FrontPage.AmasunSuite.BuyBooksComboPercentageTest||19:49:07 Tue, May 10, 2011|
 |FrontPage.MyFirst||19:28:00 Tue, May 10, 2011|
 |FrontPage.MyFirstSuite||19:27:33 Tue, May 10, 2011|
-|FrontPage.AmasunSuite||16:24:59 Tue, May 10, 2011|
 |FrontPage.AmasunSuite.AtddExample||21:38:58 Tue, Apr 05, 2011|
 |FrontPage.DevnologyAmasunSuite.DiscountCouponTest||15:28:21 Sat, Nov 06, 2010|
 |FrontPage.DevnologyAmasunSuite.FitnesseOverview.DevnologySuite.Devnology1Test.SetUp||13:39:59 Sat, Nov 06, 2010|
