@@ -29,7 +29,6 @@ class GroovyObjectConverterTests extends GrailsUnitTestCase {
         ConverterRegistry.addConverter(int[].class, new IntegerArrayConverter())
     }
 
-    
     void testFailOnBadJSON() {
         shouldFail(SlimError.class) {
             converter.fromString('{bad: JSON')

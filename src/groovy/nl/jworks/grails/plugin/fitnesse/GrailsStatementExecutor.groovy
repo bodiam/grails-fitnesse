@@ -1,23 +1,22 @@
 package nl.jworks.grails.plugin.fitnesse;
 
 
-import fitnesse.slim.Slim
+import fitnesse.slim.LibraryMethodExecutor
 import fitnesse.slim.SlimError
+import fitnesse.slim.SystemUnderTestMethodExecutor
+import fitnesse.slim.converters.ConverterRegistry
 import grails.util.GrailsUtil
-import java.lang.reflect.InvocationTargetException
 import nl.jworks.fitnesse.ProtectedStatementExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.FunctionAsPropertyMethodExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor
+import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyQuotedMethodNameMethodExecutor
 import org.apache.commons.lang.StringUtils
 import org.codehaus.groovy.grails.commons.ApplicationHolder
 import org.springframework.beans.BeanInstantiationException
 import org.springframework.beans.factory.BeanCreationException
-import java.lang.reflect.Constructor
 
-import fitnesse.slim.LibraryMethodExecutor
-import fitnesse.slim.SystemUnderTestMethodExecutor
-import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyQuotedMethodNameMethodExecutor
-import nl.jworks.grails.plugin.fitnesse.methodexecutor.FunctionAsPropertyMethodExecutor
-import nl.jworks.grails.plugin.fitnesse.methodexecutor.GroovyMethodExecutor
-import fitnesse.slim.converters.ConverterRegistry
+import java.lang.reflect.Constructor
+import java.lang.reflect.InvocationTargetException
 
 /**
  * This is the API for executing a SLIM statement. This class should not know
@@ -25,12 +24,10 @@ import fitnesse.slim.converters.ConverterRegistry
  */
 
 // TODO: Refactor statement executor to get rid of code duplication!
-//public class GrailsStatementExecutor implements StatementExecutorInterface {
 public class GrailsStatementExecutor extends ProtectedStatementExecutor {
 
     public GrailsStatementExecutor() {
         ConverterRegistry.addConverter(Object.class, new ObjectConverter())
-//        ConverterRegistry.addConverter(Object.class, new EnumConverter())
     }
 
     @Override
@@ -40,30 +37,6 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
         executorChain.add(new GroovyQuotedMethodNameMethodExecutor(instances));
         executorChain.add(new SystemUnderTestMethodExecutor(instances));
         executorChain.add(new LibraryMethodExecutor(libraries));
-    }
-
-    private Class findUsingAnnotation(String className) {
-        try {
-            Class clazz = searchPathsForClass(className)
-
-            if (clazz?.isAnnotationPresent(Fixture)) {
-                return clazz
-            } else {
-                return null
-            }
-        } catch (SlimError e) {
-            // class not found using annotations. Continuing with Strategy 2.
-            return null
-        }
-    }
-
-    private Class findUsingFixtureAppend(String className) {
-        String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
-        // This is needed for fixture names which are not camel cased, like 'Calculate'.
-        if (!replacedClassName.contains(".")) {
-            replacedClassName = StringUtils.capitalize(replacedClassName)
-        }
-        return searchPathsForClass(replacedClassName)
     }
 
     public Object create(String instanceName, String className, Object[] args) {
@@ -95,14 +68,34 @@ public class GrailsStatementExecutor extends ProtectedStatementExecutor {
                 return couldNotInvokeConstructorException(replacedClassName, args);
             }
         } catch (Throwable e) {
-
             return exceptionToString(e);
         }
     }
 
-    private boolean isFixtureClass(Class<?> clazz) {
-        return ApplicationHolder.application.isFitnesseFixtureClass(clazz)
+    private Class findUsingAnnotation(String className) {
+        try {
+            Class clazz = searchPathsForClass(className)
+
+            if (clazz?.isAnnotationPresent(Fixture)) {
+                return clazz
+            } else {
+                return null
+            }
+        } catch (SlimError e) {
+            // class not found using annotations. Continuing with Strategy 2.
+            return null
+        }
     }
+
+    private Class findUsingFixtureAppend(String className) {
+        String replacedClassName = variables.replaceSymbolsInString(className) + "Fixture";
+        // This is needed for fixture names which are not camel cased, like 'Calculate'.
+        if (!replacedClassName.contains(".")) {
+            replacedClassName = StringUtils.capitalize(replacedClassName)
+        }
+        return searchPathsForClass(replacedClassName)
+    }
+
 
     private Object getFixtureBean(Class<?> clazz, Object[] args) {
         def context = ApplicationHolder.getApplication().mainContext

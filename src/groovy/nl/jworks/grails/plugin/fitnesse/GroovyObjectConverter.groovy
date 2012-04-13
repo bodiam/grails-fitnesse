@@ -5,12 +5,9 @@ import fitnesse.slim.SlimError
 
 import grails.converters.JSON
 import java.lang.reflect.Type
-import org.codehaus.groovy.grails.commons.ApplicationHolder as AH
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Field
 import org.codehaus.groovy.grails.web.json.JSONObject
-import org.codehaus.groovy.grails.plugins.support.aware.GrailsApplicationAware
-import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.codehaus.groovy.grails.commons.DomainClassArtefactHandler
 
 /**

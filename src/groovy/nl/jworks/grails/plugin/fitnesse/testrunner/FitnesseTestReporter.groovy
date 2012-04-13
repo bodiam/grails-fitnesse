@@ -11,26 +11,26 @@ import org.codehaus.groovy.runtime.DefaultGroovyMethods
 
 class FitnesseTestReporter {
 
-    FitnesseTotalResult result
-    String xml
-    String commandPattern
-    Binding buildBinding
-    def testSuite
+    private FitnesseTotalResult result
+    private String xml
+    private String commandPattern
+    private Binding buildBinding
+    private JUnitTest testSuite
 
-    private testsByDescription = [:]
-    private descriptionsByTestResult = [:]
-    
-    public FitnesseTestReporter(String commandPattern, FitnesseTotalResult result, String xml, Binding buildBinding) {
+    private Map<Description, Test> testsByDescription = [:]
+    private Map<FitnesseTestResult, Description> descriptionsByTestResult = [:]
+
+    FitnesseTestReporter(String commandPattern, FitnesseTotalResult result, String xml, Binding buildBinding) {
         this.result = result
         this.xml = xml
         this.commandPattern = commandPattern
         this.buildBinding = buildBinding
     }
-    
-    public void writeXmlResults() {
+
+    void writeXmlResults() {
         String prefix = commandPattern.replaceAll("[\\?, \\.]", "-").split("&")[0]
         File dir = new File(System.getProperty("fitnesse.build.reportsDir"))
-        if(!dir.exists()) {
+        if (!dir.exists()) {
             dir.mkdirs()
         }
         File xmlFile = new File(System.getProperty("fitnesse.build.reportsDir"), prefix + ".xml")
@@ -44,75 +44,75 @@ class FitnesseTestReporter {
         }
     }
 
-    public void reportJUnitResults() {
-        def factory = JUnitReportsFactory.createFromBuildBinding(buildBinding)
+    void reportJUnitResults() {
+        JUnitReportsFactory factory = JUnitReportsFactory.createFromBuildBinding(buildBinding)
         JUnitReports reports = factory.createReports(getSuiteName())
-        def suite = getTestSuite()
+        JUnitTest suite = getTestSuite()
         reports.startTestSuite(suite)
         result.each {FitnesseTestResult testResult ->
-            def description = getDescriptionFor(testResult)
-            def test = getTest(description)
+            Description description = getDescriptionFor(testResult)
+            Test test = getTest(description)
             reports.startTest(test)
-            if(testResult.exceptions) {
+            if (testResult.exceptions) {
                 (1..testResult.exceptions).each {
                     reports.addError(getTest(description), new Exception("Fitnesse reported exception in [${testResult.relativePageName}]"))
                 }
             }
-            if(testResult.wrong) {
+            if (testResult.wrong) {
                 (1..testResult.wrong).each {
                     reports.addFailure(getTest(description), new AssertionFailedError("Fitnesse reported assertion wrong in [${testResult.relativePageName}]"))
                 }
             }
             reports.endTest(test)
         }
-        if(result.totalExceptions) {
+        if (result.totalExceptions) {
             reports.setSystemError("Total Exceptions: ${result.totalExceptions}")
         } else {
             reports.setSystemError("")
         }
         reports.setSystemOutput("Runtime: ${result.totalRunTimeInMillis}, Pass: ${result.totalRight}, Fail: ${result.totalWrong}, Ignore: ${result.totalIgnores}")
         suite.runTime = result.totalRunTimeInMillis
-        def runs = result.totalRight + result.totalWrong + result.totalIgnores
+
+        long runs = result.totalRight + result.totalWrong + result.totalIgnores
         suite.setCounts(runs, result.totalWrong, result.totalExceptions)
         reports.endTestSuite(suite)
     }
-    
+
     protected String getSuiteName() {
         return commandPattern.split("\\?")[0]
     }
-    
+
     protected JUnitTest getTestSuite() {
-        if(!testSuite) {
+        if (!testSuite) {
             testSuite = new JUnitTest(getSuiteName())
-        }        
-        testSuite
+        }
+        return testSuite
     }
 
     // JUnitReports requires us to always pass the same Test instance
     // for a test, so we cache it; this scheme also works for the case
     // where testFailure() is invoked without a prior call to testStarted()
-    private Test getTest(description) {
-        def test = testsByDescription.get(description)
+    private Test getTest(Description description) {
+        Test test = testsByDescription.get(description)
         if (test == null) {
             test = createJUnit4TestCaseFacade(description)
             testsByDescription.put(description, test)
         }
-        test
-    }
-    
-    private Description getDescriptionFor(FitnesseTestResult testResult) {
-        def desc = descriptionsByTestResult.get(testResult)
-        if (desc == null) {
-            desc = Description.createSuiteDescription(testResult.relativePageName)
-//            DefaultGroovyMethods.mixin(desc.metaClass, FitnesseDescription)
-            descriptionsByTestResult.put(testResult, desc)
-        }
-        desc
+        return test
     }
 
-    static Test createJUnit4TestCaseFacade(Description description) {
+    private Description getDescriptionFor(FitnesseTestResult testResult) {
+        Description desc = descriptionsByTestResult.get(testResult)
+        if (desc == null) {
+            desc = Description.createSuiteDescription(testResult.relativePageName)
+            descriptionsByTestResult.put(testResult, desc)
+        }
+        return desc
+    }
+
+    private Test createJUnit4TestCaseFacade(Description description) {
         def ctor = JUnit4TestCaseFacade.getDeclaredConstructor(Description)
         ctor.accessible = true
-        ctor.newInstance(description)
+        return ctor.newInstance(description)
     }
 }

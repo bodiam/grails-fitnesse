@@ -3,7 +3,6 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 grails.project.target.level = 1.6
 grails.project.docs.output.dir = "docs"
-//grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.dependency.resolution = {
     inherits("global") {
@@ -17,10 +16,6 @@ grails.project.dependency.resolution = {
         // from public Maven repositories
         mavenCentral()
         mavenLocal()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
         mavenRepo('http://givwenzen.googlecode.com/svn/maven2/')
     }
     dependencies {
