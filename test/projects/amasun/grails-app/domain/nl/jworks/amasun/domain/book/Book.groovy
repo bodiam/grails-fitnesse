@@ -16,7 +16,7 @@ class Book {
         author(size: 1..255)
         title(size: 1..255)
 
-        details(nullable:true)
+        details(nullable:true, size:1..4096)
     }
 
 
