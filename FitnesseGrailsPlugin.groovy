@@ -16,7 +16,7 @@ class FitnesseGrailsPlugin {
     private final Logger log = LoggerFactory.getLogger("nl.jworks.grails.plugin.fitnesse.FitnesseGrailsPlugin")
 
     // the plugin version
-    def version = "1.0"
+    def version = "2.0"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.2 > *"
     // the other plugins this plugin depends on
