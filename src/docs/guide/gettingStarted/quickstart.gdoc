@@ -5,22 +5,19 @@ h3. Step 1: Install the Fitnesse Plugin
 grails install-plugin fitnesse
 {code}
 
-h3. Step 2: Download Fitnesse
-Go to the [Fitnesse|http://www.fitnesse.org] website, to download Fitnesse.
-
-h3. Step 3: Start the Grails application
+h3. Step 2: Start the Grails application
 {code}
 grails run-app
 {code}
 
-h3. Step 4 (in a differtent console or terminal): Start Fitnesse
+h3. Step 3 (in a differtent console or terminal): Start Fitnesse
 {code}
 grails run-fitnesse
 {code}
 
-h3. Step 5: Configure Fitnesse (for Linux/MacOS)
+h3. Step 4: Configure Fitnesse (for Linux/MacOS)
 
-Paste the following in the Fitnesse wiki:
+Browse to http://localhost:9090, and paste the following code (See 'Edit' in the left side menu) into the Fitnesse wiki:
 {code}
 !define TEST_SYSTEM {slim}
 !define COMMAND_PATTERN {echo}
@@ -30,11 +27,11 @@ Paste the following in the Fitnesse wiki:
 The COMMAND_PATTERN needs to be something which executes, but does noting. On Windows for example this can an empty batch file.
 {note}
 
-h3. Step 6: Add the Test
-Paste the following also in the Fitnesse wiki:
+h3. Step 5: Add the Test
+Paste the following also into the Fitnesse wiki:
 {code}
 |import                         |
-|nl.jworks.fitnesse.demo.fixture|
+|nl.jworks.fitnesse.quickstart|
 
 |echo|
 |input|output?|
@@ -44,8 +41,10 @@ Paste the following also in the Fitnesse wiki:
 
 *Save* the page.
 
-h3. Step 7: Verify it works
+h3. Step 6: Verify it works
 
 Click on *Properties*, select *Test* for '@Page type@', click on *Save properties* to save the page.
 
 Now press *Test*. Everything should be Green now!
+
+!quickstart.png!

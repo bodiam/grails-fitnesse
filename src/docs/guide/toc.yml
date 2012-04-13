@@ -1,17 +1,17 @@
 introduction: 
   title: Introduction
   features: Features
-gettingStarted: 
+gettingStarted:
   title: Getting started
   quickstart: Quickstart
   fixtures: Fixtures
   wiki: Wiki
   testrunner: Testrunner
 configurationOptions: Configuration options
-differencesFromOtherTestFrameworks: 
+differencesFromOtherTestFrameworks:
   title: Differences from other test frameworks
   comparisonMatrix: Comparison Matrix
-tutorials: 
+tutorials:
   title: Tutorials
   integrationTesting: Integration testing
   refcard: Refcard

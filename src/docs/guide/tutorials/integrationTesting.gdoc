@@ -90,7 +90,7 @@ This will create a file called @CreateBookInventoryFixture.groovy@ in the @grail
 
 Because the Fitnesse plugin will reload the Fixtures automatically, pressing the *Test* button in the Wiki will already show that the Fixture has been loaded correctly, and the cell is colored green by Fitnesse. If for some reason this doesn't work, please restart the Grails application, and try again.
 
-Now, we'll have to create  the author, title and amount properties in the Fixture and the corresponding @Book@ domain class.
+Now, we'll have to create the author, title and amount properties in the Fixture and the corresponding Book domain class.
 
 {note}
 Note, Grails might crash due to the Fixture missing the domain classes. Whenever this happens, please restart Grails.

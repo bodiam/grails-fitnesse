@@ -271,6 +271,7 @@ class CheckBookInventoryFixture {
 
 or:
 
+{code}
 class CheckBookInventoryFixture {
     static queryFixture = true                              // indication that this is a query fixture
     static mapping = ["title":"objectTitle", "author":"theAuthor", "amount":"amount"] // a different mapping, where the key is the name of the test, and the value the property name of the object
@@ -281,7 +282,7 @@ class CheckBookInventoryFixture {
         bookService.checkInventory()
     }
 }
-
+{code}
 
 
 Since 0.9 you have to declare both queryFixture and mapping properties as static. It wasn't necessary before but the behaviour wasn't always consistent thus the support for non static properties was dropped.
