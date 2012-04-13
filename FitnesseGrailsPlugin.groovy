@@ -13,10 +13,11 @@ class FitnesseGrailsPlugin {
     // Plugin defaults
     public static final int DEFAULT_SERVER_PORT = 8085
     public static final boolean DEFAULT_VERBOSITY = false
+
     private final Logger log = LoggerFactory.getLogger("nl.jworks.grails.plugin.fitnesse.FitnesseGrailsPlugin")
 
     // the plugin version
-    def version = "2.0"
+    def version = "2.0.1"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.2 > *"
     // the other plugins this plugin depends on
@@ -55,7 +56,6 @@ class FitnesseGrailsPlugin {
         grailsSlimFactory(GrailsSlimFactory) {
             sessionFactory = ref('sessionFactory')
         }
-
 
         final beanConfigureClosure = configureFixtureBean.clone()
         beanConfigureClosure.delegate = delegate

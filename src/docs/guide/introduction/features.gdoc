@@ -1,5 +1,13 @@
 The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.
 
+h3. Moved Fitnesse to it's own Phase/Type (since 2.0)
+
+You can now use @grails test-app fitnesse:fitnesse@. The phase runs in integration mode
+
+h3. Integration with JUnit reports (since 2.0)
+
+The Fitnesse output, which is written to target/test-reports/fitnesse, will now be parsed to create JUnit Test objects.
+This allows the JUnit Reporting framework to output the .txt file and the JUnit .xml file. This also allows Fitnesse test results to participate in the Grails Test Report HTML file.
 
 h3. Support for GivWenZen (since 1.0)
 

@@ -8,6 +8,17 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
+** April XX, 2012
+** 2.0.1 Release!
+*** Implemented better feedback
+*** Fixed some bugs in the documentation, most notably the quickstart.
+*** Enabled PDF support for documentation
+*** Enabled bundled example project
+* April 12, 2012
+** 2.0 Release!
+*** After a long time of inactivity, there's a new release, thanks to John Engelman. Thanks for the great work John!
+*** JUnit Test Reports implemented
+*** Included latest Fitnesse (20111025)
 * June 10, 2011
 ** 1.0 Release!
 *** Feature: Support for GivWenZen
