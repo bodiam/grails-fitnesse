@@ -1,8 +1,0 @@
-This comparison matrix provides a quick overview of the possibilities of different frameworks. 
-
-{table}
-*Name*         | *Supports\\TDD* | *Refactor\\Safe* | *Collaborative* | *Target\\ audience*
-(x)Unit        |   Yes          |       No        |      No         |  Developers
-Selenium       |   No           |       Yes       |      No         |  Developers/Testers
-Fitnesse       |   Yes          |       Yes       |     Yes         |  Developers/Testers/Business
-{table}

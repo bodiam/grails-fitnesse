@@ -1,4 +1,0 @@
-To properly test our plugin, we have creates an example project which goes through all the features the plugin provides, like exception handling, transactions, conversions, etc.
-
-The example project is not bundled in the plugin itself, but can be found as a separate download, which can be found on [github|https://github.com/bodiam/grails-fitnesse/tree/master/test/projects].
- 
