@@ -13,13 +13,20 @@ target('default': 'Starts Fitnesse Server') {
 
     int port = fitnesseConfig.wiki.port ?: 9090
 
-    printMessage "Fitnesse server running. Browse to http://localhost:${port}"
+    printMessage "Fitnesse server starting. Browse to http://localhost:${port}"
 
-    ant.java(jar: "${fitnessePluginDir}/lib/fitnesse.jar", fork: true) {
+    ant.java(jar: "${fitnessePluginDir}/lib/fitnesse.jar", fork: true, errorProperty:'fitnesse.failed') {
 //    ant.java(jar: "${jarLoc}", fork: true) {
         arg(value: '-d')
         arg(path: "${fitnesseConfig.wiki.dir ?: 'wiki'}")
         arg(line: "-p ${port}")
     }
+
+    if(antProp('fitnesse.failed')) {
+        errorMessage "Fitnesse server failed to start. Please run using -verbose option to see the error."
+    }
 }
 
+final String antProp(String property) {
+    ant.project.properties[property] as String
+}
