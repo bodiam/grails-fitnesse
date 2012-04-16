@@ -30,4 +30,8 @@ class CustomerBuysBookFixture {
     void placeOrder() {
         bookService.placeOrder(order)
     }
+
+    Integer getChargedTotal() {
+        order.total
+    }
 }

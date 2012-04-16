@@ -20,7 +20,7 @@ class PromoPackage {
         if (discountType == DiscountType.AMOUNT) {
             return discountAmount;
         } else {
-            return (int) ((book1.price + book2.price) * (discountAmount / 100d));
+            return (int) ((book1.price + book2.price) * (discountAmount / 100d))
         }
     }
 }

@@ -17,13 +17,12 @@ class CreatePromoPackageFixture {
     String book2Isbn
     Integer discountAmount
 
-    // TODO: This conversion should be gone after 1.1 plugin has been built
-    String discountType
+    DiscountType discountType
 
     void execute() {
         def book1 = bookService.findByIsbn(book1Isbn)
         def book2 = bookService.findByIsbn(book2Isbn)
 
-        inventoryService.addPromoPackage(new PromoPackage(book1:book1, book2:book2, discountAmount:discountAmount, discountType:DiscountType.valueOf(discountType)))
+        inventoryService.addPromoPackage(new PromoPackage(book1:book1, book2:book2, discountAmount:discountAmount, discountType:discountType))
     }
 }

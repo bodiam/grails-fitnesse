@@ -10,6 +10,12 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 | [[User Guide][FitNesse.UserGuide]]|''Answer the rest of your questions here.''|
 | [[Acceptance Tests][FitNesse.SuiteAcceptanceTests]]|''FitNesse's suite of Acceptance Tests''|
 
+
+!* Setup, do not edit
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {ls}
+*!
+
 >AmasunSuite
 
 

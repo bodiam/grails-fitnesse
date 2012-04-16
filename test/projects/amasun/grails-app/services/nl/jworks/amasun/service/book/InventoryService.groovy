@@ -23,7 +23,12 @@ class InventoryService {
     }
 
     Integer getAmount(Book book) {
-        return findByAuthorAndTitle(book.author, book.title).amount
+        Inventory inventory = findByAuthorAndTitle(book.author, book.title)
+        if(inventory) {
+            return inventory.amount
+        } else {
+            0
+        }
     }
 
     void deductInventory(Book book, Integer amount) {
