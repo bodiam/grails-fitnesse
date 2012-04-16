@@ -7,6 +7,7 @@ test/projects/grails-app-tested-by-fitnesse/target
 test/projects/grails-app-tested-by-fitnesse/*.log
 test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/*
 !/test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/FrontPage/
+test/projects/amasun/target/stacktrace.log
 grails-fitnesse*.zip*
 plugin.xml
 
