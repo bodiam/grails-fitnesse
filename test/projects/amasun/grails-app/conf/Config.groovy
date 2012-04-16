@@ -81,3 +81,19 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+grails {
+	plugin {
+		fitnesse {
+            slim {
+                port = 8085
+                verbose = false
+            }
+            wiki {
+                port = 9090
+                dir = 'wiki'
+                defaultSuite = ['FrontPage.AmasunSuite?suite']
+            }
+        }
+    }
+}

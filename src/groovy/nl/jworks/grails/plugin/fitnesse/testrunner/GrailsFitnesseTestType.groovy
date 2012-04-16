@@ -40,9 +40,17 @@ class GrailsFitnesseTestType extends GrailsTestTypeSupport {
         List<String> testSuiteNames = determineTestSuiteNames()
         List<String> commandPatterns = createCommandPatterns(testSuiteNames)
 
-        Arguments arguments = new Arguments(omitUpdates: true, rootPath: 'wiki', command:'dummy-will-be-overruled-by-command-pattern')
-        arguments.setPort(CH.config.grails.plugin.fitnesse.wiki.port as String ?: Arguments.DEFAULT_COMMAND_PORT as String)
-        arguments.setRootPath(CH.config.grails.plugin.fitnesse.wiki.dir ?: Arguments.DEFAULT_PATH)
+        Arguments arguments = new Arguments(omitUpdates: true, command: 'dummy-will-be-overruled-by-command-pattern')
+
+        arguments.port = (CH.config.grails.plugin.fitnesse.wiki.port ?: Arguments.DEFAULT_COMMAND_PORT) as String
+        arguments.rootPath = CH.config.grails.plugin.fitnesse.wiki.dir ?: 'wiki'
+
+        println "Executing Fitnesse:"
+        println "  commandPatterns: $commandPatterns"
+        println "  port: $arguments.port"
+        println "  path: $arguments.rootPath"
+
+
         GrailsFitnesseCommandRunner runner = new GrailsFitnesseCommandRunner(commandPatterns, result, eventPublisher, buildBinding)
         // Fill the result and publish the test results to the event publisher
         runner.launchFitNesse arguments

@@ -8,3 +8,6 @@
 //
 //    ant.mkdir(dir:"${basedir}/grails-app/jobs")
 //
+ant.touch(file:".donotdelete", mkdirs:true) {
+    ant.fileset(dir:"${basedir}/test/fitnesse")
+}

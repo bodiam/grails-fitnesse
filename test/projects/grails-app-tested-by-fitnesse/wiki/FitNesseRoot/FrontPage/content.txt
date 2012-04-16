@@ -11,12 +11,8 @@ To add your first "page", click the [[Edit][FrontPage?edit]] button and add a [[
 
 !* Setup, do not edit
 !define TEST_SYSTEM {slim}
-#!define SLIM_PORT {10011}
-!define COMMAND_PATTERN {ls}
-
-!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {echo}
 *!
-
 
 !3 Grails
 

@@ -1,13 +1,18 @@
 package nl.jworks.grails.plugin.fitnesse.testrunner
 
 import groovy.util.slurpersupport.GPathResult
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 /**
  * Parses the Fitnesse XML format output into Groovy objects.
  */
 class FitnesseXmlResultParser {
+    private final Logger log = LoggerFactory.getLogger(getClass())
 
     FitnesseTotalResult parseFitnesseXml(String xml) {
+        println "Parsing Fitnesse xml: $xml"
+
         GPathResult testResults = parseXml(xml)
 
         FitnesseTotalResult totalResult = new FitnesseTotalResult(

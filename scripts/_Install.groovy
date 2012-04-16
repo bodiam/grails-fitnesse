@@ -10,4 +10,7 @@
 //
 
 ant.mkdir(dir:"${basedir}/grails-app/fitnesse")
-ant.mkdir(dir:"${basedir}/test/fitnesse")
+//ant.mkdir(dir:"${basedir}/test/fitnesse")
+ant.touch(file:".donotdelete", mkdirs:true) {
+    ant.fileset(dir:"${basedir}/test/fitnesse")
+}
