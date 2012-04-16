@@ -27,7 +27,7 @@ class InventoryService {
         if(inventory) {
             return inventory.amount
         } else {
-            0
+            return 0
         }
     }
 
