@@ -39,7 +39,7 @@ class FitnesseGrailsPlugin {
 
     def watchedResources = [
             "file:./grails-app/fitnesse/**/*.groovy",
-            "file:../../plugins/*/grails-app/fitnesse/**/*.groovy"
+            "file:./plugins/*/grails-app/fitnesse/**/*.groovy"
     ]
 
     def doWithWebDescriptor = { xml ->
