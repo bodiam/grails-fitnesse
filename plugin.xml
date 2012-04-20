@@ -1,4 +1,4 @@
-<plugin name='fitnesse' version='2.0' grailsVersion='1.3.2 &gt; *'>
+<plugin name='fitnesse' version='2.0.2' grailsVersion='1.3.2 &gt; *'>
   <author>Erik Pragt</author>
   <authorEmail>erik.pragt@jworks.nl</authorEmail>
   <title>Fitnesse Grails Plugin</title>
@@ -14,6 +14,7 @@
     <resource>nl.jworks.fitnesse.quickstart.EchoFixture</resource>
   </resources>
   <repositories>
+    <repository name='http://grails.org/plugins' url='http://grails.org/plugins' />
     <repository name='grailsCentral' url='http://plugins.grails.org' />
     <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />

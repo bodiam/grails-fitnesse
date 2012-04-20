@@ -11,6 +11,7 @@ grails.project.dependency.resolution = {
         excludes "xml-apis", "xmlParserAPIs"
     }
     repositories {
+        grailsRepo "http://grails.org/plugins"
         grailsCentral()
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
@@ -27,6 +28,9 @@ grails.project.dependency.resolution = {
     }
     plugins {
         build(":tomcat:$grailsVersion", ":hibernate:$grailsVersion", ":release:1.0.1") {
+            export = false
+        }
+        build ":release:2.0.0", {
             export = false
         }
     }
