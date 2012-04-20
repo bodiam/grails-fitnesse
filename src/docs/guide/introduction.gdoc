@@ -8,7 +8,7 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
-** April XX, 2012
+* April 16, 2012
 ** 2.0.1 Release!
 *** Implemented better feedback
 *** Fixed some bugs in the documentation, most notably the quickstart.
