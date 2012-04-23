@@ -94,8 +94,8 @@ log4j = {
 
 
 grails {
-	plugin {
-		fitnesse {
+    plugin {
+        fitnesse {
             slim {
                 port = 8085
                 verbose = false
