@@ -10,6 +10,7 @@ test/projects/grails-app-tested-by-fitnesse/wiki/FitNesseRoot/*
 test/projects/amasun/target/stacktrace.log
 grails-fitnesse*.zip*
 plugin.xml
+docs/
 
 .svn
 **/.svn
