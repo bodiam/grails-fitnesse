@@ -1,4 +1,4 @@
-<plugin name='fitnesse' version='2.0.1' grailsVersion='1.3.2 &gt; *'>
+<plugin name='fitnesse' version='2.0.2' grailsVersion='1.3.2 &gt; *'>
   <author>Erik Pragt</author>
   <authorEmail>erik.pragt@jworks.nl</authorEmail>
   <title>Fitnesse Grails Plugin</title>
@@ -24,8 +24,8 @@
   </repositories>
   <dependencies>
     <compile>
-      <dependency group='org.htmlparser' name='htmlparser' version='2.1' />
       <dependency group='com.googlecode.givwenzen' name='givwenzen' version='1.0.2' />
+      <dependency group='org.htmlparser' name='htmlparser' version='2.1' />
     </compile>
   </dependencies>
   <plugins />

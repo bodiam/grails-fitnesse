@@ -14,6 +14,8 @@ grails.project.dependency.resolution = {
         grailsHome()
         grailsCentral()
 
+        mavenCentral()
+        mavenLocal()
         mavenRepo('http://givwenzen.googlecode.com/svn/maven2/')
     }
     dependencies {
