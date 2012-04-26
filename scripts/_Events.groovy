@@ -7,15 +7,19 @@ def runningTests = false
 fitnesseTests = []
 def testMode = new GrailsTestMode(autowire: true)
 
-tryToLoadTestTypes = {
-    tryToLoadTestType("fitnesse", fitnesseTestTypeClassName)
+softLoadFitnesseClass = { className ->
+    try {
+        classLoader.loadClass(className)
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace()
+    }
 }
 
-tryToLoadTestType = {name, typeClassName ->
+tryToLoadFitnesseTestType = {name, typeClassName ->
     if (name in loadedTestTypes) return
     if (!binding.variables.containsKey("otherTests")) return
     
-    def typeClass = softLoadClass(typeClassName)
+    def typeClass = softLoadFitnesseClass(typeClassName)
     if (typeClass) {
         if (!fitnesseTests.any { it.class == typeClass }) {
             fitnesseTests << typeClass.newInstance(name, 'fitnesse')
@@ -24,22 +28,18 @@ tryToLoadTestType = {name, typeClassName ->
     }
 }
 
-softLoadClass = { className ->
-    try {
-        classLoader.loadClass(className)
-    } catch (ClassNotFoundException e) {
-        null
-    }
+tryToLoadFitnesseTestTypes = {
+    tryToLoadFitnesseTestType("fitnesse", fitnesseTestTypeClassName)
 }
 
 eventAllTestsStart = {
     phasesToRun << "fitnesse"
     runningTests = true
     
-    tryToLoadTestTypes()
+    tryToLoadFitnesseTestTypes()
 
     [fitnesseTestTypeClassName].each { testTypeClassName ->
-        def testTypeClass = softLoadClass(testTypeClassName)
+        def testTypeClass = softLoadFitnesseClass(testTypeClassName)
         if (testTypeClass) {
             if (!fitnesseTests.any { it.class == testTypeClass }) {
                 fitnesseTests << testTypeClass.newInstance('fitnesse', 'fitnesse')
@@ -49,7 +49,7 @@ eventAllTestsStart = {
 }
 
 eventPackagePluginsEnd = {
-    tryToLoadTestTypes()
+    tryToLoadFitnesseTestTypes()
 }
 
 eventTestPhaseStart = { phaseName ->
