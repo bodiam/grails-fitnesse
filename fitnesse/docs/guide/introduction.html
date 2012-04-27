@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>1.1 Features 2.0.3</title>
+    <title>1 Introduction 2.0.3</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -20,23 +20,23 @@ function addJsClass() {
     <ul>
         <li>
             <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
-                <a href="../../guide/index.html" class="button">Table of contents</a>
+                <a href="../guide/index.html" class="button">Table of contents</a>
 
                 <div id="nav-summary-childs" style="display:none;">
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../../guide/configurationOptions.html"><strong>3</strong><span>Configuration options</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/configurationOptions.html"><strong>3</strong><span>Configuration options</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../../guide/differencesFromOtherTestFrameworks.html"><strong>4</strong><span>Differences from other test frameworks</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/differencesFromOtherTestFrameworks.html"><strong>4</strong><span>Differences from other test frameworks</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0"><a href="../../guide/tutorials.html"><strong>5</strong><span>Tutorials</span></a>
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/tutorials.html"><strong>5</strong><span>Tutorials</span></a>
                     </div>
                     
                 </div>
@@ -70,12 +70,12 @@ function addJsClass() {
                 <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
 
                 
-                    <div class="toc-item next-right"><a href="../../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span> >></a></div>
                 
 
 
                 <div class="project">
-                    <h1>1.1 Features - Reference Documentation</h1>
+                    <h1>1 Introduction - Reference Documentation</h1>
 
                     <p><strong>Authors:</strong> Erik Pragt (<a href="http://www.jworks.nl">jWorks.nl</a>), Marcin Erdmann, John Engelman</p>
 
@@ -85,8 +85,136 @@ function addJsClass() {
                 </div>
 
                 
+                <div id="table-of-content">
+                    <h2>Table of Contents</h2>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#features"><strong>1.1</strong><span>Features</span></a>
+                    </div>
+                    
+                </div>
+                
 
                 
+<a name="1. Introduction"><!-- Legacy link --></a>
+<h1 id="introduction">1 Introduction</h1>
+The Fitnesse plugin provides a integration point between the popular Open Source testing framework Fitnesse:http://www.fitnesse.org and Grails applications.<p class="paragraph"/>This guide documents the usage of the plugin and provides an easy starting point to get you up to speed with the plugin as well as with Fitnesse.<p class="paragraph"/><blockquote class="note">
+Note that the <strong class="bold">SLIM</strong> version of Fitnesse is supported. FIT, the older Fitnesse protocol, is not yet supported, nor will it be supported in the near future.
+</blockquote><p class="paragraph"/><h4>Release History</h4>
+<ul class="star">
+<li>April 26, 2012</li>
+<ul class="star">
+<li>2.0.3 Release!</li>
+<ul class="star">
+<li>Small bugfix in the _Events.groovy, due to conflicts in closure name with Functional test plugin.</li>
+<li>Another small bugfix in the _Install.groovy. The .donotdelete file for the fitnesse directory was created in the wrong dir.</li>
+</ul>
+</ul>
+<li>April 23, 2012</li>
+<ul class="star">
+<li>2.0.2 Release!</li>
+<ul class="star">
+<li>Small bugfix in the _Install.groovy. Thanks to Nicolas Vinet for reporting!</li>
+</ul>
+</ul>
+<li>April 16, 2012</li>
+<ul class="star">
+<li>2.0.1 Release!</li>
+<ul class="star">
+<li>Implemented better feedback</li>
+<li>Fixed some bugs in the documentation, most notably the quickstart.</li>
+<li>Enabled PDF support for documentation</li>
+<li>Enabled bundled example project</li>
+</ul>
+</ul>
+<li>April 12, 2012</li>
+<ul class="star">
+<li>2.0 Release!</li>
+<ul class="star">
+<li>After a long time of inactivity, there's a new release, thanks to John Engelman. Thanks for the great work John!</li>
+<li>JUnit Test Reports implemented</li>
+<li>Included latest Fitnesse (20111025)</li>
+</ul>
+</ul>
+<li>June 10, 2011</li>
+<ul class="star">
+<li>1.0 Release!</li>
+<ul class="star">
+<li>Feature: Support for GivWenZen</li>
+<li>Bugfix: Fixed the tutorial documentation (thanks Pierre D. Tremblay!)</li>
+<li>Bugfix: Fixed the dependency resolution of libraries (thanks Steef de Bruijn)</li>
+<li>Bugfix: Fixed plugin scopes (thanks Steef de Bruijn)</li>
+</ul>
+</ul>
+<li>May 18, 2011</li>
+<ul class="star">
+<li>0.95 Release</li>
+<ul class="star">
+<li>Feature: Enabled easy mapping of enums classes</li>
+<li>Improvement: Improved Query Fixture DSL to allow dotted notation</li>
+<li>Improvement: Enhanced reloading of application</li>
+</ul>
+</ul>
+<li>March 22, 2011</li>
+<ul class="star">
+<li>0.9 Release</li>
+<ul class="star">
+<li>We upped the version number to 0.9 because the plugin is quite feature complete now, and is almost stable enough to be a 1.0.</li>
+<li>Feature: Introduced @Fixture annotation, so fixtures can now be given any name (they don't have to be suffixed with Fixture), as long as they are annotated with the annotation.</li>
+<li>Feature: Added Transaction support</li>
+<li>Bugfix: Fixed JSON conversion for domain classes and collections</li>
+<li>Bugfix: Fixed reloading classes and fixtures that use inheritance</li>
+<li>Bugfix: Fixed grails test-app</li>
+<li>Bugfix: Fixed issues in the documentation</li>
+</ul>
+</ul>
+<li>March 1, 2011</li>
+<ul class="star">
+<li>0.5 Release</li>
+<ul class="star">
+<li>Feature: Fitnesse testrunner created. Grails applications can now be tested using: grails test-app integration:fitnesse "FrontPage.GrailsTestSuite.SlimTestSystem?suite"</li>
+<li>Feature: Fitnesse integrated. Fitnesse can now be started using: grails run-fitnesse</li>
+<li>Feature: Fitnesse can be disabled by setting the grails.plugin.fitnesse.disabled property to true</li>
+<li>Improvement: Internal Fitnesse upgraded to the newest Fitnesse version</li>
+<li>Improvement: Naming of configuration parameters have changed to be more consistent. *Beware: the 'plugins' configuration option has changes to 'plugin' (without the 's')</li>
+<li>Improvement: Bundled testproject in Github</li>
+<li>Improvement: Fixture classes are now Spring beans</li>
+<li>Bugfix: Fixed lazyloadingexception</li>
+<li>Bugfix: Fixed exception message when a given constructor is not found for a fixture</li>
+<li>Bugfix: Fixed reloading of services to give errors in Fixtures</li>
+<li>Bugfix: Marcin's surname is fixed in the documentation!</li>
+</ul>
+</ul>
+<li>November 16, 2010</li>
+<ul class="star">
+<li>0.4 Release, thanks to Marcin Erdmann!</li>
+<ul class="star">
+<li>Complete refactoring of the plugin thanks to Marcin Erdmann (ie using Artefacts, Artefact Templates, JSON Code to enable complex objects, and more!)</li>
+<li><strong class="bold">Important</strong>: All fixtures should now be end with the suffix 'Fixture', as in 'CalculateFixture'. In the Wiki you can still refer to them as 'Calculate', but the plugin adds a Fixture suffix when looking for the class.</li>
+<li>Improved error messages</li>
+<li>You can now create complex objects from within Fitnesse by using JSON syntax.</li>
+<li>More documentation!</li>
+<li>Fixed some bugs in documentation (thanks Olivier Hedin for reporting!)</li>
+</ul>
+</ul>
+<li>October 12, 2010</li>
+<ul class="star">
+<li>0.3 Release.</li>
+<ul class="star">
+<li>Added more documentation (configuration options, quickstart), refactored the internals</li>
+<li>Added verbose logging switch</li>
+<li>Fixed a Grails reloading bug, which caused ports to be opened twice. Now the plugin closes all ports, and reopens them whenever Grails forces a restart</li>
+<li>You can now throw <a href="http://fitnesse.org/FitNesse.UserGuide.SliM.ExceptionHandling" target="blank">StopTest Exceptions</a> from Fixture constructors (which is not possible in the Java Fitnesse)</li>
+</ul>
+</ul>
+<li>September 19, 2010</li>
+<ul class="star">
+<li>0.2 release. First public release. Includes lots of documentation, including a tutorial with 3 fixture types.</li>
+</ul>
+<li>September 15, 2010</li>
+<ul class="star">
+<li>initial 0.1 release.</li>
+</ul></ul><p class="paragraph"/>
+
 <a name="1.1 Features"><!-- Legacy link --></a>
 <h2 id="features">1.1 Features</h2>
 The Fitnesse plugin supports some additional features besides the standard Fitnesse functionality.<p class="paragraph"/><h3>Moved Fitnesse to it's own Phase/Type (since 2.0)</h3><p class="paragraph"/>You can now use <code>grails test-app fitnesse:fitnesse</code>. The phase runs in integration mode<p class="paragraph"/><h3>Integration with JUnit reports (since 2.0)</h3><p class="paragraph"/>The Fitnesse output, which is written to target/test-reports/fitnesse, will now be parsed to create JUnit Test objects.
@@ -226,7 +354,7 @@ This is currently not handled correctly in the Java version of Fitnesse.
 
                 <div style="clear:both;margin-top:15px;"></div>
                 
-                    <div class="toc-item next-right"><a href="../../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span> >></a></div>
+                    <div class="toc-item next-right"><a href="../guide/gettingStarted.html"><strong>2</strong><span>Getting started</span> >></a></div>
                 
                 <div style="clear:both"></div>
             </div>
@@ -234,7 +362,7 @@ This is currently not handled correctly in the Java version of Fitnesse.
         <td id="col2">
             <div class="local clearfix">
                 <div class="local-title">
-                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
                     <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
                 </div>
                 <div class="menu">
@@ -242,13 +370,13 @@ This is currently not handled correctly in the Java version of Fitnesse.
                     <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">Scripts</h1><div class="menu-sub">
                         
                             
-                            <div class="menu-item"><a href="../../ref/Scripts/create-fitnesse-fixture.html">create-fitnesse-fixture</a>
+                            <div class="menu-item"><a href="../ref/Scripts/create-fitnesse-fixture.html">create-fitnesse-fixture</a>
                             </div>
                             
-                            <div class="menu-item"><a href="../../ref/Scripts/create-fitnesse-query-fixture.html">create-fitnesse-query-fixture</a>
+                            <div class="menu-item"><a href="../ref/Scripts/create-fitnesse-query-fixture.html">create-fitnesse-query-fixture</a>
                             </div>
                             
-                            <div class="menu-item"><a href="../../ref/Scripts/run-fitnesse.html">run-fitnesse</a>
+                            <div class="menu-item"><a href="../ref/Scripts/run-fitnesse.html">run-fitnesse</a>
                             </div>
                             
                             </div>
