@@ -11,7 +11,7 @@ class FitnesseXmlResultParser {
     private final Logger log = LoggerFactory.getLogger(getClass())
 
     FitnesseTotalResult parseFitnesseXml(String xml) {
-        println "Parsing Fitnesse xml: $xml"
+        //println "Parsing Fitnesse xml: $xml"
 
         GPathResult testResults = parseXml(xml)
 
