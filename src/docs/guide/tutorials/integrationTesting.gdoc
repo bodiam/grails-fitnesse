@@ -78,9 +78,27 @@ In this test, you've used 3 kinds of Test tables:
 
 Click on *Test* on the left side of the page. The test will execute, and will fail with errors like @Could not invoke constructor for CreateBookInventory\[0\]@. This is because no Fixtures have been created yet. This way of working is in line with the 'Red-Green-Refactor' TDD mantra; our test clearly is red (or yellow, in this case), so we need to focus on getting the test green. To make the test pass, we need to create the fixtures.
 
+h4. 6. Creating the domain.
+
+For this tutorial, we'll use a very simple domain consisting on one class, Book. Create the domain class by typing the following:
+{code}
+$ grails create-domain-class Book
+{code}
+
+Edit the Book.groovy file, and put in the following contents:
+
+{code}
+package bookstore
+
+class Book {
+    String author
+    String title
+}
+{code}
+
 h4. 6. Creating the Fixtures
 
-We'll start by creating the first Fixture mentioned in the error message, which is the @CreateBookInventory@ Fixture. To create the Fixture, use the Grails task @create-fitnesse-fixture*. You can involve the script by typing the following:
+Next, we'll continue by creating the first Fixture mentioned in the error message, which is the @CreateBookInventory@ Fixture. To create the Fixture, use the Grails task @create-fitnesse-fixture@. You can involve the script by typing the following:
 
 {code}
 $ grails create-fitnesse-fixture CreateBookInventory
@@ -101,10 +119,11 @@ h5. 6.1 The Decision Table
 The Fixture to support the [Decision Table|http://www.fitnesse.org/FitNesse.UserGuide.SliM.DecisionTable] should look like this:
 
 {code}
+package bookstore
+
 class CreateBookInventoryFixture {
     String author
     String title
-
     int amount
 
     def bookService
@@ -121,29 +140,28 @@ class CreateBookInventoryFixture {
 }
 {code}
 
-The Fixture has an @execute@ method. This method is called after input parameters have been set, but before any output parameters are requested. This allows us to have a place to do something with the input, and prepare the output.
+The Fixture has an @execute@ method. This method is called after input parameters (the author, title and amount) have been set, but before any output parameters (none in this fixture) are requested. This allows us to have a place to do something with the input, and prepare the output.
 
-The Book class like this:
-
-{code}
-class Book {
-    String author
-    String title
-}
-{code}
-
-We also need a BookService class, since the Fixtures should not hold any logic; they are just a translation of the test with the SUT. The BookService looks like this:
+We also need a BookService class, since the Fixtures should not hold any logic; they are just a translation of the test with the System Under Test (SUT).
 
 {code}
+$ grails create-service BookService
+{code}
+
+The BookService should look like this:
+
+{code}
+package bookstore
+
 class BookService {
 
     static transactional = true
 
-    def addBook(book) {
+    void addBook(book) {
         book.save()
     }
 
-    def buyBook(title) {
+    void buyBook(title) {
         Book.findByTitle(title).delete()
     }
 

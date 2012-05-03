@@ -8,6 +8,13 @@ Note that the *SLIM* version of Fitnesse is supported. FIT, the older Fitnesse p
  
 h4. Release History
 
+* April 26, 2012
+** 2.0.3 Release!
+*** Small bugfix in the _Events.groovy, due to conflicts in closure name with Functional test plugin.
+*** Another small bugfix in the _Install.groovy. The .donotdelete file for the fitnesse directory was created in the wrong dir.
+* April 23, 2012
+** 2.0.2 Release!
+*** Small bugfix in the _Install.groovy. Thanks to Nicolas Vinet for reporting!
 * April 16, 2012
 ** 2.0.1 Release!
 *** Implemented better feedback
