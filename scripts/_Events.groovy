@@ -11,7 +11,7 @@ softLoadFitnesseClass = { className ->
     try {
         classLoader.loadClass(className)
     } catch (ClassNotFoundException e) {
-        e.printStackTrace()
+        null
     }
 }
 
