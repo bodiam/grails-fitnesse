@@ -33,7 +33,6 @@ tryToLoadFitnesseTestTypes = {
 }
 
 eventAllTestsStart = {
-    phasesToRun << "fitnesse"
     runningTests = true
     
     tryToLoadFitnesseTestTypes()
