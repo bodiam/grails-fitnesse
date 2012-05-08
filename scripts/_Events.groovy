@@ -11,7 +11,7 @@ softLoadFitnesseClass = { className ->
     try {
         classLoader.loadClass(className)
     } catch (ClassNotFoundException e) {
-        e.printStackTrace()
+        null
     }
 }
 
@@ -33,7 +33,6 @@ tryToLoadFitnesseTestTypes = {
 }
 
 eventAllTestsStart = {
-    phasesToRun << "fitnesse"
     runningTests = true
     
     tryToLoadFitnesseTestTypes()
